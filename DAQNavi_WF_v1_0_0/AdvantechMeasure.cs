@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace DAQNavi_WF_v1_0_0
 {
@@ -18,11 +19,13 @@ namespace DAQNavi_WF_v1_0_0
     {
         delegate void UpdateUIDelegate();
         double[] dataDownloadedAI;
+        Stopwatch stopwatch = new Stopwatch();
+
+
         public Form1()
         {
 
             // Przygotowanie programu do pracy
-
             InitializeComponent();
             this.metroTabControl1.TabPages.Remove(metroTabPageAnalogOutput);
             this.metroTabControl1.TabPages.Remove(metroTabPageAnalogBufferedInput);
@@ -52,25 +55,18 @@ namespace DAQNavi_WF_v1_0_0
             metroLabelInstant.Text = "You can measure:" +
                           "\n  - Instant output";
             metroLabelBuffered.Text = "You can measure:" +
-              "\n  - Instant output";
+                          "\n  - Instant output";
 
             chartAnalogInput.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
             chartAnalogInput.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
             chartAnalogInput.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
 
-            // Set automatic scrolling 
             chartAnalogInput.ChartAreas[0].CursorX.AutoScroll = true;
             chartAnalogInput.ChartAreas[0].CursorY.AutoScroll = true;
 
-            // Allow user selection for Zoom
             chartAnalogInput.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             chartAnalogInput.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
 
-
-            dataDownloadedAI = new double[bufferedAiCtrl1.BufferCapacity];
-            bufferedAiCtrl1.Streaming = false;
-            
-            bufferedAiCtrl1.Prepare();
             this.Select();
             this.metroTextBoxUsername.Select();
         }
@@ -82,8 +78,14 @@ namespace DAQNavi_WF_v1_0_0
             {
                 metroProgressSpinner1.Visible = true;
                 metroProgressSpinner1.Refresh();
+
                 for (int i = 0; i < e.Count; ++i)
                 {
+                    //TODO - czas na osi X
+                    //stopwatch.Start();
+                    //stopwatch.Stop();
+                    //metroGridTable.Rows.Add(dataDownloadedAI[i], stopwatch.Elapsed.TotalMilliseconds);
+                    //chartAnalogInput.Series[0].Points.AddXY(dataDownloadedAI[i], stopwatch.Elapsed.TotalMilliseconds);
                     metroGridTable.Rows.Add(dataDownloadedAI[i]);
                     chartAnalogInput.Series[0].Points.Add(dataDownloadedAI[i]);
                     if (i % 20 == 0)
@@ -92,22 +94,29 @@ namespace DAQNavi_WF_v1_0_0
                         metroProgressSpinner1.Refresh();
                     }
                 }
+
                 metroProgressSpinner1.Visible = false;
                 metroProgressSpinner1.Refresh();
             });
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonAnalogBufferedInput_Click(object sender, EventArgs e)
         {
-            bufferedAiCtrl1.ScanChannel.Samples = Convert.ToInt32(MetroTextBoxSamples.Text);
-            bufferedAiCtrl1.ScanChannel.ChannelCount = 1;
             foreach (var series in chartAnalogInput.Series)
             {
                 series.Points.Clear();
                 metroGridTable.Rows.Clear();
             }
-            bufferedAiCtrl1.Start();
 
+            BufferedAnalogInput bufferedAnalogInput = new BufferedAnalogInput();
+            bufferedAnalogInput.setSamples(Convert.ToInt32(MetroTextBoxSamples.Text));
+            bufferedAnalogInput.setChannels(Convert.ToInt32(MetroTextBoxChannels.Text));
+            bufferedAnalogInput.setChannelStart(Convert.ToInt32(MetroTextBoxChannelStart.Text));
+            bufferedAnalogInput.setIntervalCount(Convert.ToInt32(MetroTextBoxIntervalCount.Text));
+            bufferedAnalogInput.setScanCount(Convert.ToInt32(MetroTextBoxScanCount.Text));
+            bufferedAnalogInput.setRate(Convert.ToInt32(MetroTextBoxRate.Text));
+            
+            dataDownloadedAI = bufferedAnalogInput.przygotujPomiar(bufferedAiCtrl1);
         }
 
         private void metroToggle1_CheckedChanged(object sender, EventArgs e)
