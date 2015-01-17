@@ -62,11 +62,11 @@
     <Compile Include="AdvantechMeasure.Designer.cs">
       <DependentUpon>AdvantechMeasure.cs</DependentUpon>
     </Compile>
-    <Compile Include="BufferedAnalogInput.cs" />
-    <Compile Include="LoginPanel.cs" />
+    <Compile Include="AdvantechAPIs\BufferedAnalogInput.cs" />
+    <Compile Include="Utils\LoginPanel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="DTO\User.cs" />
     <EmbeddedResource Include="AdvantechMeasure.resx">
       <DependentUpon>AdvantechMeasure.cs</DependentUpon>
     </EmbeddedResource>

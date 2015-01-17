@@ -3317,4 +3317,7 @@
         Y2VNb2RlC01vZHVsZUluZGV4CVByb2R1Y3RJRAACAAAACAgICAIAAAD/////CgIAAAAAAAAA/////ws=
 </value>
   </data>
+  <metadata name="ToolTip_AnalogBufferedChart.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>282, 17</value>
+  </metadata>
 </root>

@@ -39,6 +39,11 @@ namespace DAQNavi_WF_v1_0_0
             this.samples = samples;
         }
 
+        public int getSamples()
+        {
+            return samples;
+        }
+
         public void setChannels(int channels)
         {
             this.channels = channels;
