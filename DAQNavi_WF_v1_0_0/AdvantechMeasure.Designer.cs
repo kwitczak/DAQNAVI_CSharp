@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series49 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series50 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series51 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series52 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series53 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series54 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series55 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series56 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bufferedAiCtrl1 = new Automation.BDaq.BufferedAiCtrl(this.components);
             this.Chart_AnalogBufferedInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.metroLabelSamples = new MetroFramework.Controls.MetroLabel();
@@ -82,11 +82,18 @@
             this.metroTabPage8 = new MetroFramework.Controls.MetroTabPage();
             this.TabPage_LastMeasure = new MetroFramework.Controls.MetroTabPage();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.Button_AnalogBufferedInput_ExportToFile = new MetroFramework.Controls.MetroButton();
             this.metroGridTable = new MetroFramework.Controls.MetroGrid();
             this.Channel_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Channel_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Channel_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Channel_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPage_Measure = new MetroFramework.Controls.MetroTabPage();
             this.Label_Instant = new MetroFramework.Controls.MetroLabel();
             this.Label_Buffered = new MetroFramework.Controls.MetroLabel();
@@ -128,115 +135,115 @@
             // 
             this.Chart_AnalogBufferedInput.BackColor = System.Drawing.Color.Transparent;
             this.Chart_AnalogBufferedInput.BorderSkin.BackColor = System.Drawing.Color.Transparent;
-            chartArea1.AxisX.InterlacedColor = System.Drawing.Color.White;
-            chartArea1.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisX.LineColor = System.Drawing.Color.Silver;
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisX.MinorGrid.Enabled = true;
-            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisX.MinorTickMark.Enabled = true;
-            chartArea1.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisY.LineColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
-            chartArea1.AxisY.MinorGrid.Enabled = true;
-            chartArea1.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea1.AxisY.MinorTickMark.Enabled = true;
-            chartArea1.AxisY.MinorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea1.BackColor = System.Drawing.Color.DimGray;
-            chartArea1.BorderColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.Chart_AnalogBufferedInput.ChartAreas.Add(chartArea1);
-            legend1.Enabled = false;
-            legend1.Name = "Legend1";
-            this.Chart_AnalogBufferedInput.Legends.Add(legend1);
+            chartArea7.AxisX.InterlacedColor = System.Drawing.Color.White;
+            chartArea7.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
+            chartArea7.AxisX.LineColor = System.Drawing.Color.Silver;
+            chartArea7.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea7.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
+            chartArea7.AxisX.MinorGrid.Enabled = true;
+            chartArea7.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea7.AxisX.MinorTickMark.Enabled = true;
+            chartArea7.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea7.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
+            chartArea7.AxisY.LineColor = System.Drawing.Color.DarkGray;
+            chartArea7.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea7.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
+            chartArea7.AxisY.MinorGrid.Enabled = true;
+            chartArea7.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea7.AxisY.MinorTickMark.Enabled = true;
+            chartArea7.AxisY.MinorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea7.BackColor = System.Drawing.Color.DimGray;
+            chartArea7.BorderColor = System.Drawing.Color.Transparent;
+            chartArea7.Name = "ChartArea1";
+            this.Chart_AnalogBufferedInput.ChartAreas.Add(chartArea7);
+            legend7.Enabled = false;
+            legend7.Name = "Legend1";
+            this.Chart_AnalogBufferedInput.Legends.Add(legend7);
             this.Chart_AnalogBufferedInput.Location = new System.Drawing.Point(244, 3);
             this.Chart_AnalogBufferedInput.Name = "Chart_AnalogBufferedInput";
             this.Chart_AnalogBufferedInput.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series1.BackSecondaryColor = System.Drawing.Color.WhiteSmoke;
-            series1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            series1.BorderWidth = 2;
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            series1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            series1.IsXValueIndexed = true;
-            series1.Legend = "Legend1";
-            series1.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series1.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            series1.MarkerSize = 0;
-            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series1.Name = "Series1";
-            series1.YValuesPerPoint = 2;
-            series2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series2.BorderWidth = 2;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series2.IsXValueIndexed = true;
-            series2.Legend = "Legend1";
-            series2.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series2.MarkerSize = 0;
-            series2.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series2.Name = "Series2";
-            series3.BorderWidth = 2;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series3.Color = System.Drawing.Color.Yellow;
-            series3.IsXValueIndexed = true;
-            series3.Legend = "Legend1";
-            series3.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series3.MarkerColor = System.Drawing.Color.Yellow;
-            series3.MarkerSize = 0;
-            series3.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series3.Name = "Series3";
-            series4.BorderWidth = 2;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series4.Color = System.Drawing.Color.Lime;
-            series4.IsXValueIndexed = true;
-            series4.Legend = "Legend1";
-            series4.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series4.MarkerColor = System.Drawing.Color.Lime;
-            series4.MarkerSize = 0;
-            series4.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series4.Name = "Series4";
-            series5.BorderWidth = 2;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series5.IsXValueIndexed = true;
-            series5.Legend = "Legend1";
-            series5.MarkerSize = 0;
-            series5.Name = "Series5";
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series6.IsXValueIndexed = true;
-            series6.Legend = "Legend1";
-            series6.MarkerSize = 0;
-            series6.Name = "Series6";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series7.IsXValueIndexed = true;
-            series7.Legend = "Legend1";
-            series7.MarkerSize = 0;
-            series7.Name = "Series7";
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series8.IsXValueIndexed = true;
-            series8.Legend = "Legend1";
-            series8.MarkerSize = 0;
-            series8.Name = "Series8";
-            this.Chart_AnalogBufferedInput.Series.Add(series1);
-            this.Chart_AnalogBufferedInput.Series.Add(series2);
-            this.Chart_AnalogBufferedInput.Series.Add(series3);
-            this.Chart_AnalogBufferedInput.Series.Add(series4);
-            this.Chart_AnalogBufferedInput.Series.Add(series5);
-            this.Chart_AnalogBufferedInput.Series.Add(series6);
-            this.Chart_AnalogBufferedInput.Series.Add(series7);
-            this.Chart_AnalogBufferedInput.Series.Add(series8);
+            series49.BackSecondaryColor = System.Drawing.Color.WhiteSmoke;
+            series49.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series49.BorderWidth = 2;
+            series49.ChartArea = "ChartArea1";
+            series49.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series49.Color = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series49.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            series49.IsXValueIndexed = true;
+            series49.Legend = "Legend1";
+            series49.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series49.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series49.MarkerSize = 0;
+            series49.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series49.Name = "Series1";
+            series49.YValuesPerPoint = 2;
+            series50.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series50.BorderWidth = 2;
+            series50.ChartArea = "ChartArea1";
+            series50.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series50.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series50.IsXValueIndexed = true;
+            series50.Legend = "Legend1";
+            series50.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series50.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series50.MarkerSize = 0;
+            series50.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series50.Name = "Series2";
+            series51.BorderWidth = 2;
+            series51.ChartArea = "ChartArea1";
+            series51.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series51.Color = System.Drawing.Color.Yellow;
+            series51.IsXValueIndexed = true;
+            series51.Legend = "Legend1";
+            series51.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series51.MarkerColor = System.Drawing.Color.Yellow;
+            series51.MarkerSize = 0;
+            series51.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series51.Name = "Series3";
+            series52.BorderWidth = 2;
+            series52.ChartArea = "ChartArea1";
+            series52.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series52.Color = System.Drawing.Color.Lime;
+            series52.IsXValueIndexed = true;
+            series52.Legend = "Legend1";
+            series52.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series52.MarkerColor = System.Drawing.Color.Lime;
+            series52.MarkerSize = 0;
+            series52.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series52.Name = "Series4";
+            series53.BorderWidth = 2;
+            series53.ChartArea = "ChartArea1";
+            series53.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series53.IsXValueIndexed = true;
+            series53.Legend = "Legend1";
+            series53.MarkerSize = 0;
+            series53.Name = "Series5";
+            series54.ChartArea = "ChartArea1";
+            series54.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series54.IsXValueIndexed = true;
+            series54.Legend = "Legend1";
+            series54.MarkerSize = 0;
+            series54.Name = "Series6";
+            series55.ChartArea = "ChartArea1";
+            series55.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series55.IsXValueIndexed = true;
+            series55.Legend = "Legend1";
+            series55.MarkerSize = 0;
+            series55.Name = "Series7";
+            series56.ChartArea = "ChartArea1";
+            series56.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series56.IsXValueIndexed = true;
+            series56.Legend = "Legend1";
+            series56.MarkerSize = 0;
+            series56.Name = "Series8";
+            this.Chart_AnalogBufferedInput.Series.Add(series49);
+            this.Chart_AnalogBufferedInput.Series.Add(series50);
+            this.Chart_AnalogBufferedInput.Series.Add(series51);
+            this.Chart_AnalogBufferedInput.Series.Add(series52);
+            this.Chart_AnalogBufferedInput.Series.Add(series53);
+            this.Chart_AnalogBufferedInput.Series.Add(series54);
+            this.Chart_AnalogBufferedInput.Series.Add(series55);
+            this.Chart_AnalogBufferedInput.Series.Add(series56);
             this.Chart_AnalogBufferedInput.Size = new System.Drawing.Size(673, 380);
             this.Chart_AnalogBufferedInput.TabIndex = 3;
             this.Chart_AnalogBufferedInput.Text = "chart2";
@@ -319,10 +326,12 @@
             this.TabControl.Controls.Add(this.TabPage_Measure);
             this.TabControl.Controls.Add(this.TabPage_DigitalOutput);
             this.TabControl.Controls.Add(this.TabPage_DigitalInput);
+            this.TabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.TabControl.Location = new System.Drawing.Point(23, 63);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 1;
+            this.TabControl.SelectedIndex = 4;
             this.TabControl.Size = new System.Drawing.Size(925, 486);
+            this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 40;
             this.TabControl.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TabControl.UseSelectable = true;
@@ -337,15 +346,19 @@
             this.metroTabPageWelcome.Controls.Add(this.pictureBoxAdvantech);
             this.metroTabPageWelcome.Controls.Add(this.Link1);
             this.metroTabPageWelcome.Controls.Add(this.Label_HelloText);
+            this.metroTabPageWelcome.ForeColor = System.Drawing.Color.Maroon;
             this.metroTabPageWelcome.HorizontalScrollbarBarColor = true;
             this.metroTabPageWelcome.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPageWelcome.HorizontalScrollbarSize = 10;
             this.metroTabPageWelcome.Location = new System.Drawing.Point(4, 38);
             this.metroTabPageWelcome.Name = "metroTabPageWelcome";
             this.metroTabPageWelcome.Size = new System.Drawing.Size(917, 444);
+            this.metroTabPageWelcome.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabPageWelcome.TabIndex = 6;
             this.metroTabPageWelcome.Text = "Welcome";
             this.metroTabPageWelcome.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabPageWelcome.UseCustomForeColor = true;
+            this.metroTabPageWelcome.UseStyleColors = true;
             this.metroTabPageWelcome.VerticalScrollbarBarColor = true;
             this.metroTabPageWelcome.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPageWelcome.VerticalScrollbarSize = 10;
@@ -730,22 +743,32 @@
             // 
             // TabPage_LastMeasure
             // 
+            this.TabPage_LastMeasure.BackColor = System.Drawing.Color.Transparent;
+            this.TabPage_LastMeasure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.TabPage_LastMeasure.Controls.Add(this.metroPanel1);
+            this.TabPage_LastMeasure.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TabPage_LastMeasure.ForeColor = System.Drawing.Color.Lime;
             this.TabPage_LastMeasure.HorizontalScrollbarBarColor = true;
             this.TabPage_LastMeasure.HorizontalScrollbarHighlightOnWheel = false;
             this.TabPage_LastMeasure.HorizontalScrollbarSize = 10;
             this.TabPage_LastMeasure.Location = new System.Drawing.Point(4, 38);
             this.TabPage_LastMeasure.Name = "TabPage_LastMeasure";
+            this.TabPage_LastMeasure.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.TabPage_LastMeasure.Size = new System.Drawing.Size(917, 444);
+            this.TabPage_LastMeasure.Style = MetroFramework.MetroColorStyle.Orange;
             this.TabPage_LastMeasure.TabIndex = 5;
-            this.TabPage_LastMeasure.Text = "LastMeasure";
+            this.TabPage_LastMeasure.Text = "Results";
             this.TabPage_LastMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TabPage_LastMeasure.UseCustomForeColor = true;
             this.TabPage_LastMeasure.VerticalScrollbarBarColor = true;
             this.TabPage_LastMeasure.VerticalScrollbarHighlightOnWheel = false;
             this.TabPage_LastMeasure.VerticalScrollbarSize = 10;
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Controls.Add(this.metroButton2);
+            this.metroPanel1.Controls.Add(this.metroButton1);
+            this.metroPanel1.Controls.Add(this.Button_AnalogBufferedInput_ExportToFile);
             this.metroPanel1.Controls.Add(this.metroGridTable);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -754,9 +777,53 @@
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(914, 388);
             this.metroPanel1.TabIndex = 17;
+            this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.metroButton2.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.metroButton2.Location = new System.Drawing.Point(300, 349);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(114, 36);
+            this.metroButton2.Style = MetroFramework.MetroColorStyle.Silver;
+            this.metroButton2.TabIndex = 52;
+            this.metroButton2.Text = "Export to xlsm";
+            this.metroButton2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton2.UseSelectable = true;
+            this.metroButton2.UseStyleColors = true;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.metroButton1.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.metroButton1.Location = new System.Drawing.Point(143, 349);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(114, 36);
+            this.metroButton1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroButton1.TabIndex = 51;
+            this.metroButton1.Text = "Export to txt";
+            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.UseStyleColors = true;
+            this.metroButton1.Click += new System.EventHandler(this.Button_AnalogBufferedInput_ExportToFile_Click);
+            // 
+            // Button_AnalogBufferedInput_ExportToFile
+            // 
+            this.Button_AnalogBufferedInput_ExportToFile.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.Button_AnalogBufferedInput_ExportToFile.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.Button_AnalogBufferedInput_ExportToFile.Location = new System.Drawing.Point(2, 349);
+            this.Button_AnalogBufferedInput_ExportToFile.Name = "Button_AnalogBufferedInput_ExportToFile";
+            this.Button_AnalogBufferedInput_ExportToFile.Size = new System.Drawing.Size(114, 36);
+            this.Button_AnalogBufferedInput_ExportToFile.Style = MetroFramework.MetroColorStyle.Silver;
+            this.Button_AnalogBufferedInput_ExportToFile.TabIndex = 50;
+            this.Button_AnalogBufferedInput_ExportToFile.Text = "Export to pdf";
+            this.Button_AnalogBufferedInput_ExportToFile.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Button_AnalogBufferedInput_ExportToFile.UseSelectable = true;
+            this.Button_AnalogBufferedInput_ExportToFile.UseStyleColors = true;
             // 
             // metroGridTable
             // 
@@ -768,29 +835,32 @@
             this.metroGridTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGridTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGridTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.metroGridTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGridTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Channel_1,
             this.Channel_2,
             this.Channel_3,
-            this.Channel_4});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGridTable.DefaultCellStyle = dataGridViewCellStyle2;
-            this.metroGridTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Channel_4,
+            this.Column_5,
+            this.Column_6,
+            this.Column_7,
+            this.Column_8});
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGridTable.DefaultCellStyle = dataGridViewCellStyle20;
             this.metroGridTable.EnableHeadersVisualStyles = false;
             this.metroGridTable.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -798,18 +868,19 @@
             this.metroGridTable.Name = "metroGridTable";
             this.metroGridTable.ReadOnly = true;
             this.metroGridTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.metroGridTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGridTable.ShowEditingIcon = false;
-            this.metroGridTable.Size = new System.Drawing.Size(914, 388);
+            this.metroGridTable.Size = new System.Drawing.Size(911, 346);
+            this.metroGridTable.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroGridTable.TabIndex = 16;
             this.metroGridTable.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
@@ -837,6 +908,30 @@
             this.Channel_4.HeaderText = "Channel 4";
             this.Channel_4.Name = "Channel_4";
             this.Channel_4.ReadOnly = true;
+            // 
+            // Column_5
+            // 
+            this.Column_5.HeaderText = "Channel 5";
+            this.Column_5.Name = "Column_5";
+            this.Column_5.ReadOnly = true;
+            // 
+            // Column_6
+            // 
+            this.Column_6.HeaderText = "Channel 6";
+            this.Column_6.Name = "Column_6";
+            this.Column_6.ReadOnly = true;
+            // 
+            // Column_7
+            // 
+            this.Column_7.HeaderText = "Channel 7";
+            this.Column_7.Name = "Column_7";
+            this.Column_7.ReadOnly = true;
+            // 
+            // Column_8
+            // 
+            this.Column_8.HeaderText = "Channel 8";
+            this.Column_8.Name = "Column_8";
+            this.Column_8.ReadOnly = true;
             // 
             // TabPage_Measure
             // 
@@ -1133,10 +1228,6 @@
         private MetroFramework.Controls.MetroToggle metroToggle1;
         private MetroFramework.Controls.MetroTabPage TabPage_LastMeasure;
         private MetroFramework.Controls.MetroGrid metroGridTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_4;
         private MetroFramework.Controls.MetroTabControl metroTabControl2;
         private MetroFramework.Controls.MetroTabPage metroTabPage7;
         private MetroFramework.Controls.MetroTabPage metroTabPage8;
@@ -1179,6 +1270,17 @@
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTextBox TextBox_Rate;
         private MetroFramework.Components.MetroToolTip ToolTip_AnalogBufferedChart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_8;
+        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton Button_AnalogBufferedInput_ExportToFile;
     }
 }
 

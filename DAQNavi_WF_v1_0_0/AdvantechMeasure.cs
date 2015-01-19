@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Globalization;
 
 namespace DAQNavi_WF_v1_0_0
 {
@@ -28,6 +29,7 @@ namespace DAQNavi_WF_v1_0_0
 
             // Przygotowanie programu do pracy - ukrycie zakładek
             InitializeComponent();
+
             this.TabControl.TabPages.Remove(TabPage_AnalogOutput);
             this.TabControl.TabPages.Remove(TabPage_AnalogBufferedInput);
             this.TabControl.TabPages.Remove(TabPage_DigitalInput);
@@ -90,25 +92,38 @@ namespace DAQNavi_WF_v1_0_0
 
                 int myXPoint = 0;
                 int mySeries = 0;
+                int channels = int.Parse(this.TextBox_Channels.Text.ToString());
                 for (int i = 0; i < e.Count; ++i)
                 {
-                    mySeries = (i % int.Parse(this.TextBox_Channels.Text.ToString()));
+                    mySeries = (i % channels);
                     if (mySeries == 0){
                         myXPoint++;
                     }
-                    metroGridTable.Rows.Add(dataDownloadedAI[i]);
+
                     Chart_AnalogBufferedInput.Series[mySeries].Points.Add(new DataPoint(myXPoint,dataDownloadedAI[i]));
                     Chart_AnalogBufferedInput.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
+                    metroGridTable.Rows.Add();
+                    metroGridTable.Rows[myXPoint-1].Cells[mySeries].Value = dataDownloadedAI[i];
+                    //Odświeżanie wyresu
                     //if (i % 20 == 0)
                     //{
                     //    Chart_AnalogInput.Refresh();
                     //    metroProgress_Spinner.Refresh();
                     //}
                 }
-
+                
                 this.TrackBar_AnalogBufferedInput_1.Value = 100;
                 AnalogBufferedInput_ProgressSpinner.Visible = false;
                 AnalogBufferedInput_ProgressSpinner.Refresh();
+                if (this.TabControl.TabPages.Contains(TabPage_LastMeasure))
+                {
+
+                }
+                else
+                {
+                    this.TabControl.TabPages.Add(TabPage_LastMeasure);
+                }
+                
             });
         }
 
@@ -388,7 +403,7 @@ namespace DAQNavi_WF_v1_0_0
 
 
         /// <summary>
-        /// Reset zoom on chart on right click.
+        /// Restart zbliżenia po kliknięciu prawego przycisku myszy.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -406,10 +421,63 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
+        /// <summary>
+        /// Metoda odpowiedzialna za zapisanie pliku w formacie txt na pulpicie.
+        /// Plik zawiera dane z ostatniego pomiaru.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AnalogBufferedInput_ExportToFile_Click(object sender, EventArgs e)
+        {
+            string time = DateTime.Now.ToString("yyyy-MM-dd HH mm ss", CultureInfo.InvariantCulture);
+            using (var dlg = new SaveFileDialog())
+            {
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(dlg.FileName + ".txt"))
+                        {
+
+                            file.WriteLine("Report from :\t" + time);
+                            StringBuilder Rowbind = new StringBuilder();
+                            for (int k = 0; k < metroGridTable.Columns.Count; k++)
+                            {
+                                Rowbind.Append("\t");
+                                Rowbind.Append(metroGridTable.Columns[k].HeaderText + ' ');
+                            }
+
+                            Rowbind.Append("\r\n");
+                            for (int i = 0; i < metroGridTable.Rows.Count; i++)
+                            {
+                                for (int k = 0; k < metroGridTable.Columns.Count; k++)
+                                {
+                                    Rowbind.Append("\t");
+                                    if (metroGridTable.Rows[i].Cells[k].Value != null)
+                                    {
+                                        Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(metroGridTable.Rows[i].Cells[k].Value.ToString())) + ' ');
+                                    }   
+                                }
+
+                                Rowbind.Append("\r\n");
+                            }
+
+                            file.WriteLine(Rowbind.ToString());
+                        }
+
+                        MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".txt zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    catch (Exception ex)
+                    {
+                        MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            
+            
 
 
-
-        
+        }
 
 
 
