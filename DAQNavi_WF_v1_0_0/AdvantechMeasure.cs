@@ -12,16 +12,28 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Configuration;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Globalization;
+using Automation.BDaq;
+using System.Management;
 
 namespace DAQNavi_WF_v1_0_0
 {
     public partial class MainWindow : MetroForm
     {
         delegate void UpdateUIDelegate();
-        double[] dataDownloadedAI;
         Stopwatch stopwatch = new Stopwatch();
+        String lang = ConfigurationManager.AppSettings["defaultLanguage"];
+        Boolean analogInstantInputMovingWindow = true;
+        BufferedAnalogInput bufferedAnalogInput;
+
+        double[] dataBufferedAI;
+        DateTime timeStartABI;
+        DateTime timeEndABI;
+        TimeSpan timeDiffABI;
+        double[] dataInstantAI = new double[8];
+        int myABIXPoint = 0;
 
 
         public MainWindow()
@@ -30,7 +42,7 @@ namespace DAQNavi_WF_v1_0_0
             // Przygotowanie programu do pracy - ukrycie zakładek
             InitializeComponent();
 
-            this.TabControl.TabPages.Remove(TabPage_AnalogOutput);
+            this.TabControl.TabPages.Remove(TabPage_AnalogInstantInput);
             this.TabControl.TabPages.Remove(TabPage_AnalogBufferedInput);
             this.TabControl.TabPages.Remove(TabPage_DigitalInput);
             this.TabControl.TabPages.Remove(TabPage_DigitalOutput);
@@ -38,33 +50,42 @@ namespace DAQNavi_WF_v1_0_0
             this.TabControl.TabPages.Remove(TabPage_Options);
             this.TabControl.TabPages.Remove(TabPage_Measure);
 
+            
+
             // Ustawienie tekstów
-            Label_HelloText.Text = "Welcome in Advantech Measure application. \n\nTo start, " +
+            SetLanguage();
+
+            this.metroTabPageWelcome.Text = ConfigurationManager.AppSettings["WelcomeTabName" + lang];
+            Label_Welcome_Username.Text = ConfigurationManager.AppSettings["WelcomeLabelUsername" + lang];
+            Label_Welcome_Password.Text = ConfigurationManager.AppSettings["WelcomeLabelPassword" + lang];
+            Button_Welcome_Login.Text = ConfigurationManager.AppSettings["WelcomeButtonLogin" + lang];
+            // -- 
+            Label_Welcome_HelloText.Text = "Welcome in Advantech Measure application. \n\nTo start, " +
                           "choose one of the options on the tab pane.\n" +
                           "If You want to read more about Advantech, click" +
                           "\nSome more information, other information and " +
                           "\nSome more information, other information and " +
                           "\nSome more information, other information and thats it" +
                           "\n\n KW";
-            Label_AnalogInput.Text = "You can measure:" +
+            Label_Measure_AnalogInput.Text = "You can measure:" +
                           "\n  - Instant input" +
                           "\n  - Buffered input";
-            Label_AnalogOutput.Text = "You can measure:" +
+            Label_Measure_AnalogOutput.Text = "You can measure:" +
                           "\n  - Instant output" +
                           "\n  - Buffered output";
-            Label_DigitalInput.Text = "You can measure:" +
+            Label_Measure_DigitalInput.Text = "You can measure:" +
                           "\n  - Instant input";
-            Label_DigitalOutput.Text = "You can measure:" +
+            Label_Measure_DigitalOutput.Text = "You can measure:" +
                           "\n  - Instant output";
-            Label_Instant.Text = "You can measure:" +
+            Label_Measure_Instant.Text = "You can measure:" +
                           "\n  - Instant output";
-            Label_Buffered.Text = "You can measure:" +
+            Label_Measure_Buffered.Text = "You can measure:" +
                           "\n  - Instant output";
 
             // Ustawienie opcji wykresów
             Chart_AnalogBufferedInput.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
-            Chart_AnalogBufferedInput.ChartAreas[0].AxisX.ScaleView.Zoomable = true;
             Chart_AnalogBufferedInput.ChartAreas[0].AxisY.ScaleView.Zoomable = true;
+
 
             Chart_AnalogBufferedInput.ChartAreas[0].CursorX.AutoScroll = true;
             Chart_AnalogBufferedInput.ChartAreas[0].CursorY.AutoScroll = true;
@@ -72,8 +93,9 @@ namespace DAQNavi_WF_v1_0_0
             Chart_AnalogBufferedInput.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             Chart_AnalogBufferedInput.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
 
+
             this.Select();
-            this.TextBox_Username.Select();
+            this.TextBox_Welcome_Username.Select();
         }
 
         /// <summary>
@@ -84,37 +106,38 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void bufferedAiCtrl1_DataReady(object sender, Automation.BDaq.BfdAiEventArgs e)
         {
-            bufferedAiCtrl1.GetData(e.Count, dataDownloadedAI);
+            bufferedAiCtrl1.GetData(e.Count, dataBufferedAI);
             this.Invoke((UpdateUIDelegate)delegate()
             {
-                AnalogBufferedInput_ProgressSpinner.Visible = true;
-                AnalogBufferedInput_ProgressSpinner.Refresh();
 
-                int myXPoint = 0;
+                int myABIXDataReadyPoint = 0;
                 int mySeries = 0;
-                int channels = int.Parse(this.TextBox_Channels.Text.ToString());
+                int channels = int.Parse(this.TextBox_AnalogBufferedInput_Channels.Text.ToString());
                 for (int i = 0; i < e.Count; ++i)
                 {
                     mySeries = (i % channels);
                     if (mySeries == 0){
-                        myXPoint++;
+                        myABIXPoint++;
+                        myABIXDataReadyPoint++;
                     }
 
-                    Chart_AnalogBufferedInput.Series[mySeries].Points.Add(new DataPoint(myXPoint,dataDownloadedAI[i]));
+                    //MEMO LEAK
+                    Chart_AnalogBufferedInput.Series[mySeries].Points.Add(new DataPoint(myABIXPoint,dataBufferedAI[i]));
                     Chart_AnalogBufferedInput.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
-                    metroGridTable.Rows.Add();
-                    metroGridTable.Rows[myXPoint-1].Cells[mySeries].Value = dataDownloadedAI[i];
+                    //metroGridTable.Rows.Add();
+                    //metroGridTable.Rows[myABIXPoint - 1].Cells[mySeries].Value = dataBufferedAI[i];
+
                     //Odświeżanie wyresu
                     //if (i % 20 == 0)
                     //{
                     //    Chart_AnalogInput.Refresh();
                     //    metroProgress_Spinner.Refresh();
                     //}
+
                 }
                 
                 this.TrackBar_AnalogBufferedInput_1.Value = 100;
-                AnalogBufferedInput_ProgressSpinner.Visible = false;
-                AnalogBufferedInput_ProgressSpinner.Refresh();
+                this.TrackBar_AnalogBufferedInput_2.Value = 0;
                 if (this.TabControl.TabPages.Contains(TabPage_LastMeasure))
                 {
 
@@ -123,8 +146,14 @@ namespace DAQNavi_WF_v1_0_0
                 {
                     this.TabControl.TabPages.Add(TabPage_LastMeasure);
                 }
+
+                timer_ProgressBar.Stop();
+                ProgressSpinner.Visible = false;
+                ProgressSpinner.Refresh();
                 
             });
+
+
         }
 
         /// <summary>
@@ -134,21 +163,32 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void buttonAnalogBufferedInput_Click(object sender, EventArgs e)
         {
+            timer_ProgressBar.Start();
+            timeStartABI = DateTime.Now;
+            Label_AnalogBufferedInput_StartValue.Text = timeStartABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+            Label_AnalogBufferedInput_EndValue.Text = "00 : 00 : 00.000";
+            Label_AnalogBufferedInput_DurationValue.Text = "00 : 00 : 00.000";
+
+            ProgressSpinner.Visible = true;
+            dataBufferedAI = null;
             foreach (var series in Chart_AnalogBufferedInput.Series)
-            {
+            { 
                 series.Points.Clear();
                 metroGridTable.Rows.Clear();
+                myABIXPoint = 0;
+
             }
 
-            BufferedAnalogInput bufferedAnalogInput = new BufferedAnalogInput();
-            bufferedAnalogInput.setSamples(Convert.ToInt32(TextBox_Samples.Text));
-            bufferedAnalogInput.setChannels(Convert.ToInt32(TextBox_Channels.Text));
-            bufferedAnalogInput.setChannelStart(Convert.ToInt32(TextBox_ChannelStart.Text));
-            bufferedAnalogInput.setIntervalCount(Convert.ToInt32(TextBox_IntervalCount.Text));
-            bufferedAnalogInput.setScanCount(Convert.ToInt32(TextBox_ScanCount.Text));
-            bufferedAnalogInput.setRate(Convert.ToInt32(TextBox_Rate.Text));
+            // Obiekty pomagające
+            bufferedAnalogInput = new BufferedAnalogInput();
+            bufferedAnalogInput.setSamples(Convert.ToInt32(TextBox_AnalogBufferedInput_Samples.Text));
+            bufferedAnalogInput.setChannels(Convert.ToInt32(TextBox_AnalogBufferedInput_Channels.Text));
+            bufferedAnalogInput.setChannelStart(Convert.ToInt32(TextBox_AnalogBufferedInput_ChannelStart.Text));
+            bufferedAnalogInput.setIntervalCount(Convert.ToInt32(TextBox_AnalogBufferedInput_IntervalCount.Text));
+            bufferedAnalogInput.setScanCount(Convert.ToInt32(TextBox_AnalogBufferedInput_ScanCount.Text));
+            bufferedAnalogInput.setRate(Convert.ToInt32(TextBox_AnalogBufferedInput_Rate.Text));
 
-            dataDownloadedAI = bufferedAnalogInput.przygotujPomiar(bufferedAiCtrl1);
+            dataBufferedAI = bufferedAnalogInput.przygotujPomiar(bufferedAiCtrl1);
         }
 
         /// <summary>
@@ -158,19 +198,208 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void metroToggle1_CheckedChanged(object sender, EventArgs e)
         {
-            TabControl.Theme = MetroFramework.MetroThemeStyle.Light;
-            TabPage_AnalogBufferedInput.Theme = MetroFramework.MetroThemeStyle.Light;
-            TabPage_AnalogOutput.Theme = MetroFramework.MetroThemeStyle.Light;
-            TabPage_DigitalInput.Theme = MetroFramework.MetroThemeStyle.Light;
-            TabPage_DigitalOutput.Theme = MetroFramework.MetroThemeStyle.Light;
-            TabPage_Options.Theme = MetroFramework.MetroThemeStyle.Light;
-            metroLabelSamples.Theme = MetroFramework.MetroThemeStyle.Light;
-            metroLabelChannels.Theme = MetroFramework.MetroThemeStyle.Light;
-            metroGridTable.Theme = MetroFramework.MetroThemeStyle.Light;
-            TextBox_Channels.Theme = MetroFramework.MetroThemeStyle.Light;
-            TextBox_Samples.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.Theme = MetroFramework.MetroThemeStyle.Light;
-            Button_AnalogBufferedInput_Measure.Theme = MetroFramework.MetroThemeStyle.Light;
+            MetroThemeStyle Light = MetroFramework.MetroThemeStyle.Light;
+            MetroThemeStyle Dark = MetroFramework.MetroThemeStyle.Dark;
+
+            if (TabControl.Theme == Dark)
+            {
+                //This
+                this.Theme = Light;
+                TabControl.Theme = Light;
+                ProgressSpinner.Theme = Light;
+
+                // Options
+                TabPage_Options.Theme = Light;
+                Toggle_Options_Layout.Theme = Light;
+                RadioButton_Options_Polski.Theme = Light;
+                RadioButton_Options_English.Theme = Light;
+                Label_Options_Baza.Theme = Light;
+                Label_Options_Haslo.Theme = Light;
+                Label_Options_User.Theme = Light;
+                TextBox_Options_Baza.Theme = Light;
+                TextBox_Options_Haslo.Theme = Light;
+                TextBox_Options_User.Theme = Light;
+
+                // AnalogBufferedInput
+                TabPage_AnalogBufferedInput.Theme = Light;
+                Label_AnalogBufferedInput_Samples.Theme = Light;
+                Label_AnalogBufferedInput_Channels.Theme = Light;
+                Label_AnalogBufferedInput_ChannelStart.Theme = Light;
+                Label_AnalogBufferedInput_IntervalCount.Theme = Light;
+                Label_AnalogBufferedInput_Rate.Theme = Light;
+                Label_AnalogBufferedInput_ScanCount.Theme = Light;
+                TextBox_AnalogBufferedInput_Channels.Theme = Light;
+                TextBox_AnalogBufferedInput_ChannelStart.Theme = Light;
+                TextBox_AnalogBufferedInput_IntervalCount.Theme = Light;
+                TextBox_AnalogBufferedInput_Rate.Theme = Light;
+                TextBox_AnalogBufferedInput_ScanCount.Theme = Light;
+                TrackBar_AnalogBufferedInput_1.Theme = Light;
+                TrackBar_AnalogBufferedInput_2.Theme = Light;
+                Button_AnalogBufferedInput_Back.Theme = Light;
+                Button_AnalogBufferedInput_Measure.Theme = Light;
+                TextBox_AnalogBufferedInput_Samples.Theme = Light;
+
+                // Analog Instant Input
+                TabPage_AnalogInstantInput.Theme = Light;
+                Label_AnalogInstantInput_ChartAutosize.Theme = Light;
+                Label_AnalogInstantInput_Interval_1.Theme = Light;
+                Label_AnalogInstantInput_Interval_2.Theme = Light;
+                Label_AnalogInstantInput_NumberOfChannels.Theme = Light;
+                Label_AnalogInstantInput_SampleCount.Theme = Light;
+                Label_AnalogInstantInput_StartChannel.Theme = Light;
+                ComboBox_AnalogInstantInput_NumberOfChannels.Theme = Light;
+                ComboBox_AnalogInstantInput_StartChannel.Theme = Light;
+                Toggle_AnalogInstantInput_ChartAutosize.Theme = Light;
+                TrackBar_AnalogInstantInput_1.Theme = Light;
+                TrackBar_AnalogInstantInput_2.Theme = Light;
+                TrackBar_AnalogInstantInput_SampleInterval.Theme = Light;
+                Button_AnalogInstantInput_Back.Theme = Light;
+                Button_AnalogInstantInput_Pause.Theme = Light;
+                Button_AnalogInstantInput_Measure.Theme = Light;
+                Button_AnalogInstantInput_Reset.Theme = Light;
+                
+                // Results
+                TabPage_LastMeasure.Theme = Light;
+                metroGridTable.Theme = Light;
+                Panel_Results.Theme = Light;
+                Button_Results_ExportToFile.Theme = Light;
+                Button_Results_ExportToTXT.Theme = Light;
+                Button_Results_ExportToXLSM.Theme = Light;
+
+                // Measure
+                TabPage_Measure.Theme = Light;
+                Label_Measure_AnalogInput.Theme = Light;
+                Label_Measure_AnalogOutput.Theme = Light;
+                Label_Measure_Buffered.Theme = Light;
+                Label_Measure_DigitalInput.Theme = Light;
+                Label_Measure_DigitalOutput.Theme = Light;
+                Label_Measure_Instant.Theme = Light;
+                Tile_Measure_AnalogInput.Theme = Light;
+                Tile_Measure_AnalogOutput.Theme = Light;
+                Tile_Measure_BufferedInput.Theme = Light;
+                Tile_Measure_DigitalInput.Theme = Light;
+                Tile_Measure_DigitalOutput.Theme = Light;
+                Tile_Measure_InstantInput.Theme = Light;
+                Button_Measure_Return.Theme = Light;
+
+
+                // Tabs
+                TabPage_DigitalInput.Theme = Light;
+                TabPage_DigitalOutput.Theme = Light;
+
+
+                
+
+                // Welcome
+                
+               
+
+                
+
+                // Results
+            }
+            else
+            {
+
+                //This
+                this.Theme = Dark;
+                TabControl.Theme = Dark;
+                ProgressSpinner.Theme = Dark;
+
+                // Options
+                TabPage_Options.Theme = Dark;
+                Toggle_Options_Layout.Theme = Dark;
+                RadioButton_Options_Polski.Theme = Dark;
+                RadioButton_Options_English.Theme = Dark;
+                Label_Options_Baza.Theme = Dark;
+                Label_Options_Haslo.Theme = Dark;
+                Label_Options_User.Theme = Dark;
+                TextBox_Options_Baza.Theme = Dark;
+                TextBox_Options_Haslo.Theme = Dark;
+                TextBox_Options_User.Theme = Dark;
+
+                // AnalogBufferedInput
+                TabPage_AnalogBufferedInput.Theme = Dark;
+                Label_AnalogBufferedInput_Samples.Theme = Dark;
+                Label_AnalogBufferedInput_Channels.Theme = Dark;
+                Label_AnalogBufferedInput_ChannelStart.Theme = Dark;
+                Label_AnalogBufferedInput_IntervalCount.Theme = Dark;
+                Label_AnalogBufferedInput_Rate.Theme = Dark;
+                Label_AnalogBufferedInput_ScanCount.Theme = Dark;
+                TextBox_AnalogBufferedInput_Channels.Theme = Dark;
+                TextBox_AnalogBufferedInput_ChannelStart.Theme = Dark;
+                TextBox_AnalogBufferedInput_IntervalCount.Theme = Dark;
+                TextBox_AnalogBufferedInput_Rate.Theme = Dark;
+                TextBox_AnalogBufferedInput_ScanCount.Theme = Dark;
+                TrackBar_AnalogBufferedInput_1.Theme = Dark;
+                TrackBar_AnalogBufferedInput_2.Theme = Dark;
+                Button_AnalogBufferedInput_Back.Theme = Dark;
+                Button_AnalogBufferedInput_Measure.Theme = Dark;
+                TextBox_AnalogBufferedInput_Samples.Theme = Dark;
+
+                // Analog Instant Input
+                TabPage_AnalogInstantInput.Theme = Dark;
+                Label_AnalogInstantInput_ChartAutosize.Theme = Dark;
+                Label_AnalogInstantInput_Interval_1.Theme = Dark;
+                Label_AnalogInstantInput_Interval_2.Theme = Dark;
+                Label_AnalogInstantInput_NumberOfChannels.Theme = Dark;
+                Label_AnalogInstantInput_SampleCount.Theme = Dark;
+                Label_AnalogInstantInput_StartChannel.Theme = Dark;
+                ComboBox_AnalogInstantInput_NumberOfChannels.Theme = Dark;
+                ComboBox_AnalogInstantInput_StartChannel.Theme = Dark;
+                Toggle_AnalogInstantInput_ChartAutosize.Theme = Dark;
+                TrackBar_AnalogInstantInput_1.Theme = Dark;
+                TrackBar_AnalogInstantInput_2.Theme = Dark;
+                TrackBar_AnalogInstantInput_SampleInterval.Theme = Dark;
+                Button_AnalogInstantInput_Back.Theme = Dark;
+                Button_AnalogInstantInput_Pause.Theme = Dark;
+                Button_AnalogInstantInput_Measure.Theme = Dark;
+                Button_AnalogInstantInput_Reset.Theme = Dark;
+
+                // Results
+                TabPage_LastMeasure.Theme = Dark;
+                metroGridTable.Theme = Dark;
+                Panel_Results.Theme = Dark;
+                Button_Results_ExportToFile.Theme = Dark;
+                Button_Results_ExportToTXT.Theme = Dark;
+                Button_Results_ExportToXLSM.Theme = Dark;
+
+                // Measure
+                TabPage_Measure.Theme = Dark;
+                Label_Measure_AnalogInput.Theme = Dark;
+                Label_Measure_AnalogOutput.Theme = Dark;
+                Label_Measure_Buffered.Theme = Dark;
+                Label_Measure_DigitalInput.Theme = Dark;
+                Label_Measure_DigitalOutput.Theme = Dark;
+                Label_Measure_Instant.Theme = Dark;
+                Tile_Measure_AnalogInput.Theme = Dark;
+                Tile_Measure_AnalogOutput.Theme = Dark;
+                Tile_Measure_BufferedInput.Theme = Dark;
+                Tile_Measure_DigitalInput.Theme = Dark;
+                Tile_Measure_DigitalOutput.Theme = Dark;
+                Tile_Measure_InstantInput.Theme = Dark;
+                Button_Measure_Return.Theme = Dark;
+
+
+                // Tabs
+                TabPage_DigitalInput.Theme = Dark;
+                TabPage_DigitalOutput.Theme = Dark;
+
+
+
+
+                // Welcome
+
+
+
+
+
+                // Results
+
+            }
+
+            this.Refresh();
+            
         }
 
         /// <summary>
@@ -190,12 +419,12 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void Tile_AnalogInput_Click(object sender, EventArgs e)
         {
-            Tile_AnalogInput.Visible = false;
-            Tile_AnalogOutput.Visible = false;
-            Tile_DigitalInput.Visible = false;
-            Tile_DigitalOutput.Visible = false;
-            Tile_InstantInput.Visible = true;
-            Tile_BufferedInput.Visible = true;
+            Tile_Measure_AnalogInput.Visible = false;
+            Tile_Measure_AnalogOutput.Visible = false;
+            Tile_Measure_DigitalInput.Visible = false;
+            Tile_Measure_DigitalOutput.Visible = false;
+            Tile_Measure_InstantInput.Visible = true;
+            Tile_Measure_BufferedInput.Visible = true;
         }
 
         /// <summary>
@@ -205,12 +434,12 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void Button_MeasureReturn_Click(object sender, EventArgs e)
         {
-            Tile_AnalogInput.Visible = true;
-            Tile_AnalogOutput.Visible = true;
-            Tile_DigitalInput.Visible = true;
-            Tile_DigitalOutput.Visible = true;
-            Tile_InstantInput.Visible = false;
-            Tile_BufferedInput.Visible = false;
+            Tile_Measure_AnalogInput.Visible = true;
+            Tile_Measure_AnalogOutput.Visible = true;
+            Tile_Measure_DigitalInput.Visible = true;
+            Tile_Measure_DigitalOutput.Visible = true;
+            Tile_Measure_InstantInput.Visible = false;
+            Tile_Measure_BufferedInput.Visible = false;
         }
 
         /// <summary>
@@ -220,8 +449,8 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void Button_Login_Click(object sender, EventArgs e)
         {
-            LoginPanel myLoginPanel = new LoginPanel();
-            Boolean loginSuccessful = myLoginPanel.checkLogin(this.TextBox_Username.Text, this.metroTextBoxPassword.Text);
+            LoginPanel myLoginPanel = new LoginPanel(TextBox_Options_Baza.Text, TextBox_Options_Port.Text, TextBox_Options_User.Text, TextBox_Options_Haslo.Text);
+            Boolean loginSuccessful = myLoginPanel.checkLogin(this.TextBox_Welcome_Username.Text, this.TextBox_Welcome_Password.Text);
             if (loginSuccessful)
             {
                 User user = myLoginPanel.loggedUser;
@@ -229,11 +458,6 @@ namespace DAQNavi_WF_v1_0_0
                 if (user.admin == 1)
                 {
                     this.TabControl.TabPages.Remove(metroTabPageWelcome);
-                    this.TabControl.TabPages.Add(TabPage_AnalogOutput);
-                    this.TabControl.TabPages.Add(TabPage_AnalogBufferedInput);
-                    this.TabControl.TabPages.Add(TabPage_DigitalInput);
-                    this.TabControl.TabPages.Add(TabPage_DigitalOutput);
-                    this.TabControl.TabPages.Add(TabPage_LastMeasure);
                     this.TabControl.TabPages.Add(TabPage_Options);
                     this.TabControl.TabPages.Add(TabPage_Measure);
 
@@ -264,7 +488,7 @@ namespace DAQNavi_WF_v1_0_0
         {
             if (e.KeyChar == (char)13)
             {
-                this.Button_Login.PerformClick();
+                this.Button_Welcome_Login.PerformClick();
             }
         }
 
@@ -277,62 +501,62 @@ namespace DAQNavi_WF_v1_0_0
 
         private void metroTileDigitalInput_MouseHover(object sender, EventArgs e)
         {
-            Label_DigitalInput.Visible = true;
+            Label_Measure_DigitalInput.Visible = true;
         }
 
         private void metroTileDigitalInput_MouseLeave(object sender, EventArgs e)
         {
-            Label_DigitalInput.Visible = false;
+            Label_Measure_DigitalInput.Visible = false;
         }
 
         private void metroTile1_MouseHover(object sender, EventArgs e)
         {
-            Label_AnalogInput.Visible = true;
+            Label_Measure_AnalogInput.Visible = true;
         }
 
         private void metroTile1_MouseLeave(object sender, EventArgs e)
         {
-            Label_AnalogInput.Visible = false;
+            Label_Measure_AnalogInput.Visible = false;
         }
 
         private void metroTileAnalogOutput_MouseEnter(object sender, EventArgs e)
         {
-            Label_AnalogOutput.Visible = true;
+            Label_Measure_AnalogOutput.Visible = true;
         }
 
         private void metroTileAnalogOutput_MouseLeave(object sender, EventArgs e)
         {
-            Label_AnalogOutput.Visible = false;
+            Label_Measure_AnalogOutput.Visible = false;
         }
 
         private void metroTileDigitalOutput_MouseEnter(object sender, EventArgs e)
         {
-            Label_DigitalOutput.Visible = true;
+            Label_Measure_DigitalOutput.Visible = true;
         }
 
         private void metroTileDigitalOutput_MouseLeave(object sender, EventArgs e)
         {
-            Label_DigitalOutput.Visible = false;
+            Label_Measure_DigitalOutput.Visible = false;
         }
 
         private void metroTileInstantInput_MouseEnter(object sender, EventArgs e)
         {
-            Label_Instant.Visible = true;
+            Label_Measure_Instant.Visible = true;
         }
 
         private void metroTileInstantInput_MouseLeave(object sender, EventArgs e)
         {
-            Label_Instant.Visible = false;
+            Label_Measure_Instant.Visible = false;
         }
 
         private void metroTileBufferedInput_MouseEnter(object sender, EventArgs e)
         {
-            Label_Buffered.Visible = true;
+            Label_Measure_Buffered.Visible = true;
         }
 
         private void metroTileBufferedInput_MouseLeave(object sender, EventArgs e)
         {
-            Label_Buffered.Visible = false;
+            Label_Measure_Buffered.Visible = false;
         }
 
 
@@ -347,14 +571,15 @@ namespace DAQNavi_WF_v1_0_0
             {
                 return;
             }
-            this.Chart_AnalogBufferedInput.ChartAreas[0].AxisX.Maximum = double.Parse(this.TextBox_Samples.Text) * ((double)(this.TrackBar_AnalogBufferedInput_1.Value)/100);
+            this.Chart_AnalogBufferedInput.ChartAreas[0].AxisX.Maximum = double.Parse(this.TextBox_AnalogBufferedInput_Samples.Text) * ((double)(this.TrackBar_AnalogBufferedInput_1.Value)/100);
             
             double ratio = (this.Chart_AnalogBufferedInput.ChartAreas[0].AxisX.Maximum - this.Chart_AnalogBufferedInput.ChartAreas[0].AxisX.Minimum);
             ChangeChartMarkerRatio(this.Chart_AnalogBufferedInput, ratio);
+            Label_AnalogBufferedInput_TrackBar1.Text = "Zoom X: " + TrackBar_AnalogBufferedInput_1.Value + " %";
         }
 
         /// <summary>
-        /// Przesunięcie suwagiem 2 powinno przesuwać wykres wzdłóż jego osi,
+        /// Przesunięcie suwakiem 2 powinno przesuwać wykres wzdłóż jego osi,
         /// od minimalnej do maksymalnej wartości.
         /// </summary>
         /// <param name="sender"></param>
@@ -362,11 +587,12 @@ namespace DAQNavi_WF_v1_0_0
         private void TrackBar_AnalogBufferedInput_2_ValueChanged(object sender, EventArgs e)
         {
             double MIN = 0;
-            double MAX = (double.Parse(this.TextBox_Samples.Text));
+            double MAX = (double.Parse(this.TextBox_AnalogBufferedInput_Samples.Text));
             double howMuchToChange = (MAX / 100) * this.TrackBar_AnalogBufferedInput_2.Value;
             double window = Chart_AnalogBufferedInput.ChartAreas[0].AxisX.Maximum - Chart_AnalogBufferedInput.ChartAreas[0].AxisX.Minimum;
             Chart_AnalogBufferedInput.ChartAreas[0].AxisX.Minimum = howMuchToChange;
             Chart_AnalogBufferedInput.ChartAreas[0].AxisX.Maximum = window + howMuchToChange;
+            Label_AnalogBufferedInput_TrackBar2.Text = "Position X: " + TrackBar_AnalogBufferedInput_2.Value + " %";
         }
 
         ///<summary>
@@ -429,6 +655,7 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void Button_AnalogBufferedInput_ExportToFile_Click(object sender, EventArgs e)
         {
+            saveResultsToDataBase("1", "2", dataBufferedAI, 1);
             string time = DateTime.Now.ToString("yyyy-MM-dd HH mm ss", CultureInfo.InvariantCulture);
             using (var dlg = new SaveFileDialog())
             {
@@ -474,11 +701,365 @@ namespace DAQNavi_WF_v1_0_0
                 }
             }
             
+
+        }
+
+        /// <summary>
+        /// Przejście do InstantAnalogInput
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Tile_InstantInput_Click(object sender, EventArgs e)
+        {
+            this.TabControl.TabPages.Add(TabPage_AnalogInstantInput);
+            this.TabControl.TabPages.Remove(TabPage_Measure);
+            this.TabControl.SelectedTab = TabPage_AnalogInstantInput;
+            TrackBar_AnalogInstantInput_SampleInterval.Value = 50;
+            ComboBox_AnalogInstantInput_StartChannel.SelectedIndex = 0;
+            ComboBox_AnalogInstantInput_NumberOfChannels.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// Rozpoczęcie pomiaru Analog Instant Input
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AnalogInstantInput_Click(object sender, EventArgs e)
+        {
+            foreach (var series in Chart_AnalogInstantInput.Series)
+            {
+                series.Points.Clear();
+                metroGridTable.Rows.Clear();
+            }
+
+            timer_getData.Start();
             
+        }
+
+        /// <summary>
+        /// Każdy tick oznacza odświeżenie wykresu dla opcji instant input,
+        /// im jest częściej, tym większa częstotliwość pomiaru.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer_getData_Tick(object sender, EventArgs e)
+        {
+            double timeInterval = TrackBar_AnalogInstantInput_SampleInterval.Value;
+            if (timeInterval == 0)
+            {
+                timeInterval = 1;
+            }
+
+            timer_getData.Interval = (int)timeInterval;
+            ErrorCode err;
+            int choosenChannel = ComboBox_AnalogInstantInput_StartChannel.SelectedIndex;
+            int choosenChannelNo = ComboBox_AnalogInstantInput_NumberOfChannels.SelectedIndex + 1;
+            err = instantAiCtrl1.Read(choosenChannel, choosenChannelNo, dataInstantAI);
+            if (err != ErrorCode.Success)
+            {
+                timer_getData.Stop();
+            }
+            for (int i = 0; i < choosenChannelNo; i++)
+            {
+                Chart_AnalogInstantInput.Series[i].Points.Add(dataInstantAI[i]);
+            }
+            String SampleCount = Label_AnalogInstantInput_SampleCount.Text;
+            int TrueCount;
+            if (SampleCount.Equals(""))
+            {
+                SampleCount = "1";
+                TrueCount = int.Parse(SampleCount);
+            } else {
+                TrueCount = int.Parse(SampleCount);
+                TrueCount++;
+            }
+            Label_AnalogInstantInput_SampleCount.Text = TrueCount.ToString();
+
+            if (analogInstantInputMovingWindow)
+            {
+                Chart_AnalogInstantInput.ChartAreas[0].AxisX.Minimum = TrueCount - int.Parse(TextBox_AnalogInstantInput_MovingWindow.Text); 
+            }
+              
+        }
+
+        /// <summary>
+        /// Zmiana czasu pobierania
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TrackBar_AnalogInstantInput_SampleInterval_ValueChanged(object sender, EventArgs e)
+        {
+            
+            double timeInterval = TrackBar_AnalogInstantInput_SampleInterval.Value;
+            if (timeInterval == 0)
+            {
+                timeInterval = 1;
+            }
+
+            timer_getData.Interval = (int)timeInterval;
+            Label_AnalogInstantInput_Interval_2.Text = timeInterval.ToString();
+        }
+
+        /// <summary>
+        /// Pauza i wznowienie pobierania danych
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AnalogInstantInput_Pause_Click(object sender, EventArgs e)
+        {
+            if (Button_AnalogInstantInput_Pause.Text.Equals("Pause"))
+            {
+                timer_getData.Stop();
+                Button_AnalogInstantInput_Pause.Text = "Resume";
+            }
+            else
+            {
+                timer_getData.Start();
+                Button_AnalogInstantInput_Pause.Text = "Pause";
+            }
+            
+        }
+
+        /// <summary>
+        /// Zatrzymanie pobierania danych
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AnalogInstantInput_Reset_Click(object sender, EventArgs e)
+        {
+            timer_getData.Stop();
+            Button_AnalogInstantInput_Pause.Text.Equals("Pause");
+            foreach (var series in Chart_AnalogInstantInput.Series)
+            {
+                series.Points.Clear();
+                metroGridTable.Rows.Clear();
+            }
 
 
         }
 
+        /// <summary>
+        /// Zmiana z auto na manualny scale
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Toggle_AnalogInstantInput_ChartAutosize_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Toggle_AnalogInstantInput_ChartAutosize.Checked)
+            {
+                Chart_AnalogInstantInput.ChartAreas[0].AxisX.Maximum = Double.NaN;
+                TrackBar_AnalogInstantInput_1.Enabled = false;
+                TrackBar_AnalogInstantInput_2.Enabled = false;
+
+            }
+            else
+            {
+                Chart_AnalogInstantInput.ChartAreas[0].AxisX.Maximum = 10;
+                TrackBar_AnalogInstantInput_1.Enabled = true;
+                TrackBar_AnalogInstantInput_2.Enabled = true;
+
+            }
+        }
+
+        private void TrackBar_AnalogInstantInput_1_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (TrackBar_AnalogInstantInput_1.Value == 0)
+            {
+                return;
+            }
+            Chart_AnalogInstantInput.ChartAreas[0].AxisX.Maximum = double.Parse(Label_AnalogInstantInput_SampleCount.Text) * ((double)(TrackBar_AnalogInstantInput_1.Value) / 100);
+
+            double ratio = (Chart_AnalogInstantInput.ChartAreas[0].AxisX.Maximum - Chart_AnalogInstantInput.ChartAreas[0].AxisX.Minimum);
+            ChangeChartMarkerRatio(Chart_AnalogInstantInput, ratio);
+        }
+
+        /// <summary>
+        /// Powrot z AnalogBufferedInput do measure
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AnalogBufferedInput_Back_Click(object sender, EventArgs e)
+        {
+            dataBufferedAI = null;
+            foreach (var series in Chart_AnalogBufferedInput.Series)
+            {
+                series.Points.Clear();
+                metroGridTable.Rows.Clear();
+                myABIXPoint = 0;
+
+            }
+
+            this.TabControl.TabPages.Add(TabPage_Measure);
+            this.TabControl.TabPages.Remove(TabPage_AnalogBufferedInput);
+            this.TabControl.SelectedTab = TabPage_Measure;
+            //this.TabControl.TabPages.Remove(TabPage_LastMeasure);
+            
+        }
+        
+        /// <summary>
+        /// Powrot z AnalogInstantInput do measure
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AnalogInstantInput_Back_Click(object sender, EventArgs e)
+        {
+            this.TabControl.TabPages.Add(TabPage_Measure);
+            this.TabControl.TabPages.Remove(TabPage_AnalogInstantInput);
+            this.TabControl.SelectedTab = TabPage_Measure;
+            this.TabControl.TabPages.Remove(TabPage_LastMeasure);
+        }
+
+        private void timer_ProgressBar_Tick(object sender, EventArgs e)
+        {
+            ProgressSpinner.Refresh();
+        }
+
+        /// <summary>
+        /// Zmiana języka na angielski
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RadioButton_Options_English_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            //make changes
+            config.AppSettings.Settings["defaultLanguage"].Value = "ENG";
+
+            //save to apply changes
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            SetLanguage();
+        }
+
+        /// <summary>
+        /// Zmiana języka na polski
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RadioButton_Options_Polski_CheckedChanged(object sender, EventArgs e)
+        {
+            //ConfigurationManager.AppSettings.Set("defaultLanguage", "PL");
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            //make changes
+            config.AppSettings.Settings["defaultLanguage"].Value = "PL";
+
+            //save to apply changes
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+
+            SetLanguage();
+        }
+
+        /// <summary>
+        /// Metoda która zapisuje zmiany wprowadzone w panelu admina
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Options_ApplyChanges_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        /// <summary>
+        /// Metoda która przywraca domyślne ustawienia
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Options_BackToDefaults_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Odświeżenie języka w całej aplikaji (ustawienie tekstu)
+        /// </summary>
+        private void SetLanguage()
+        {
+            // Welcome Tab
+            this.metroTabPageWelcome.Text = ConfigurationManager.AppSettings["WelcomeTabName" + lang];
+            Label_Welcome_Username.Text = ConfigurationManager.AppSettings["WelcomeLabelUsername" + lang];
+            Label_Welcome_Password.Text = ConfigurationManager.AppSettings["WelcomeLabelPassword" + lang];
+            Button_Welcome_Login.Text = ConfigurationManager.AppSettings["WelcomeButtonLogin" + lang];
+            // Analog Buffered Input Tab
+            this.TabPage_AnalogBufferedInput.Text = ConfigurationManager.AppSettings["ABITab" + lang];
+            this.Label_AnalogBufferedInput_Samples.Text = ConfigurationManager.AppSettings["ABISamples" + lang];
+            this.Label_AnalogBufferedInput_Channels.Text = ConfigurationManager.AppSettings["ABIChannels" + lang];
+            this.Label_AnalogBufferedInput_ChannelStart.Text = ConfigurationManager.AppSettings["ABIChannelStart" + lang];
+            this.Label_AnalogBufferedInput_IntervalCount.Text = ConfigurationManager.AppSettings["ABIIntervalCount" + lang];
+            this.Label_AnalogBufferedInput_ScanCount.Text = ConfigurationManager.AppSettings["ABIScanCount" + lang];
+            this.Label_AnalogBufferedInput_Rate.Text = ConfigurationManager.AppSettings["ABIRate" + lang];
+            this.Button_AnalogBufferedInput_Back.Text = ConfigurationManager.AppSettings["ABIButtonBack" + lang];
+            this.Button_AnalogBufferedInput_Measure.Text = ConfigurationManager.AppSettings["ABIButtonMeasure" + lang];
+
+
+        }
+
+        /// <summary>
+        /// Ustawienie widoku wykresu "poruszającego się okna"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Toggle_AnalogInstantInput_MovingWindow_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Toggle_AnalogInstantInput_MovingWindow.Checked)
+            {
+                analogInstantInputMovingWindow = true;
+            }
+            else
+            {
+                analogInstantInputMovingWindow = false;
+            }
+        }
+
+        /// <summary>
+        /// Czyszczenie danych po zakonczeniu ich pobierania w trybie buffered
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bufferedAiCtrl1_Stopped(object sender, BfdAiEventArgs e)
+        {
+            bufferedAnalogInput = null;
+            timeEndABI = DateTime.Now;
+            timeDiffABI = timeEndABI.Subtract(timeStartABI);
+
+            // Update UI z innego wątku
+            MethodInvoker inv = delegate
+            {
+                Label_AnalogBufferedInput_EndValue.Text = timeEndABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                Label_AnalogBufferedInput_DurationValue.Text = new DateTime(timeDiffABI.Ticks).ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+            };
+
+            this.Invoke(inv);
+            
+        }
+
+        /// <summary>
+        /// W przyszlosci - powiekszanie wykresu?
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        /// <summary>
+        /// Zapis danych do bazy - czas poczatku pomiaru, konca, dane, id usera
+        /// </summary>
+        /// <param name="dateStart"></param>
+        /// <param name="dateEnd"></param>
+        /// <param name="data"></param>
+        /// <param name="userID"></param>
+        private void saveResultsToDataBase(string dateStart, string dateEnd, double[] data, int userID)
+        {
+            Measurment.saveDataToDataBase(dateStart, dateEnd, data);
+        }
+        
 
 
     }

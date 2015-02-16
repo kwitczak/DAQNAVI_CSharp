@@ -8,14 +8,28 @@ using System.Windows.Forms;
 
 namespace DAQNavi_WF_v1_0_0
 {
+
     class LoginPanel
     {
+        private string dataSource;
+        private string port;
+        private string username;
+        private string dbPassword;
         public User loggedUser { get; set; }
+
+        public LoginPanel(string dataSource, string port, string username, string password)
+        {
+            this.dataSource = dataSource;
+            this.username = username;
+            this.port = port;
+            this.dbPassword = password;
+        }
         public Boolean checkLogin(string login, string password)
         {
             try
             {
-                string myConnection = "datasource=localhost;port=3306;username=root;password=root";
+                // localhost 3306 root root
+                string myConnection = "datasource=" + dataSource + ";port=" + port + ";username=" + username + ";password=" + dbPassword;
                 MySqlConnection myConn = new MySqlConnection(myConnection);
                 MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.users where login='" + login + "' and password='" + password + "' ;", myConn);
 
