@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAQNavi_WF_v1_0_0
 {
-    class User
+    public class User
     {
         public string idusers { get; set; }
         public string email { get; set; }

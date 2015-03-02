@@ -71,6 +71,14 @@
             this.Link_Welcome = new MetroFramework.Controls.MetroLink();
             this.Label_Welcome_HelloText = new MetroFramework.Controls.MetroLabel();
             this.TabPage_AnalogBufferedInput = new MetroFramework.Controls.MetroTabPage();
+            this.Label_AnalogBufferedInput_Details = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.Label_AnalogBufferedInput_DurationValue = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogBufferedInput_EndValue = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogBufferedInput_Duration = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogBufferedInput_StartValue = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogBufferedInput_EndTime = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogBufferedInput_TimeStart = new MetroFramework.Controls.MetroLabel();
             this.Label_AnalogBufferedInput_TrackBar2 = new MetroFramework.Controls.MetroLabel();
             this.Label_AnalogBufferedInput_TrackBar1 = new MetroFramework.Controls.MetroLabel();
             this.Button_AnalogBufferedInput_Back = new MetroFramework.Controls.MetroButton();
@@ -85,6 +93,13 @@
             this.TrackBar_AnalogBufferedInput_1 = new MetroFramework.Controls.MetroTrackBar();
             this.TrackBar_AnalogBufferedInput_2 = new MetroFramework.Controls.MetroTrackBar();
             this.TabPage_Options = new MetroFramework.Controls.MetroTabPage();
+            this.Label_Options_CommentOptions = new MetroFramework.Controls.MetroLabel();
+            this.Panel_Options_Comments = new MetroFramework.Controls.MetroPanel();
+            this.TextBox_Options_UserComment = new MetroFramework.Controls.MetroTextBox();
+            this.Label_Options_AdminComment = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_Options_AdminComment = new MetroFramework.Controls.MetroTextBox();
+            this.Label_Options_UserComment = new MetroFramework.Controls.MetroLabel();
+            this.ScrollBar_Options = new MetroFramework.Controls.MetroScrollBar();
             this.Button_Options_BackToDefaults = new MetroFramework.Controls.MetroButton();
             this.Button_Options_ApplyChanges = new MetroFramework.Controls.MetroButton();
             this.Label_Options_Card = new MetroFramework.Controls.MetroLabel();
@@ -113,25 +128,50 @@
             this.TextBox_Options_User = new MetroFramework.Controls.MetroTextBox();
             this.Label_Options_User = new MetroFramework.Controls.MetroLabel();
             this.TabPage_AnalogInstantInput = new MetroFramework.Controls.MetroTabPage();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.TextBox_AnalogInstantInput_MovingWindow = new MetroFramework.Controls.MetroTextBox();
-            this.Label_AnalogInstantInput_MovingWindow = new MetroFramework.Controls.MetroLabel();
-            this.Toggle_AnalogInstantInput_MovingWindow = new MetroFramework.Controls.MetroToggle();
-            this.Label_AnalogInstantInput_SampleCount = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_CurrentPoints = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel5 = new MetroFramework.Controls.MetroPanel();
+            this.Label_AnalogInstantInput_Ch6Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch7Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch3Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch5Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch4Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch2Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch1Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch0Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch6 = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch7 = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch3 = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch5 = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch4 = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch2 = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch1 = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Ch0 = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Value = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Channel = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Details = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
+            this.Label_AnalogInstantInput_StartValue = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Duration = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_End = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_Start = new MetroFramework.Controls.MetroLabel();
+            this.Label_AnalogInstantInput_ViewOptions = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
             this.Label_AnalogInstantInput_ChartAutosize = new MetroFramework.Controls.MetroLabel();
+            this.Toggle_AnalogInstantInput_MovingWindow = new MetroFramework.Controls.MetroToggle();
+            this.Label_AnalogInstantInput_MovingWindow = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_AnalogInstantInput_MovingWindow = new MetroFramework.Controls.MetroTextBox();
             this.Toggle_AnalogInstantInput_ChartAutosize = new MetroFramework.Controls.MetroToggle();
+            this.Label_AnalogInstantInput_Options = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.Button_AnalogInstantInput_Defaults = new MetroFramework.Controls.MetroButton();
+            this.Button_AnalogInstantInput_EditOptions = new MetroFramework.Controls.MetroButton();
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions = new MetroFramework.Controls.MetroCheckBox();
+            this.CheckBox_AnalogInstantInput_Defaults = new MetroFramework.Controls.MetroCheckBox();
             this.TrackBar_AnalogInstantInput_1 = new MetroFramework.Controls.MetroTrackBar();
             this.TrackBar_AnalogInstantInput_2 = new MetroFramework.Controls.MetroTrackBar();
             this.Button_AnalogInstantInput_Reset = new MetroFramework.Controls.MetroButton();
             this.Button_AnalogInstantInput_Pause = new MetroFramework.Controls.MetroButton();
-            this.Label_AnalogInstantInput_Interval_2 = new MetroFramework.Controls.MetroLabel();
-            this.Label_AnalogInstantInput_Interval_1 = new MetroFramework.Controls.MetroLabel();
             this.Button_AnalogInstantInput_Back = new MetroFramework.Controls.MetroButton();
-            this.ComboBox_AnalogInstantInput_NumberOfChannels = new MetroFramework.Controls.MetroComboBox();
-            this.ComboBox_AnalogInstantInput_StartChannel = new MetroFramework.Controls.MetroComboBox();
-            this.Label_AnalogInstantInput_NumberOfChannels = new MetroFramework.Controls.MetroLabel();
-            this.Label_AnalogInstantInput_StartChannel = new MetroFramework.Controls.MetroLabel();
-            this.TrackBar_AnalogInstantInput_SampleInterval = new MetroFramework.Controls.MetroTrackBar();
             this.Button_AnalogInstantInput_Measure = new MetroFramework.Controls.MetroButton();
             this.Chart_AnalogInstantInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.TabPage_LastMeasure = new MetroFramework.Controls.MetroTabPage();
@@ -162,39 +202,39 @@
             this.Tile_Measure_DigitalInput = new MetroFramework.Controls.MetroTile();
             this.Tile_Measure_AnalogOutput = new MetroFramework.Controls.MetroTile();
             this.Tile_Measure_AnalogInput = new MetroFramework.Controls.MetroTile();
-            this.TabPage_DigitalOutput = new MetroFramework.Controls.MetroTabPage();
+            this.TabPage_MyMeasurements = new MetroFramework.Controls.MetroTabPage();
+            this.Button_MyMeasurements_NewMeasure = new MetroFramework.Controls.MetroButton();
             this.TabPage_DigitalInput = new MetroFramework.Controls.MetroTabPage();
+            this.TabPage_DigitalOutput = new MetroFramework.Controls.MetroTabPage();
             this.ProgressSpinner = new MetroFramework.Controls.MetroProgressSpinner();
             this.instantDoCtrl1 = new Automation.BDaq.InstantDoCtrl(this.components);
             this.ToolTip_AnalogBufferedChart = new MetroFramework.Components.MetroToolTip();
             this.instantAiCtrl1 = new Automation.BDaq.InstantAiCtrl(this.components);
             this.timer_getData = new System.Windows.Forms.Timer(this.components);
             this.timer_ProgressBar = new System.Windows.Forms.Timer(this.components);
-            this.Label_AnalogBufferedInput_Details = new MetroFramework.Controls.MetroLabel();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.Label_AnalogBufferedInput_TimeStart = new MetroFramework.Controls.MetroLabel();
-            this.Label_AnalogBufferedInput_EndTime = new MetroFramework.Controls.MetroLabel();
-            this.Label_AnalogBufferedInput_Duration = new MetroFramework.Controls.MetroLabel();
-            this.Label_AnalogBufferedInput_DurationValue = new MetroFramework.Controls.MetroLabel();
-            this.Label_AnalogBufferedInput_EndValue = new MetroFramework.Controls.MetroLabel();
-            this.Label_AnalogBufferedInput_StartValue = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_AnalogBufferedInput)).BeginInit();
             this.TabControl.SuspendLayout();
             this.metroTabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Welcome_Advantech)).BeginInit();
             this.TabPage_AnalogBufferedInput.SuspendLayout();
+            this.metroPanel1.SuspendLayout();
             this.TabPage_Options.SuspendLayout();
+            this.Panel_Options_Comments.SuspendLayout();
             this.Panel_Options_Card.SuspendLayout();
             this.Panel_Options_Language.SuspendLayout();
             this.Panel_Options_Theme.SuspendLayout();
             this.Panel_Options_Database.SuspendLayout();
             this.TabPage_AnalogInstantInput.SuspendLayout();
+            this.metroPanel5.SuspendLayout();
+            this.metroPanel4.SuspendLayout();
+            this.metroPanel3.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_AnalogInstantInput)).BeginInit();
             this.TabPage_LastMeasure.SuspendLayout();
             this.Panel_Results.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridTable)).BeginInit();
             this.TabPage_Measure.SuspendLayout();
-            this.metroPanel1.SuspendLayout();
+            this.TabPage_MyMeasurements.SuspendLayout();
             this.SuspendLayout();
             // 
             // bufferedAiCtrl1
@@ -396,13 +436,14 @@
             this.TabControl.Controls.Add(this.TabPage_AnalogInstantInput);
             this.TabControl.Controls.Add(this.TabPage_LastMeasure);
             this.TabControl.Controls.Add(this.TabPage_Measure);
-            this.TabControl.Controls.Add(this.TabPage_DigitalOutput);
+            this.TabControl.Controls.Add(this.TabPage_MyMeasurements);
             this.TabControl.Controls.Add(this.TabPage_DigitalInput);
+            this.TabControl.Controls.Add(this.TabPage_DigitalOutput);
             this.TabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.TabControl.Location = new System.Drawing.Point(23, 63);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 1;
-            this.TabControl.Size = new System.Drawing.Size(925, 486);
+            this.TabControl.SelectedIndex = 3;
+            this.TabControl.Size = new System.Drawing.Size(925, 622);
             this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 40;
             this.TabControl.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -424,7 +465,7 @@
             this.metroTabPageWelcome.HorizontalScrollbarSize = 10;
             this.metroTabPageWelcome.Location = new System.Drawing.Point(4, 38);
             this.metroTabPageWelcome.Name = "metroTabPageWelcome";
-            this.metroTabPageWelcome.Size = new System.Drawing.Size(917, 444);
+            this.metroTabPageWelcome.Size = new System.Drawing.Size(917, 580);
             this.metroTabPageWelcome.Style = MetroFramework.MetroColorStyle.Green;
             this.metroTabPageWelcome.TabIndex = 6;
             this.metroTabPageWelcome.Text = "Welcome";
@@ -559,13 +600,102 @@
             this.TabPage_AnalogBufferedInput.HorizontalScrollbarSize = 10;
             this.TabPage_AnalogBufferedInput.Location = new System.Drawing.Point(4, 38);
             this.TabPage_AnalogBufferedInput.Name = "TabPage_AnalogBufferedInput";
-            this.TabPage_AnalogBufferedInput.Size = new System.Drawing.Size(917, 444);
+            this.TabPage_AnalogBufferedInput.Size = new System.Drawing.Size(917, 580);
             this.TabPage_AnalogBufferedInput.TabIndex = 0;
             this.TabPage_AnalogBufferedInput.Text = "Analog Buffered Input";
             this.TabPage_AnalogBufferedInput.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TabPage_AnalogBufferedInput.VerticalScrollbarBarColor = true;
             this.TabPage_AnalogBufferedInput.VerticalScrollbarHighlightOnWheel = false;
             this.TabPage_AnalogBufferedInput.VerticalScrollbarSize = 10;
+            // 
+            // Label_AnalogBufferedInput_Details
+            // 
+            this.Label_AnalogBufferedInput_Details.AutoSize = true;
+            this.Label_AnalogBufferedInput_Details.Location = new System.Drawing.Point(21, 205);
+            this.Label_AnalogBufferedInput_Details.Name = "Label_AnalogBufferedInput_Details";
+            this.Label_AnalogBufferedInput_Details.Size = new System.Drawing.Size(47, 19);
+            this.Label_AnalogBufferedInput_Details.TabIndex = 53;
+            this.Label_AnalogBufferedInput_Details.Text = "Details";
+            this.Label_AnalogBufferedInput_Details.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroPanel1
+            // 
+            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_DurationValue);
+            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_EndValue);
+            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_Duration);
+            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_StartValue);
+            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_EndTime);
+            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_TimeStart);
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(2, 214);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(255, 119);
+            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel1.TabIndex = 52;
+            this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // Label_AnalogBufferedInput_DurationValue
+            // 
+            this.Label_AnalogBufferedInput_DurationValue.AutoSize = true;
+            this.Label_AnalogBufferedInput_DurationValue.Location = new System.Drawing.Point(123, 82);
+            this.Label_AnalogBufferedInput_DurationValue.Name = "Label_AnalogBufferedInput_DurationValue";
+            this.Label_AnalogBufferedInput_DurationValue.Size = new System.Drawing.Size(0, 0);
+            this.Label_AnalogBufferedInput_DurationValue.TabIndex = 59;
+            this.Label_AnalogBufferedInput_DurationValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogBufferedInput_EndValue
+            // 
+            this.Label_AnalogBufferedInput_EndValue.AutoSize = true;
+            this.Label_AnalogBufferedInput_EndValue.Location = new System.Drawing.Point(123, 51);
+            this.Label_AnalogBufferedInput_EndValue.Name = "Label_AnalogBufferedInput_EndValue";
+            this.Label_AnalogBufferedInput_EndValue.Size = new System.Drawing.Size(0, 0);
+            this.Label_AnalogBufferedInput_EndValue.TabIndex = 58;
+            this.Label_AnalogBufferedInput_EndValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogBufferedInput_Duration
+            // 
+            this.Label_AnalogBufferedInput_Duration.Location = new System.Drawing.Point(18, 82);
+            this.Label_AnalogBufferedInput_Duration.Name = "Label_AnalogBufferedInput_Duration";
+            this.Label_AnalogBufferedInput_Duration.Size = new System.Drawing.Size(81, 19);
+            this.Label_AnalogBufferedInput_Duration.TabIndex = 56;
+            this.Label_AnalogBufferedInput_Duration.Text = "Duration:";
+            this.Label_AnalogBufferedInput_Duration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogBufferedInput_Duration.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogBufferedInput_StartValue
+            // 
+            this.Label_AnalogBufferedInput_StartValue.AutoSize = true;
+            this.Label_AnalogBufferedInput_StartValue.Location = new System.Drawing.Point(123, 19);
+            this.Label_AnalogBufferedInput_StartValue.Name = "Label_AnalogBufferedInput_StartValue";
+            this.Label_AnalogBufferedInput_StartValue.Size = new System.Drawing.Size(0, 0);
+            this.Label_AnalogBufferedInput_StartValue.TabIndex = 57;
+            this.Label_AnalogBufferedInput_StartValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogBufferedInput_EndTime
+            // 
+            this.Label_AnalogBufferedInput_EndTime.Location = new System.Drawing.Point(52, 51);
+            this.Label_AnalogBufferedInput_EndTime.Name = "Label_AnalogBufferedInput_EndTime";
+            this.Label_AnalogBufferedInput_EndTime.Size = new System.Drawing.Size(47, 19);
+            this.Label_AnalogBufferedInput_EndTime.TabIndex = 55;
+            this.Label_AnalogBufferedInput_EndTime.Text = "End:";
+            this.Label_AnalogBufferedInput_EndTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogBufferedInput_EndTime.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogBufferedInput_TimeStart
+            // 
+            this.Label_AnalogBufferedInput_TimeStart.Location = new System.Drawing.Point(52, 19);
+            this.Label_AnalogBufferedInput_TimeStart.Name = "Label_AnalogBufferedInput_TimeStart";
+            this.Label_AnalogBufferedInput_TimeStart.Size = new System.Drawing.Size(47, 19);
+            this.Label_AnalogBufferedInput_TimeStart.TabIndex = 54;
+            this.Label_AnalogBufferedInput_TimeStart.Text = "Start:";
+            this.Label_AnalogBufferedInput_TimeStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogBufferedInput_TimeStart.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // Label_AnalogBufferedInput_TrackBar2
             // 
@@ -728,6 +858,10 @@
             // 
             // TabPage_Options
             // 
+            this.TabPage_Options.AutoScrollMargin = new System.Drawing.Size(0, 950);
+            this.TabPage_Options.Controls.Add(this.Label_Options_CommentOptions);
+            this.TabPage_Options.Controls.Add(this.Panel_Options_Comments);
+            this.TabPage_Options.Controls.Add(this.ScrollBar_Options);
             this.TabPage_Options.Controls.Add(this.Button_Options_BackToDefaults);
             this.TabPage_Options.Controls.Add(this.Button_Options_ApplyChanges);
             this.TabPage_Options.Controls.Add(this.Label_Options_Card);
@@ -738,22 +872,125 @@
             this.TabPage_Options.Controls.Add(this.Panel_Options_Theme);
             this.TabPage_Options.Controls.Add(this.Label_Options_Database);
             this.TabPage_Options.Controls.Add(this.Panel_Options_Database);
-            this.TabPage_Options.HorizontalScrollbarBarColor = true;
+            this.TabPage_Options.HorizontalScrollbarBarColor = false;
             this.TabPage_Options.HorizontalScrollbarHighlightOnWheel = false;
             this.TabPage_Options.HorizontalScrollbarSize = 10;
             this.TabPage_Options.Location = new System.Drawing.Point(4, 38);
             this.TabPage_Options.Name = "TabPage_Options";
-            this.TabPage_Options.Size = new System.Drawing.Size(917, 444);
+            this.TabPage_Options.Size = new System.Drawing.Size(917, 580);
+            this.TabPage_Options.Style = MetroFramework.MetroColorStyle.Black;
             this.TabPage_Options.TabIndex = 4;
             this.TabPage_Options.Text = "Options";
             this.TabPage_Options.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TabPage_Options.VerticalScrollbarBarColor = true;
+            this.TabPage_Options.VerticalScrollbarBarColor = false;
             this.TabPage_Options.VerticalScrollbarHighlightOnWheel = false;
             this.TabPage_Options.VerticalScrollbarSize = 10;
             // 
+            // Label_Options_CommentOptions
+            // 
+            this.Label_Options_CommentOptions.AutoSize = true;
+            this.Label_Options_CommentOptions.Location = new System.Drawing.Point(77, 586);
+            this.Label_Options_CommentOptions.Name = "Label_Options_CommentOptions";
+            this.Label_Options_CommentOptions.Size = new System.Drawing.Size(118, 19);
+            this.Label_Options_CommentOptions.TabIndex = 24;
+            this.Label_Options_CommentOptions.Text = "Comment Options";
+            this.Label_Options_CommentOptions.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Panel_Options_Comments
+            // 
+            this.Panel_Options_Comments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel_Options_Comments.Controls.Add(this.TextBox_Options_UserComment);
+            this.Panel_Options_Comments.Controls.Add(this.Label_Options_AdminComment);
+            this.Panel_Options_Comments.Controls.Add(this.TextBox_Options_AdminComment);
+            this.Panel_Options_Comments.Controls.Add(this.Label_Options_UserComment);
+            this.Panel_Options_Comments.HorizontalScrollbarBarColor = true;
+            this.Panel_Options_Comments.HorizontalScrollbarHighlightOnWheel = false;
+            this.Panel_Options_Comments.HorizontalScrollbarSize = 10;
+            this.Panel_Options_Comments.Location = new System.Drawing.Point(60, 595);
+            this.Panel_Options_Comments.Name = "Panel_Options_Comments";
+            this.Panel_Options_Comments.Size = new System.Drawing.Size(374, 324);
+            this.Panel_Options_Comments.TabIndex = 23;
+            this.Panel_Options_Comments.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Panel_Options_Comments.VerticalScrollbarBarColor = true;
+            this.Panel_Options_Comments.VerticalScrollbarHighlightOnWheel = false;
+            this.Panel_Options_Comments.VerticalScrollbarSize = 10;
+            // 
+            // TextBox_Options_UserComment
+            // 
+            this.TextBox_Options_UserComment.Lines = new string[] {
+        "This is user comment - I got some errors!"};
+            this.TextBox_Options_UserComment.Location = new System.Drawing.Point(119, 27);
+            this.TextBox_Options_UserComment.MaxLength = 32767;
+            this.TextBox_Options_UserComment.Multiline = true;
+            this.TextBox_Options_UserComment.Name = "TextBox_Options_UserComment";
+            this.TextBox_Options_UserComment.PasswordChar = '\0';
+            this.TextBox_Options_UserComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TextBox_Options_UserComment.SelectedText = "";
+            this.TextBox_Options_UserComment.Size = new System.Drawing.Size(222, 77);
+            this.TextBox_Options_UserComment.TabIndex = 5;
+            this.TextBox_Options_UserComment.Text = "This is user comment - I got some errors!";
+            this.TextBox_Options_UserComment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TextBox_Options_UserComment.UseSelectable = true;
+            // 
+            // Label_Options_AdminComment
+            // 
+            this.Label_Options_AdminComment.Location = new System.Drawing.Point(16, 141);
+            this.Label_Options_AdminComment.Name = "Label_Options_AdminComment";
+            this.Label_Options_AdminComment.Size = new System.Drawing.Size(75, 53);
+            this.Label_Options_AdminComment.TabIndex = 10;
+            this.Label_Options_AdminComment.Text = "Admin Comment";
+            this.Label_Options_AdminComment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_Options_AdminComment.WrapToLine = true;
+            // 
+            // TextBox_Options_AdminComment
+            // 
+            this.TextBox_Options_AdminComment.Lines = new string[] {
+        "This is admin comment - some instructions for user, with also will be printed to " +
+            "output measurment file."};
+            this.TextBox_Options_AdminComment.Location = new System.Drawing.Point(119, 140);
+            this.TextBox_Options_AdminComment.MaxLength = 32767;
+            this.TextBox_Options_AdminComment.Multiline = true;
+            this.TextBox_Options_AdminComment.Name = "TextBox_Options_AdminComment";
+            this.TextBox_Options_AdminComment.PasswordChar = '\0';
+            this.TextBox_Options_AdminComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TextBox_Options_AdminComment.SelectedText = "";
+            this.TextBox_Options_AdminComment.Size = new System.Drawing.Size(222, 166);
+            this.TextBox_Options_AdminComment.TabIndex = 7;
+            this.TextBox_Options_AdminComment.Text = "This is admin comment - some instructions for user, with also will be printed to " +
+    "output measurment file.";
+            this.TextBox_Options_AdminComment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TextBox_Options_AdminComment.UseSelectable = true;
+            this.TextBox_Options_AdminComment.Enter += new System.EventHandler(this.metroTextBox4_Enter);
+            // 
+            // Label_Options_UserComment
+            // 
+            this.Label_Options_UserComment.Location = new System.Drawing.Point(17, 27);
+            this.Label_Options_UserComment.Name = "Label_Options_UserComment";
+            this.Label_Options_UserComment.Size = new System.Drawing.Size(74, 47);
+            this.Label_Options_UserComment.TabIndex = 8;
+            this.Label_Options_UserComment.Text = "User Comment";
+            this.Label_Options_UserComment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_Options_UserComment.WrapToLine = true;
+            // 
+            // ScrollBar_Options
+            // 
+            this.ScrollBar_Options.LargeChange = 10;
+            this.ScrollBar_Options.Location = new System.Drawing.Point(896, 20);
+            this.ScrollBar_Options.Maximum = 100;
+            this.ScrollBar_Options.Minimum = 0;
+            this.ScrollBar_Options.MouseWheelBarPartitions = 10;
+            this.ScrollBar_Options.Name = "ScrollBar_Options";
+            this.ScrollBar_Options.Orientation = MetroFramework.Controls.MetroScrollOrientation.Vertical;
+            this.ScrollBar_Options.ScrollbarSize = 25;
+            this.ScrollBar_Options.Size = new System.Drawing.Size(25, 950);
+            this.ScrollBar_Options.TabIndex = 22;
+            this.ScrollBar_Options.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ScrollBar_Options.UseSelectable = true;
+            this.ScrollBar_Options.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroScrollBar2_Scroll);
+            // 
             // Button_Options_BackToDefaults
             // 
-            this.Button_Options_BackToDefaults.Location = new System.Drawing.Point(597, 336);
+            this.Button_Options_BackToDefaults.Location = new System.Drawing.Point(497, 46);
             this.Button_Options_BackToDefaults.Name = "Button_Options_BackToDefaults";
             this.Button_Options_BackToDefaults.Size = new System.Drawing.Size(183, 51);
             this.Button_Options_BackToDefaults.TabIndex = 20;
@@ -764,7 +1001,7 @@
             // 
             // Button_Options_ApplyChanges
             // 
-            this.Button_Options_ApplyChanges.Location = new System.Drawing.Point(597, 273);
+            this.Button_Options_ApplyChanges.Location = new System.Drawing.Point(698, 46);
             this.Button_Options_ApplyChanges.Name = "Button_Options_ApplyChanges";
             this.Button_Options_ApplyChanges.Size = new System.Drawing.Size(183, 51);
             this.Button_Options_ApplyChanges.TabIndex = 19;
@@ -776,7 +1013,7 @@
             // Label_Options_Card
             // 
             this.Label_Options_Card.AutoSize = true;
-            this.Label_Options_Card.Location = new System.Drawing.Point(541, 36);
+            this.Label_Options_Card.Location = new System.Drawing.Point(78, 426);
             this.Label_Options_Card.Name = "Label_Options_Card";
             this.Label_Options_Card.Size = new System.Drawing.Size(88, 19);
             this.Label_Options_Card.TabIndex = 18;
@@ -815,9 +1052,9 @@
             this.Panel_Options_Card.HorizontalScrollbarBarColor = true;
             this.Panel_Options_Card.HorizontalScrollbarHighlightOnWheel = false;
             this.Panel_Options_Card.HorizontalScrollbarSize = 10;
-            this.Panel_Options_Card.Location = new System.Drawing.Point(523, 46);
+            this.Panel_Options_Card.Location = new System.Drawing.Point(60, 436);
             this.Panel_Options_Card.Name = "Panel_Options_Card";
-            this.Panel_Options_Card.Size = new System.Drawing.Size(374, 164);
+            this.Panel_Options_Card.Size = new System.Drawing.Size(374, 135);
             this.Panel_Options_Card.Style = MetroFramework.MetroColorStyle.Blue;
             this.Panel_Options_Card.TabIndex = 15;
             this.Panel_Options_Card.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -828,7 +1065,7 @@
             // Label_Options_CardModule
             // 
             this.Label_Options_CardModule.AutoSize = true;
-            this.Label_Options_CardModule.Location = new System.Drawing.Point(30, 94);
+            this.Label_Options_CardModule.Location = new System.Drawing.Point(16, 94);
             this.Label_Options_CardModule.Name = "Label_Options_CardModule";
             this.Label_Options_CardModule.Size = new System.Drawing.Size(87, 19);
             this.Label_Options_CardModule.TabIndex = 12;
@@ -838,7 +1075,7 @@
             // Label_Options_CardNumber
             // 
             this.Label_Options_CardNumber.AutoSize = true;
-            this.Label_Options_CardNumber.Location = new System.Drawing.Point(30, 57);
+            this.Label_Options_CardNumber.Location = new System.Drawing.Point(16, 57);
             this.Label_Options_CardNumber.Name = "Label_Options_CardNumber";
             this.Label_Options_CardNumber.Size = new System.Drawing.Size(88, 19);
             this.Label_Options_CardNumber.TabIndex = 11;
@@ -849,7 +1086,7 @@
             // 
             this.TextBox_Options_CardModule.Lines = new string[] {
         "0"};
-            this.TextBox_Options_CardModule.Location = new System.Drawing.Point(133, 93);
+            this.TextBox_Options_CardModule.Location = new System.Drawing.Point(119, 93);
             this.TextBox_Options_CardModule.MaxLength = 32767;
             this.TextBox_Options_CardModule.Name = "TextBox_Options_CardModule";
             this.TextBox_Options_CardModule.PasswordChar = '\0';
@@ -865,7 +1102,7 @@
             // 
             this.TextBox_Options_CardNumber.Lines = new string[] {
         "0"};
-            this.TextBox_Options_CardNumber.Location = new System.Drawing.Point(133, 56);
+            this.TextBox_Options_CardNumber.Location = new System.Drawing.Point(119, 56);
             this.TextBox_Options_CardNumber.MaxLength = 32767;
             this.TextBox_Options_CardNumber.Name = "TextBox_Options_CardNumber";
             this.TextBox_Options_CardNumber.PasswordChar = '\0';
@@ -881,7 +1118,7 @@
             // 
             this.TextBox_Options_CardName.Lines = new string[] {
         "DemoDevice1"};
-            this.TextBox_Options_CardName.Location = new System.Drawing.Point(133, 20);
+            this.TextBox_Options_CardName.Location = new System.Drawing.Point(119, 20);
             this.TextBox_Options_CardName.MaxLength = 32767;
             this.TextBox_Options_CardName.Name = "TextBox_Options_CardName";
             this.TextBox_Options_CardName.PasswordChar = '\0';
@@ -896,7 +1133,7 @@
             // Label_Options_CardName
             // 
             this.Label_Options_CardName.AutoSize = true;
-            this.Label_Options_CardName.Location = new System.Drawing.Point(30, 21);
+            this.Label_Options_CardName.Location = new System.Drawing.Point(16, 21);
             this.Label_Options_CardName.Name = "Label_Options_CardName";
             this.Label_Options_CardName.Size = new System.Drawing.Size(75, 19);
             this.Label_Options_CardName.TabIndex = 8;
@@ -1118,25 +1355,19 @@
             // 
             // TabPage_AnalogInstantInput
             // 
-            this.TabPage_AnalogInstantInput.Controls.Add(this.metroButton1);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.TextBox_AnalogInstantInput_MovingWindow);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_MovingWindow);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Toggle_AnalogInstantInput_MovingWindow);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_SampleCount);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_ChartAutosize);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Toggle_AnalogInstantInput_ChartAutosize);
+            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_CurrentPoints);
+            this.TabPage_AnalogInstantInput.Controls.Add(this.metroPanel5);
+            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_Details);
+            this.TabPage_AnalogInstantInput.Controls.Add(this.metroPanel4);
+            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_ViewOptions);
+            this.TabPage_AnalogInstantInput.Controls.Add(this.metroPanel3);
+            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_Options);
+            this.TabPage_AnalogInstantInput.Controls.Add(this.metroPanel2);
             this.TabPage_AnalogInstantInput.Controls.Add(this.TrackBar_AnalogInstantInput_1);
             this.TabPage_AnalogInstantInput.Controls.Add(this.TrackBar_AnalogInstantInput_2);
             this.TabPage_AnalogInstantInput.Controls.Add(this.Button_AnalogInstantInput_Reset);
             this.TabPage_AnalogInstantInput.Controls.Add(this.Button_AnalogInstantInput_Pause);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_Interval_2);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_Interval_1);
             this.TabPage_AnalogInstantInput.Controls.Add(this.Button_AnalogInstantInput_Back);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.ComboBox_AnalogInstantInput_NumberOfChannels);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.ComboBox_AnalogInstantInput_StartChannel);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_NumberOfChannels);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.Label_AnalogInstantInput_StartChannel);
-            this.TabPage_AnalogInstantInput.Controls.Add(this.TrackBar_AnalogInstantInput_SampleInterval);
             this.TabPage_AnalogInstantInput.Controls.Add(this.Button_AnalogInstantInput_Measure);
             this.TabPage_AnalogInstantInput.Controls.Add(this.Chart_AnalogInstantInput);
             this.TabPage_AnalogInstantInput.HorizontalScrollbarBarColor = true;
@@ -1144,7 +1375,7 @@
             this.TabPage_AnalogInstantInput.HorizontalScrollbarSize = 10;
             this.TabPage_AnalogInstantInput.Location = new System.Drawing.Point(4, 38);
             this.TabPage_AnalogInstantInput.Name = "TabPage_AnalogInstantInput";
-            this.TabPage_AnalogInstantInput.Size = new System.Drawing.Size(917, 444);
+            this.TabPage_AnalogInstantInput.Size = new System.Drawing.Size(917, 580);
             this.TabPage_AnalogInstantInput.TabIndex = 1;
             this.TabPage_AnalogInstantInput.Text = "Analog Instant Input";
             this.TabPage_AnalogInstantInput.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1152,50 +1383,360 @@
             this.TabPage_AnalogInstantInput.VerticalScrollbarHighlightOnWheel = false;
             this.TabPage_AnalogInstantInput.VerticalScrollbarSize = 10;
             // 
-            // metroButton1
+            // Label_AnalogInstantInput_CurrentPoints
             // 
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton1.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.metroButton1.Location = new System.Drawing.Point(855, 0);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(42, 17);
-            this.metroButton1.TabIndex = 63;
-            this.metroButton1.Text = "Stop";
-            this.metroButton1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.Label_AnalogInstantInput_CurrentPoints.AutoSize = true;
+            this.Label_AnalogInstantInput_CurrentPoints.Location = new System.Drawing.Point(21, 435);
+            this.Label_AnalogInstantInput_CurrentPoints.Name = "Label_AnalogInstantInput_CurrentPoints";
+            this.Label_AnalogInstantInput_CurrentPoints.Size = new System.Drawing.Size(92, 19);
+            this.Label_AnalogInstantInput_CurrentPoints.TabIndex = 75;
+            this.Label_AnalogInstantInput_CurrentPoints.Text = "Current Points";
+            this.Label_AnalogInstantInput_CurrentPoints.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // TextBox_AnalogInstantInput_MovingWindow
+            // metroPanel5
             // 
-            this.TextBox_AnalogInstantInput_MovingWindow.Lines = new string[] {
-        "9"};
-            this.TextBox_AnalogInstantInput_MovingWindow.Location = new System.Drawing.Point(179, 294);
-            this.TextBox_AnalogInstantInput_MovingWindow.MaxLength = 32767;
-            this.TextBox_AnalogInstantInput_MovingWindow.Name = "TextBox_AnalogInstantInput_MovingWindow";
-            this.TextBox_AnalogInstantInput_MovingWindow.PasswordChar = '\0';
-            this.TextBox_AnalogInstantInput_MovingWindow.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TextBox_AnalogInstantInput_MovingWindow.SelectedText = "";
-            this.TextBox_AnalogInstantInput_MovingWindow.Size = new System.Drawing.Size(59, 20);
-            this.TextBox_AnalogInstantInput_MovingWindow.TabIndex = 62;
-            this.TextBox_AnalogInstantInput_MovingWindow.Text = "9";
-            this.TextBox_AnalogInstantInput_MovingWindow.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TextBox_AnalogInstantInput_MovingWindow.UseSelectable = true;
+            this.metroPanel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch6Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch7Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch3Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch5Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch4Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch2Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch1Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch0Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch6);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch7);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch3);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch5);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch4);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch2);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch1);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Ch0);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Value);
+            this.metroPanel5.Controls.Add(this.Label_AnalogInstantInput_Channel);
+            this.metroPanel5.HorizontalScrollbarBarColor = true;
+            this.metroPanel5.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.HorizontalScrollbarSize = 10;
+            this.metroPanel5.Location = new System.Drawing.Point(4, 444);
+            this.metroPanel5.Name = "metroPanel5";
+            this.metroPanel5.Size = new System.Drawing.Size(897, 77);
+            this.metroPanel5.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel5.TabIndex = 74;
+            this.metroPanel5.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel5.VerticalScrollbarBarColor = true;
+            this.metroPanel5.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel5.VerticalScrollbarSize = 10;
             // 
-            // Label_AnalogInstantInput_MovingWindow
+            // Label_AnalogInstantInput_Ch6Value
             // 
-            this.Label_AnalogInstantInput_MovingWindow.AutoSize = true;
-            this.Label_AnalogInstantInput_MovingWindow.Location = new System.Drawing.Point(24, 272);
-            this.Label_AnalogInstantInput_MovingWindow.Name = "Label_AnalogInstantInput_MovingWindow";
-            this.Label_AnalogInstantInput_MovingWindow.Size = new System.Drawing.Size(101, 19);
-            this.Label_AnalogInstantInput_MovingWindow.TabIndex = 61;
-            this.Label_AnalogInstantInput_MovingWindow.Text = "Moving window";
-            this.Label_AnalogInstantInput_MovingWindow.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_Ch6Value.Location = new System.Drawing.Point(666, 43);
+            this.Label_AnalogInstantInput_Ch6Value.Name = "Label_AnalogInstantInput_Ch6Value";
+            this.Label_AnalogInstantInput_Ch6Value.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch6Value.TabIndex = 93;
+            this.Label_AnalogInstantInput_Ch6Value.Text = "0";
+            this.Label_AnalogInstantInput_Ch6Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch6Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Ch7Value
+            // 
+            this.Label_AnalogInstantInput_Ch7Value.Location = new System.Drawing.Point(766, 43);
+            this.Label_AnalogInstantInput_Ch7Value.Name = "Label_AnalogInstantInput_Ch7Value";
+            this.Label_AnalogInstantInput_Ch7Value.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch7Value.TabIndex = 92;
+            this.Label_AnalogInstantInput_Ch7Value.Text = "0";
+            this.Label_AnalogInstantInput_Ch7Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch7Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Ch3Value
+            // 
+            this.Label_AnalogInstantInput_Ch3Value.Location = new System.Drawing.Point(394, 43);
+            this.Label_AnalogInstantInput_Ch3Value.Name = "Label_AnalogInstantInput_Ch3Value";
+            this.Label_AnalogInstantInput_Ch3Value.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch3Value.TabIndex = 91;
+            this.Label_AnalogInstantInput_Ch3Value.Text = "0";
+            this.Label_AnalogInstantInput_Ch3Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch3Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Ch5Value
+            // 
+            this.Label_AnalogInstantInput_Ch5Value.Location = new System.Drawing.Point(569, 43);
+            this.Label_AnalogInstantInput_Ch5Value.Name = "Label_AnalogInstantInput_Ch5Value";
+            this.Label_AnalogInstantInput_Ch5Value.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch5Value.TabIndex = 89;
+            this.Label_AnalogInstantInput_Ch5Value.Text = "0";
+            this.Label_AnalogInstantInput_Ch5Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch5Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Ch4Value
+            // 
+            this.Label_AnalogInstantInput_Ch4Value.Location = new System.Drawing.Point(478, 43);
+            this.Label_AnalogInstantInput_Ch4Value.Name = "Label_AnalogInstantInput_Ch4Value";
+            this.Label_AnalogInstantInput_Ch4Value.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch4Value.TabIndex = 88;
+            this.Label_AnalogInstantInput_Ch4Value.Text = "0";
+            this.Label_AnalogInstantInput_Ch4Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch4Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Ch2Value
+            // 
+            this.Label_AnalogInstantInput_Ch2Value.Location = new System.Drawing.Point(301, 43);
+            this.Label_AnalogInstantInput_Ch2Value.Name = "Label_AnalogInstantInput_Ch2Value";
+            this.Label_AnalogInstantInput_Ch2Value.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch2Value.TabIndex = 87;
+            this.Label_AnalogInstantInput_Ch2Value.Text = "0";
+            this.Label_AnalogInstantInput_Ch2Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch2Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Ch1Value
+            // 
+            this.Label_AnalogInstantInput_Ch1Value.Location = new System.Drawing.Point(210, 43);
+            this.Label_AnalogInstantInput_Ch1Value.Name = "Label_AnalogInstantInput_Ch1Value";
+            this.Label_AnalogInstantInput_Ch1Value.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch1Value.TabIndex = 86;
+            this.Label_AnalogInstantInput_Ch1Value.Text = "0";
+            this.Label_AnalogInstantInput_Ch1Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch1Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Ch0Value
+            // 
+            this.Label_AnalogInstantInput_Ch0Value.Location = new System.Drawing.Point(119, 43);
+            this.Label_AnalogInstantInput_Ch0Value.Name = "Label_AnalogInstantInput_Ch0Value";
+            this.Label_AnalogInstantInput_Ch0Value.Size = new System.Drawing.Size(62, 19);
+            this.Label_AnalogInstantInput_Ch0Value.TabIndex = 85;
+            this.Label_AnalogInstantInput_Ch0Value.Text = "0";
+            this.Label_AnalogInstantInput_Ch0Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch0Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Ch6
+            // 
+            this.Label_AnalogInstantInput_Ch6.ForeColor = System.Drawing.Color.Blue;
+            this.Label_AnalogInstantInput_Ch6.Location = new System.Drawing.Point(666, 18);
+            this.Label_AnalogInstantInput_Ch6.Name = "Label_AnalogInstantInput_Ch6";
+            this.Label_AnalogInstantInput_Ch6.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch6.TabIndex = 84;
+            this.Label_AnalogInstantInput_Ch6.Text = "6";
+            this.Label_AnalogInstantInput_Ch6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch6.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_Ch6.UseCustomForeColor = true;
+            // 
+            // Label_AnalogInstantInput_Ch7
+            // 
+            this.Label_AnalogInstantInput_Ch7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.Label_AnalogInstantInput_Ch7.Location = new System.Drawing.Point(766, 18);
+            this.Label_AnalogInstantInput_Ch7.Name = "Label_AnalogInstantInput_Ch7";
+            this.Label_AnalogInstantInput_Ch7.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch7.TabIndex = 83;
+            this.Label_AnalogInstantInput_Ch7.Text = "7";
+            this.Label_AnalogInstantInput_Ch7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch7.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_Ch7.UseCustomForeColor = true;
+            // 
+            // Label_AnalogInstantInput_Ch3
+            // 
+            this.Label_AnalogInstantInput_Ch3.ForeColor = System.Drawing.Color.Lime;
+            this.Label_AnalogInstantInput_Ch3.Location = new System.Drawing.Point(394, 18);
+            this.Label_AnalogInstantInput_Ch3.Name = "Label_AnalogInstantInput_Ch3";
+            this.Label_AnalogInstantInput_Ch3.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch3.TabIndex = 82;
+            this.Label_AnalogInstantInput_Ch3.Text = "3";
+            this.Label_AnalogInstantInput_Ch3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_Ch3.UseCustomForeColor = true;
+            // 
+            // Label_AnalogInstantInput_Ch5
+            // 
+            this.Label_AnalogInstantInput_Ch5.ForeColor = System.Drawing.Color.Aqua;
+            this.Label_AnalogInstantInput_Ch5.Location = new System.Drawing.Point(569, 18);
+            this.Label_AnalogInstantInput_Ch5.Name = "Label_AnalogInstantInput_Ch5";
+            this.Label_AnalogInstantInput_Ch5.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch5.TabIndex = 80;
+            this.Label_AnalogInstantInput_Ch5.Text = "5";
+            this.Label_AnalogInstantInput_Ch5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch5.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_Ch5.UseCustomForeColor = true;
+            // 
+            // Label_AnalogInstantInput_Ch4
+            // 
+            this.Label_AnalogInstantInput_Ch4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.Label_AnalogInstantInput_Ch4.Location = new System.Drawing.Point(478, 18);
+            this.Label_AnalogInstantInput_Ch4.Name = "Label_AnalogInstantInput_Ch4";
+            this.Label_AnalogInstantInput_Ch4.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch4.TabIndex = 79;
+            this.Label_AnalogInstantInput_Ch4.Text = "4";
+            this.Label_AnalogInstantInput_Ch4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_Ch4.UseCustomForeColor = true;
+            // 
+            // Label_AnalogInstantInput_Ch2
+            // 
+            this.Label_AnalogInstantInput_Ch2.ForeColor = System.Drawing.Color.Yellow;
+            this.Label_AnalogInstantInput_Ch2.Location = new System.Drawing.Point(301, 18);
+            this.Label_AnalogInstantInput_Ch2.Name = "Label_AnalogInstantInput_Ch2";
+            this.Label_AnalogInstantInput_Ch2.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch2.TabIndex = 78;
+            this.Label_AnalogInstantInput_Ch2.Text = "2";
+            this.Label_AnalogInstantInput_Ch2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_Ch2.UseCustomForeColor = true;
+            // 
+            // Label_AnalogInstantInput_Ch1
+            // 
+            this.Label_AnalogInstantInput_Ch1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Label_AnalogInstantInput_Ch1.Location = new System.Drawing.Point(210, 18);
+            this.Label_AnalogInstantInput_Ch1.Name = "Label_AnalogInstantInput_Ch1";
+            this.Label_AnalogInstantInput_Ch1.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Ch1.TabIndex = 77;
+            this.Label_AnalogInstantInput_Ch1.Text = "1";
+            this.Label_AnalogInstantInput_Ch1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_Ch1.UseCustomForeColor = true;
+            // 
+            // Label_AnalogInstantInput_Ch0
+            // 
+            this.Label_AnalogInstantInput_Ch0.ForeColor = System.Drawing.Color.DimGray;
+            this.Label_AnalogInstantInput_Ch0.Location = new System.Drawing.Point(119, 18);
+            this.Label_AnalogInstantInput_Ch0.Name = "Label_AnalogInstantInput_Ch0";
+            this.Label_AnalogInstantInput_Ch0.Size = new System.Drawing.Size(62, 19);
+            this.Label_AnalogInstantInput_Ch0.TabIndex = 76;
+            this.Label_AnalogInstantInput_Ch0.Text = "0";
+            this.Label_AnalogInstantInput_Ch0.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Ch0.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Value
+            // 
+            this.Label_AnalogInstantInput_Value.Location = new System.Drawing.Point(29, 43);
+            this.Label_AnalogInstantInput_Value.Name = "Label_AnalogInstantInput_Value";
+            this.Label_AnalogInstantInput_Value.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Value.TabIndex = 75;
+            this.Label_AnalogInstantInput_Value.Text = "Value";
+            this.Label_AnalogInstantInput_Value.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Value.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Channel
+            // 
+            this.Label_AnalogInstantInput_Channel.Location = new System.Drawing.Point(29, 18);
+            this.Label_AnalogInstantInput_Channel.Name = "Label_AnalogInstantInput_Channel";
+            this.Label_AnalogInstantInput_Channel.Size = new System.Drawing.Size(73, 19);
+            this.Label_AnalogInstantInput_Channel.TabIndex = 74;
+            this.Label_AnalogInstantInput_Channel.Text = "Channel";
+            this.Label_AnalogInstantInput_Channel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Channel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Details
+            // 
+            this.Label_AnalogInstantInput_Details.AutoSize = true;
+            this.Label_AnalogInstantInput_Details.Location = new System.Drawing.Point(22, 279);
+            this.Label_AnalogInstantInput_Details.Name = "Label_AnalogInstantInput_Details";
+            this.Label_AnalogInstantInput_Details.Size = new System.Drawing.Size(47, 19);
+            this.Label_AnalogInstantInput_Details.TabIndex = 72;
+            this.Label_AnalogInstantInput_Details.Text = "Details";
+            this.Label_AnalogInstantInput_Details.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroPanel4
+            // 
+            this.metroPanel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel4.Controls.Add(this.Label_AnalogInstantInput_StartValue);
+            this.metroPanel4.Controls.Add(this.Label_AnalogInstantInput_Duration);
+            this.metroPanel4.Controls.Add(this.Label_AnalogInstantInput_End);
+            this.metroPanel4.Controls.Add(this.Label_AnalogInstantInput_Start);
+            this.metroPanel4.HorizontalScrollbarBarColor = true;
+            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.HorizontalScrollbarSize = 10;
+            this.metroPanel4.Location = new System.Drawing.Point(4, 287);
+            this.metroPanel4.Name = "metroPanel4";
+            this.metroPanel4.Size = new System.Drawing.Size(226, 125);
+            this.metroPanel4.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel4.TabIndex = 73;
+            this.metroPanel4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel4.VerticalScrollbarBarColor = true;
+            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // Label_AnalogInstantInput_StartValue
+            // 
+            this.Label_AnalogInstantInput_StartValue.Location = new System.Drawing.Point(108, 20);
+            this.Label_AnalogInstantInput_StartValue.Name = "Label_AnalogInstantInput_StartValue";
+            this.Label_AnalogInstantInput_StartValue.Size = new System.Drawing.Size(117, 19);
+            this.Label_AnalogInstantInput_StartValue.TabIndex = 77;
+            this.Label_AnalogInstantInput_StartValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Label_AnalogInstantInput_StartValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Duration
+            // 
+            this.Label_AnalogInstantInput_Duration.Location = new System.Drawing.Point(21, 83);
+            this.Label_AnalogInstantInput_Duration.Name = "Label_AnalogInstantInput_Duration";
+            this.Label_AnalogInstantInput_Duration.Size = new System.Drawing.Size(81, 19);
+            this.Label_AnalogInstantInput_Duration.TabIndex = 76;
+            this.Label_AnalogInstantInput_Duration.Text = "Duration:";
+            this.Label_AnalogInstantInput_Duration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Duration.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_End
+            // 
+            this.Label_AnalogInstantInput_End.Location = new System.Drawing.Point(55, 52);
+            this.Label_AnalogInstantInput_End.Name = "Label_AnalogInstantInput_End";
+            this.Label_AnalogInstantInput_End.Size = new System.Drawing.Size(47, 19);
+            this.Label_AnalogInstantInput_End.TabIndex = 75;
+            this.Label_AnalogInstantInput_End.Text = "End:";
+            this.Label_AnalogInstantInput_End.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_End.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_Start
+            // 
+            this.Label_AnalogInstantInput_Start.Location = new System.Drawing.Point(55, 20);
+            this.Label_AnalogInstantInput_Start.Name = "Label_AnalogInstantInput_Start";
+            this.Label_AnalogInstantInput_Start.Size = new System.Drawing.Size(47, 19);
+            this.Label_AnalogInstantInput_Start.TabIndex = 74;
+            this.Label_AnalogInstantInput_Start.Text = "Start:";
+            this.Label_AnalogInstantInput_Start.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.Label_AnalogInstantInput_Start.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_AnalogInstantInput_ViewOptions
+            // 
+            this.Label_AnalogInstantInput_ViewOptions.AutoSize = true;
+            this.Label_AnalogInstantInput_ViewOptions.Location = new System.Drawing.Point(21, 136);
+            this.Label_AnalogInstantInput_ViewOptions.Name = "Label_AnalogInstantInput_ViewOptions";
+            this.Label_AnalogInstantInput_ViewOptions.Size = new System.Drawing.Size(86, 19);
+            this.Label_AnalogInstantInput_ViewOptions.TabIndex = 71;
+            this.Label_AnalogInstantInput_ViewOptions.Text = "View Options";
+            this.Label_AnalogInstantInput_ViewOptions.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroPanel3
+            // 
+            this.metroPanel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel3.Controls.Add(this.Label_AnalogInstantInput_ChartAutosize);
+            this.metroPanel3.Controls.Add(this.Toggle_AnalogInstantInput_MovingWindow);
+            this.metroPanel3.Controls.Add(this.Label_AnalogInstantInput_MovingWindow);
+            this.metroPanel3.Controls.Add(this.TextBox_AnalogInstantInput_MovingWindow);
+            this.metroPanel3.Controls.Add(this.Toggle_AnalogInstantInput_ChartAutosize);
+            this.metroPanel3.HorizontalScrollbarBarColor = true;
+            this.metroPanel3.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.HorizontalScrollbarSize = 10;
+            this.metroPanel3.Location = new System.Drawing.Point(3, 144);
+            this.metroPanel3.Name = "metroPanel3";
+            this.metroPanel3.Size = new System.Drawing.Size(226, 122);
+            this.metroPanel3.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel3.TabIndex = 71;
+            this.metroPanel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel3.VerticalScrollbarBarColor = true;
+            this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // Label_AnalogInstantInput_ChartAutosize
+            // 
+            this.Label_AnalogInstantInput_ChartAutosize.AutoSize = true;
+            this.Label_AnalogInstantInput_ChartAutosize.Location = new System.Drawing.Point(18, 14);
+            this.Label_AnalogInstantInput_ChartAutosize.Name = "Label_AnalogInstantInput_ChartAutosize";
+            this.Label_AnalogInstantInput_ChartAutosize.Size = new System.Drawing.Size(92, 19);
+            this.Label_AnalogInstantInput_ChartAutosize.TabIndex = 58;
+            this.Label_AnalogInstantInput_ChartAutosize.Text = "Chart autosize";
+            this.Label_AnalogInstantInput_ChartAutosize.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // Toggle_AnalogInstantInput_MovingWindow
             // 
             this.Toggle_AnalogInstantInput_MovingWindow.Checked = true;
             this.Toggle_AnalogInstantInput_MovingWindow.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Toggle_AnalogInstantInput_MovingWindow.Location = new System.Drawing.Point(66, 294);
+            this.Toggle_AnalogInstantInput_MovingWindow.Location = new System.Drawing.Point(69, 87);
             this.Toggle_AnalogInstantInput_MovingWindow.Name = "Toggle_AnalogInstantInput_MovingWindow";
             this.Toggle_AnalogInstantInput_MovingWindow.Size = new System.Drawing.Size(80, 20);
             this.Toggle_AnalogInstantInput_MovingWindow.TabIndex = 60;
@@ -1204,30 +1745,37 @@
             this.Toggle_AnalogInstantInput_MovingWindow.UseSelectable = true;
             this.Toggle_AnalogInstantInput_MovingWindow.CheckedChanged += new System.EventHandler(this.Toggle_AnalogInstantInput_MovingWindow_CheckedChanged);
             // 
-            // Label_AnalogInstantInput_SampleCount
+            // Label_AnalogInstantInput_MovingWindow
             // 
-            this.Label_AnalogInstantInput_SampleCount.AutoSize = true;
-            this.Label_AnalogInstantInput_SampleCount.Location = new System.Drawing.Point(846, 359);
-            this.Label_AnalogInstantInput_SampleCount.Name = "Label_AnalogInstantInput_SampleCount";
-            this.Label_AnalogInstantInput_SampleCount.Size = new System.Drawing.Size(0, 0);
-            this.Label_AnalogInstantInput_SampleCount.TabIndex = 59;
-            this.Label_AnalogInstantInput_SampleCount.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_AnalogInstantInput_MovingWindow.AutoSize = true;
+            this.Label_AnalogInstantInput_MovingWindow.Location = new System.Drawing.Point(18, 65);
+            this.Label_AnalogInstantInput_MovingWindow.Name = "Label_AnalogInstantInput_MovingWindow";
+            this.Label_AnalogInstantInput_MovingWindow.Size = new System.Drawing.Size(101, 19);
+            this.Label_AnalogInstantInput_MovingWindow.TabIndex = 61;
+            this.Label_AnalogInstantInput_MovingWindow.Text = "Moving window";
+            this.Label_AnalogInstantInput_MovingWindow.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // Label_AnalogInstantInput_ChartAutosize
+            // TextBox_AnalogInstantInput_MovingWindow
             // 
-            this.Label_AnalogInstantInput_ChartAutosize.AutoSize = true;
-            this.Label_AnalogInstantInput_ChartAutosize.Location = new System.Drawing.Point(24, 221);
-            this.Label_AnalogInstantInput_ChartAutosize.Name = "Label_AnalogInstantInput_ChartAutosize";
-            this.Label_AnalogInstantInput_ChartAutosize.Size = new System.Drawing.Size(92, 19);
-            this.Label_AnalogInstantInput_ChartAutosize.TabIndex = 58;
-            this.Label_AnalogInstantInput_ChartAutosize.Text = "Chart autosize";
-            this.Label_AnalogInstantInput_ChartAutosize.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TextBox_AnalogInstantInput_MovingWindow.Lines = new string[] {
+        "9"};
+            this.TextBox_AnalogInstantInput_MovingWindow.Location = new System.Drawing.Point(170, 87);
+            this.TextBox_AnalogInstantInput_MovingWindow.MaxLength = 32767;
+            this.TextBox_AnalogInstantInput_MovingWindow.Name = "TextBox_AnalogInstantInput_MovingWindow";
+            this.TextBox_AnalogInstantInput_MovingWindow.PasswordChar = '\0';
+            this.TextBox_AnalogInstantInput_MovingWindow.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextBox_AnalogInstantInput_MovingWindow.SelectedText = "";
+            this.TextBox_AnalogInstantInput_MovingWindow.Size = new System.Drawing.Size(32, 20);
+            this.TextBox_AnalogInstantInput_MovingWindow.TabIndex = 62;
+            this.TextBox_AnalogInstantInput_MovingWindow.Text = "9";
+            this.TextBox_AnalogInstantInput_MovingWindow.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TextBox_AnalogInstantInput_MovingWindow.UseSelectable = true;
             // 
             // Toggle_AnalogInstantInput_ChartAutosize
             // 
             this.Toggle_AnalogInstantInput_ChartAutosize.Checked = true;
             this.Toggle_AnalogInstantInput_ChartAutosize.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.Toggle_AnalogInstantInput_ChartAutosize.Location = new System.Drawing.Point(66, 243);
+            this.Toggle_AnalogInstantInput_ChartAutosize.Location = new System.Drawing.Point(69, 42);
             this.Toggle_AnalogInstantInput_ChartAutosize.Name = "Toggle_AnalogInstantInput_ChartAutosize";
             this.Toggle_AnalogInstantInput_ChartAutosize.Size = new System.Drawing.Size(80, 20);
             this.Toggle_AnalogInstantInput_ChartAutosize.TabIndex = 57;
@@ -1236,11 +1784,92 @@
             this.Toggle_AnalogInstantInput_ChartAutosize.UseSelectable = true;
             this.Toggle_AnalogInstantInput_ChartAutosize.CheckedChanged += new System.EventHandler(this.Toggle_AnalogInstantInput_ChartAutosize_CheckedChanged);
             // 
+            // Label_AnalogInstantInput_Options
+            // 
+            this.Label_AnalogInstantInput_Options.AutoSize = true;
+            this.Label_AnalogInstantInput_Options.Location = new System.Drawing.Point(21, 15);
+            this.Label_AnalogInstantInput_Options.Name = "Label_AnalogInstantInput_Options";
+            this.Label_AnalogInstantInput_Options.Size = new System.Drawing.Size(132, 19);
+            this.Label_AnalogInstantInput_Options.TabIndex = 70;
+            this.Label_AnalogInstantInput_Options.Text = "Measurment Options";
+            this.Label_AnalogInstantInput_Options.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel2.Controls.Add(this.Button_AnalogInstantInput_Defaults);
+            this.metroPanel2.Controls.Add(this.Button_AnalogInstantInput_EditOptions);
+            this.metroPanel2.Controls.Add(this.CheckBox_AnalogInstantInput_MeasurmentOptions);
+            this.metroPanel2.Controls.Add(this.CheckBox_AnalogInstantInput_Defaults);
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(2, 25);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(226, 101);
+            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel2.TabIndex = 69;
+            this.metroPanel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // Button_AnalogInstantInput_Defaults
+            // 
+            this.Button_AnalogInstantInput_Defaults.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.Button_AnalogInstantInput_Defaults.Location = new System.Drawing.Point(31, 59);
+            this.Button_AnalogInstantInput_Defaults.Name = "Button_AnalogInstantInput_Defaults";
+            this.Button_AnalogInstantInput_Defaults.Size = new System.Drawing.Size(122, 22);
+            this.Button_AnalogInstantInput_Defaults.TabIndex = 71;
+            this.Button_AnalogInstantInput_Defaults.Text = "Defaults";
+            this.Button_AnalogInstantInput_Defaults.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Button_AnalogInstantInput_Defaults.UseSelectable = true;
+            this.Button_AnalogInstantInput_Defaults.Click += new System.EventHandler(this.Button_AnalogInstantInput_Defaults_Click);
+            // 
+            // Button_AnalogInstantInput_EditOptions
+            // 
+            this.Button_AnalogInstantInput_EditOptions.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.Button_AnalogInstantInput_EditOptions.Location = new System.Drawing.Point(31, 19);
+            this.Button_AnalogInstantInput_EditOptions.Name = "Button_AnalogInstantInput_EditOptions";
+            this.Button_AnalogInstantInput_EditOptions.Size = new System.Drawing.Size(122, 22);
+            this.Button_AnalogInstantInput_EditOptions.TabIndex = 63;
+            this.Button_AnalogInstantInput_EditOptions.Text = "Custom";
+            this.Button_AnalogInstantInput_EditOptions.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Button_AnalogInstantInput_EditOptions.UseSelectable = true;
+            this.Button_AnalogInstantInput_EditOptions.Click += new System.EventHandler(this.Button_AnalogInstantInput_EditOptions_Click);
+            // 
+            // CheckBox_AnalogInstantInput_MeasurmentOptions
+            // 
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.AutoSize = true;
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.Enabled = false;
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.Location = new System.Drawing.Point(177, 22);
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.Name = "CheckBox_AnalogInstantInput_MeasurmentOptions";
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.Size = new System.Drawing.Size(26, 15);
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.TabIndex = 65;
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.Text = " ";
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CheckBox_AnalogInstantInput_MeasurmentOptions.UseSelectable = true;
+            // 
+            // CheckBox_AnalogInstantInput_Defaults
+            // 
+            this.CheckBox_AnalogInstantInput_Defaults.AutoSize = true;
+            this.CheckBox_AnalogInstantInput_Defaults.Checked = true;
+            this.CheckBox_AnalogInstantInput_Defaults.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBox_AnalogInstantInput_Defaults.Enabled = false;
+            this.CheckBox_AnalogInstantInput_Defaults.Location = new System.Drawing.Point(177, 63);
+            this.CheckBox_AnalogInstantInput_Defaults.Name = "CheckBox_AnalogInstantInput_Defaults";
+            this.CheckBox_AnalogInstantInput_Defaults.Size = new System.Drawing.Size(26, 15);
+            this.CheckBox_AnalogInstantInput_Defaults.TabIndex = 67;
+            this.CheckBox_AnalogInstantInput_Defaults.Text = " ";
+            this.CheckBox_AnalogInstantInput_Defaults.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.CheckBox_AnalogInstantInput_Defaults.UseSelectable = true;
+            this.CheckBox_AnalogInstantInput_Defaults.CheckedChanged += new System.EventHandler(this.CheckBox_AnalogInstantInput_Defaults_CheckedChanged);
+            // 
             // TrackBar_AnalogInstantInput_1
             // 
             this.TrackBar_AnalogInstantInput_1.BackColor = System.Drawing.Color.Transparent;
             this.TrackBar_AnalogInstantInput_1.Enabled = false;
-            this.TrackBar_AnalogInstantInput_1.Location = new System.Drawing.Point(314, 378);
+            this.TrackBar_AnalogInstantInput_1.Location = new System.Drawing.Point(313, 533);
             this.TrackBar_AnalogInstantInput_1.Name = "TrackBar_AnalogInstantInput_1";
             this.TrackBar_AnalogInstantInput_1.Size = new System.Drawing.Size(219, 20);
             this.TrackBar_AnalogInstantInput_1.Style = MetroFramework.MetroColorStyle.Green;
@@ -1253,7 +1882,7 @@
             // 
             this.TrackBar_AnalogInstantInput_2.BackColor = System.Drawing.Color.Transparent;
             this.TrackBar_AnalogInstantInput_2.Enabled = false;
-            this.TrackBar_AnalogInstantInput_2.Location = new System.Drawing.Point(314, 406);
+            this.TrackBar_AnalogInstantInput_2.Location = new System.Drawing.Point(313, 561);
             this.TrackBar_AnalogInstantInput_2.Name = "TrackBar_AnalogInstantInput_2";
             this.TrackBar_AnalogInstantInput_2.Size = new System.Drawing.Size(219, 20);
             this.TrackBar_AnalogInstantInput_2.Style = MetroFramework.MetroColorStyle.Green;
@@ -1265,7 +1894,7 @@
             // 
             this.Button_AnalogInstantInput_Reset.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Button_AnalogInstantInput_Reset.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_AnalogInstantInput_Reset.Location = new System.Drawing.Point(549, 381);
+            this.Button_AnalogInstantInput_Reset.Location = new System.Drawing.Point(548, 536);
             this.Button_AnalogInstantInput_Reset.Name = "Button_AnalogInstantInput_Reset";
             this.Button_AnalogInstantInput_Reset.Size = new System.Drawing.Size(93, 39);
             this.Button_AnalogInstantInput_Reset.TabIndex = 54;
@@ -1278,7 +1907,7 @@
             // 
             this.Button_AnalogInstantInput_Pause.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Button_AnalogInstantInput_Pause.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_AnalogInstantInput_Pause.Location = new System.Drawing.Point(648, 381);
+            this.Button_AnalogInstantInput_Pause.Location = new System.Drawing.Point(647, 536);
             this.Button_AnalogInstantInput_Pause.Name = "Button_AnalogInstantInput_Pause";
             this.Button_AnalogInstantInput_Pause.Size = new System.Drawing.Size(93, 39);
             this.Button_AnalogInstantInput_Pause.TabIndex = 53;
@@ -1287,31 +1916,11 @@
             this.Button_AnalogInstantInput_Pause.UseSelectable = true;
             this.Button_AnalogInstantInput_Pause.Click += new System.EventHandler(this.Button_AnalogInstantInput_Pause_Click);
             // 
-            // Label_AnalogInstantInput_Interval_2
-            // 
-            this.Label_AnalogInstantInput_Interval_2.AutoSize = true;
-            this.Label_AnalogInstantInput_Interval_2.Location = new System.Drawing.Point(187, 20);
-            this.Label_AnalogInstantInput_Interval_2.Name = "Label_AnalogInstantInput_Interval_2";
-            this.Label_AnalogInstantInput_Interval_2.Size = new System.Drawing.Size(51, 19);
-            this.Label_AnalogInstantInput_Interval_2.TabIndex = 52;
-            this.Label_AnalogInstantInput_Interval_2.Text = "Interval";
-            this.Label_AnalogInstantInput_Interval_2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Label_AnalogInstantInput_Interval_1
-            // 
-            this.Label_AnalogInstantInput_Interval_1.AutoSize = true;
-            this.Label_AnalogInstantInput_Interval_1.Location = new System.Drawing.Point(19, 20);
-            this.Label_AnalogInstantInput_Interval_1.Name = "Label_AnalogInstantInput_Interval_1";
-            this.Label_AnalogInstantInput_Interval_1.Size = new System.Drawing.Size(51, 19);
-            this.Label_AnalogInstantInput_Interval_1.TabIndex = 51;
-            this.Label_AnalogInstantInput_Interval_1.Text = "Interval";
-            this.Label_AnalogInstantInput_Interval_1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
             // Button_AnalogInstantInput_Back
             // 
             this.Button_AnalogInstantInput_Back.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Button_AnalogInstantInput_Back.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_AnalogInstantInput_Back.Location = new System.Drawing.Point(3, 381);
+            this.Button_AnalogInstantInput_Back.Location = new System.Drawing.Point(7, 536);
             this.Button_AnalogInstantInput_Back.Name = "Button_AnalogInstantInput_Back";
             this.Button_AnalogInstantInput_Back.Size = new System.Drawing.Size(143, 39);
             this.Button_AnalogInstantInput_Back.TabIndex = 50;
@@ -1320,83 +1929,11 @@
             this.Button_AnalogInstantInput_Back.UseSelectable = true;
             this.Button_AnalogInstantInput_Back.Click += new System.EventHandler(this.Button_AnalogInstantInput_Back_Click);
             // 
-            // ComboBox_AnalogInstantInput_NumberOfChannels
-            // 
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.FormattingEnabled = true;
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.ItemHeight = 23;
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8"});
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.Location = new System.Drawing.Point(24, 159);
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.Name = "ComboBox_AnalogInstantInput_NumberOfChannels";
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.Size = new System.Drawing.Size(122, 29);
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.TabIndex = 20;
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ComboBox_AnalogInstantInput_NumberOfChannels.UseSelectable = true;
-            // 
-            // ComboBox_AnalogInstantInput_StartChannel
-            // 
-            this.ComboBox_AnalogInstantInput_StartChannel.FormattingEnabled = true;
-            this.ComboBox_AnalogInstantInput_StartChannel.ItemHeight = 23;
-            this.ComboBox_AnalogInstantInput_StartChannel.Items.AddRange(new object[] {
-            "Channel 0",
-            "Channel 1",
-            "Channel 2",
-            "Channel 3",
-            "Channel 4",
-            "Channel 5",
-            "Channel 6",
-            "Channel 7",
-            "Channel 8"});
-            this.ComboBox_AnalogInstantInput_StartChannel.Location = new System.Drawing.Point(24, 93);
-            this.ComboBox_AnalogInstantInput_StartChannel.Name = "ComboBox_AnalogInstantInput_StartChannel";
-            this.ComboBox_AnalogInstantInput_StartChannel.Size = new System.Drawing.Size(122, 29);
-            this.ComboBox_AnalogInstantInput_StartChannel.TabIndex = 19;
-            this.ComboBox_AnalogInstantInput_StartChannel.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ComboBox_AnalogInstantInput_StartChannel.UseSelectable = true;
-            // 
-            // Label_AnalogInstantInput_NumberOfChannels
-            // 
-            this.Label_AnalogInstantInput_NumberOfChannels.AutoSize = true;
-            this.Label_AnalogInstantInput_NumberOfChannels.Location = new System.Drawing.Point(19, 137);
-            this.Label_AnalogInstantInput_NumberOfChannels.Name = "Label_AnalogInstantInput_NumberOfChannels";
-            this.Label_AnalogInstantInput_NumberOfChannels.Size = new System.Drawing.Size(130, 19);
-            this.Label_AnalogInstantInput_NumberOfChannels.TabIndex = 18;
-            this.Label_AnalogInstantInput_NumberOfChannels.Text = "Number of Channels";
-            this.Label_AnalogInstantInput_NumberOfChannels.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Label_AnalogInstantInput_StartChannel
-            // 
-            this.Label_AnalogInstantInput_StartChannel.AutoSize = true;
-            this.Label_AnalogInstantInput_StartChannel.Location = new System.Drawing.Point(19, 71);
-            this.Label_AnalogInstantInput_StartChannel.Name = "Label_AnalogInstantInput_StartChannel";
-            this.Label_AnalogInstantInput_StartChannel.Size = new System.Drawing.Size(87, 19);
-            this.Label_AnalogInstantInput_StartChannel.TabIndex = 17;
-            this.Label_AnalogInstantInput_StartChannel.Text = "Start Channel";
-            this.Label_AnalogInstantInput_StartChannel.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // TrackBar_AnalogInstantInput_SampleInterval
-            // 
-            this.TrackBar_AnalogInstantInput_SampleInterval.BackColor = System.Drawing.Color.Transparent;
-            this.TrackBar_AnalogInstantInput_SampleInterval.Location = new System.Drawing.Point(24, 42);
-            this.TrackBar_AnalogInstantInput_SampleInterval.Name = "TrackBar_AnalogInstantInput_SampleInterval";
-            this.TrackBar_AnalogInstantInput_SampleInterval.Size = new System.Drawing.Size(214, 26);
-            this.TrackBar_AnalogInstantInput_SampleInterval.TabIndex = 16;
-            this.TrackBar_AnalogInstantInput_SampleInterval.Text = "metroTrackBar2";
-            this.TrackBar_AnalogInstantInput_SampleInterval.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TrackBar_AnalogInstantInput_SampleInterval.ValueChanged += new System.EventHandler(this.TrackBar_AnalogInstantInput_SampleInterval_ValueChanged);
-            // 
             // Button_AnalogInstantInput_Measure
             // 
             this.Button_AnalogInstantInput_Measure.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Button_AnalogInstantInput_Measure.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_AnalogInstantInput_Measure.Location = new System.Drawing.Point(747, 381);
+            this.Button_AnalogInstantInput_Measure.Location = new System.Drawing.Point(746, 536);
             this.Button_AnalogInstantInput_Measure.Name = "Button_AnalogInstantInput_Measure";
             this.Button_AnalogInstantInput_Measure.Size = new System.Drawing.Size(150, 39);
             this.Button_AnalogInstantInput_Measure.TabIndex = 13;
@@ -1467,48 +2004,63 @@
             series11.BorderWidth = 2;
             series11.ChartArea = "ChartArea1";
             series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Color = System.Drawing.Color.Yellow;
+            series11.Color = System.Drawing.Color.DarkKhaki;
             series11.IsXValueIndexed = true;
             series11.Legend = "Legend1";
             series11.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series11.MarkerColor = System.Drawing.Color.Yellow;
+            series11.MarkerColor = System.Drawing.Color.DarkKhaki;
             series11.MarkerSize = 0;
             series11.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series11.Name = "Series3";
             series12.BorderWidth = 2;
             series12.ChartArea = "ChartArea1";
             series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Color = System.Drawing.Color.Lime;
+            series12.Color = System.Drawing.Color.DarkGreen;
             series12.IsXValueIndexed = true;
             series12.Legend = "Legend1";
             series12.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series12.MarkerColor = System.Drawing.Color.Lime;
+            series12.MarkerColor = System.Drawing.Color.DarkGreen;
             series12.MarkerSize = 0;
             series12.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series12.Name = "Series4";
             series13.BorderWidth = 2;
             series13.ChartArea = "ChartArea1";
             series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series13.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             series13.IsXValueIndexed = true;
             series13.Legend = "Legend1";
+            series13.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series13.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             series13.MarkerSize = 0;
             series13.Name = "Series5";
+            series14.BorderWidth = 2;
             series14.ChartArea = "ChartArea1";
             series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series14.Color = System.Drawing.Color.DarkTurquoise;
             series14.IsXValueIndexed = true;
             series14.Legend = "Legend1";
+            series14.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series14.MarkerColor = System.Drawing.Color.DarkTurquoise;
             series14.MarkerSize = 0;
             series14.Name = "Series6";
+            series15.BorderWidth = 2;
             series15.ChartArea = "ChartArea1";
             series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series15.Color = System.Drawing.Color.Brown;
             series15.IsXValueIndexed = true;
             series15.Legend = "Legend1";
+            series15.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series15.MarkerColor = System.Drawing.Color.Brown;
             series15.MarkerSize = 0;
             series15.Name = "Series7";
+            series16.BorderWidth = 2;
             series16.ChartArea = "ChartArea1";
             series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series16.Color = System.Drawing.Color.Chocolate;
             series16.IsXValueIndexed = true;
             series16.Legend = "Legend1";
+            series16.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series16.MarkerColor = System.Drawing.Color.Chocolate;
             series16.MarkerSize = 0;
             series16.Name = "Series8";
             this.Chart_AnalogInstantInput.Series.Add(series9);
@@ -1519,9 +2071,11 @@
             this.Chart_AnalogInstantInput.Series.Add(series14);
             this.Chart_AnalogInstantInput.Series.Add(series15);
             this.Chart_AnalogInstantInput.Series.Add(series16);
-            this.Chart_AnalogInstantInput.Size = new System.Drawing.Size(673, 380);
+            this.Chart_AnalogInstantInput.Size = new System.Drawing.Size(673, 448);
             this.Chart_AnalogInstantInput.TabIndex = 4;
             this.Chart_AnalogInstantInput.Text = "chart2";
+            this.Chart_AnalogInstantInput.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.Chart_AnalogInstantInput_AxisViewChanged);
+            this.Chart_AnalogInstantInput.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Chart_AnalogInstantInput_MouseClick);
             // 
             // TabPage_LastMeasure
             // 
@@ -1536,7 +2090,7 @@
             this.TabPage_LastMeasure.Location = new System.Drawing.Point(4, 38);
             this.TabPage_LastMeasure.Name = "TabPage_LastMeasure";
             this.TabPage_LastMeasure.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TabPage_LastMeasure.Size = new System.Drawing.Size(917, 444);
+            this.TabPage_LastMeasure.Size = new System.Drawing.Size(917, 580);
             this.TabPage_LastMeasure.Style = MetroFramework.MetroColorStyle.Orange;
             this.TabPage_LastMeasure.TabIndex = 5;
             this.TabPage_LastMeasure.Text = "Results";
@@ -1735,7 +2289,7 @@
             this.TabPage_Measure.HorizontalScrollbarSize = 10;
             this.TabPage_Measure.Location = new System.Drawing.Point(4, 38);
             this.TabPage_Measure.Name = "TabPage_Measure";
-            this.TabPage_Measure.Size = new System.Drawing.Size(917, 444);
+            this.TabPage_Measure.Size = new System.Drawing.Size(917, 580);
             this.TabPage_Measure.TabIndex = 7;
             this.TabPage_Measure.Text = "Measure";
             this.TabPage_Measure.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1924,20 +2478,32 @@
             this.Tile_Measure_AnalogInput.MouseEnter += new System.EventHandler(this.metroTile1_MouseHover);
             this.Tile_Measure_AnalogInput.MouseLeave += new System.EventHandler(this.metroTile1_MouseLeave);
             // 
-            // TabPage_DigitalOutput
+            // TabPage_MyMeasurements
             // 
-            this.TabPage_DigitalOutput.HorizontalScrollbarBarColor = true;
-            this.TabPage_DigitalOutput.HorizontalScrollbarHighlightOnWheel = false;
-            this.TabPage_DigitalOutput.HorizontalScrollbarSize = 10;
-            this.TabPage_DigitalOutput.Location = new System.Drawing.Point(4, 38);
-            this.TabPage_DigitalOutput.Name = "TabPage_DigitalOutput";
-            this.TabPage_DigitalOutput.Size = new System.Drawing.Size(917, 444);
-            this.TabPage_DigitalOutput.TabIndex = 3;
-            this.TabPage_DigitalOutput.Text = "Digital Output";
-            this.TabPage_DigitalOutput.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TabPage_DigitalOutput.VerticalScrollbarBarColor = true;
-            this.TabPage_DigitalOutput.VerticalScrollbarHighlightOnWheel = false;
-            this.TabPage_DigitalOutput.VerticalScrollbarSize = 10;
+            this.TabPage_MyMeasurements.Controls.Add(this.Button_MyMeasurements_NewMeasure);
+            this.TabPage_MyMeasurements.HorizontalScrollbarBarColor = true;
+            this.TabPage_MyMeasurements.HorizontalScrollbarHighlightOnWheel = false;
+            this.TabPage_MyMeasurements.HorizontalScrollbarSize = 10;
+            this.TabPage_MyMeasurements.Location = new System.Drawing.Point(4, 38);
+            this.TabPage_MyMeasurements.Name = "TabPage_MyMeasurements";
+            this.TabPage_MyMeasurements.Size = new System.Drawing.Size(917, 580);
+            this.TabPage_MyMeasurements.TabIndex = 8;
+            this.TabPage_MyMeasurements.Text = "My Measurments";
+            this.TabPage_MyMeasurements.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TabPage_MyMeasurements.VerticalScrollbarBarColor = true;
+            this.TabPage_MyMeasurements.VerticalScrollbarHighlightOnWheel = false;
+            this.TabPage_MyMeasurements.VerticalScrollbarSize = 10;
+            // 
+            // Button_MyMeasurements_NewMeasure
+            // 
+            this.Button_MyMeasurements_NewMeasure.Location = new System.Drawing.Point(701, 180);
+            this.Button_MyMeasurements_NewMeasure.Name = "Button_MyMeasurements_NewMeasure";
+            this.Button_MyMeasurements_NewMeasure.Size = new System.Drawing.Size(84, 35);
+            this.Button_MyMeasurements_NewMeasure.TabIndex = 2;
+            this.Button_MyMeasurements_NewMeasure.Text = "New Measure";
+            this.Button_MyMeasurements_NewMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Button_MyMeasurements_NewMeasure.UseSelectable = true;
+            this.Button_MyMeasurements_NewMeasure.Click += new System.EventHandler(this.Button_MyMeasurements_NewMeasure_Click);
             // 
             // TabPage_DigitalInput
             // 
@@ -1946,7 +2512,7 @@
             this.TabPage_DigitalInput.HorizontalScrollbarSize = 10;
             this.TabPage_DigitalInput.Location = new System.Drawing.Point(4, 38);
             this.TabPage_DigitalInput.Name = "TabPage_DigitalInput";
-            this.TabPage_DigitalInput.Size = new System.Drawing.Size(917, 444);
+            this.TabPage_DigitalInput.Size = new System.Drawing.Size(917, 580);
             this.TabPage_DigitalInput.TabIndex = 2;
             this.TabPage_DigitalInput.Text = "Digital Input";
             this.TabPage_DigitalInput.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -1954,9 +2520,24 @@
             this.TabPage_DigitalInput.VerticalScrollbarHighlightOnWheel = false;
             this.TabPage_DigitalInput.VerticalScrollbarSize = 10;
             // 
+            // TabPage_DigitalOutput
+            // 
+            this.TabPage_DigitalOutput.HorizontalScrollbarBarColor = true;
+            this.TabPage_DigitalOutput.HorizontalScrollbarHighlightOnWheel = false;
+            this.TabPage_DigitalOutput.HorizontalScrollbarSize = 10;
+            this.TabPage_DigitalOutput.Location = new System.Drawing.Point(4, 38);
+            this.TabPage_DigitalOutput.Name = "TabPage_DigitalOutput";
+            this.TabPage_DigitalOutput.Size = new System.Drawing.Size(917, 580);
+            this.TabPage_DigitalOutput.TabIndex = 3;
+            this.TabPage_DigitalOutput.Text = "Digital Output";
+            this.TabPage_DigitalOutput.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TabPage_DigitalOutput.VerticalScrollbarBarColor = true;
+            this.TabPage_DigitalOutput.VerticalScrollbarHighlightOnWheel = false;
+            this.TabPage_DigitalOutput.VerticalScrollbarSize = 10;
+            // 
             // ProgressSpinner
             // 
-            this.ProgressSpinner.Location = new System.Drawing.Point(930, 483);
+            this.ProgressSpinner.Location = new System.Drawing.Point(929, 637);
             this.ProgressSpinner.Maximum = 100;
             this.ProgressSpinner.Name = "ProgressSpinner";
             this.ProgressSpinner.Size = new System.Drawing.Size(39, 39);
@@ -1990,100 +2571,12 @@
             this.timer_ProgressBar.Interval = 10;
             this.timer_ProgressBar.Tick += new System.EventHandler(this.timer_ProgressBar_Tick);
             // 
-            // Label_AnalogBufferedInput_Details
-            // 
-            this.Label_AnalogBufferedInput_Details.AutoSize = true;
-            this.Label_AnalogBufferedInput_Details.Location = new System.Drawing.Point(21, 205);
-            this.Label_AnalogBufferedInput_Details.Name = "Label_AnalogBufferedInput_Details";
-            this.Label_AnalogBufferedInput_Details.Size = new System.Drawing.Size(47, 19);
-            this.Label_AnalogBufferedInput_Details.TabIndex = 53;
-            this.Label_AnalogBufferedInput_Details.Text = "Details";
-            this.Label_AnalogBufferedInput_Details.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // metroPanel1
-            // 
-            this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_DurationValue);
-            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_EndValue);
-            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_Duration);
-            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_StartValue);
-            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_EndTime);
-            this.metroPanel1.Controls.Add(this.Label_AnalogBufferedInput_TimeStart);
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(2, 214);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(255, 119);
-            this.metroPanel1.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroPanel1.TabIndex = 52;
-            this.metroPanel1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // Label_AnalogBufferedInput_TimeStart
-            // 
-            this.Label_AnalogBufferedInput_TimeStart.Location = new System.Drawing.Point(52, 19);
-            this.Label_AnalogBufferedInput_TimeStart.Name = "Label_AnalogBufferedInput_TimeStart";
-            this.Label_AnalogBufferedInput_TimeStart.Size = new System.Drawing.Size(47, 19);
-            this.Label_AnalogBufferedInput_TimeStart.TabIndex = 54;
-            this.Label_AnalogBufferedInput_TimeStart.Text = "Start:";
-            this.Label_AnalogBufferedInput_TimeStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_AnalogBufferedInput_TimeStart.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Label_AnalogBufferedInput_EndTime
-            // 
-            this.Label_AnalogBufferedInput_EndTime.Location = new System.Drawing.Point(52, 51);
-            this.Label_AnalogBufferedInput_EndTime.Name = "Label_AnalogBufferedInput_EndTime";
-            this.Label_AnalogBufferedInput_EndTime.Size = new System.Drawing.Size(47, 19);
-            this.Label_AnalogBufferedInput_EndTime.TabIndex = 55;
-            this.Label_AnalogBufferedInput_EndTime.Text = "End:";
-            this.Label_AnalogBufferedInput_EndTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_AnalogBufferedInput_EndTime.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Label_AnalogBufferedInput_Duration
-            // 
-            this.Label_AnalogBufferedInput_Duration.Location = new System.Drawing.Point(18, 82);
-            this.Label_AnalogBufferedInput_Duration.Name = "Label_AnalogBufferedInput_Duration";
-            this.Label_AnalogBufferedInput_Duration.Size = new System.Drawing.Size(81, 19);
-            this.Label_AnalogBufferedInput_Duration.TabIndex = 56;
-            this.Label_AnalogBufferedInput_Duration.Text = "Duration:";
-            this.Label_AnalogBufferedInput_Duration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.Label_AnalogBufferedInput_Duration.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Label_AnalogBufferedInput_DurationValue
-            // 
-            this.Label_AnalogBufferedInput_DurationValue.AutoSize = true;
-            this.Label_AnalogBufferedInput_DurationValue.Location = new System.Drawing.Point(123, 82);
-            this.Label_AnalogBufferedInput_DurationValue.Name = "Label_AnalogBufferedInput_DurationValue";
-            this.Label_AnalogBufferedInput_DurationValue.Size = new System.Drawing.Size(0, 0);
-            this.Label_AnalogBufferedInput_DurationValue.TabIndex = 59;
-            this.Label_AnalogBufferedInput_DurationValue.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Label_AnalogBufferedInput_EndValue
-            // 
-            this.Label_AnalogBufferedInput_EndValue.AutoSize = true;
-            this.Label_AnalogBufferedInput_EndValue.Location = new System.Drawing.Point(123, 51);
-            this.Label_AnalogBufferedInput_EndValue.Name = "Label_AnalogBufferedInput_EndValue";
-            this.Label_AnalogBufferedInput_EndValue.Size = new System.Drawing.Size(0, 0);
-            this.Label_AnalogBufferedInput_EndValue.TabIndex = 58;
-            this.Label_AnalogBufferedInput_EndValue.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Label_AnalogBufferedInput_StartValue
-            // 
-            this.Label_AnalogBufferedInput_StartValue.AutoSize = true;
-            this.Label_AnalogBufferedInput_StartValue.Location = new System.Drawing.Point(123, 19);
-            this.Label_AnalogBufferedInput_StartValue.Name = "Label_AnalogBufferedInput_StartValue";
-            this.Label_AnalogBufferedInput_StartValue.Size = new System.Drawing.Size(0, 0);
-            this.Label_AnalogBufferedInput_StartValue.TabIndex = 57;
-            this.Label_AnalogBufferedInput_StartValue.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 572);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(973, 700);
             this.Controls.Add(this.ProgressSpinner);
             this.Controls.Add(this.TabControl);
             this.Name = "MainWindow";
@@ -2096,8 +2589,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Welcome_Advantech)).EndInit();
             this.TabPage_AnalogBufferedInput.ResumeLayout(false);
             this.TabPage_AnalogBufferedInput.PerformLayout();
+            this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
             this.TabPage_Options.ResumeLayout(false);
             this.TabPage_Options.PerformLayout();
+            this.Panel_Options_Comments.ResumeLayout(false);
             this.Panel_Options_Card.ResumeLayout(false);
             this.Panel_Options_Card.PerformLayout();
             this.Panel_Options_Language.ResumeLayout(false);
@@ -2108,21 +2604,25 @@
             this.Panel_Options_Database.PerformLayout();
             this.TabPage_AnalogInstantInput.ResumeLayout(false);
             this.TabPage_AnalogInstantInput.PerformLayout();
+            this.metroPanel5.ResumeLayout(false);
+            this.metroPanel4.ResumeLayout(false);
+            this.metroPanel3.ResumeLayout(false);
+            this.metroPanel3.PerformLayout();
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_AnalogInstantInput)).EndInit();
             this.TabPage_LastMeasure.ResumeLayout(false);
             this.Panel_Results.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGridTable)).EndInit();
             this.TabPage_Measure.ResumeLayout(false);
             this.TabPage_Measure.PerformLayout();
-            this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
+            this.TabPage_MyMeasurements.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Automation.BDaq.BufferedAiCtrl bufferedAiCtrl1;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart_AnalogBufferedInput;
         private MetroFramework.Controls.MetroLabel Label_AnalogBufferedInput_Samples;
         private MetroFramework.Controls.MetroLabel Label_AnalogBufferedInput_Channels;
@@ -2185,29 +2685,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_8;
-        private MetroFramework.Controls.MetroButton Button_Results_ExportToXLSM;
-        private MetroFramework.Controls.MetroButton Button_Results_ExportToTXT;
         private MetroFramework.Controls.MetroButton Button_Results_ExportToFile;
-        private MetroFramework.Controls.MetroComboBox ComboBox_AnalogInstantInput_NumberOfChannels;
-        private MetroFramework.Controls.MetroComboBox ComboBox_AnalogInstantInput_StartChannel;
-        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_NumberOfChannels;
-        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_StartChannel;
-        private MetroFramework.Controls.MetroTrackBar TrackBar_AnalogInstantInput_SampleInterval;
         private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_Measure;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart_AnalogInstantInput;
-        private Automation.BDaq.InstantAiCtrl instantAiCtrl1;
         private System.Windows.Forms.Timer timer_getData;
         private MetroFramework.Controls.MetroButton Button_AnalogBufferedInput_Back;
         private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_Back;
-        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Interval_2;
-        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Interval_1;
         private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_ChartAutosize;
         private MetroFramework.Controls.MetroToggle Toggle_AnalogInstantInput_ChartAutosize;
         private MetroFramework.Controls.MetroTrackBar TrackBar_AnalogInstantInput_1;
         private MetroFramework.Controls.MetroTrackBar TrackBar_AnalogInstantInput_2;
         private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_Reset;
         private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_Pause;
-        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_SampleCount;
         private MetroFramework.Controls.MetroLabel Label_Options_Haslo;
         private MetroFramework.Controls.MetroTextBox TextBox_Options_Haslo;
         private MetroFramework.Controls.MetroLabel Label_Options_User;
@@ -2238,7 +2727,6 @@
         private MetroFramework.Controls.MetroTextBox TextBox_AnalogInstantInput_MovingWindow;
         private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_MovingWindow;
         private MetroFramework.Controls.MetroToggle Toggle_AnalogInstantInput_MovingWindow;
-        private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroLabel Label_AnalogBufferedInput_Details;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroLabel Label_AnalogBufferedInput_DurationValue;
@@ -2247,6 +2735,53 @@
         private MetroFramework.Controls.MetroLabel Label_AnalogBufferedInput_StartValue;
         private MetroFramework.Controls.MetroLabel Label_AnalogBufferedInput_EndTime;
         private MetroFramework.Controls.MetroLabel Label_AnalogBufferedInput_TimeStart;
+        private MetroFramework.Controls.MetroScrollBar ScrollBar_Options;
+        private MetroFramework.Controls.MetroLabel Label_Options_CommentOptions;
+        private MetroFramework.Controls.MetroPanel Panel_Options_Comments;
+        private MetroFramework.Controls.MetroTextBox TextBox_Options_UserComment;
+        private MetroFramework.Controls.MetroLabel Label_Options_AdminComment;
+        private MetroFramework.Controls.MetroTextBox TextBox_Options_AdminComment;
+        private MetroFramework.Controls.MetroLabel Label_Options_UserComment;
+        private MetroFramework.Controls.MetroButton Button_Results_ExportToXLSM;
+        private MetroFramework.Controls.MetroButton Button_Results_ExportToTXT;
+        private MetroFramework.Controls.MetroTabPage TabPage_MyMeasurements;
+        private MetroFramework.Controls.MetroButton Button_MyMeasurements_NewMeasure;
+        public Automation.BDaq.BufferedAiCtrl bufferedAiCtrl1;
+        public Automation.BDaq.InstantAiCtrl instantAiCtrl1;
+        private MetroFramework.Controls.MetroCheckBox CheckBox_AnalogInstantInput_MeasurmentOptions;
+        private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_EditOptions;
+        private MetroFramework.Controls.MetroCheckBox CheckBox_AnalogInstantInput_Defaults;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Options;
+        private MetroFramework.Controls.MetroPanel metroPanel2;
+        private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_Defaults;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_ViewOptions;
+        private MetroFramework.Controls.MetroPanel metroPanel3;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Details;
+        private MetroFramework.Controls.MetroPanel metroPanel4;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Duration;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_End;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Start;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_StartValue;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_CurrentPoints;
+        private MetroFramework.Controls.MetroPanel metroPanel5;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch6Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch7Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch3Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch5Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch4Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch2Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch1Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch0Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch6;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch7;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch3;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch5;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch4;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch2;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch1;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Ch0;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Value;
+        private MetroFramework.Controls.MetroLabel Label_AnalogInstantInput_Channel;
     }
 }
 

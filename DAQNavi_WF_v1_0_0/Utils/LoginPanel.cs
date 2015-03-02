@@ -9,12 +9,14 @@ using System.Windows.Forms;
 namespace DAQNavi_WF_v1_0_0
 {
 
-    class LoginPanel
+    public class LoginPanel
     {
-        private string dataSource;
-        private string port;
-        private string username;
-        private string dbPassword;
+
+        public string dataSource { get; set; }
+        public string port { get; set; }
+        public string username { get; set; }
+        public string dbPassword { get; set; }
+
         public User loggedUser { get; set; }
 
         public LoginPanel(string dataSource, string port, string username, string password)
