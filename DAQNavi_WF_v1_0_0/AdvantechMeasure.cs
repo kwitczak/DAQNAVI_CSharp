@@ -17,6 +17,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Globalization;
 using Automation.BDaq;
 using System.Management;
+using DAQNavi_WF_v1_0_0.Utils;
 
 namespace DAQNavi_WF_v1_0_0
 {
@@ -52,7 +53,13 @@ namespace DAQNavi_WF_v1_0_0
         int analogInstantInput_choosenChannel;
         int analogInstantInput_numberOfChannels;
 
+        // For MyMeasurments
         int numberOfMeasurments = 0;
+        List <MetroFramework.Controls.MetroLabel> ListMyMeasurmentsTitles = new List<MetroFramework.Controls.MetroLabel>();
+        List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsChannelStart = new List<MetroFramework.Controls.MetroLabel>();
+        List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsNumberOfChannels = new List<MetroFramework.Controls.MetroLabel>();
+        List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsSamples = new List<MetroFramework.Controls.MetroLabel>();
+        
 
 
         public MainWindow()
@@ -548,7 +555,7 @@ namespace DAQNavi_WF_v1_0_0
                 MetroMessageBox.Show(this, "" + user.imie + ", logowanie powiodło się.", "Witaj", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 if (user.admin == 1)
                 {
-                    this.TabControl.TabPages.Remove(metroTabPageWelcome);
+                    //this.TabControl.TabPages.Remove(metroTabPageWelcome);
                     this.TabControl.TabPages.Add(TabPage_Options);
                     this.TabControl.TabPages.Add(TabPage_MyMeasurements);
 
@@ -556,11 +563,17 @@ namespace DAQNavi_WF_v1_0_0
                 }
                 else
                 {
-                    this.TabControl.TabPages.Remove(metroTabPageWelcome);
+                    //this.TabControl.TabPages.Remove(metroTabPageWelcome);
                     this.TabControl.TabPages.Add(TabPage_MyMeasurements);
 
                     this.TabControl.SelectedTab = TabPage_MyMeasurements;
                 }
+
+                TextBox_Welcome_Username.Text = "";
+                TextBox_Welcome_Password.Text = "";
+                TextBox_Welcome_Password.Enabled = false;
+                TextBox_Welcome_Username.Enabled = false;
+                Button_Welcome_Login.Text = "Logout";
             }
             else
             {
@@ -778,16 +791,15 @@ namespace DAQNavi_WF_v1_0_0
         private void Button_AnalogInstantInput_Click(object sender, EventArgs e)
         {
             // Button start mode
-            if (!runningAAI)
+            if (Button_AnalogInstantInput_Measure.Text.Equals("Measure"))
             {
-                numberOfMeasurments++;
                 createNewMeasurment();
-                Label_MyMeasurments_ResultTitle1.Text = "Measurment #" + numberOfMeasurments;
+                ListMyMeasurmentsTitles[numberOfMeasurments -1].Text = "Measurment #" + numberOfMeasurments;
 
             // Set start time
             timeStartAII = DateTime.Now;
             Label_AnalogInstantInput_StartValue.Text = timeStartAII.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-            Label_MyMeasurments_ResultTitle1.Text +="  -  " + timeStartAII.ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+            ListMyMeasurmentsTitles[numberOfMeasurments - 1].Text += "  -  " + timeStartAII.ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
             runningAAI = true;
             
@@ -808,25 +820,36 @@ namespace DAQNavi_WF_v1_0_0
 
             Button_AnalogInstantInput_Measure.Text = "Stop";
 
+
             // Start!
             timer_getData.Start();
 
 
 
             } // Button stop mode
-            else
+            else if(Button_AnalogInstantInput_Measure.Text.Equals("Stop"))
             {
                 // pokazanie czasu
                 timeEndAII = DateTime.Now;
                 Label_AnalogInstantInput_EndValue.Text = timeEndAII.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 timeDiffAII = timeEndAII.Subtract(timeStartAII);
                 Label_AnalogInstantInput_DurationValue.Text = new DateTime(timeDiffAII.Ticks).ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                Label_MyMeasurments_ResultTitle1.Text += "                                           duration:  " + new DateTime(timeDiffAII.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                ListMyMeasurmentsTitles[numberOfMeasurments - 1].Text += "                                           duration:  " + new DateTime(timeDiffAII.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
                 timer_getData.Stop();
                 dataInstantAI = new double[8];
-                Button_AnalogInstantInput_Measure.Text = "See Results";
-                Label_MyMeasurments_Samples1.Text = sampleCountAAI.ToString();
+                Button_AnalogInstantInput_Measure.Text = "Save";
+                ListMyMeasurmentsSamples[numberOfMeasurments - 1].Text = sampleCountAAI.ToString();
+                ListMyMeasurmentsNumberOfChannels[numberOfMeasurments -1].Text = analogInstantInput_numberOfChannels.ToString();
+                ListMyMeasurmentsChannelStart[numberOfMeasurments - 1].Text = analogInstantInput_choosenChannel.ToString();
+            }
+            
+                // Button save mode
+            else
+            {
+                this.TabControl.TabPages.Add(TabPage_LastMeasure);
+                this.TabControl.SelectedTab = TabPage_LastMeasure;
+
             }
             
             
@@ -911,6 +934,10 @@ namespace DAQNavi_WF_v1_0_0
             sampleCountAAI = 0;
             runningAAI = false;
             Button_AnalogInstantInput_Measure.Text = "Measure";
+
+            //unlock buttons
+            Button_AnalogInstantInput_Defaults.Enabled = true;
+            Button_AnalogInstantInput_EditOptions.Enabled = true;
 
 
         }
@@ -1393,17 +1420,6 @@ namespace DAQNavi_WF_v1_0_0
 
 
         /// <summary>
-        /// Przejście do podglądu zapisanych wyników
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void metroButton1_Click_1(object sender, EventArgs e)
-        {
-            
-            numberOfMeasurments++;
-        }
-
-        /// <summary>
         /// Tworzy nowy zestaw przyciskow i labelów
         /// </summary>
         public void createNewMeasurment()
@@ -1429,8 +1445,10 @@ namespace DAQNavi_WF_v1_0_0
             titleLabel.UseStyleColors = true;
             titleLabel.Style = MetroColorStyle.Blue;
             titleLabel.FontSize = MetroLabelSize.Tall;
+            titleLabel.AutoSize = true;
             TabPage_MyMeasurements.Controls.Add(titleLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(titleLabel, 0);
+            ListMyMeasurmentsTitles.Add(titleLabel);
 
             // Label Channel start
             MetroFramework.Controls.MetroLabel channelStartLabel = new MetroFramework.Controls.MetroLabel();
@@ -1457,6 +1475,8 @@ namespace DAQNavi_WF_v1_0_0
             channelStartValueLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(channelStartValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(channelStartValueLabel, 0);
+            ListMyMeasurmentsChannelStart.Add(channelStartValueLabel);
+
 
             // Label Number of channels
             MetroFramework.Controls.MetroLabel numberOfChannelsLabel = new MetroFramework.Controls.MetroLabel();
@@ -1483,6 +1503,7 @@ namespace DAQNavi_WF_v1_0_0
             numberOfChannelsValueLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(numberOfChannelsValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(numberOfChannelsValueLabel, 0);
+            ListMyMeasurmentsNumberOfChannels.Add(numberOfChannelsValueLabel);
 
             // Label Samples
             MetroFramework.Controls.MetroLabel samplesLabel = new MetroFramework.Controls.MetroLabel();
@@ -1509,10 +1530,55 @@ namespace DAQNavi_WF_v1_0_0
             samplesValueLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(samplesValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(samplesValueLabel, 0);
+            ListMyMeasurmentsSamples.Add(samplesValueLabel);
+
+            numberOfMeasurments++;
             
             
         }
 
+        /// <summary>
+        /// Tworzenie nowego usera
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Welcome_CreateNewUser_Click(object sender, EventArgs e)
+        {
+            CreateNewUser createNewUser = new CreateNewUser(this);
+            createNewUser.Show();
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox getDatabaseAddress
+        {
+            get { return this.TextBox_Options_Baza; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox getDatabasePort
+        {
+            get { return this.TextBox_Options_Port; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox getDatabaseUser
+        {
+            get { return this.TextBox_Options_User; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox getDatabasePassword
+        {
+            get { return this.TextBox_Options_Haslo; }
+        }
 
 
         

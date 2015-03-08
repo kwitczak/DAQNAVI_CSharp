@@ -78,6 +78,12 @@
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DTO\Measurment.cs" />
+    <Compile Include="Utils\CreateNewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Utils\CreateNewUser.Designer.cs">
+      <DependentUpon>CreateNewUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\LoginPanel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Utils\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Utils\CreateNewUser.resx">
+      <DependentUpon>CreateNewUser.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Automation.BDaq.BufferedAiCtrl.datasource" />
     <None Include="Properties\Settings.settings">
