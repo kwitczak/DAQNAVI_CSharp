@@ -36,6 +36,10 @@ namespace DAQNavi_WF_v1_0_0
             mainWindow.saveResultsToDataBase(mainWindow.timeStartABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture),
                 mainWindow.timeEndABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture),
                 mainWindow.dataBufferedAI,
+                new DateTime(mainWindow.timeDiffABI.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture),
+                mainWindow.sampleCountAAI.ToString(),
+                mainWindow.getNumberOfChannels.ToString(),
+                mainWindow.getChoosenChannel.ToString(),
                 this.ProgressBar_CommentForm);
             string time = DateTime.Now.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
             using (var dlg = new SaveFileDialog())

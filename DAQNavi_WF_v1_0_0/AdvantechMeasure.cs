@@ -18,6 +18,8 @@ using System.Globalization;
 using Automation.BDaq;
 using System.Management;
 using DAQNavi_WF_v1_0_0.Utils;
+using MySql.Data.MySqlClient;
+using DAQNavi_WF_v1_0_0.DTO;
 
 namespace DAQNavi_WF_v1_0_0
 {
@@ -59,6 +61,7 @@ namespace DAQNavi_WF_v1_0_0
         List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsChannelStart = new List<MetroFramework.Controls.MetroLabel>();
         List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsNumberOfChannels = new List<MetroFramework.Controls.MetroLabel>();
         List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsSamples = new List<MetroFramework.Controls.MetroLabel>();
+        List <MeasurmentDTO> myLoadedMeasurments = new List<MeasurmentDTO>();
         
 
 
@@ -551,7 +554,7 @@ namespace DAQNavi_WF_v1_0_0
             Boolean loginSuccessful = myLoginPanel.checkLogin(this.TextBox_Welcome_Username.Text, this.TextBox_Welcome_Password.Text);
             if (loginSuccessful)
             {
-                User user = myLoginPanel.loggedUser;
+                UserDTO user = myLoginPanel.loggedUser;
                 MetroMessageBox.Show(this, "" + user.imie + ", logowanie powiodło się.", "Witaj", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 if (user.admin == 1)
                 {
@@ -574,6 +577,9 @@ namespace DAQNavi_WF_v1_0_0
                 TextBox_Welcome_Password.Enabled = false;
                 TextBox_Welcome_Username.Enabled = false;
                 Button_Welcome_Login.Text = "Logout";
+
+                // Load measurments
+                loadMyMeasurments(user.idusers);
             }
             else
             {
@@ -1180,9 +1186,9 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="dateEnd"></param>
         /// <param name="data"></param>
         /// <param name="userID"></param>
-        public void saveResultsToDataBase(string dateStart, string dateEnd, double[] data, MetroFramework.Controls.MetroProgressBar progressBar)
+        public void saveResultsToDataBase(string dateStart, string dateEnd, double[] data, string duration, string samples, string numberofchannels, string startchannel, MetroFramework.Controls.MetroProgressBar progressBar)
         {
-            Measurment.saveDataToDataBase(myLoginPanel, dateStart, dateEnd, data, progressBar);
+            MeasurmentDAO.saveDataToDataBase(myLoginPanel, dateStart, dateEnd, data, duration, samples, numberofchannels, startchannel, progressBar);
         }
 
 
@@ -1580,7 +1586,48 @@ namespace DAQNavi_WF_v1_0_0
             get { return this.TextBox_Options_Haslo; }
         }
 
+        /// <summary>
+        /// Metoda która wyświetla pomiary wykonane przez danego użytkownika
+        /// </summary>
+        /// <param name="userId"></param>
+        public void loadMyMeasurments(String iduser)
+        {
+            string myConnection = "datasource=" + TextBox_Options_Baza.Text
+                + ";port=" + TextBox_Options_Port.Text
+                + ";username=" + TextBox_Options_User.Text +
+                ";password=" + TextBox_Options_Haslo.Text;
+            MySqlConnection myConn = new MySqlConnection(myConnection);
+            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.measurments where idusers='" + iduser + "' ;", myConn);
 
-        
+            MySqlDataReader myReader;
+            myConn.Open();
+            myReader = SelectCommand.ExecuteReader();
+            int count = 0;
+            while (myReader.Read())
+            {
+                MeasurmentDTO measurment = new MeasurmentDTO();
+                measurment.idmeasurments = myReader.GetString("idmeasurments");
+                measurment.idusers = myReader.GetString("idusers");
+                measurment.task = myReader.GetString("task");
+                measurment.timeend = myReader.GetString("timeend");
+                measurment.timestart = myReader.GetString("timestart");
+                measurment.week = myReader.GetString("week");
+                measurment.samples = myReader.GetString("samples");
+                measurment.duration = myReader.GetString("duration");
+                measurment.numberofchannels = myReader.GetString("numberofchannels");
+                measurment.startchannel = myReader.GetString("startchannel");
+                myLoadedMeasurments.Add(measurment);
+
+                createNewMeasurment();
+                ListMyMeasurmentsTitles[numberOfMeasurments - 1].Text = "Measurment #" + numberOfMeasurments;
+                ListMyMeasurmentsTitles[numberOfMeasurments - 1].Text += "  -  " + measurment.timestart;
+                ListMyMeasurmentsTitles[numberOfMeasurments - 1].Text += "                                           duration:  " + measurment.duration;
+                ListMyMeasurmentsSamples[numberOfMeasurments - 1].Text = measurment.samples;
+                ListMyMeasurmentsNumberOfChannels[numberOfMeasurments - 1].Text = measurment.numberofchannels;
+                ListMyMeasurmentsChannelStart[numberOfMeasurments - 1].Text = measurment.startchannel;
+                
+
+            }              
+       }
     }
 }

@@ -17,7 +17,7 @@ namespace DAQNavi_WF_v1_0_0
         public string username { get; set; }
         public string dbPassword { get; set; }
 
-        public User loggedUser { get; set; }
+        public UserDTO loggedUser { get; set; }
 
         public LoginPanel(string dataSource, string port, string username, string password)
         {
@@ -45,7 +45,7 @@ namespace DAQNavi_WF_v1_0_0
                 }
                 if (count == 1)
                 {
-                    loggedUser = new User();
+                    loggedUser = new UserDTO();
                     loggedUser.idusers = myReader.GetString("idusers");
                     loggedUser.email = myReader.GetString("email");
                     loggedUser.imie = myReader.GetString("imie");
