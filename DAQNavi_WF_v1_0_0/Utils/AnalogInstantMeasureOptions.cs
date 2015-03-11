@@ -55,8 +55,8 @@ namespace DAQNavi_WF_v1_0_0
         private void Button_AIMOptions_Save_Click(object sender, EventArgs e)
         {
             mainWindow.getAnalogInstantInputTimer = TrackBar_AnalogInstantInput_SampleInterval.Value;
-            mainWindow.getChoosenChannel = ComboBox_AnalogInstantInput_StartChannel.SelectedIndex;
-            mainWindow.getNumberOfChannels = ComboBox_AnalogInstantInput_NumberOfChannels.SelectedIndex + 1;
+            mainWindow.getChoosenChannelAII = ComboBox_AnalogInstantInput_StartChannel.SelectedIndex;
+            mainWindow.getNumberOfChannelsAAI = ComboBox_AnalogInstantInput_NumberOfChannels.SelectedIndex + 1;
             mainWindow.getCheckbox_AnalogInstantInput_MeasurmentOptions.Checked = true;
             mainWindow.getCheckbox_AnalogInstantInput_Defaults.Checked = false;
             this.Hide();

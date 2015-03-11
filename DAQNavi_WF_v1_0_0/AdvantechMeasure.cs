@@ -36,6 +36,7 @@ namespace DAQNavi_WF_v1_0_0
         Boolean analogInstantInputMovingWindow = true;
         BufferedAnalogInput bufferedAnalogInput;
         LoginPanel myLoginPanel;
+        public measurmentType lastMeasurmentType;
 
         public double[] dataBufferedAI;
         public DateTime timeStartABI;
@@ -46,7 +47,7 @@ namespace DAQNavi_WF_v1_0_0
         public TimeSpan timeDiffAII;
         public Boolean runningAAI = false;
         public int sampleCountAAI = 0;
-        double[] dataInstantAI = new double[8];
+        public double[] dataInstantAI = new double[8];
         int myABIXPoint = 0;
         public Label[] analogInstantInputLabels;
 
@@ -205,6 +206,7 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void buttonAnalogBufferedInput_Click(object sender, EventArgs e)
         {
+            lastMeasurmentType = measurmentType.AnalogBufferedInput;
             timer_ProgressBar.Start();
             timeStartABI = DateTime.Now;
             Label_AnalogBufferedInput_StartValue.Text = timeStartABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
@@ -800,6 +802,7 @@ namespace DAQNavi_WF_v1_0_0
             if (Button_AnalogInstantInput_Measure.Text.Equals("Measure"))
             {
                 createNewMeasurment();
+                lastMeasurmentType = measurmentType.AnalogInstantInput;
                 ListMyMeasurmentsTitles[numberOfMeasurments -1].Text = "Measurment #" + numberOfMeasurments;
 
             // Set start time
@@ -886,6 +889,8 @@ namespace DAQNavi_WF_v1_0_0
             for (int i = 0; i < analogInstantInput_numberOfChannels; i++)
             {
                 Chart_AnalogInstantInput.Series[i].Points.Add(dataInstantAI[i]);
+                metroGridTable.Rows.Add();
+                metroGridTable.Rows[sampleCountAAI].Cells[i].Value = dataInstantAI[i];
                 analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i],2).ToString();
             }
 
@@ -1295,19 +1300,31 @@ namespace DAQNavi_WF_v1_0_0
         /// <summary>
         /// Accessor dla innego formularza
         /// </summary>
-        public int getChoosenChannel
+        public int getChoosenChannelAII
         {
             set { this.analogInstantInput_choosenChannel = value; }
             get { return this.analogInstantInput_choosenChannel; }
         }
 
+        public int getChoosenChannelABI
+        {
+            set { this.TextBox_AnalogBufferedInput_ChannelStart.Text = value.ToString(); }
+            get { return int.Parse(this.TextBox_AnalogBufferedInput_ChannelStart.Text); }
+        }
+
         /// <summary>
         /// Accessor dla innego formularza
         /// </summary>
-        public int getNumberOfChannels
+        public int getNumberOfChannelsAAI
         {
             set { this.analogInstantInput_numberOfChannels = value; }
             get { return this.analogInstantInput_numberOfChannels; }
+        }
+
+        public int getNumberOfChannelsABI
+        {
+            set { this.TextBox_AnalogBufferedInput_Channels.Text = value.ToString(); }
+            get { return int.Parse(this.TextBox_AnalogBufferedInput_Channels.Text); }
         }
 
         /// <summary>
@@ -1625,9 +1642,45 @@ namespace DAQNavi_WF_v1_0_0
                 ListMyMeasurmentsSamples[numberOfMeasurments - 1].Text = measurment.samples;
                 ListMyMeasurmentsNumberOfChannels[numberOfMeasurments - 1].Text = measurment.numberofchannels;
                 ListMyMeasurmentsChannelStart[numberOfMeasurments - 1].Text = measurment.startchannel;
-                
+
+                getMeasurmentData(measurment);
 
             }              
        }
+
+        /// <summary>
+        /// Typ pomiaru
+        /// </summary>
+        public enum measurmentType
+        {
+            AnalogInstantInput,
+            AnalogBufferedInput
+        }
+
+        /// <summary>
+        /// Download data from DB
+        /// </summary>
+        private void getMeasurmentData(MeasurmentDTO measurment)
+        {
+            String myConnection = "datasource=" + TextBox_Options_Baza.Text
+                + ";port=" + TextBox_Options_Port.Text
+                + ";username=" + TextBox_Options_User.Text +
+                ";password=" + TextBox_Options_Haslo.Text;
+            MySqlConnection myConn = new MySqlConnection(myConnection);
+            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.data where idmeasurments='" + 35 + "' ;", myConn);
+
+            MySqlDataReader myReader;
+            myConn.Open();
+            myReader = SelectCommand.ExecuteReader();
+            int counter = 0;
+            List<String> result = new List<String>();
+            while (myReader.Read())
+            {
+                result.Add(myReader.GetString("value"));
+                counter++;
+            }
+
+            MessageBox.Show(result.Count.ToString());
+        }
     }
 }

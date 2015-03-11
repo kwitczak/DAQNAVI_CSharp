@@ -33,14 +33,38 @@ namespace DAQNavi_WF_v1_0_0
 
         private void Button_CommentForm_Export_Click(object sender, EventArgs e)
         {
-            mainWindow.saveResultsToDataBase(mainWindow.timeStartABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture),
-                mainWindow.timeEndABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture),
-                mainWindow.dataBufferedAI,
-                new DateTime(mainWindow.timeDiffABI.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture),
-                mainWindow.sampleCountAAI.ToString(),
-                mainWindow.getNumberOfChannels.ToString(),
-                mainWindow.getChoosenChannel.ToString(),
-                this.ProgressBar_CommentForm);
+            String timeStart = "";
+            String timeEnd = "";
+            String timeDurration = "";
+            if (mainWindow.lastMeasurmentType.Equals(MainWindow.measurmentType.AnalogBufferedInput))
+            {
+                timeStart = mainWindow.timeStartABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeEnd = mainWindow.timeEndABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeDurration = new DateTime(mainWindow.timeDiffABI.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                mainWindow.saveResultsToDataBase(timeStart,
+                    timeEnd,
+                    mainWindow.dataBufferedAI,
+                    timeDurration,
+                    mainWindow.dataBufferedAI.Length.ToString(),
+                    mainWindow.getNumberOfChannelsABI.ToString(),
+                    mainWindow.getChoosenChannelABI.ToString(),
+                    this.ProgressBar_CommentForm);
+            }
+            else if (mainWindow.lastMeasurmentType.Equals(MainWindow.measurmentType.AnalogInstantInput))
+            {
+                timeStart = mainWindow.timeStartAII.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeEnd = mainWindow.timeEndAII.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeDurration = new DateTime(mainWindow.timeDiffAII.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                mainWindow.saveResultsToDataBase(timeStart,
+                    timeEnd,
+                    mainWindow.dataInstantAI,
+                    timeDurration,
+                    mainWindow.sampleCountAAI.ToString(),
+                    mainWindow.getNumberOfChannelsAAI.ToString(),
+                    mainWindow.getChoosenChannelAII.ToString(),
+                    this.ProgressBar_CommentForm);
+            }
+
             string time = DateTime.Now.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
             using (var dlg = new SaveFileDialog())
             {
@@ -55,9 +79,9 @@ namespace DAQNavi_WF_v1_0_0
                             file.WriteLine("Report from :\t" + time);
                             file.WriteLine("\n=========================================\n");
                             file.WriteLine("Report Details:");
-                            file.WriteLine("Measure start :\t" + mainWindow.timeStartABI.ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture));
-                            file.WriteLine("Measure end :\t" + mainWindow.timeEndABI.ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture));
-                            file.WriteLine("Measure time :\t" + new DateTime(mainWindow.timeDiffABI.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture));
+                            file.WriteLine("Measure start :\t" + timeStart);
+                            file.WriteLine("Measure end :\t" + timeEnd);
+                            file.WriteLine("Measure time :\t" + timeDurration);
                             file.WriteLine("Samples :\t" + "");
                             file.WriteLine("Channels :\t" + "");
                             file.WriteLine("Channel start :\t" + "");
