@@ -1667,7 +1667,7 @@ namespace DAQNavi_WF_v1_0_0
                 + ";username=" + TextBox_Options_User.Text +
                 ";password=" + TextBox_Options_Haslo.Text;
             MySqlConnection myConn = new MySqlConnection(myConnection);
-            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.data where idmeasurments='" + 35 + "' ;", myConn);
+            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.data where idmeasurments='" + measurment.idmeasurments + "' ;", myConn);
 
             MySqlDataReader myReader;
             myConn.Open();

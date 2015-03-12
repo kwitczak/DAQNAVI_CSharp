@@ -36,42 +36,39 @@ namespace DAQNavi_WF_v1_0_0
             String timeStart = "";
             String timeEnd = "";
             String timeDurration = "";
+            String samples = "";
+            String numberOfChannels = "";
+            String choosenChannel = "";
+
             if (mainWindow.lastMeasurmentType.Equals(MainWindow.measurmentType.AnalogBufferedInput))
             {
                 timeStart = mainWindow.timeStartABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 timeEnd = mainWindow.timeEndABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 timeDurration = new DateTime(mainWindow.timeDiffABI.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                mainWindow.saveResultsToDataBase(timeStart,
-                    timeEnd,
-                    mainWindow.dataBufferedAI,
-                    timeDurration,
-                    mainWindow.dataBufferedAI.Length.ToString(),
-                    mainWindow.getNumberOfChannelsABI.ToString(),
-                    mainWindow.getChoosenChannelABI.ToString(),
-                    this.ProgressBar_CommentForm);
+                samples = mainWindow.dataBufferedAI.Length.ToString();
+                numberOfChannels = mainWindow.getNumberOfChannelsABI.ToString();
+                choosenChannel = mainWindow.getChoosenChannelABI.ToString();
             }
             else if (mainWindow.lastMeasurmentType.Equals(MainWindow.measurmentType.AnalogInstantInput))
             {
                 timeStart = mainWindow.timeStartAII.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 timeEnd = mainWindow.timeEndAII.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 timeDurration = new DateTime(mainWindow.timeDiffAII.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                mainWindow.saveResultsToDataBase(timeStart,
-                    timeEnd,
-                    mainWindow.dataInstantAI,
-                    timeDurration,
-                    mainWindow.sampleCountAAI.ToString(),
-                    mainWindow.getNumberOfChannelsAAI.ToString(),
-                    mainWindow.getChoosenChannelAII.ToString(),
-                    this.ProgressBar_CommentForm);
+                samples = mainWindow.sampleCountAAI.ToString();
+                numberOfChannels = mainWindow.getNumberOfChannelsAAI.ToString();
+                choosenChannel = mainWindow.getChoosenChannelAII.ToString();
             }
 
             string time = DateTime.Now.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
+            double[] myResults = new double[mainWindow.metroGridTableVisible.Rows.Count * int.Parse(numberOfChannels)];
+            int myResultsCounter = 0;
             using (var dlg = new SaveFileDialog())
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
+                        // ZAPIS DO PLIKU
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(dlg.FileName + ".txt"))
                         {
 
@@ -108,6 +105,8 @@ namespace DAQNavi_WF_v1_0_0
                                     if (mainWindow.metroGridTableVisible.Rows[i].Cells[k].Value != null)
                                     {
                                         Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k].Value.ToString())) + ' ');
+                                        myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k].Value;
+                                        myResultsCounter++;
                                     }
                                 }
 
@@ -117,6 +116,17 @@ namespace DAQNavi_WF_v1_0_0
                             file.WriteLine(Rowbind.ToString());
                         }
 
+                        // ZAPIS DO BAZY
+                        mainWindow.saveResultsToDataBase(timeStart,
+                            timeEnd,
+                            myResults,
+                            timeDurration,
+                            samples,
+                            numberOfChannels,
+                            choosenChannel,
+                            this.ProgressBar_CommentForm);
+
+                        myResults = null;
                         MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".txt zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     catch (Exception ex)
