@@ -39,24 +39,27 @@ namespace DAQNavi_WF_v1_0_0
             String samples = "";
             String numberOfChannels = "";
             String choosenChannel = "";
+            String frequency = "";
 
             if (mainWindow.lastMeasurmentType.Equals(MainWindow.measurmentType.AnalogBufferedInput))
             {
-                timeStart = mainWindow.timeStartABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeEnd = mainWindow.timeEndABI.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeDurration = new DateTime(mainWindow.timeDiffABI.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                samples = mainWindow.dataBufferedAI.Length.ToString();
+                timeStart = mainWindow.ABI_timerStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeEnd = mainWindow.ABI_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeDurration = new DateTime(mainWindow.ABI_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                samples = mainWindow.ABI_data.Length.ToString();
                 numberOfChannels = mainWindow.getNumberOfChannelsABI.ToString();
                 choosenChannel = mainWindow.getChoosenChannelABI.ToString();
+                frequency = ((mainWindow.ABI_data.Length / mainWindow.ABI_timeDiff.TotalMilliseconds * 1000)/mainWindow.getNumberOfChannelsABI).ToString() + " Hz";
             }
             else if (mainWindow.lastMeasurmentType.Equals(MainWindow.measurmentType.AnalogInstantInput))
             {
-                timeStart = mainWindow.timeStartAII.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeEnd = mainWindow.timeEndAII.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeDurration = new DateTime(mainWindow.timeDiffAII.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                samples = mainWindow.sampleCountAAI.ToString();
+                timeStart = mainWindow.AII_timeStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeEnd = mainWindow.AII_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeDurration = new DateTime(mainWindow.AII_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                samples = mainWindow.AAI_sampleCount.ToString();
                 numberOfChannels = mainWindow.getNumberOfChannelsAAI.ToString();
                 choosenChannel = mainWindow.getChoosenChannelAII.ToString();
+                frequency = ((mainWindow.AAI_sampleCount / mainWindow.AII_timeDiff.TotalMilliseconds * 1000)/mainWindow.getNumberOfChannelsAAI).ToString() + " Hz a powinno: " + (1 / (mainWindow.getAnalogInstantInputTimer / 1000)).ToString();
             }
 
             string time = DateTime.Now.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
@@ -76,37 +79,54 @@ namespace DAQNavi_WF_v1_0_0
                             file.WriteLine("Report from :\t" + time);
                             file.WriteLine("\n=========================================\n");
                             file.WriteLine("Report Details:");
-                            file.WriteLine("Measure start :\t" + timeStart);
-                            file.WriteLine("Measure end :\t" + timeEnd);
-                            file.WriteLine("Measure time :\t" + timeDurration);
-                            file.WriteLine("Samples :\t" + "");
-                            file.WriteLine("Channels :\t" + "");
-                            file.WriteLine("Channel start :\t" + "");
-                            file.WriteLine("Rate :\t" + "");
+                            file.WriteLine("Measure start :\t\t" + timeStart);
+                            file.WriteLine("Measure end :\t\t" + timeEnd);
+                            file.WriteLine("Measure time :\t\t" + timeDurration);
+                            file.WriteLine("Samples :\t\t" + samples);
+                            file.WriteLine("Channels :\t\t" + numberOfChannels);
+                            file.WriteLine("Channel start :\t\t" + choosenChannel);
+                            file.WriteLine("Sampling frequency :\t" + frequency);
                             file.WriteLine("\n=========================================\n");
                             file.WriteLine("Admin comment: " + "\n\t" + TextBox_CommentForm_AdminComment.Text);
                             file.WriteLine("\n=========================================\n");
                             file.WriteLine("User comment: " + "\n\t" + TextBox_CommentForm_UserComment.Text);
                             file.WriteLine("\n=========================================\n");
                             StringBuilder Rowbind = new StringBuilder();
-                            for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count; k++)
+                            for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
                             {
-                                Rowbind.Append("\t");
-                                Rowbind.Append(mainWindow.metroGridTableVisible.Columns[k].HeaderText + ' ');
+                                if (k < 1)
+                                {
+                                    Rowbind.Append("\t");
+                                    Rowbind.Append("Sample" + ' ');
+                                }
+                                else
+                                {
+                                    Rowbind.Append("\t");
+                                    Rowbind.Append(mainWindow.metroGridTableVisible.Columns[k - 1].HeaderText + ' ');
+                                }
+
                             }
 
 
                             Rowbind.Append("\r\n");
-                            for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count; i++)
+                            for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count/int.Parse(numberOfChannels); i++)
                             {
-                                for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count; k++)
+                                for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
                                 {
-                                    Rowbind.Append("\t");
-                                    if (mainWindow.metroGridTableVisible.Rows[i].Cells[k].Value != null)
+                                    if (k < 1)
                                     {
-                                        Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k].Value.ToString())) + ' ');
-                                        myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k].Value;
-                                        myResultsCounter++;
+                                        Rowbind.Append("\t");
+                                        Rowbind.Append(i + 1);
+                                    }
+                                    else
+                                    {
+                                        Rowbind.Append("\t");
+                                        if (mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value != null)
+                                        {
+                                            Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
+                                            myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                            myResultsCounter++;
+                                        }
                                     }
                                 }
 
@@ -117,14 +137,14 @@ namespace DAQNavi_WF_v1_0_0
                         }
 
                         // ZAPIS DO BAZY
-                        mainWindow.saveResultsToDataBase(timeStart,
-                            timeEnd,
-                            myResults,
-                            timeDurration,
-                            samples,
-                            numberOfChannels,
-                            choosenChannel,
-                            this.ProgressBar_CommentForm);
+                        //mainWindow.saveResultsToDataBase(timeStart,
+                        //    timeEnd,
+                        //    myResults,
+                        //    timeDurration,
+                        //    samples,
+                        //    numberOfChannels,
+                        //    choosenChannel,
+                        //    this.ProgressBar_CommentForm);
 
                         myResults = null;
                         MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".txt zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);

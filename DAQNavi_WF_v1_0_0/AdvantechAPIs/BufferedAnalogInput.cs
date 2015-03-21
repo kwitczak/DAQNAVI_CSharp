@@ -25,7 +25,7 @@ namespace DAQNavi_WF_v1_0_0
             bufferedAiCtrl1.ScanChannel.Samples = samples;
             bufferedAiCtrl1.ScanChannel.ChannelCount = channels;
             bufferedAiCtrl1.ScanChannel.ChannelStart = channelStart;
-            bufferedAiCtrl1.ScanChannel.IntervalCount = intervalCount;
+            //bufferedAiCtrl1.ScanChannel.IntervalCount = intervalCount;
             //bufferedAiCtrl1.ScanClock.ScanCount = scanCount;
             //bufferedAiCtrl1.ScanClock.Rate = rate;
             dataDownloadedAI = new double[bufferedAiCtrl1.BufferCapacity];

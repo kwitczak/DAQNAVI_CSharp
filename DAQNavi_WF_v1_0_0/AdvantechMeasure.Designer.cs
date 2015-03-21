@@ -40,6 +40,9 @@
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -50,9 +53,19 @@
             System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series19 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series20 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series23 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bufferedAiCtrl1 = new Automation.BDaq.BufferedAiCtrl(this.components);
             this.Chart_AnalogBufferedInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.Label_AnalogBufferedInput_Samples = new MetroFramework.Controls.MetroLabel();
@@ -61,6 +74,35 @@
             this.TextBox_AnalogBufferedInput_Channels = new MetroFramework.Controls.MetroTextBox();
             this.Button_AnalogBufferedInput_Measure = new MetroFramework.Controls.MetroButton();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
+            this.TabPage_MyMeasurements = new MetroFramework.Controls.MetroTabPage();
+            this.Label_MyMeasurments_ChannelNumberText1 = new MetroFramework.Controls.MetroLabel();
+            this.Label_MyMeasurments_ChannelNumber1 = new MetroFramework.Controls.MetroLabel();
+            this.Label_MyMeasurments_ChannelStartText1 = new MetroFramework.Controls.MetroLabel();
+            this.Label_MyMeasurments_ChannelStart1 = new MetroFramework.Controls.MetroLabel();
+            this.Label_MyMeasurments_SamplesTitle1 = new MetroFramework.Controls.MetroLabel();
+            this.Label_MyMeasurments_Samples1 = new MetroFramework.Controls.MetroLabel();
+            this.Label_MyMeasurments_ResultTitle1 = new MetroFramework.Controls.MetroLabel();
+            this.Button_MyMeasurements_NewMeasure = new MetroFramework.Controls.MetroButton();
+            this.Button_MyMeasurments_Measure1 = new MetroFramework.Controls.MetroButton();
+            this.TabPage_ShowMeasure = new MetroFramework.Controls.MetroTabPage();
+            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel6 = new MetroFramework.Controls.MetroPanel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.metroTabPageWelcome = new MetroFramework.Controls.MetroTabPage();
             this.Label_Welcome_NewUser = new MetroFramework.Controls.MetroLabel();
             this.Button_Welcome_CreateNewUser = new MetroFramework.Controls.MetroButton();
@@ -177,9 +219,7 @@
             this.Chart_AnalogInstantInput = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.TabPage_LastMeasure = new MetroFramework.Controls.MetroTabPage();
             this.Panel_Results = new MetroFramework.Controls.MetroPanel();
-            this.Button_Results_ExportToXLSM = new MetroFramework.Controls.MetroButton();
             this.Button_Results_ExportToTXT = new MetroFramework.Controls.MetroButton();
-            this.Button_Results_ExportToFile = new MetroFramework.Controls.MetroButton();
             this.metroGridTable = new MetroFramework.Controls.MetroGrid();
             this.Channel_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Channel_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -203,16 +243,6 @@
             this.Tile_Measure_DigitalInput = new MetroFramework.Controls.MetroTile();
             this.Tile_Measure_AnalogOutput = new MetroFramework.Controls.MetroTile();
             this.Tile_Measure_AnalogInput = new MetroFramework.Controls.MetroTile();
-            this.TabPage_MyMeasurements = new MetroFramework.Controls.MetroTabPage();
-            this.Label_MyMeasurments_ChannelNumberText1 = new MetroFramework.Controls.MetroLabel();
-            this.Label_MyMeasurments_ChannelNumber1 = new MetroFramework.Controls.MetroLabel();
-            this.Label_MyMeasurments_ChannelStartText1 = new MetroFramework.Controls.MetroLabel();
-            this.Label_MyMeasurments_ChannelStart1 = new MetroFramework.Controls.MetroLabel();
-            this.Label_MyMeasurments_SamplesTitle1 = new MetroFramework.Controls.MetroLabel();
-            this.Label_MyMeasurments_Samples1 = new MetroFramework.Controls.MetroLabel();
-            this.Label_MyMeasurments_ResultTitle1 = new MetroFramework.Controls.MetroLabel();
-            this.Button_MyMeasurements_NewMeasure = new MetroFramework.Controls.MetroButton();
-            this.Button_MyMeasurments_Measure1 = new MetroFramework.Controls.MetroButton();
             this.TabPage_DigitalInput = new MetroFramework.Controls.MetroTabPage();
             this.TabPage_DigitalOutput = new MetroFramework.Controls.MetroTabPage();
             this.ProgressSpinner = new MetroFramework.Controls.MetroProgressSpinner();
@@ -223,6 +253,11 @@
             this.timer_ProgressBar = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Chart_AnalogBufferedInput)).BeginInit();
             this.TabControl.SuspendLayout();
+            this.TabPage_MyMeasurements.SuspendLayout();
+            this.TabPage_ShowMeasure.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
+            this.metroPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.metroTabPageWelcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Welcome_Advantech)).BeginInit();
             this.TabPage_AnalogBufferedInput.SuspendLayout();
@@ -243,7 +278,6 @@
             this.Panel_Results.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGridTable)).BeginInit();
             this.TabPage_Measure.SuspendLayout();
-            this.TabPage_MyMeasurements.SuspendLayout();
             this.SuspendLayout();
             // 
             // bufferedAiCtrl1
@@ -254,6 +288,7 @@
             // 
             // Chart_AnalogBufferedInput
             // 
+            this.Chart_AnalogBufferedInput.AntiAliasing = System.Windows.Forms.DataVisualization.Charting.AntiAliasingStyles.None;
             this.Chart_AnalogBufferedInput.BackColor = System.Drawing.Color.Transparent;
             this.Chart_AnalogBufferedInput.BorderSkin.BackColor = System.Drawing.Color.Transparent;
             chartArea1.AxisX.InterlacedColor = System.Drawing.Color.White;
@@ -277,6 +312,7 @@
             chartArea1.BorderColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.Chart_AnalogBufferedInput.ChartAreas.Add(chartArea1);
+            this.Chart_AnalogBufferedInput.IsSoftShadows = false;
             legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.Chart_AnalogBufferedInput.Legends.Add(legend1);
@@ -440,23 +476,535 @@
             // TabControl
             // 
             this.TabControl.Controls.Add(this.metroTabPageWelcome);
+            this.TabControl.Controls.Add(this.TabPage_MyMeasurements);
+            this.TabControl.Controls.Add(this.TabPage_ShowMeasure);
             this.TabControl.Controls.Add(this.TabPage_AnalogBufferedInput);
             this.TabControl.Controls.Add(this.TabPage_Options);
             this.TabControl.Controls.Add(this.TabPage_AnalogInstantInput);
             this.TabControl.Controls.Add(this.TabPage_LastMeasure);
             this.TabControl.Controls.Add(this.TabPage_Measure);
-            this.TabControl.Controls.Add(this.TabPage_MyMeasurements);
             this.TabControl.Controls.Add(this.TabPage_DigitalInput);
             this.TabControl.Controls.Add(this.TabPage_DigitalOutput);
             this.TabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.TabControl.Location = new System.Drawing.Point(23, 63);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 0;
+            this.TabControl.SelectedIndex = 2;
             this.TabControl.Size = new System.Drawing.Size(925, 622);
             this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 40;
             this.TabControl.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TabControl.UseSelectable = true;
+            // 
+            // TabPage_MyMeasurements
+            // 
+            this.TabPage_MyMeasurements.AutoScroll = true;
+            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ChannelNumberText1);
+            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ChannelNumber1);
+            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ChannelStartText1);
+            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ChannelStart1);
+            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_SamplesTitle1);
+            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_Samples1);
+            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ResultTitle1);
+            this.TabPage_MyMeasurements.Controls.Add(this.Button_MyMeasurements_NewMeasure);
+            this.TabPage_MyMeasurements.Controls.Add(this.Button_MyMeasurments_Measure1);
+            this.TabPage_MyMeasurements.HorizontalScrollbar = true;
+            this.TabPage_MyMeasurements.HorizontalScrollbarBarColor = true;
+            this.TabPage_MyMeasurements.HorizontalScrollbarHighlightOnWheel = false;
+            this.TabPage_MyMeasurements.HorizontalScrollbarSize = 10;
+            this.TabPage_MyMeasurements.Location = new System.Drawing.Point(4, 38);
+            this.TabPage_MyMeasurements.Name = "TabPage_MyMeasurements";
+            this.TabPage_MyMeasurements.Size = new System.Drawing.Size(917, 580);
+            this.TabPage_MyMeasurements.TabIndex = 8;
+            this.TabPage_MyMeasurements.Text = "My Measurments";
+            this.TabPage_MyMeasurements.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TabPage_MyMeasurements.VerticalScrollbar = true;
+            this.TabPage_MyMeasurements.VerticalScrollbarBarColor = true;
+            this.TabPage_MyMeasurements.VerticalScrollbarHighlightOnWheel = false;
+            this.TabPage_MyMeasurements.VerticalScrollbarSize = 10;
+            // 
+            // Label_MyMeasurments_ChannelNumberText1
+            // 
+            this.Label_MyMeasurments_ChannelNumberText1.AutoSize = true;
+            this.Label_MyMeasurments_ChannelNumberText1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Label_MyMeasurments_ChannelNumberText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Label_MyMeasurments_ChannelNumberText1.Location = new System.Drawing.Point(290, 120);
+            this.Label_MyMeasurments_ChannelNumberText1.Name = "Label_MyMeasurments_ChannelNumberText1";
+            this.Label_MyMeasurments_ChannelNumberText1.Size = new System.Drawing.Size(130, 19);
+            this.Label_MyMeasurments_ChannelNumberText1.TabIndex = 11;
+            this.Label_MyMeasurments_ChannelNumberText1.Text = "Number of channels:";
+            this.Label_MyMeasurments_ChannelNumberText1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_MyMeasurments_ChannelNumberText1.UseCustomBackColor = true;
+            this.Label_MyMeasurments_ChannelNumberText1.UseCustomForeColor = true;
+            this.Label_MyMeasurments_ChannelNumberText1.Visible = false;
+            // 
+            // Label_MyMeasurments_ChannelNumber1
+            // 
+            this.Label_MyMeasurments_ChannelNumber1.AutoSize = true;
+            this.Label_MyMeasurments_ChannelNumber1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Label_MyMeasurments_ChannelNumber1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Label_MyMeasurments_ChannelNumber1.Location = new System.Drawing.Point(425, 122);
+            this.Label_MyMeasurments_ChannelNumber1.Name = "Label_MyMeasurments_ChannelNumber1";
+            this.Label_MyMeasurments_ChannelNumber1.Size = new System.Drawing.Size(16, 19);
+            this.Label_MyMeasurments_ChannelNumber1.TabIndex = 10;
+            this.Label_MyMeasurments_ChannelNumber1.Text = "0";
+            this.Label_MyMeasurments_ChannelNumber1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_MyMeasurments_ChannelNumber1.UseCustomBackColor = true;
+            this.Label_MyMeasurments_ChannelNumber1.UseCustomForeColor = true;
+            this.Label_MyMeasurments_ChannelNumber1.Visible = false;
+            // 
+            // Label_MyMeasurments_ChannelStartText1
+            // 
+            this.Label_MyMeasurments_ChannelStartText1.AutoSize = true;
+            this.Label_MyMeasurments_ChannelStartText1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Label_MyMeasurments_ChannelStartText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Label_MyMeasurments_ChannelStartText1.Location = new System.Drawing.Point(110, 120);
+            this.Label_MyMeasurments_ChannelStartText1.Name = "Label_MyMeasurments_ChannelStartText1";
+            this.Label_MyMeasurments_ChannelStartText1.Size = new System.Drawing.Size(88, 19);
+            this.Label_MyMeasurments_ChannelStartText1.TabIndex = 9;
+            this.Label_MyMeasurments_ChannelStartText1.Text = "Channel start:";
+            this.Label_MyMeasurments_ChannelStartText1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_MyMeasurments_ChannelStartText1.UseCustomBackColor = true;
+            this.Label_MyMeasurments_ChannelStartText1.UseCustomForeColor = true;
+            this.Label_MyMeasurments_ChannelStartText1.Visible = false;
+            // 
+            // Label_MyMeasurments_ChannelStart1
+            // 
+            this.Label_MyMeasurments_ChannelStart1.AutoSize = true;
+            this.Label_MyMeasurments_ChannelStart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Label_MyMeasurments_ChannelStart1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Label_MyMeasurments_ChannelStart1.Location = new System.Drawing.Point(200, 120);
+            this.Label_MyMeasurments_ChannelStart1.Name = "Label_MyMeasurments_ChannelStart1";
+            this.Label_MyMeasurments_ChannelStart1.Size = new System.Drawing.Size(16, 19);
+            this.Label_MyMeasurments_ChannelStart1.TabIndex = 8;
+            this.Label_MyMeasurments_ChannelStart1.Text = "0";
+            this.Label_MyMeasurments_ChannelStart1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_MyMeasurments_ChannelStart1.UseCustomBackColor = true;
+            this.Label_MyMeasurments_ChannelStart1.UseCustomForeColor = true;
+            this.Label_MyMeasurments_ChannelStart1.Visible = false;
+            // 
+            // Label_MyMeasurments_SamplesTitle1
+            // 
+            this.Label_MyMeasurments_SamplesTitle1.AutoSize = true;
+            this.Label_MyMeasurments_SamplesTitle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Label_MyMeasurments_SamplesTitle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Label_MyMeasurments_SamplesTitle1.Location = new System.Drawing.Point(540, 122);
+            this.Label_MyMeasurments_SamplesTitle1.Name = "Label_MyMeasurments_SamplesTitle1";
+            this.Label_MyMeasurments_SamplesTitle1.Size = new System.Drawing.Size(61, 19);
+            this.Label_MyMeasurments_SamplesTitle1.TabIndex = 7;
+            this.Label_MyMeasurments_SamplesTitle1.Text = "Samples:";
+            this.Label_MyMeasurments_SamplesTitle1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_MyMeasurments_SamplesTitle1.UseCustomBackColor = true;
+            this.Label_MyMeasurments_SamplesTitle1.UseCustomForeColor = true;
+            this.Label_MyMeasurments_SamplesTitle1.Visible = false;
+            // 
+            // Label_MyMeasurments_Samples1
+            // 
+            this.Label_MyMeasurments_Samples1.AutoSize = true;
+            this.Label_MyMeasurments_Samples1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Label_MyMeasurments_Samples1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.Label_MyMeasurments_Samples1.Location = new System.Drawing.Point(605, 120);
+            this.Label_MyMeasurments_Samples1.Name = "Label_MyMeasurments_Samples1";
+            this.Label_MyMeasurments_Samples1.Size = new System.Drawing.Size(16, 19);
+            this.Label_MyMeasurments_Samples1.TabIndex = 5;
+            this.Label_MyMeasurments_Samples1.Text = "0";
+            this.Label_MyMeasurments_Samples1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_MyMeasurments_Samples1.UseCustomBackColor = true;
+            this.Label_MyMeasurments_Samples1.UseCustomForeColor = true;
+            this.Label_MyMeasurments_Samples1.Visible = false;
+            // 
+            // Label_MyMeasurments_ResultTitle1
+            // 
+            this.Label_MyMeasurments_ResultTitle1.AutoSize = true;
+            this.Label_MyMeasurments_ResultTitle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Label_MyMeasurments_ResultTitle1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.Label_MyMeasurments_ResultTitle1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.Label_MyMeasurments_ResultTitle1.Location = new System.Drawing.Point(30, 80);
+            this.Label_MyMeasurments_ResultTitle1.Name = "Label_MyMeasurments_ResultTitle1";
+            this.Label_MyMeasurments_ResultTitle1.Size = new System.Drawing.Size(142, 25);
+            this.Label_MyMeasurments_ResultTitle1.TabIndex = 3;
+            this.Label_MyMeasurments_ResultTitle1.Text = "Measurment # 1";
+            this.Label_MyMeasurments_ResultTitle1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Label_MyMeasurments_ResultTitle1.UseCustomBackColor = true;
+            this.Label_MyMeasurments_ResultTitle1.UseStyleColors = true;
+            this.Label_MyMeasurments_ResultTitle1.Visible = false;
+            // 
+            // Button_MyMeasurements_NewMeasure
+            // 
+            this.Button_MyMeasurements_NewMeasure.Location = new System.Drawing.Point(735, 72);
+            this.Button_MyMeasurements_NewMeasure.Name = "Button_MyMeasurements_NewMeasure";
+            this.Button_MyMeasurements_NewMeasure.Size = new System.Drawing.Size(150, 80);
+            this.Button_MyMeasurements_NewMeasure.TabIndex = 2;
+            this.Button_MyMeasurements_NewMeasure.Text = "New Measure";
+            this.Button_MyMeasurements_NewMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Button_MyMeasurements_NewMeasure.UseSelectable = true;
+            this.Button_MyMeasurements_NewMeasure.Click += new System.EventHandler(this.Button_MyMeasurements_NewMeasure_Click);
+            // 
+            // Button_MyMeasurments_Measure1
+            // 
+            this.Button_MyMeasurments_Measure1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.Button_MyMeasurments_Measure1.Location = new System.Drawing.Point(25, 72);
+            this.Button_MyMeasurments_Measure1.Name = "Button_MyMeasurments_Measure1";
+            this.Button_MyMeasurments_Measure1.Size = new System.Drawing.Size(700, 80);
+            this.Button_MyMeasurments_Measure1.Style = MetroFramework.MetroColorStyle.Brown;
+            this.Button_MyMeasurments_Measure1.TabIndex = 6;
+            this.Button_MyMeasurments_Measure1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Button_MyMeasurments_Measure1.UseCustomBackColor = true;
+            this.Button_MyMeasurments_Measure1.UseSelectable = true;
+            this.Button_MyMeasurments_Measure1.UseStyleColors = true;
+            this.Button_MyMeasurments_Measure1.Visible = false;
+            this.Button_MyMeasurments_Measure1.MouseEnter += new System.EventHandler(this.metroButton1_MouseEnter);
+            this.Button_MyMeasurments_Measure1.MouseLeave += new System.EventHandler(this.metroButton1_MouseLeave);
+            // 
+            // TabPage_ShowMeasure
+            // 
+            this.TabPage_ShowMeasure.AutoScroll = true;
+            this.TabPage_ShowMeasure.Controls.Add(this.metroGrid1);
+            this.TabPage_ShowMeasure.Controls.Add(this.metroLabel1);
+            this.TabPage_ShowMeasure.Controls.Add(this.metroPanel6);
+            this.TabPage_ShowMeasure.Controls.Add(this.chart1);
+            this.TabPage_ShowMeasure.HorizontalScrollbar = true;
+            this.TabPage_ShowMeasure.HorizontalScrollbarBarColor = true;
+            this.TabPage_ShowMeasure.HorizontalScrollbarHighlightOnWheel = false;
+            this.TabPage_ShowMeasure.HorizontalScrollbarSize = 10;
+            this.TabPage_ShowMeasure.Location = new System.Drawing.Point(4, 38);
+            this.TabPage_ShowMeasure.Name = "TabPage_ShowMeasure";
+            this.TabPage_ShowMeasure.Size = new System.Drawing.Size(917, 580);
+            this.TabPage_ShowMeasure.TabIndex = 9;
+            this.TabPage_ShowMeasure.Text = "Show Measure";
+            this.TabPage_ShowMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TabPage_ShowMeasure.VerticalScrollbar = true;
+            this.TabPage_ShowMeasure.VerticalScrollbarBarColor = true;
+            this.TabPage_ShowMeasure.VerticalScrollbarHighlightOnWheel = false;
+            this.TabPage_ShowMeasure.VerticalScrollbarSize = 10;
+            // 
+            // metroGrid1
+            // 
+            this.metroGrid1.AllowUserToAddRows = false;
+            this.metroGrid1.AllowUserToDeleteRows = false;
+            this.metroGrid1.AllowUserToResizeColumns = false;
+            this.metroGrid1.AllowUserToResizeRows = false;
+            this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.metroGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.metroGrid1.EnableHeadersVisualStyles = false;
+            this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.metroGrid1.Location = new System.Drawing.Point(-4, 398);
+            this.metroGrid1.Name = "metroGrid1";
+            this.metroGrid1.ReadOnly = true;
+            this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGrid1.ShowEditingIcon = false;
+            this.metroGrid1.Size = new System.Drawing.Size(911, 142);
+            this.metroGrid1.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroGrid1.TabIndex = 76;
+            this.metroGrid1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Channel 1";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Channel 2";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Channel 3";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Channel 4";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Channel 5";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Channel 6";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Channel 7";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Channel 8";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(50, 451);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(47, 19);
+            this.metroLabel1.TabIndex = 74;
+            this.metroLabel1.Text = "Details";
+            this.metroLabel1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroPanel6
+            // 
+            this.metroPanel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel6.Controls.Add(this.metroLabel2);
+            this.metroPanel6.Controls.Add(this.metroLabel3);
+            this.metroPanel6.Controls.Add(this.metroLabel4);
+            this.metroPanel6.Controls.Add(this.metroLabel5);
+            this.metroPanel6.Controls.Add(this.metroLabel6);
+            this.metroPanel6.Controls.Add(this.metroLabel7);
+            this.metroPanel6.HorizontalScrollbarBarColor = true;
+            this.metroPanel6.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel6.HorizontalScrollbarSize = 10;
+            this.metroPanel6.Location = new System.Drawing.Point(32, 459);
+            this.metroPanel6.Name = "metroPanel6";
+            this.metroPanel6.Size = new System.Drawing.Size(834, 125);
+            this.metroPanel6.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel6.TabIndex = 75;
+            this.metroPanel6.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel6.VerticalScrollbarBarColor = true;
+            this.metroPanel6.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel6.VerticalScrollbarSize = 10;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.Location = new System.Drawing.Point(108, 83);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(117, 19);
+            this.metroLabel2.TabIndex = 79;
+            this.metroLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroLabel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.Location = new System.Drawing.Point(104, 20);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(117, 19);
+            this.metroLabel3.TabIndex = 78;
+            this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroLabel3.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel4
+            // 
+            this.metroLabel4.Location = new System.Drawing.Point(108, 20);
+            this.metroLabel4.Name = "metroLabel4";
+            this.metroLabel4.Size = new System.Drawing.Size(117, 19);
+            this.metroLabel4.TabIndex = 77;
+            this.metroLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.metroLabel4.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel5
+            // 
+            this.metroLabel5.Location = new System.Drawing.Point(21, 83);
+            this.metroLabel5.Name = "metroLabel5";
+            this.metroLabel5.Size = new System.Drawing.Size(81, 19);
+            this.metroLabel5.TabIndex = 76;
+            this.metroLabel5.Text = "Duration:";
+            this.metroLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroLabel5.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel6
+            // 
+            this.metroLabel6.Location = new System.Drawing.Point(55, 52);
+            this.metroLabel6.Name = "metroLabel6";
+            this.metroLabel6.Size = new System.Drawing.Size(47, 19);
+            this.metroLabel6.TabIndex = 75;
+            this.metroLabel6.Text = "End:";
+            this.metroLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroLabel6.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.Location = new System.Drawing.Point(55, 20);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(47, 19);
+            this.metroLabel7.TabIndex = 74;
+            this.metroLabel7.Text = "Start:";
+            this.metroLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // chart1
+            // 
+            this.chart1.BackColor = System.Drawing.Color.Transparent;
+            this.chart1.BorderSkin.BackColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisX.InterlacedColor = System.Drawing.Color.White;
+            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
+            chartArea2.AxisX.LineColor = System.Drawing.Color.Silver;
+            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
+            chartArea2.AxisX.MinorGrid.Enabled = true;
+            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea2.AxisX.MinorTickMark.Enabled = true;
+            chartArea2.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
+            chartArea2.AxisY.LineColor = System.Drawing.Color.DarkGray;
+            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
+            chartArea2.AxisY.MinorGrid.Enabled = true;
+            chartArea2.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea2.AxisY.MinorTickMark.Enabled = true;
+            chartArea2.AxisY.MinorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea2.BackColor = System.Drawing.Color.DimGray;
+            chartArea2.BorderColor = System.Drawing.Color.Transparent;
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Enabled = false;
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(137, 7);
+            this.chart1.Name = "chart1";
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
+            series9.BackSecondaryColor = System.Drawing.Color.WhiteSmoke;
+            series9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series9.BorderWidth = 2;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series9.Color = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            series9.IsXValueIndexed = true;
+            series9.Legend = "Legend1";
+            series9.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series9.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series9.MarkerSize = 0;
+            series9.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series9.Name = "Series1";
+            series9.YValuesPerPoint = 2;
+            series10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series10.BorderWidth = 2;
+            series10.ChartArea = "ChartArea1";
+            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series10.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series10.IsXValueIndexed = true;
+            series10.Legend = "Legend1";
+            series10.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series10.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series10.MarkerSize = 0;
+            series10.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series10.Name = "Series2";
+            series11.BorderWidth = 2;
+            series11.ChartArea = "ChartArea1";
+            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series11.Color = System.Drawing.Color.DarkKhaki;
+            series11.IsXValueIndexed = true;
+            series11.Legend = "Legend1";
+            series11.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series11.MarkerColor = System.Drawing.Color.DarkKhaki;
+            series11.MarkerSize = 0;
+            series11.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series11.Name = "Series3";
+            series12.BorderWidth = 2;
+            series12.ChartArea = "ChartArea1";
+            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series12.Color = System.Drawing.Color.DarkGreen;
+            series12.IsXValueIndexed = true;
+            series12.Legend = "Legend1";
+            series12.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series12.MarkerColor = System.Drawing.Color.DarkGreen;
+            series12.MarkerSize = 0;
+            series12.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series12.Name = "Series4";
+            series13.BorderWidth = 2;
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series13.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            series13.IsXValueIndexed = true;
+            series13.Legend = "Legend1";
+            series13.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series13.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            series13.MarkerSize = 0;
+            series13.Name = "Series5";
+            series14.BorderWidth = 2;
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series14.Color = System.Drawing.Color.DarkTurquoise;
+            series14.IsXValueIndexed = true;
+            series14.Legend = "Legend1";
+            series14.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series14.MarkerColor = System.Drawing.Color.DarkTurquoise;
+            series14.MarkerSize = 0;
+            series14.Name = "Series6";
+            series15.BorderWidth = 2;
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series15.Color = System.Drawing.Color.Brown;
+            series15.IsXValueIndexed = true;
+            series15.Legend = "Legend1";
+            series15.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series15.MarkerColor = System.Drawing.Color.Brown;
+            series15.MarkerSize = 0;
+            series15.Name = "Series7";
+            series16.BorderWidth = 2;
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series16.Color = System.Drawing.Color.Chocolate;
+            series16.IsXValueIndexed = true;
+            series16.Legend = "Legend1";
+            series16.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series16.MarkerColor = System.Drawing.Color.Chocolate;
+            series16.MarkerSize = 0;
+            series16.Name = "Series8";
+            this.chart1.Series.Add(series9);
+            this.chart1.Series.Add(series10);
+            this.chart1.Series.Add(series11);
+            this.chart1.Series.Add(series12);
+            this.chart1.Series.Add(series13);
+            this.chart1.Series.Add(series14);
+            this.chart1.Series.Add(series15);
+            this.chart1.Series.Add(series16);
+            this.chart1.Size = new System.Drawing.Size(673, 448);
+            this.chart1.TabIndex = 5;
+            this.chart1.Text = "chart2";
             // 
             // metroTabPageWelcome
             // 
@@ -1963,130 +2511,130 @@
             // 
             this.Chart_AnalogInstantInput.BackColor = System.Drawing.Color.Transparent;
             this.Chart_AnalogInstantInput.BorderSkin.BackColor = System.Drawing.Color.Transparent;
-            chartArea2.AxisX.InterlacedColor = System.Drawing.Color.White;
-            chartArea2.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
-            chartArea2.AxisX.LineColor = System.Drawing.Color.Silver;
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea2.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
-            chartArea2.AxisX.MinorGrid.Enabled = true;
-            chartArea2.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisX.MinorTickMark.Enabled = true;
-            chartArea2.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
-            chartArea2.AxisY.LineColor = System.Drawing.Color.DarkGray;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
-            chartArea2.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
-            chartArea2.AxisY.MinorGrid.Enabled = true;
-            chartArea2.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
-            chartArea2.AxisY.MinorTickMark.Enabled = true;
-            chartArea2.AxisY.MinorTickMark.LineColor = System.Drawing.Color.Gray;
-            chartArea2.BackColor = System.Drawing.Color.DimGray;
-            chartArea2.BorderColor = System.Drawing.Color.Transparent;
-            chartArea2.Name = "ChartArea1";
-            this.Chart_AnalogInstantInput.ChartAreas.Add(chartArea2);
-            legend2.Enabled = false;
-            legend2.Name = "Legend1";
-            this.Chart_AnalogInstantInput.Legends.Add(legend2);
+            chartArea3.AxisX.InterlacedColor = System.Drawing.Color.White;
+            chartArea3.AxisX.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
+            chartArea3.AxisX.LineColor = System.Drawing.Color.Silver;
+            chartArea3.AxisX.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea3.AxisX.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
+            chartArea3.AxisX.MinorGrid.Enabled = true;
+            chartArea3.AxisX.MinorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea3.AxisX.MinorTickMark.Enabled = true;
+            chartArea3.AxisX.MinorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea3.AxisY.LabelStyle.ForeColor = System.Drawing.Color.DarkGray;
+            chartArea3.AxisY.LineColor = System.Drawing.Color.DarkGray;
+            chartArea3.AxisY.MajorGrid.LineColor = System.Drawing.Color.DarkGray;
+            chartArea3.AxisY.MajorTickMark.LineColor = System.Drawing.Color.DarkGray;
+            chartArea3.AxisY.MinorGrid.Enabled = true;
+            chartArea3.AxisY.MinorGrid.LineColor = System.Drawing.Color.Gray;
+            chartArea3.AxisY.MinorTickMark.Enabled = true;
+            chartArea3.AxisY.MinorTickMark.LineColor = System.Drawing.Color.Gray;
+            chartArea3.BackColor = System.Drawing.Color.DimGray;
+            chartArea3.BorderColor = System.Drawing.Color.Transparent;
+            chartArea3.Name = "ChartArea1";
+            this.Chart_AnalogInstantInput.ChartAreas.Add(chartArea3);
+            legend3.Enabled = false;
+            legend3.Name = "Legend1";
+            this.Chart_AnalogInstantInput.Legends.Add(legend3);
             this.Chart_AnalogInstantInput.Location = new System.Drawing.Point(244, 3);
             this.Chart_AnalogInstantInput.Name = "Chart_AnalogInstantInput";
             this.Chart_AnalogInstantInput.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
-            series9.BackSecondaryColor = System.Drawing.Color.WhiteSmoke;
-            series9.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            series9.BorderWidth = 2;
-            series9.ChartArea = "ChartArea1";
-            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series9.Color = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            series9.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            series9.IsXValueIndexed = true;
-            series9.Legend = "Legend1";
-            series9.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series9.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            series9.MarkerSize = 0;
-            series9.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series9.Name = "Series1";
-            series9.YValuesPerPoint = 2;
-            series10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series10.BorderWidth = 2;
-            series10.ChartArea = "ChartArea1";
-            series10.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series10.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series10.IsXValueIndexed = true;
-            series10.Legend = "Legend1";
-            series10.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series10.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            series10.MarkerSize = 0;
-            series10.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series10.Name = "Series2";
-            series11.BorderWidth = 2;
-            series11.ChartArea = "ChartArea1";
-            series11.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series11.Color = System.Drawing.Color.DarkKhaki;
-            series11.IsXValueIndexed = true;
-            series11.Legend = "Legend1";
-            series11.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series11.MarkerColor = System.Drawing.Color.DarkKhaki;
-            series11.MarkerSize = 0;
-            series11.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series11.Name = "Series3";
-            series12.BorderWidth = 2;
-            series12.ChartArea = "ChartArea1";
-            series12.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series12.Color = System.Drawing.Color.DarkGreen;
-            series12.IsXValueIndexed = true;
-            series12.Legend = "Legend1";
-            series12.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series12.MarkerColor = System.Drawing.Color.DarkGreen;
-            series12.MarkerSize = 0;
-            series12.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
-            series12.Name = "Series4";
-            series13.BorderWidth = 2;
-            series13.ChartArea = "ChartArea1";
-            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series13.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            series13.IsXValueIndexed = true;
-            series13.Legend = "Legend1";
-            series13.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series13.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            series13.MarkerSize = 0;
-            series13.Name = "Series5";
-            series14.BorderWidth = 2;
-            series14.ChartArea = "ChartArea1";
-            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series14.Color = System.Drawing.Color.DarkTurquoise;
-            series14.IsXValueIndexed = true;
-            series14.Legend = "Legend1";
-            series14.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series14.MarkerColor = System.Drawing.Color.DarkTurquoise;
-            series14.MarkerSize = 0;
-            series14.Name = "Series6";
-            series15.BorderWidth = 2;
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series15.Color = System.Drawing.Color.Brown;
-            series15.IsXValueIndexed = true;
-            series15.Legend = "Legend1";
-            series15.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series15.MarkerColor = System.Drawing.Color.Brown;
-            series15.MarkerSize = 0;
-            series15.Name = "Series7";
-            series16.BorderWidth = 2;
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series16.Color = System.Drawing.Color.Chocolate;
-            series16.IsXValueIndexed = true;
-            series16.Legend = "Legend1";
-            series16.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            series16.MarkerColor = System.Drawing.Color.Chocolate;
-            series16.MarkerSize = 0;
-            series16.Name = "Series8";
-            this.Chart_AnalogInstantInput.Series.Add(series9);
-            this.Chart_AnalogInstantInput.Series.Add(series10);
-            this.Chart_AnalogInstantInput.Series.Add(series11);
-            this.Chart_AnalogInstantInput.Series.Add(series12);
-            this.Chart_AnalogInstantInput.Series.Add(series13);
-            this.Chart_AnalogInstantInput.Series.Add(series14);
-            this.Chart_AnalogInstantInput.Series.Add(series15);
-            this.Chart_AnalogInstantInput.Series.Add(series16);
+            series17.BackSecondaryColor = System.Drawing.Color.WhiteSmoke;
+            series17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series17.BorderWidth = 2;
+            series17.ChartArea = "ChartArea1";
+            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series17.Color = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series17.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            series17.IsXValueIndexed = true;
+            series17.Legend = "Legend1";
+            series17.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series17.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            series17.MarkerSize = 0;
+            series17.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series17.Name = "Series1";
+            series17.YValuesPerPoint = 2;
+            series18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series18.BorderWidth = 2;
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series18.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series18.IsXValueIndexed = true;
+            series18.Legend = "Legend1";
+            series18.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series18.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            series18.MarkerSize = 0;
+            series18.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series18.Name = "Series2";
+            series19.BorderWidth = 2;
+            series19.ChartArea = "ChartArea1";
+            series19.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series19.Color = System.Drawing.Color.DarkKhaki;
+            series19.IsXValueIndexed = true;
+            series19.Legend = "Legend1";
+            series19.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series19.MarkerColor = System.Drawing.Color.DarkKhaki;
+            series19.MarkerSize = 0;
+            series19.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series19.Name = "Series3";
+            series20.BorderWidth = 2;
+            series20.ChartArea = "ChartArea1";
+            series20.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series20.Color = System.Drawing.Color.DarkGreen;
+            series20.IsXValueIndexed = true;
+            series20.Legend = "Legend1";
+            series20.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series20.MarkerColor = System.Drawing.Color.DarkGreen;
+            series20.MarkerSize = 0;
+            series20.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
+            series20.Name = "Series4";
+            series21.BorderWidth = 2;
+            series21.ChartArea = "ChartArea1";
+            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series21.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            series21.IsXValueIndexed = true;
+            series21.Legend = "Legend1";
+            series21.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series21.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            series21.MarkerSize = 0;
+            series21.Name = "Series5";
+            series22.BorderWidth = 2;
+            series22.ChartArea = "ChartArea1";
+            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series22.Color = System.Drawing.Color.DarkTurquoise;
+            series22.IsXValueIndexed = true;
+            series22.Legend = "Legend1";
+            series22.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series22.MarkerColor = System.Drawing.Color.DarkTurquoise;
+            series22.MarkerSize = 0;
+            series22.Name = "Series6";
+            series23.BorderWidth = 2;
+            series23.ChartArea = "ChartArea1";
+            series23.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series23.Color = System.Drawing.Color.Brown;
+            series23.IsXValueIndexed = true;
+            series23.Legend = "Legend1";
+            series23.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series23.MarkerColor = System.Drawing.Color.Brown;
+            series23.MarkerSize = 0;
+            series23.Name = "Series7";
+            series24.BorderWidth = 2;
+            series24.ChartArea = "ChartArea1";
+            series24.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series24.Color = System.Drawing.Color.Chocolate;
+            series24.IsXValueIndexed = true;
+            series24.Legend = "Legend1";
+            series24.MarkerBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            series24.MarkerColor = System.Drawing.Color.Chocolate;
+            series24.MarkerSize = 0;
+            series24.Name = "Series8";
+            this.Chart_AnalogInstantInput.Series.Add(series17);
+            this.Chart_AnalogInstantInput.Series.Add(series18);
+            this.Chart_AnalogInstantInput.Series.Add(series19);
+            this.Chart_AnalogInstantInput.Series.Add(series20);
+            this.Chart_AnalogInstantInput.Series.Add(series21);
+            this.Chart_AnalogInstantInput.Series.Add(series22);
+            this.Chart_AnalogInstantInput.Series.Add(series23);
+            this.Chart_AnalogInstantInput.Series.Add(series24);
             this.Chart_AnalogInstantInput.Size = new System.Drawing.Size(673, 448);
             this.Chart_AnalogInstantInput.TabIndex = 4;
             this.Chart_AnalogInstantInput.Text = "chart2";
@@ -2118,64 +2666,34 @@
             // 
             // Panel_Results
             // 
-            this.Panel_Results.Controls.Add(this.Button_Results_ExportToXLSM);
             this.Panel_Results.Controls.Add(this.Button_Results_ExportToTXT);
-            this.Panel_Results.Controls.Add(this.Button_Results_ExportToFile);
             this.Panel_Results.Controls.Add(this.metroGridTable);
             this.Panel_Results.HorizontalScrollbarBarColor = true;
             this.Panel_Results.HorizontalScrollbarHighlightOnWheel = false;
             this.Panel_Results.HorizontalScrollbarSize = 10;
             this.Panel_Results.Location = new System.Drawing.Point(3, 25);
             this.Panel_Results.Name = "Panel_Results";
-            this.Panel_Results.Size = new System.Drawing.Size(914, 388);
+            this.Panel_Results.Size = new System.Drawing.Size(914, 550);
             this.Panel_Results.TabIndex = 17;
             this.Panel_Results.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Panel_Results.VerticalScrollbarBarColor = true;
             this.Panel_Results.VerticalScrollbarHighlightOnWheel = false;
             this.Panel_Results.VerticalScrollbarSize = 10;
             // 
-            // Button_Results_ExportToXLSM
-            // 
-            this.Button_Results_ExportToXLSM.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.Button_Results_ExportToXLSM.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_Results_ExportToXLSM.Location = new System.Drawing.Point(293, 343);
-            this.Button_Results_ExportToXLSM.Name = "Button_Results_ExportToXLSM";
-            this.Button_Results_ExportToXLSM.Size = new System.Drawing.Size(114, 36);
-            this.Button_Results_ExportToXLSM.Style = MetroFramework.MetroColorStyle.Silver;
-            this.Button_Results_ExportToXLSM.TabIndex = 52;
-            this.Button_Results_ExportToXLSM.Text = "Export to xlsm";
-            this.Button_Results_ExportToXLSM.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Button_Results_ExportToXLSM.UseSelectable = true;
-            this.Button_Results_ExportToXLSM.UseStyleColors = true;
-            // 
             // Button_Results_ExportToTXT
             // 
             this.Button_Results_ExportToTXT.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.Button_Results_ExportToTXT.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_Results_ExportToTXT.Location = new System.Drawing.Point(147, 343);
+            this.Button_Results_ExportToTXT.Location = new System.Drawing.Point(779, 489);
             this.Button_Results_ExportToTXT.Name = "Button_Results_ExportToTXT";
             this.Button_Results_ExportToTXT.Size = new System.Drawing.Size(114, 36);
             this.Button_Results_ExportToTXT.Style = MetroFramework.MetroColorStyle.Blue;
             this.Button_Results_ExportToTXT.TabIndex = 51;
-            this.Button_Results_ExportToTXT.Text = "Export to txt";
+            this.Button_Results_ExportToTXT.Text = "Save";
             this.Button_Results_ExportToTXT.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Button_Results_ExportToTXT.UseSelectable = true;
             this.Button_Results_ExportToTXT.UseStyleColors = true;
             this.Button_Results_ExportToTXT.Click += new System.EventHandler(this.Button_AnalogBufferedInput_ExportToFile_Click);
-            // 
-            // Button_Results_ExportToFile
-            // 
-            this.Button_Results_ExportToFile.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.Button_Results_ExportToFile.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_Results_ExportToFile.Location = new System.Drawing.Point(6, 343);
-            this.Button_Results_ExportToFile.Name = "Button_Results_ExportToFile";
-            this.Button_Results_ExportToFile.Size = new System.Drawing.Size(114, 36);
-            this.Button_Results_ExportToFile.Style = MetroFramework.MetroColorStyle.Silver;
-            this.Button_Results_ExportToFile.TabIndex = 50;
-            this.Button_Results_ExportToFile.Text = "Export to pdf";
-            this.Button_Results_ExportToFile.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Button_Results_ExportToFile.UseSelectable = true;
-            this.Button_Results_ExportToFile.UseStyleColors = true;
             // 
             // metroGridTable
             // 
@@ -2187,14 +2705,14 @@
             this.metroGridTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGridTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGridTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.metroGridTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.metroGridTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Channel_1,
@@ -2205,14 +2723,14 @@
             this.Column_6,
             this.Column_7,
             this.Column_8});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGridTable.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGridTable.DefaultCellStyle = dataGridViewCellStyle5;
             this.metroGridTable.EnableHeadersVisualStyles = false;
             this.metroGridTable.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGridTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -2220,18 +2738,18 @@
             this.metroGridTable.Name = "metroGridTable";
             this.metroGridTable.ReadOnly = true;
             this.metroGridTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGridTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGridTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.metroGridTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGridTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGridTable.ShowEditingIcon = false;
-            this.metroGridTable.Size = new System.Drawing.Size(911, 331);
+            this.metroGridTable.Size = new System.Drawing.Size(911, 470);
             this.metroGridTable.Style = MetroFramework.MetroColorStyle.Blue;
             this.metroGridTable.TabIndex = 16;
             this.metroGridTable.Theme = MetroFramework.MetroThemeStyle.Dark;
@@ -2494,166 +3012,6 @@
             this.Tile_Measure_AnalogInput.MouseEnter += new System.EventHandler(this.metroTile1_MouseHover);
             this.Tile_Measure_AnalogInput.MouseLeave += new System.EventHandler(this.metroTile1_MouseLeave);
             // 
-            // TabPage_MyMeasurements
-            // 
-            this.TabPage_MyMeasurements.AutoScroll = true;
-            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ChannelNumberText1);
-            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ChannelNumber1);
-            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ChannelStartText1);
-            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ChannelStart1);
-            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_SamplesTitle1);
-            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_Samples1);
-            this.TabPage_MyMeasurements.Controls.Add(this.Label_MyMeasurments_ResultTitle1);
-            this.TabPage_MyMeasurements.Controls.Add(this.Button_MyMeasurements_NewMeasure);
-            this.TabPage_MyMeasurements.Controls.Add(this.Button_MyMeasurments_Measure1);
-            this.TabPage_MyMeasurements.HorizontalScrollbar = true;
-            this.TabPage_MyMeasurements.HorizontalScrollbarBarColor = true;
-            this.TabPage_MyMeasurements.HorizontalScrollbarHighlightOnWheel = false;
-            this.TabPage_MyMeasurements.HorizontalScrollbarSize = 10;
-            this.TabPage_MyMeasurements.Location = new System.Drawing.Point(4, 38);
-            this.TabPage_MyMeasurements.Name = "TabPage_MyMeasurements";
-            this.TabPage_MyMeasurements.Size = new System.Drawing.Size(917, 580);
-            this.TabPage_MyMeasurements.TabIndex = 8;
-            this.TabPage_MyMeasurements.Text = "My Measurments";
-            this.TabPage_MyMeasurements.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TabPage_MyMeasurements.VerticalScrollbar = true;
-            this.TabPage_MyMeasurements.VerticalScrollbarBarColor = true;
-            this.TabPage_MyMeasurements.VerticalScrollbarHighlightOnWheel = false;
-            this.TabPage_MyMeasurements.VerticalScrollbarSize = 10;
-            // 
-            // Label_MyMeasurments_ChannelNumberText1
-            // 
-            this.Label_MyMeasurments_ChannelNumberText1.AutoSize = true;
-            this.Label_MyMeasurments_ChannelNumberText1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label_MyMeasurments_ChannelNumberText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Label_MyMeasurments_ChannelNumberText1.Location = new System.Drawing.Point(290, 120);
-            this.Label_MyMeasurments_ChannelNumberText1.Name = "Label_MyMeasurments_ChannelNumberText1";
-            this.Label_MyMeasurments_ChannelNumberText1.Size = new System.Drawing.Size(130, 19);
-            this.Label_MyMeasurments_ChannelNumberText1.TabIndex = 11;
-            this.Label_MyMeasurments_ChannelNumberText1.Text = "Number of channels:";
-            this.Label_MyMeasurments_ChannelNumberText1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Label_MyMeasurments_ChannelNumberText1.UseCustomBackColor = true;
-            this.Label_MyMeasurments_ChannelNumberText1.UseCustomForeColor = true;
-            this.Label_MyMeasurments_ChannelNumberText1.Visible = false;
-            // 
-            // Label_MyMeasurments_ChannelNumber1
-            // 
-            this.Label_MyMeasurments_ChannelNumber1.AutoSize = true;
-            this.Label_MyMeasurments_ChannelNumber1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label_MyMeasurments_ChannelNumber1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Label_MyMeasurments_ChannelNumber1.Location = new System.Drawing.Point(425, 122);
-            this.Label_MyMeasurments_ChannelNumber1.Name = "Label_MyMeasurments_ChannelNumber1";
-            this.Label_MyMeasurments_ChannelNumber1.Size = new System.Drawing.Size(16, 19);
-            this.Label_MyMeasurments_ChannelNumber1.TabIndex = 10;
-            this.Label_MyMeasurments_ChannelNumber1.Text = "0";
-            this.Label_MyMeasurments_ChannelNumber1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Label_MyMeasurments_ChannelNumber1.UseCustomBackColor = true;
-            this.Label_MyMeasurments_ChannelNumber1.UseCustomForeColor = true;
-            this.Label_MyMeasurments_ChannelNumber1.Visible = false;
-            // 
-            // Label_MyMeasurments_ChannelStartText1
-            // 
-            this.Label_MyMeasurments_ChannelStartText1.AutoSize = true;
-            this.Label_MyMeasurments_ChannelStartText1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label_MyMeasurments_ChannelStartText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Label_MyMeasurments_ChannelStartText1.Location = new System.Drawing.Point(110, 120);
-            this.Label_MyMeasurments_ChannelStartText1.Name = "Label_MyMeasurments_ChannelStartText1";
-            this.Label_MyMeasurments_ChannelStartText1.Size = new System.Drawing.Size(88, 19);
-            this.Label_MyMeasurments_ChannelStartText1.TabIndex = 9;
-            this.Label_MyMeasurments_ChannelStartText1.Text = "Channel start:";
-            this.Label_MyMeasurments_ChannelStartText1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Label_MyMeasurments_ChannelStartText1.UseCustomBackColor = true;
-            this.Label_MyMeasurments_ChannelStartText1.UseCustomForeColor = true;
-            this.Label_MyMeasurments_ChannelStartText1.Visible = false;
-            // 
-            // Label_MyMeasurments_ChannelStart1
-            // 
-            this.Label_MyMeasurments_ChannelStart1.AutoSize = true;
-            this.Label_MyMeasurments_ChannelStart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label_MyMeasurments_ChannelStart1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Label_MyMeasurments_ChannelStart1.Location = new System.Drawing.Point(200, 120);
-            this.Label_MyMeasurments_ChannelStart1.Name = "Label_MyMeasurments_ChannelStart1";
-            this.Label_MyMeasurments_ChannelStart1.Size = new System.Drawing.Size(16, 19);
-            this.Label_MyMeasurments_ChannelStart1.TabIndex = 8;
-            this.Label_MyMeasurments_ChannelStart1.Text = "0";
-            this.Label_MyMeasurments_ChannelStart1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Label_MyMeasurments_ChannelStart1.UseCustomBackColor = true;
-            this.Label_MyMeasurments_ChannelStart1.UseCustomForeColor = true;
-            this.Label_MyMeasurments_ChannelStart1.Visible = false;
-            // 
-            // Label_MyMeasurments_SamplesTitle1
-            // 
-            this.Label_MyMeasurments_SamplesTitle1.AutoSize = true;
-            this.Label_MyMeasurments_SamplesTitle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label_MyMeasurments_SamplesTitle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Label_MyMeasurments_SamplesTitle1.Location = new System.Drawing.Point(540, 122);
-            this.Label_MyMeasurments_SamplesTitle1.Name = "Label_MyMeasurments_SamplesTitle1";
-            this.Label_MyMeasurments_SamplesTitle1.Size = new System.Drawing.Size(61, 19);
-            this.Label_MyMeasurments_SamplesTitle1.TabIndex = 7;
-            this.Label_MyMeasurments_SamplesTitle1.Text = "Samples:";
-            this.Label_MyMeasurments_SamplesTitle1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Label_MyMeasurments_SamplesTitle1.UseCustomBackColor = true;
-            this.Label_MyMeasurments_SamplesTitle1.UseCustomForeColor = true;
-            this.Label_MyMeasurments_SamplesTitle1.Visible = false;
-            // 
-            // Label_MyMeasurments_Samples1
-            // 
-            this.Label_MyMeasurments_Samples1.AutoSize = true;
-            this.Label_MyMeasurments_Samples1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label_MyMeasurments_Samples1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.Label_MyMeasurments_Samples1.Location = new System.Drawing.Point(605, 120);
-            this.Label_MyMeasurments_Samples1.Name = "Label_MyMeasurments_Samples1";
-            this.Label_MyMeasurments_Samples1.Size = new System.Drawing.Size(16, 19);
-            this.Label_MyMeasurments_Samples1.TabIndex = 5;
-            this.Label_MyMeasurments_Samples1.Text = "0";
-            this.Label_MyMeasurments_Samples1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Label_MyMeasurments_Samples1.UseCustomBackColor = true;
-            this.Label_MyMeasurments_Samples1.UseCustomForeColor = true;
-            this.Label_MyMeasurments_Samples1.Visible = false;
-            // 
-            // Label_MyMeasurments_ResultTitle1
-            // 
-            this.Label_MyMeasurments_ResultTitle1.AutoSize = true;
-            this.Label_MyMeasurments_ResultTitle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Label_MyMeasurments_ResultTitle1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.Label_MyMeasurments_ResultTitle1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.Label_MyMeasurments_ResultTitle1.Location = new System.Drawing.Point(30, 80);
-            this.Label_MyMeasurments_ResultTitle1.Name = "Label_MyMeasurments_ResultTitle1";
-            this.Label_MyMeasurments_ResultTitle1.Size = new System.Drawing.Size(142, 25);
-            this.Label_MyMeasurments_ResultTitle1.TabIndex = 3;
-            this.Label_MyMeasurments_ResultTitle1.Text = "Measurment # 1";
-            this.Label_MyMeasurments_ResultTitle1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Label_MyMeasurments_ResultTitle1.UseCustomBackColor = true;
-            this.Label_MyMeasurments_ResultTitle1.UseStyleColors = true;
-            this.Label_MyMeasurments_ResultTitle1.Visible = false;
-            // 
-            // Button_MyMeasurements_NewMeasure
-            // 
-            this.Button_MyMeasurements_NewMeasure.Location = new System.Drawing.Point(735, 72);
-            this.Button_MyMeasurements_NewMeasure.Name = "Button_MyMeasurements_NewMeasure";
-            this.Button_MyMeasurements_NewMeasure.Size = new System.Drawing.Size(150, 80);
-            this.Button_MyMeasurements_NewMeasure.TabIndex = 2;
-            this.Button_MyMeasurements_NewMeasure.Text = "New Measure";
-            this.Button_MyMeasurements_NewMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Button_MyMeasurements_NewMeasure.UseSelectable = true;
-            this.Button_MyMeasurements_NewMeasure.Click += new System.EventHandler(this.Button_MyMeasurements_NewMeasure_Click);
-            // 
-            // Button_MyMeasurments_Measure1
-            // 
-            this.Button_MyMeasurments_Measure1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.Button_MyMeasurments_Measure1.Location = new System.Drawing.Point(25, 72);
-            this.Button_MyMeasurments_Measure1.Name = "Button_MyMeasurments_Measure1";
-            this.Button_MyMeasurments_Measure1.Size = new System.Drawing.Size(700, 80);
-            this.Button_MyMeasurments_Measure1.Style = MetroFramework.MetroColorStyle.Brown;
-            this.Button_MyMeasurments_Measure1.TabIndex = 6;
-            this.Button_MyMeasurments_Measure1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Button_MyMeasurments_Measure1.UseCustomBackColor = true;
-            this.Button_MyMeasurments_Measure1.UseSelectable = true;
-            this.Button_MyMeasurments_Measure1.UseStyleColors = true;
-            this.Button_MyMeasurments_Measure1.Visible = false;
-            this.Button_MyMeasurments_Measure1.MouseEnter += new System.EventHandler(this.metroButton1_MouseEnter);
-            this.Button_MyMeasurments_Measure1.MouseLeave += new System.EventHandler(this.metroButton1_MouseLeave);
-            // 
             // TabPage_DigitalInput
             // 
             this.TabPage_DigitalInput.HorizontalScrollbarBarColor = true;
@@ -2713,6 +3071,7 @@
             // 
             // timer_getData
             // 
+            this.timer_getData.Interval = 1;
             this.timer_getData.Tick += new System.EventHandler(this.timer_getData_Tick);
             // 
             // timer_ProgressBar
@@ -2733,6 +3092,13 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.Chart_AnalogBufferedInput)).EndInit();
             this.TabControl.ResumeLayout(false);
+            this.TabPage_MyMeasurements.ResumeLayout(false);
+            this.TabPage_MyMeasurements.PerformLayout();
+            this.TabPage_ShowMeasure.ResumeLayout(false);
+            this.TabPage_ShowMeasure.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
+            this.metroPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.metroTabPageWelcome.ResumeLayout(false);
             this.metroTabPageWelcome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Welcome_Advantech)).EndInit();
@@ -2765,8 +3131,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGridTable)).EndInit();
             this.TabPage_Measure.ResumeLayout(false);
             this.TabPage_Measure.PerformLayout();
-            this.TabPage_MyMeasurements.ResumeLayout(false);
-            this.TabPage_MyMeasurements.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2835,10 +3199,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_8;
-        private MetroFramework.Controls.MetroButton Button_Results_ExportToFile;
         private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_Measure;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart_AnalogInstantInput;
-        private System.Windows.Forms.Timer timer_getData;
         private MetroFramework.Controls.MetroButton Button_AnalogBufferedInput_Back;
         private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_Back;
         private MetroFramework.Controls.MetroTrackBar TrackBar_AnalogInstantInput_1;
@@ -2889,11 +3251,8 @@
         private MetroFramework.Controls.MetroLabel Label_Options_AdminComment;
         private MetroFramework.Controls.MetroTextBox TextBox_Options_AdminComment;
         private MetroFramework.Controls.MetroLabel Label_Options_UserComment;
-        private MetroFramework.Controls.MetroButton Button_Results_ExportToXLSM;
-        private MetroFramework.Controls.MetroButton Button_Results_ExportToTXT;
         private MetroFramework.Controls.MetroTabPage TabPage_MyMeasurements;
         private MetroFramework.Controls.MetroButton Button_MyMeasurements_NewMeasure;
-        public Automation.BDaq.BufferedAiCtrl bufferedAiCtrl1;
         public Automation.BDaq.InstantAiCtrl instantAiCtrl1;
         private MetroFramework.Controls.MetroCheckBox CheckBox_AnalogInstantInput_MeasurmentOptions;
         private MetroFramework.Controls.MetroButton Button_AnalogInstantInput_EditOptions;
@@ -2941,6 +3300,28 @@
         private MetroFramework.Controls.MetroButton Button_MyMeasurments_Measure1;
         private MetroFramework.Controls.MetroLabel Label_Welcome_NewUser;
         private MetroFramework.Controls.MetroButton Button_Welcome_CreateNewUser;
+        private MetroFramework.Controls.MetroButton Button_Results_ExportToTXT;
+        private MetroFramework.Controls.MetroTabPage TabPage_ShowMeasure;
+        private MetroFramework.Controls.MetroGrid metroGrid1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroPanel metroPanel6;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel metroLabel5;
+        private MetroFramework.Controls.MetroLabel metroLabel6;
+        private MetroFramework.Controls.MetroLabel metroLabel7;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        public Automation.BDaq.BufferedAiCtrl bufferedAiCtrl1;
+        public System.Windows.Forms.Timer timer_getData;
     }
 }
 
