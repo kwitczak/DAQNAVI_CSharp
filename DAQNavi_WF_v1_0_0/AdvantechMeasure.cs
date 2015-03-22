@@ -174,7 +174,7 @@ namespace DAQNavi_WF_v1_0_0
 
 
         /*
-         * ==================================  ZMIANY STYLU, JĘZYK I NAWIGACJA  ========================================
+         * ==================================  ZMIANY STYLU I JĘZYKA, OPCJE  ========================================
          */
 
         /// <summary>
@@ -393,6 +393,144 @@ namespace DAQNavi_WF_v1_0_0
         }
 
         /// <summary>
+        /// Zmiana języka na angielski
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RadioButton_Options_English_CheckedChanged(object sender, EventArgs e)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            //make changes
+            config.AppSettings.Settings["defaultLanguage"].Value = "ENG";
+
+            //save to apply changes
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+            SetLanguage();
+        }
+
+        /// <summary>
+        /// Zmiana języka na polski
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RadioButton_Options_Polski_CheckedChanged(object sender, EventArgs e)
+        {
+            //ConfigurationManager.AppSettings.Set("defaultLanguage", "PL");
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            //make changes
+            config.AppSettings.Settings["defaultLanguage"].Value = "PL";
+
+            //save to apply changes
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+
+            SetLanguage();
+        }
+
+
+        /// <summary>
+        /// Metoda która zapisuje zmiany wprowadzone w panelu admina
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Options_ApplyChanges_Click(object sender, EventArgs e)
+        {
+            //delete
+            //bufferedAiCtrl1.SelectedDevice.
+            //MessageBox.Show(my.ToString());
+
+            //var query = string.Format("select * from {0}", "*");
+
+            //using (var searcher = new ManagementObjectSearcher(query))
+            //{
+            //    ManagementObjectCollection objectCollection = searcher.Get();
+
+            //    foreach (ManagementBaseObject managementBaseObject in objectCollection)
+            //    {
+            //        foreach (PropertyData propertyData in managementBaseObject.Properties)
+            //        {   
+            //            String my = String.Format("Property:  {0}, Value: {1}", propertyData.Origin, propertyData.Name);
+            //            if (my.IndexOf("4702")>0)
+            //            {
+            //                MessageBox.Show(my);
+            //            }
+
+            //        }
+            //    }
+            //}
+        }
+
+        /// <summary>
+        /// Metoda która przywraca domyślne ustawienia
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Options_BackToDefaults_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// Odświeżenie języka w całej aplikaji (ustawienie tekstu)
+        /// </summary>
+        private void SetLanguage()
+        {
+            // Welcome Tab
+            this.metroTabPageWelcome.Text = ConfigurationManager.AppSettings["WelcomeTabName" + lang];
+            Label_Welcome_Username.Text = ConfigurationManager.AppSettings["WelcomeLabelUsername" + lang];
+            Label_Welcome_Password.Text = ConfigurationManager.AppSettings["WelcomeLabelPassword" + lang];
+            Button_Welcome_Login.Text = ConfigurationManager.AppSettings["WelcomeButtonLogin" + lang];
+            // Analog Buffered Input Tab
+            this.TabPage_AnalogBufferedInput.Text = ConfigurationManager.AppSettings["ABITab" + lang];
+            this.Label_AnalogBufferedInput_Samples.Text = ConfigurationManager.AppSettings["ABISamples" + lang];
+            this.Label_AnalogBufferedInput_Channels.Text = ConfigurationManager.AppSettings["ABIChannels" + lang];
+            this.Label_AnalogBufferedInput_ChannelStart.Text = ConfigurationManager.AppSettings["ABIChannelStart" + lang];
+            this.Label_AnalogBufferedInput_IntervalCount.Text = ConfigurationManager.AppSettings["ABIIntervalCount" + lang];
+            this.Label_AnalogBufferedInput_ScanCount.Text = ConfigurationManager.AppSettings["ABIScanCount" + lang];
+            this.Label_AnalogBufferedInput_Rate.Text = ConfigurationManager.AppSettings["ABIRate" + lang];
+            this.Button_AnalogBufferedInput_Back.Text = ConfigurationManager.AppSettings["ABIButtonBack" + lang];
+            this.Button_AnalogBufferedInput_Measure.Text = ConfigurationManager.AppSettings["ABIButtonMeasure" + lang];
+        }
+
+        /// <summary>
+        /// Zmień status dla dostepnosci opcji
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CheckBox_AnalogInstantInput_Defaults_CheckedChanged(object sender, EventArgs e)
+        {
+            //if (!CheckBox_AnalogInstantInput_Defaults.Checked)
+            //{
+            //    CheckBox_AnalogInstantInput_MeasurmentOptions.Checked = false;
+            //}
+
+        }
+
+        /// <summary>
+        /// Wybranie domyślnych wartości pomiaru
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AnalogInstantInput_Defaults_Click(object sender, EventArgs e)
+        {
+            CheckBox_AnalogInstantInput_MeasurmentOptions.Checked = false;
+            CheckBox_AnalogInstantInput_Defaults.Checked = true;
+
+            // Default values for AnalogInstantInput
+            AII_timerValue = 50;
+            AII_choosenChannel = 0;
+            AII_numOfChannels = 1;
+        }
+
+
+        /*
+        * ============================================  NAWIGACJA  ========================================
+        */
+
+        /// <summary>
         /// Hiperłącze do strony Advantech.
         /// </summary>
         /// <param name="sender"></param>
@@ -521,27 +659,6 @@ namespace DAQNavi_WF_v1_0_0
             Label_Measure_Buffered.Visible = false;
         }
 
-        /// <summary>
-        /// Obliczenie nowych wartości punktów dla danego wykresu,
-        /// bazując na rozpiętości jego osi X.
-        /// </summary>
-        private void ChangeChartMarkerRatio(Chart chart, double ratio)
-        {
-            if (ratio <= 30)
-            {
-                for (int i = 0; i < chart.Series.Count; i++)
-                {
-                    chart.Series[i].MarkerSize = 8;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < chart.Series.Count; i++)
-                {
-                    chart.Series[i].MarkerSize = 0;
-                }
-            }
-        }
 
         /// <summary>
         /// Przejście do InstantAnalogInput
@@ -560,19 +677,6 @@ namespace DAQNavi_WF_v1_0_0
             AII_numOfChannels = 1;
 
             // Dodaj nowy element
-        }
-
-        /// <summary>
-        /// Metoda odpowiedzialna za zapisanie pliku w formacie txt na pulpicie.
-        /// Plik zawiera dane z ostatniego pomiaru.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_AnalogBufferedInput_ExportToFile_Click(object sender, EventArgs e)
-        {
-            CommentForm commentForm = new CommentForm(this);
-            commentForm.Show();
-
         }
 
         /// <summary>
@@ -611,119 +715,62 @@ namespace DAQNavi_WF_v1_0_0
             this.TabControl.TabPages.Remove(TabPage_LastMeasure);
         }
 
+
+        /// <summary>
+        /// Przejście do nowego pomiaru
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_MyMeasurements_NewMeasure_Click(object sender, EventArgs e)
+        {
+            this.TabControl.TabPages.Add(TabPage_Measure);
+            this.TabControl.SelectedTab = TabPage_Measure;
+        }
+
+
+        /*
+        * =========================================== UTILITY ====================================================
+        */
+
+        /// <summary>
+        /// Download data from DB
+        /// </summary>
+        private void getMeasurmentData(MeasurmentDTO measurment)
+        {
+            String myConnection = "datasource=" + TextBox_Options_Baza.Text
+                + ";port=" + TextBox_Options_Port.Text
+                + ";username=" + TextBox_Options_User.Text +
+                ";password=" + TextBox_Options_Haslo.Text;
+            MySqlConnection myConn = new MySqlConnection(myConnection);
+            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.data where idmeasurments='" + measurment.idmeasurments + "' ;", myConn);
+
+            MySqlDataReader myReader;
+            myConn.Open();
+            myReader = SelectCommand.ExecuteReader();
+            int counter = 0;
+            List<String> result = new List<String>();
+            while (myReader.Read())
+            {
+                result.Add(myReader.GetString("value"));
+                counter++;
+            }
+        }
+
         private void timer_ProgressBar_Tick(object sender, EventArgs e)
         {
             ProgressSpinner.Refresh();
         }
 
-
         /// <summary>
-        /// Zmiana języka na angielski
+        /// Tworzenie nowego usera
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RadioButton_Options_English_CheckedChanged(object sender, EventArgs e)
+        private void Button_Welcome_CreateNewUser_Click(object sender, EventArgs e)
         {
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
-            //make changes
-            config.AppSettings.Settings["defaultLanguage"].Value = "ENG";
-
-            //save to apply changes
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
-            SetLanguage();
+            CreateNewUser createNewUser = new CreateNewUser(this);
+            createNewUser.Show();
         }
-
-        /// <summary>
-        /// Zmiana języka na polski
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void RadioButton_Options_Polski_CheckedChanged(object sender, EventArgs e)
-        {
-            //ConfigurationManager.AppSettings.Set("defaultLanguage", "PL");
-            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-
-            //make changes
-            config.AppSettings.Settings["defaultLanguage"].Value = "PL";
-
-            //save to apply changes
-            config.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
-
-            SetLanguage();
-        }
-
-        /// <summary>
-        /// Metoda która zapisuje zmiany wprowadzone w panelu admina
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_Options_ApplyChanges_Click(object sender, EventArgs e)
-        {
-            //delete
-            //bufferedAiCtrl1.SelectedDevice.
-            //MessageBox.Show(my.ToString());
-
-            //var query = string.Format("select * from {0}", "*");
-
-            //using (var searcher = new ManagementObjectSearcher(query))
-            //{
-            //    ManagementObjectCollection objectCollection = searcher.Get();
-
-            //    foreach (ManagementBaseObject managementBaseObject in objectCollection)
-            //    {
-            //        foreach (PropertyData propertyData in managementBaseObject.Properties)
-            //        {   
-            //            String my = String.Format("Property:  {0}, Value: {1}", propertyData.Origin, propertyData.Name);
-            //            if (my.IndexOf("4702")>0)
-            //            {
-            //                MessageBox.Show(my);
-            //            }
-
-            //        }
-            //    }
-            //}
-        }
-
-        /// <summary>
-        /// Metoda która przywraca domyślne ustawienia
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_Options_BackToDefaults_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        /// <summary>
-        /// Odświeżenie języka w całej aplikaji (ustawienie tekstu)
-        /// </summary>
-        private void SetLanguage()
-        {
-            // Welcome Tab
-            this.metroTabPageWelcome.Text = ConfigurationManager.AppSettings["WelcomeTabName" + lang];
-            Label_Welcome_Username.Text = ConfigurationManager.AppSettings["WelcomeLabelUsername" + lang];
-            Label_Welcome_Password.Text = ConfigurationManager.AppSettings["WelcomeLabelPassword" + lang];
-            Button_Welcome_Login.Text = ConfigurationManager.AppSettings["WelcomeButtonLogin" + lang];
-            // Analog Buffered Input Tab
-            this.TabPage_AnalogBufferedInput.Text = ConfigurationManager.AppSettings["ABITab" + lang];
-            this.Label_AnalogBufferedInput_Samples.Text = ConfigurationManager.AppSettings["ABISamples" + lang];
-            this.Label_AnalogBufferedInput_Channels.Text = ConfigurationManager.AppSettings["ABIChannels" + lang];
-            this.Label_AnalogBufferedInput_ChannelStart.Text = ConfigurationManager.AppSettings["ABIChannelStart" + lang];
-            this.Label_AnalogBufferedInput_IntervalCount.Text = ConfigurationManager.AppSettings["ABIIntervalCount" + lang];
-            this.Label_AnalogBufferedInput_ScanCount.Text = ConfigurationManager.AppSettings["ABIScanCount" + lang];
-            this.Label_AnalogBufferedInput_Rate.Text = ConfigurationManager.AppSettings["ABIRate" + lang];
-            this.Button_AnalogBufferedInput_Back.Text = ConfigurationManager.AppSettings["ABIButtonBack" + lang];
-            this.Button_AnalogBufferedInput_Measure.Text = ConfigurationManager.AppSettings["ABIButtonMeasure" + lang];
-        }
-
-
-
-        /*
-        * =========================================== LOGOWANIE SIĘ ====================================================
-        */
 
         /// <summary>
         /// Logowanie się.
@@ -770,6 +817,221 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
+        /// <summary>
+        /// Metoda odpowiedzialna za zapisanie pliku w formacie txt na pulpicie.
+        /// Plik zawiera dane z ostatniego pomiaru.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_AnalogBufferedInput_ExportToFile_Click(object sender, EventArgs e)
+        {
+            CommentForm commentForm = new CommentForm(this);
+            commentForm.Show();
+
+        }
+
+        /// <summary>
+        /// Obliczenie nowych wartości punktów dla danego wykresu,
+        /// bazując na rozpiętości jego osi X.
+        /// </summary>
+        private void ChangeChartMarkerRatio(Chart chart, double ratio)
+        {
+            if (ratio <= 30)
+            {
+                for (int i = 0; i < chart.Series.Count; i++)
+                {
+                    chart.Series[i].MarkerSize = 8;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < chart.Series.Count; i++)
+                {
+                    chart.Series[i].MarkerSize = 0;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// W przyszlosci - powiekszanie wykresu?
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        /// <summary>
+        /// Zapis danych do bazy - czas poczatku pomiaru, konca, dane, id usera
+        /// </summary>
+        /// <param name="dateStart"></param>
+        /// <param name="dateEnd"></param>
+        /// <param name="data"></param>
+        /// <param name="userID"></param>
+        public void saveResultsToDataBase(string dateStart, string dateEnd, double[] data, string duration, string samples, string numberofchannels, string startchannel, MetroFramework.Controls.MetroProgressBar progressBar)
+        {
+            MeasurmentDAO.saveDataToDataBase(myLoginPanel, dateStart, dateEnd, data, duration, samples, numberofchannels, startchannel, progressBar);
+        }
+
+
+        /// <summary>
+        /// Edytowalny scrollbar zamiast utomatycznego
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroScrollBar2_Scroll(object sender, ScrollEventArgs e)
+        {
+            TabPage_Options.VerticalScroll.Value = e.NewValue * 5;
+        }
+
+
+        /// <summary>
+        /// Delegat do ustawiania scrollBara
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="p"></param>
+        private delegate void AutoScrollPositionDelegate(ScrollableControl sender, Point p);
+
+        /// <summary>
+        /// Automatyczne ustawienie focusa na kontrolce
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void metroTextBox4_Enter(object sender, EventArgs e)
+        {
+
+            Point p = TabPage_Options.AutoScrollPosition;
+            AutoScrollPositionDelegate del = new AutoScrollPositionDelegate(SetAutoScrollPosition);
+            Object[] args = { TabPage_Options, p };
+            BeginInvoke(del, args);
+        }
+
+        /// <summary>
+        /// Metoda ustawiajaca focus na kontrolce
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="p"></param>
+        public void SetAutoScrollPosition(ScrollableControl sender, Point p)
+        {
+            p.X = Math.Abs(p.X);
+            p.Y = Math.Abs(p.Y);
+            sender.AutoScrollPosition = p;
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza, aby byl widoczny gridTable
+        /// </summary>
+        public MetroFramework.Controls.MetroGrid metroGridTableVisible
+        {
+            get { return this.metroGridTable; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox TextBox_Options_UserComment_Visible
+        {
+            get { return this.TextBox_Options_UserComment; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox TextBox_Options_AdminComment_Visible
+        {
+            get { return this.TextBox_Options_AdminComment; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public double getAnalogInstantInputTimer
+        {
+            set { this.AII_timerValue = value; }
+            get { return this.AII_timerValue; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public int getChoosenChannelAII
+        {
+            set { this.AII_choosenChannel = value; }
+            get { return this.AII_choosenChannel; }
+        }
+
+        public int getChoosenChannelABI
+        {
+            set { this.TextBox_AnalogBufferedInput_ChannelStart.Text = value.ToString(); }
+            get { return int.Parse(this.TextBox_AnalogBufferedInput_ChannelStart.Text); }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public int getNumberOfChannelsAAI
+        {
+            set { this.AII_numOfChannels = value; }
+            get { return this.AII_numOfChannels; }
+        }
+
+        public int getNumberOfChannelsABI
+        {
+            set { this.TextBox_AnalogBufferedInput_Channels.Text = value.ToString(); }
+            get { return int.Parse(this.TextBox_AnalogBufferedInput_Channels.Text); }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroCheckBox getCheckbox_AnalogInstantInput_MeasurmentOptions
+        {
+            get { return this.CheckBox_AnalogInstantInput_MeasurmentOptions; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroCheckBox getCheckbox_AnalogInstantInput_Defaults
+        {
+            get { return this.CheckBox_AnalogInstantInput_Defaults; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox getDatabaseAddress
+        {
+            get { return this.TextBox_Options_Baza; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox getDatabasePort
+        {
+            get { return this.TextBox_Options_Port; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox getDatabaseUser
+        {
+            get { return this.TextBox_Options_User; }
+        }
+
+        /// <summary>
+        /// Accessor dla innego formularza
+        /// </summary>
+        public MetroFramework.Controls.MetroTextBox getDatabasePassword
+        {
+            get { return this.TextBox_Options_Haslo; }
+        }
 
 
          /*
@@ -1198,112 +1460,6 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
-       
-
-        /// <summary>
-        /// W przyszlosci - powiekszanie wykresu?
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-            this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
-        }
-
-        /// <summary>
-        /// Zapis danych do bazy - czas poczatku pomiaru, konca, dane, id usera
-        /// </summary>
-        /// <param name="dateStart"></param>
-        /// <param name="dateEnd"></param>
-        /// <param name="data"></param>
-        /// <param name="userID"></param>
-        public void saveResultsToDataBase(string dateStart, string dateEnd, double[] data, string duration, string samples, string numberofchannels, string startchannel, MetroFramework.Controls.MetroProgressBar progressBar)
-        {
-            MeasurmentDAO.saveDataToDataBase(myLoginPanel, dateStart, dateEnd, data, duration, samples, numberofchannels, startchannel, progressBar);
-        }
-
-
-        /// <summary>
-        /// Edytowalny scrollbar zamiast utomatycznego
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void metroScrollBar2_Scroll(object sender, ScrollEventArgs e)
-        {
-            TabPage_Options.VerticalScroll.Value = e.NewValue * 5;
-        }
-
-
-        /// <summary>
-        /// Delegat do ustawiania scrollBara
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="p"></param>
-        private delegate void AutoScrollPositionDelegate(ScrollableControl sender, Point p);
-
-        /// <summary>
-        /// Automatyczne ustawienie focusa na kontrolce
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void metroTextBox4_Enter(object sender, EventArgs e)
-        {
-            
-            Point p = TabPage_Options.AutoScrollPosition;
-            AutoScrollPositionDelegate del = new AutoScrollPositionDelegate(SetAutoScrollPosition);
-            Object[] args = { TabPage_Options, p };
-            BeginInvoke(del,args);
-        }
-
-        /// <summary>
-        /// Metoda ustawiajaca focus na kontrolce
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="p"></param>
-        public void SetAutoScrollPosition(ScrollableControl sender, Point p)
-        {
-            p.X = Math.Abs(p.X);
-            p.Y = Math.Abs(p.Y);
-            sender.AutoScrollPosition = p;
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza, aby byl widoczny gridTable
-        /// </summary>
-        public MetroFramework.Controls.MetroGrid metroGridTableVisible
-        {
-            get { return this.metroGridTable; }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public MetroFramework.Controls.MetroTextBox TextBox_Options_UserComment_Visible
-        {
-            get { return this.TextBox_Options_UserComment; }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public MetroFramework.Controls.MetroTextBox TextBox_Options_AdminComment_Visible
-        {
-            get { return this.TextBox_Options_AdminComment; }
-        }
-
-        /// <summary>
-        /// Przejście do nowego pomiaru
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_MyMeasurements_NewMeasure_Click(object sender, EventArgs e)
-        {
-            this.TabControl.TabPages.Add(TabPage_Measure);
-            this.TabControl.SelectedTab = TabPage_Measure;
-        }
-
         /// <summary>
         /// Otworzenie okna opcji dla AnalogInstantInput
         /// </summary>
@@ -1314,92 +1470,6 @@ namespace DAQNavi_WF_v1_0_0
             AnalogInstantMeasureOptions analogInstantInputOptions = new AnalogInstantMeasureOptions(this);
            analogInstantInputOptions.Show();
 
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public double getAnalogInstantInputTimer
-        {
-            set { this.AII_timerValue = value; }
-            get { return this.AII_timerValue; }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public int getChoosenChannelAII
-        {
-            set { this.AII_choosenChannel = value; }
-            get { return this.AII_choosenChannel; }
-        }
-
-        public int getChoosenChannelABI
-        {
-            set { this.TextBox_AnalogBufferedInput_ChannelStart.Text = value.ToString(); }
-            get { return int.Parse(this.TextBox_AnalogBufferedInput_ChannelStart.Text); }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public int getNumberOfChannelsAAI
-        {
-            set { this.AII_numOfChannels = value; }
-            get { return this.AII_numOfChannels; }
-        }
-
-        public int getNumberOfChannelsABI
-        {
-            set { this.TextBox_AnalogBufferedInput_Channels.Text = value.ToString(); }
-            get { return int.Parse(this.TextBox_AnalogBufferedInput_Channels.Text); }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public MetroFramework.Controls.MetroCheckBox getCheckbox_AnalogInstantInput_MeasurmentOptions
-        {
-            get { return this.CheckBox_AnalogInstantInput_MeasurmentOptions; }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public MetroFramework.Controls.MetroCheckBox getCheckbox_AnalogInstantInput_Defaults
-        {
-            get { return this.CheckBox_AnalogInstantInput_Defaults; }
-        }
-
-
-        /// <summary>
-        /// Zmień status dla dostepnosci opcji
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CheckBox_AnalogInstantInput_Defaults_CheckedChanged(object sender, EventArgs e)
-        {
-            //if (!CheckBox_AnalogInstantInput_Defaults.Checked)
-            //{
-            //    CheckBox_AnalogInstantInput_MeasurmentOptions.Checked = false;
-            //}
-
-        }
-
-        /// <summary>
-        /// Wybranie domyślnych wartości pomiaru
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_AnalogInstantInput_Defaults_Click(object sender, EventArgs e)
-        {
-            CheckBox_AnalogInstantInput_MeasurmentOptions.Checked = false;
-            CheckBox_AnalogInstantInput_Defaults.Checked = true;
-
-            // Default values for AnalogInstantInput
-            AII_timerValue = 50;
-            AII_choosenChannel = 0;
-            AII_numOfChannels = 1;
         }
 
         /// <summary>
@@ -1449,6 +1519,12 @@ namespace DAQNavi_WF_v1_0_0
             Chart_AnalogInstantInput.ChartAreas[0].AxisX.Maximum = window + howMuchToChange;
             //Label_AnalogBufferedInput_TrackBar2.Text = "Position X: " + TrackBar_AnalogBufferedInput_2.Value + " %";
         }
+
+
+
+        /*
+        * =============================================  MY MEASURMENTS ====================================================
+        */
 
         /// <summary>
         /// Change colour of labels
@@ -1585,50 +1661,6 @@ namespace DAQNavi_WF_v1_0_0
 
             numberOfMeasurments++;
             
-            
-        }
-
-        /// <summary>
-        /// Tworzenie nowego usera
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Button_Welcome_CreateNewUser_Click(object sender, EventArgs e)
-        {
-            CreateNewUser createNewUser = new CreateNewUser(this);
-            createNewUser.Show();
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public MetroFramework.Controls.MetroTextBox getDatabaseAddress
-        {
-            get { return this.TextBox_Options_Baza; }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public MetroFramework.Controls.MetroTextBox getDatabasePort
-        {
-            get { return this.TextBox_Options_Port; }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public MetroFramework.Controls.MetroTextBox getDatabaseUser
-        {
-            get { return this.TextBox_Options_User; }
-        }
-
-        /// <summary>
-        /// Accessor dla innego formularza
-        /// </summary>
-        public MetroFramework.Controls.MetroTextBox getDatabasePassword
-        {
-            get { return this.TextBox_Options_Haslo; }
         }
 
         /// <summary>
@@ -1676,31 +1708,5 @@ namespace DAQNavi_WF_v1_0_0
 
             }              
        }
-
-
-
-        /// <summary>
-        /// Download data from DB
-        /// </summary>
-        private void getMeasurmentData(MeasurmentDTO measurment)
-        {
-            String myConnection = "datasource=" + TextBox_Options_Baza.Text
-                + ";port=" + TextBox_Options_Port.Text
-                + ";username=" + TextBox_Options_User.Text +
-                ";password=" + TextBox_Options_Haslo.Text;
-            MySqlConnection myConn = new MySqlConnection(myConnection);
-            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.data where idmeasurments='" + measurment.idmeasurments + "' ;", myConn);
-
-            MySqlDataReader myReader;
-            myConn.Open();
-            myReader = SelectCommand.ExecuteReader();
-            int counter = 0;
-            List<String> result = new List<String>();
-            while (myReader.Read())
-            {
-                result.Add(myReader.GetString("value"));
-                counter++;
-            }
-        }
     }
 }
