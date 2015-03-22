@@ -74,6 +74,17 @@
             this.TextBox_AnalogBufferedInput_Channels = new MetroFramework.Controls.MetroTextBox();
             this.Button_AnalogBufferedInput_Measure = new MetroFramework.Controls.MetroButton();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
+            this.metroTabPageWelcome = new MetroFramework.Controls.MetroTabPage();
+            this.Label_Welcome_NewUser = new MetroFramework.Controls.MetroLabel();
+            this.Button_Welcome_CreateNewUser = new MetroFramework.Controls.MetroButton();
+            this.Button_Welcome_Login = new MetroFramework.Controls.MetroButton();
+            this.Label_Welcome_Password = new MetroFramework.Controls.MetroLabel();
+            this.Label_Welcome_Username = new MetroFramework.Controls.MetroLabel();
+            this.TextBox_Welcome_Password = new MetroFramework.Controls.MetroTextBox();
+            this.TextBox_Welcome_Username = new MetroFramework.Controls.MetroTextBox();
+            this.PictureBox_Welcome_Advantech = new System.Windows.Forms.PictureBox();
+            this.Link_Welcome = new MetroFramework.Controls.MetroLink();
+            this.Label_Welcome_HelloText = new MetroFramework.Controls.MetroLabel();
             this.TabPage_MyMeasurements = new MetroFramework.Controls.MetroTabPage();
             this.Label_MyMeasurments_ChannelNumberText1 = new MetroFramework.Controls.MetroLabel();
             this.Label_MyMeasurments_ChannelNumber1 = new MetroFramework.Controls.MetroLabel();
@@ -103,17 +114,6 @@
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.metroTabPageWelcome = new MetroFramework.Controls.MetroTabPage();
-            this.Label_Welcome_NewUser = new MetroFramework.Controls.MetroLabel();
-            this.Button_Welcome_CreateNewUser = new MetroFramework.Controls.MetroButton();
-            this.Button_Welcome_Login = new MetroFramework.Controls.MetroButton();
-            this.Label_Welcome_Password = new MetroFramework.Controls.MetroLabel();
-            this.Label_Welcome_Username = new MetroFramework.Controls.MetroLabel();
-            this.TextBox_Welcome_Password = new MetroFramework.Controls.MetroTextBox();
-            this.TextBox_Welcome_Username = new MetroFramework.Controls.MetroTextBox();
-            this.PictureBox_Welcome_Advantech = new System.Windows.Forms.PictureBox();
-            this.Link_Welcome = new MetroFramework.Controls.MetroLink();
-            this.Label_Welcome_HelloText = new MetroFramework.Controls.MetroLabel();
             this.TabPage_AnalogBufferedInput = new MetroFramework.Controls.MetroTabPage();
             this.Label_AnalogBufferedInput_Details = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
@@ -253,13 +253,13 @@
             this.timer_ProgressBar = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.Chart_AnalogBufferedInput)).BeginInit();
             this.TabControl.SuspendLayout();
+            this.metroTabPageWelcome.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Welcome_Advantech)).BeginInit();
             this.TabPage_MyMeasurements.SuspendLayout();
             this.TabPage_ShowMeasure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.metroPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            this.metroTabPageWelcome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Welcome_Advantech)).BeginInit();
             this.TabPage_AnalogBufferedInput.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.TabPage_Options.SuspendLayout();
@@ -475,9 +475,9 @@
             // 
             // TabControl
             // 
+            this.TabControl.Controls.Add(this.TabPage_ShowMeasure);
             this.TabControl.Controls.Add(this.metroTabPageWelcome);
             this.TabControl.Controls.Add(this.TabPage_MyMeasurements);
-            this.TabControl.Controls.Add(this.TabPage_ShowMeasure);
             this.TabControl.Controls.Add(this.TabPage_AnalogBufferedInput);
             this.TabControl.Controls.Add(this.TabPage_Options);
             this.TabControl.Controls.Add(this.TabPage_AnalogInstantInput);
@@ -488,12 +488,160 @@
             this.TabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.TabControl.Location = new System.Drawing.Point(23, 63);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 2;
+            this.TabControl.SelectedIndex = 1;
             this.TabControl.Size = new System.Drawing.Size(925, 622);
             this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 40;
             this.TabControl.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TabControl.UseSelectable = true;
+            // 
+            // metroTabPageWelcome
+            // 
+            this.metroTabPageWelcome.Controls.Add(this.Label_Welcome_NewUser);
+            this.metroTabPageWelcome.Controls.Add(this.Button_Welcome_CreateNewUser);
+            this.metroTabPageWelcome.Controls.Add(this.Button_Welcome_Login);
+            this.metroTabPageWelcome.Controls.Add(this.Label_Welcome_Password);
+            this.metroTabPageWelcome.Controls.Add(this.Label_Welcome_Username);
+            this.metroTabPageWelcome.Controls.Add(this.TextBox_Welcome_Password);
+            this.metroTabPageWelcome.Controls.Add(this.TextBox_Welcome_Username);
+            this.metroTabPageWelcome.Controls.Add(this.PictureBox_Welcome_Advantech);
+            this.metroTabPageWelcome.Controls.Add(this.Link_Welcome);
+            this.metroTabPageWelcome.Controls.Add(this.Label_Welcome_HelloText);
+            this.metroTabPageWelcome.ForeColor = System.Drawing.Color.Maroon;
+            this.metroTabPageWelcome.HorizontalScrollbarBarColor = true;
+            this.metroTabPageWelcome.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroTabPageWelcome.HorizontalScrollbarSize = 10;
+            this.metroTabPageWelcome.Location = new System.Drawing.Point(4, 38);
+            this.metroTabPageWelcome.Name = "metroTabPageWelcome";
+            this.metroTabPageWelcome.Size = new System.Drawing.Size(917, 580);
+            this.metroTabPageWelcome.Style = MetroFramework.MetroColorStyle.Green;
+            this.metroTabPageWelcome.TabIndex = 6;
+            this.metroTabPageWelcome.Text = "Welcome";
+            this.metroTabPageWelcome.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroTabPageWelcome.UseCustomForeColor = true;
+            this.metroTabPageWelcome.UseStyleColors = true;
+            this.metroTabPageWelcome.VerticalScrollbarBarColor = true;
+            this.metroTabPageWelcome.VerticalScrollbarHighlightOnWheel = false;
+            this.metroTabPageWelcome.VerticalScrollbarSize = 10;
+            // 
+            // Label_Welcome_NewUser
+            // 
+            this.Label_Welcome_NewUser.Location = new System.Drawing.Point(73, 435);
+            this.Label_Welcome_NewUser.Name = "Label_Welcome_NewUser";
+            this.Label_Welcome_NewUser.Size = new System.Drawing.Size(162, 19);
+            this.Label_Welcome_NewUser.TabIndex = 13;
+            this.Label_Welcome_NewUser.Text = "New User? Register here:";
+            this.Label_Welcome_NewUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label_Welcome_NewUser.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Button_Welcome_CreateNewUser
+            // 
+            this.Button_Welcome_CreateNewUser.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_Welcome_CreateNewUser.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.Button_Welcome_CreateNewUser.Location = new System.Drawing.Point(96, 470);
+            this.Button_Welcome_CreateNewUser.Name = "Button_Welcome_CreateNewUser";
+            this.Button_Welcome_CreateNewUser.Size = new System.Drawing.Size(114, 39);
+            this.Button_Welcome_CreateNewUser.TabIndex = 12;
+            this.Button_Welcome_CreateNewUser.Text = "Register";
+            this.Button_Welcome_CreateNewUser.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Button_Welcome_CreateNewUser.UseSelectable = true;
+            this.Button_Welcome_CreateNewUser.Click += new System.EventHandler(this.Button_Welcome_CreateNewUser_Click);
+            // 
+            // Button_Welcome_Login
+            // 
+            this.Button_Welcome_Login.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.Button_Welcome_Login.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.Button_Welcome_Login.Location = new System.Drawing.Point(96, 249);
+            this.Button_Welcome_Login.Name = "Button_Welcome_Login";
+            this.Button_Welcome_Login.Size = new System.Drawing.Size(114, 39);
+            this.Button_Welcome_Login.TabIndex = 11;
+            this.Button_Welcome_Login.Text = "Login";
+            this.Button_Welcome_Login.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Button_Welcome_Login.UseSelectable = true;
+            this.Button_Welcome_Login.Click += new System.EventHandler(this.Button_Login_Click);
+            // 
+            // Label_Welcome_Password
+            // 
+            this.Label_Welcome_Password.Location = new System.Drawing.Point(73, 155);
+            this.Label_Welcome_Password.Name = "Label_Welcome_Password";
+            this.Label_Welcome_Password.Size = new System.Drawing.Size(162, 19);
+            this.Label_Welcome_Password.TabIndex = 10;
+            this.Label_Welcome_Password.Text = "Password";
+            this.Label_Welcome_Password.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label_Welcome_Password.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Label_Welcome_Username
+            // 
+            this.Label_Welcome_Username.Location = new System.Drawing.Point(73, 90);
+            this.Label_Welcome_Username.Name = "Label_Welcome_Username";
+            this.Label_Welcome_Username.Size = new System.Drawing.Size(162, 19);
+            this.Label_Welcome_Username.TabIndex = 9;
+            this.Label_Welcome_Username.Text = "Username";
+            this.Label_Welcome_Username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Label_Welcome_Username.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // TextBox_Welcome_Password
+            // 
+            this.TextBox_Welcome_Password.Lines = new string[0];
+            this.TextBox_Welcome_Password.Location = new System.Drawing.Point(73, 177);
+            this.TextBox_Welcome_Password.MaxLength = 32767;
+            this.TextBox_Welcome_Password.Name = "TextBox_Welcome_Password";
+            this.TextBox_Welcome_Password.PasswordChar = '*';
+            this.TextBox_Welcome_Password.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextBox_Welcome_Password.SelectedText = "";
+            this.TextBox_Welcome_Password.Size = new System.Drawing.Size(162, 24);
+            this.TextBox_Welcome_Password.TabIndex = 6;
+            this.TextBox_Welcome_Password.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TextBox_Welcome_Password.UseSelectable = true;
+            this.TextBox_Welcome_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox2_KeyPress);
+            // 
+            // TextBox_Welcome_Username
+            // 
+            this.TextBox_Welcome_Username.Lines = new string[0];
+            this.TextBox_Welcome_Username.Location = new System.Drawing.Point(73, 112);
+            this.TextBox_Welcome_Username.MaxLength = 32767;
+            this.TextBox_Welcome_Username.Name = "TextBox_Welcome_Username";
+            this.TextBox_Welcome_Username.PasswordChar = '\0';
+            this.TextBox_Welcome_Username.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TextBox_Welcome_Username.SelectedText = "";
+            this.TextBox_Welcome_Username.Size = new System.Drawing.Size(162, 24);
+            this.TextBox_Welcome_Username.TabIndex = 5;
+            this.TextBox_Welcome_Username.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TextBox_Welcome_Username.UseSelectable = true;
+            // 
+            // PictureBox_Welcome_Advantech
+            // 
+            this.PictureBox_Welcome_Advantech.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox_Welcome_Advantech.Image")));
+            this.PictureBox_Welcome_Advantech.Location = new System.Drawing.Point(355, 425);
+            this.PictureBox_Welcome_Advantech.Name = "PictureBox_Welcome_Advantech";
+            this.PictureBox_Welcome_Advantech.Size = new System.Drawing.Size(568, 105);
+            this.PictureBox_Welcome_Advantech.TabIndex = 4;
+            this.PictureBox_Welcome_Advantech.TabStop = false;
+            // 
+            // Link_Welcome
+            // 
+            this.Link_Welcome.BackColor = System.Drawing.Color.Transparent;
+            this.Link_Welcome.Location = new System.Drawing.Point(687, 146);
+            this.Link_Welcome.Name = "Link_Welcome";
+            this.Link_Welcome.Size = new System.Drawing.Size(40, 23);
+            this.Link_Welcome.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Link_Welcome.TabIndex = 3;
+            this.Link_Welcome.Text = "here.";
+            this.Link_Welcome.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Link_Welcome.UseCustomBackColor = true;
+            this.Link_Welcome.UseSelectable = true;
+            this.Link_Welcome.UseStyleColors = true;
+            this.Link_Welcome.Click += new System.EventHandler(this.Link1_Click);
+            // 
+            // Label_Welcome_HelloText
+            // 
+            this.Label_Welcome_HelloText.AutoSize = true;
+            this.Label_Welcome_HelloText.Location = new System.Drawing.Point(400, 90);
+            this.Label_Welcome_HelloText.Name = "Label_Welcome_HelloText";
+            this.Label_Welcome_HelloText.Size = new System.Drawing.Size(371, 19);
+            this.Label_Welcome_HelloText.TabIndex = 2;
+            this.Label_Welcome_HelloText.Text = "\"Welcome in AdvantechMeasure application. \\n\\nTo start, \" + ";
+            this.Label_Welcome_HelloText.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // TabPage_MyMeasurements
             // 
@@ -654,6 +802,7 @@
             this.Button_MyMeasurments_Measure1.Visible = false;
             this.Button_MyMeasurments_Measure1.MouseEnter += new System.EventHandler(this.metroButton1_MouseEnter);
             this.Button_MyMeasurments_Measure1.MouseLeave += new System.EventHandler(this.metroButton1_MouseLeave);
+            this.Button_MyMeasurments_Measure1.MouseHover += new System.EventHandler(this.Button_MyMeasurments_Measure1_MouseHover);
             // 
             // TabPage_ShowMeasure
             // 
@@ -1005,154 +1154,6 @@
             this.chart1.Size = new System.Drawing.Size(673, 448);
             this.chart1.TabIndex = 5;
             this.chart1.Text = "chart2";
-            // 
-            // metroTabPageWelcome
-            // 
-            this.metroTabPageWelcome.Controls.Add(this.Label_Welcome_NewUser);
-            this.metroTabPageWelcome.Controls.Add(this.Button_Welcome_CreateNewUser);
-            this.metroTabPageWelcome.Controls.Add(this.Button_Welcome_Login);
-            this.metroTabPageWelcome.Controls.Add(this.Label_Welcome_Password);
-            this.metroTabPageWelcome.Controls.Add(this.Label_Welcome_Username);
-            this.metroTabPageWelcome.Controls.Add(this.TextBox_Welcome_Password);
-            this.metroTabPageWelcome.Controls.Add(this.TextBox_Welcome_Username);
-            this.metroTabPageWelcome.Controls.Add(this.PictureBox_Welcome_Advantech);
-            this.metroTabPageWelcome.Controls.Add(this.Link_Welcome);
-            this.metroTabPageWelcome.Controls.Add(this.Label_Welcome_HelloText);
-            this.metroTabPageWelcome.ForeColor = System.Drawing.Color.Maroon;
-            this.metroTabPageWelcome.HorizontalScrollbarBarColor = true;
-            this.metroTabPageWelcome.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPageWelcome.HorizontalScrollbarSize = 10;
-            this.metroTabPageWelcome.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPageWelcome.Name = "metroTabPageWelcome";
-            this.metroTabPageWelcome.Size = new System.Drawing.Size(917, 580);
-            this.metroTabPageWelcome.Style = MetroFramework.MetroColorStyle.Green;
-            this.metroTabPageWelcome.TabIndex = 6;
-            this.metroTabPageWelcome.Text = "Welcome";
-            this.metroTabPageWelcome.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.metroTabPageWelcome.UseCustomForeColor = true;
-            this.metroTabPageWelcome.UseStyleColors = true;
-            this.metroTabPageWelcome.VerticalScrollbarBarColor = true;
-            this.metroTabPageWelcome.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPageWelcome.VerticalScrollbarSize = 10;
-            // 
-            // Label_Welcome_NewUser
-            // 
-            this.Label_Welcome_NewUser.Location = new System.Drawing.Point(73, 435);
-            this.Label_Welcome_NewUser.Name = "Label_Welcome_NewUser";
-            this.Label_Welcome_NewUser.Size = new System.Drawing.Size(162, 19);
-            this.Label_Welcome_NewUser.TabIndex = 13;
-            this.Label_Welcome_NewUser.Text = "New User? Register here:";
-            this.Label_Welcome_NewUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Label_Welcome_NewUser.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Button_Welcome_CreateNewUser
-            // 
-            this.Button_Welcome_CreateNewUser.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Welcome_CreateNewUser.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_Welcome_CreateNewUser.Location = new System.Drawing.Point(96, 470);
-            this.Button_Welcome_CreateNewUser.Name = "Button_Welcome_CreateNewUser";
-            this.Button_Welcome_CreateNewUser.Size = new System.Drawing.Size(114, 39);
-            this.Button_Welcome_CreateNewUser.TabIndex = 12;
-            this.Button_Welcome_CreateNewUser.Text = "Register";
-            this.Button_Welcome_CreateNewUser.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Button_Welcome_CreateNewUser.UseSelectable = true;
-            this.Button_Welcome_CreateNewUser.Click += new System.EventHandler(this.Button_Welcome_CreateNewUser_Click);
-            // 
-            // Button_Welcome_Login
-            // 
-            this.Button_Welcome_Login.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.Button_Welcome_Login.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Button_Welcome_Login.Location = new System.Drawing.Point(96, 249);
-            this.Button_Welcome_Login.Name = "Button_Welcome_Login";
-            this.Button_Welcome_Login.Size = new System.Drawing.Size(114, 39);
-            this.Button_Welcome_Login.TabIndex = 11;
-            this.Button_Welcome_Login.Text = "Login";
-            this.Button_Welcome_Login.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Button_Welcome_Login.UseSelectable = true;
-            this.Button_Welcome_Login.Click += new System.EventHandler(this.Button_Login_Click);
-            // 
-            // Label_Welcome_Password
-            // 
-            this.Label_Welcome_Password.Location = new System.Drawing.Point(73, 155);
-            this.Label_Welcome_Password.Name = "Label_Welcome_Password";
-            this.Label_Welcome_Password.Size = new System.Drawing.Size(162, 19);
-            this.Label_Welcome_Password.TabIndex = 10;
-            this.Label_Welcome_Password.Text = "Password";
-            this.Label_Welcome_Password.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Label_Welcome_Password.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Label_Welcome_Username
-            // 
-            this.Label_Welcome_Username.Location = new System.Drawing.Point(73, 90);
-            this.Label_Welcome_Username.Name = "Label_Welcome_Username";
-            this.Label_Welcome_Username.Size = new System.Drawing.Size(162, 19);
-            this.Label_Welcome_Username.TabIndex = 9;
-            this.Label_Welcome_Username.Text = "Username";
-            this.Label_Welcome_Username.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Label_Welcome_Username.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // TextBox_Welcome_Password
-            // 
-            this.TextBox_Welcome_Password.Lines = new string[0];
-            this.TextBox_Welcome_Password.Location = new System.Drawing.Point(73, 177);
-            this.TextBox_Welcome_Password.MaxLength = 32767;
-            this.TextBox_Welcome_Password.Name = "TextBox_Welcome_Password";
-            this.TextBox_Welcome_Password.PasswordChar = '*';
-            this.TextBox_Welcome_Password.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TextBox_Welcome_Password.SelectedText = "";
-            this.TextBox_Welcome_Password.Size = new System.Drawing.Size(162, 24);
-            this.TextBox_Welcome_Password.TabIndex = 6;
-            this.TextBox_Welcome_Password.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TextBox_Welcome_Password.UseSelectable = true;
-            this.TextBox_Welcome_Password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox2_KeyPress);
-            // 
-            // TextBox_Welcome_Username
-            // 
-            this.TextBox_Welcome_Username.Lines = new string[0];
-            this.TextBox_Welcome_Username.Location = new System.Drawing.Point(73, 112);
-            this.TextBox_Welcome_Username.MaxLength = 32767;
-            this.TextBox_Welcome_Username.Name = "TextBox_Welcome_Username";
-            this.TextBox_Welcome_Username.PasswordChar = '\0';
-            this.TextBox_Welcome_Username.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.TextBox_Welcome_Username.SelectedText = "";
-            this.TextBox_Welcome_Username.Size = new System.Drawing.Size(162, 24);
-            this.TextBox_Welcome_Username.TabIndex = 5;
-            this.TextBox_Welcome_Username.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TextBox_Welcome_Username.UseSelectable = true;
-            // 
-            // PictureBox_Welcome_Advantech
-            // 
-            this.PictureBox_Welcome_Advantech.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox_Welcome_Advantech.Image")));
-            this.PictureBox_Welcome_Advantech.Location = new System.Drawing.Point(355, 425);
-            this.PictureBox_Welcome_Advantech.Name = "PictureBox_Welcome_Advantech";
-            this.PictureBox_Welcome_Advantech.Size = new System.Drawing.Size(568, 105);
-            this.PictureBox_Welcome_Advantech.TabIndex = 4;
-            this.PictureBox_Welcome_Advantech.TabStop = false;
-            // 
-            // Link_Welcome
-            // 
-            this.Link_Welcome.BackColor = System.Drawing.Color.Transparent;
-            this.Link_Welcome.Location = new System.Drawing.Point(687, 146);
-            this.Link_Welcome.Name = "Link_Welcome";
-            this.Link_Welcome.Size = new System.Drawing.Size(40, 23);
-            this.Link_Welcome.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Link_Welcome.TabIndex = 3;
-            this.Link_Welcome.Text = "here.";
-            this.Link_Welcome.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Link_Welcome.UseCustomBackColor = true;
-            this.Link_Welcome.UseSelectable = true;
-            this.Link_Welcome.UseStyleColors = true;
-            this.Link_Welcome.Click += new System.EventHandler(this.Link1_Click);
-            // 
-            // Label_Welcome_HelloText
-            // 
-            this.Label_Welcome_HelloText.AutoSize = true;
-            this.Label_Welcome_HelloText.Location = new System.Drawing.Point(400, 90);
-            this.Label_Welcome_HelloText.Name = "Label_Welcome_HelloText";
-            this.Label_Welcome_HelloText.Size = new System.Drawing.Size(371, 19);
-            this.Label_Welcome_HelloText.TabIndex = 2;
-            this.Label_Welcome_HelloText.Text = "\"Welcome in AdvantechMeasure application. \\n\\nTo start, \" + ";
-            this.Label_Welcome_HelloText.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // TabPage_AnalogBufferedInput
             // 
@@ -3092,6 +3093,9 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.Chart_AnalogBufferedInput)).EndInit();
             this.TabControl.ResumeLayout(false);
+            this.metroTabPageWelcome.ResumeLayout(false);
+            this.metroTabPageWelcome.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Welcome_Advantech)).EndInit();
             this.TabPage_MyMeasurements.ResumeLayout(false);
             this.TabPage_MyMeasurements.PerformLayout();
             this.TabPage_ShowMeasure.ResumeLayout(false);
@@ -3099,9 +3103,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.metroPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            this.metroTabPageWelcome.ResumeLayout(false);
-            this.metroTabPageWelcome.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureBox_Welcome_Advantech)).EndInit();
             this.TabPage_AnalogBufferedInput.ResumeLayout(false);
             this.TabPage_AnalogBufferedInput.PerformLayout();
             this.metroPanel1.ResumeLayout(false);

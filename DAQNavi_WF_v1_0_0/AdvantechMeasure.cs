@@ -30,7 +30,7 @@ namespace DAQNavi_WF_v1_0_0
          */
         MetroThemeStyle Light = MetroFramework.MetroThemeStyle.Light;
         MetroThemeStyle Dark = MetroFramework.MetroThemeStyle.Dark;
-        Color lightDark = Color.FromArgb(180, 180, 180);
+        Color lightDark = Color.FromArgb(170,170,170);
         Color grayDark = Color.FromArgb(34, 34, 34);
 
         /*
@@ -79,10 +79,14 @@ namespace DAQNavi_WF_v1_0_0
          *  MY MEASURMENTS PANEL
          */
         int numberOfMeasurments = 0;
+        List<MetroFramework.Controls.MetroButton> ListMyMeasurmentsButtons = new List<MetroFramework.Controls.MetroButton>();
         List <MetroFramework.Controls.MetroLabel> ListMyMeasurmentsTitles = new List<MetroFramework.Controls.MetroLabel>();
         List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsChannelStart = new List<MetroFramework.Controls.MetroLabel>();
         List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsNumberOfChannels = new List<MetroFramework.Controls.MetroLabel>();
         List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsSamples = new List<MetroFramework.Controls.MetroLabel>();
+        List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsChannelStartValue = new List<MetroFramework.Controls.MetroLabel>();
+        List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsNumberOfChannelsValue = new List<MetroFramework.Controls.MetroLabel>();
+        List<MetroFramework.Controls.MetroLabel> ListMyMeasurmentsSamplesValue = new List<MetroFramework.Controls.MetroLabel>();
         List <MeasurmentDTO> myLoadedMeasurments = new List<MeasurmentDTO>();
         
 
@@ -1287,9 +1291,9 @@ namespace DAQNavi_WF_v1_0_0
                 AII_timer.Enabled = false;
                 AII_data = new double[8];
                 Button_AnalogInstantInput_Measure.Text = "Save";
-                ListMyMeasurmentsSamples[numberOfMeasurments - 1].Text = AAI_sampleCount.ToString();
-                ListMyMeasurmentsNumberOfChannels[numberOfMeasurments -1].Text = AII_numOfChannels.ToString();
-                ListMyMeasurmentsChannelStart[numberOfMeasurments - 1].Text = AII_choosenChannel.ToString();
+                ListMyMeasurmentsSamplesValue[numberOfMeasurments - 1].Text = AAI_sampleCount.ToString();
+                ListMyMeasurmentsNumberOfChannelsValue[numberOfMeasurments -1].Text = AII_numOfChannels.ToString();
+                ListMyMeasurmentsChannelStartValue[numberOfMeasurments - 1].Text = AII_choosenChannel.ToString();
             }
             
                 // Button save mode
@@ -1527,27 +1531,76 @@ namespace DAQNavi_WF_v1_0_0
         */
 
         /// <summary>
-        /// Change colour of labels
+        /// Zmiana kolorów labeli po najechaniu na PRZYCISK myszką,
+        /// tak żeby nie było widać że są postawione na przycisku
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void metroButton1_MouseEnter(object sender, EventArgs e)
         {
-            Label_MyMeasurments_ChannelStart1.BackColor = Color.FromArgb(180,180,180);
-            Label_MyMeasurments_ChannelStart1.ForeColor = Color.FromArgb(34, 34, 34);
-            Button_MyMeasurments_Measure1.BackColor = Color.FromArgb(180,180,180);
+            ((MetroFramework.Controls.MetroButton)sender).BackColor = Color.FromArgb(255,0,0);
+            if (ListMyMeasurmentsButtons.Contains(sender))
+            {
+                int index = ListMyMeasurmentsButtons.IndexOf((MetroFramework.Controls.MetroButton)sender);
+                ListMyMeasurmentsTitles[index].BackColor = lightDark;
+                ListMyMeasurmentsChannelStart[index].BackColor = lightDark;
+                ListMyMeasurmentsSamplesValue[index].BackColor = lightDark;
+                ListMyMeasurmentsNumberOfChannels[index].BackColor = lightDark;
+                ListMyMeasurmentsNumberOfChannelsValue[index].BackColor = lightDark;
+                ListMyMeasurmentsChannelStart[index].BackColor = lightDark;
+                ListMyMeasurmentsChannelStartValue[index].BackColor = lightDark;
+                ListMyMeasurmentsSamples[index].BackColor = lightDark;
+                ListMyMeasurmentsSamplesValue[index].BackColor = lightDark;
+
+                ListMyMeasurmentsTitles[index].ForeColor = grayDark;
+                ListMyMeasurmentsChannelStart[index].ForeColor = grayDark;
+                ListMyMeasurmentsSamplesValue[index].ForeColor = grayDark;
+                ListMyMeasurmentsNumberOfChannels[index].ForeColor = grayDark;
+                ListMyMeasurmentsNumberOfChannelsValue[index].ForeColor = grayDark;
+                ListMyMeasurmentsChannelStart[index].ForeColor = grayDark;
+                ListMyMeasurmentsChannelStartValue[index].ForeColor = grayDark;
+                ListMyMeasurmentsSamples[index].ForeColor = grayDark;
+                ListMyMeasurmentsSamplesValue[index].ForeColor = grayDark;
+            }
         }
 
         private void metroButton1_MouseLeave(object sender, EventArgs e)
         {
-            Label_MyMeasurments_ChannelStart1.BackColor = Color.FromArgb(34, 34, 34);
-            Button_MyMeasurments_Measure1.BackColor = Color.FromArgb(34, 34, 34);
-            Label_MyMeasurments_ChannelStart1.ForeColor = Color.FromArgb(180, 180, 180);
+            ((MetroFramework.Controls.MetroButton)sender).BackColor = grayDark;
+            if (ListMyMeasurmentsButtons.Contains(sender))
+            {
+                int index = ListMyMeasurmentsButtons.IndexOf((MetroFramework.Controls.MetroButton)sender);
+                ListMyMeasurmentsTitles[index].BackColor = grayDark;
+                ListMyMeasurmentsChannelStart[index].BackColor = grayDark;
+                ListMyMeasurmentsSamplesValue[index].BackColor = grayDark;
+                ListMyMeasurmentsNumberOfChannels[index].BackColor = grayDark;
+                ListMyMeasurmentsNumberOfChannelsValue[index].BackColor = grayDark;
+                ListMyMeasurmentsChannelStart[index].BackColor = grayDark;
+                ListMyMeasurmentsChannelStartValue[index].BackColor = grayDark;
+                ListMyMeasurmentsSamples[index].BackColor = grayDark;
+                ListMyMeasurmentsSamplesValue[index].BackColor = grayDark;
+
+                ListMyMeasurmentsTitles[index].ForeColor = lightDark;
+                ListMyMeasurmentsChannelStart[index].ForeColor = lightDark;
+                ListMyMeasurmentsSamplesValue[index].ForeColor = lightDark;
+                ListMyMeasurmentsNumberOfChannels[index].ForeColor = lightDark;
+                ListMyMeasurmentsNumberOfChannelsValue[index].ForeColor = lightDark;
+                ListMyMeasurmentsChannelStart[index].ForeColor = lightDark;
+                ListMyMeasurmentsChannelStartValue[index].ForeColor = lightDark;
+                ListMyMeasurmentsSamples[index].ForeColor = lightDark;
+                ListMyMeasurmentsSamplesValue[index].ForeColor = lightDark;
+            }
+        }
+
+        private void Button_MyMeasurments_Measure1_MouseHover(object sender, EventArgs e)
+        {
+            ((MetroFramework.Controls.MetroButton)sender).BackColor = lightDark;
         }
 
 
         /// <summary>
-        /// Tworzy nowy zestaw przyciskow i labelów
+        /// Tworzy nowy zestaw przyciskow i labelów w oknie MyMeasurments
+        /// dla jednego, aktualnego pomiaru
         /// </summary>
         public void createNewMeasurment()
         {
@@ -1558,7 +1611,12 @@ namespace DAQNavi_WF_v1_0_0
             newButton.Location = new Point(25, 72 + (80 + 20) * numberOfMeasurments);
             newButton.Size = new Size(700, 80);
             newButton.Name = "Button_MyMeasurments_Measurment" + numberOfMeasurments;
+            newButton.UseCustomBackColor = true;
+            newButton.BackColor = grayDark;
+            newButton.MouseLeave += new EventHandler(metroButton1_MouseLeave);
+            newButton.MouseEnter += new EventHandler(metroButton1_MouseEnter);
             TabPage_MyMeasurements.Controls.Add(newButton);
+            ListMyMeasurmentsButtons.Add(newButton);
 
             // Label title
             MetroFramework.Controls.MetroLabel titleLabel = new MetroFramework.Controls.MetroLabel();
@@ -1568,7 +1626,9 @@ namespace DAQNavi_WF_v1_0_0
             titleLabel.Text = "Measurment #" + numberOfMeasurments;
             titleLabel.Size = new Size(140, 25);
             titleLabel.UseCustomBackColor = true;
+            titleLabel.UseCustomForeColor = true;
             titleLabel.BackColor = grayDark;
+            titleLabel.ForeColor = lightDark;
             titleLabel.UseStyleColors = true;
             titleLabel.Style = MetroColorStyle.Red;
             titleLabel.FontSize = MetroLabelSize.Tall;
@@ -1586,9 +1646,12 @@ namespace DAQNavi_WF_v1_0_0
             //channelStartLabel.Size = new Size(140, 25);
             channelStartLabel.UseCustomBackColor = true;
             channelStartLabel.BackColor = grayDark;
+            channelStartLabel.ForeColor = lightDark;
+            channelStartLabel.UseCustomForeColor = true;
             channelStartLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(channelStartLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(channelStartLabel, 0);
+            ListMyMeasurmentsChannelStart.Add(channelStartLabel);
 
             // Label Channel start value
             MetroFramework.Controls.MetroLabel channelStartValueLabel = new MetroFramework.Controls.MetroLabel();
@@ -1598,11 +1661,13 @@ namespace DAQNavi_WF_v1_0_0
             channelStartValueLabel.Text = "0";
             //channelStartValueLabel.Size = new Size(140, 25);
             channelStartValueLabel.UseCustomBackColor = true;
+            channelStartValueLabel.UseCustomForeColor = true;
             channelStartValueLabel.BackColor = grayDark;
+            channelStartValueLabel.ForeColor = lightDark;
             channelStartValueLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(channelStartValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(channelStartValueLabel, 0);
-            ListMyMeasurmentsChannelStart.Add(channelStartValueLabel);
+            ListMyMeasurmentsChannelStartValue.Add(channelStartValueLabel);
 
 
             // Label Number of channels
@@ -1613,10 +1678,13 @@ namespace DAQNavi_WF_v1_0_0
             numberOfChannelsLabel.Text = "Number of channels:";
             numberOfChannelsLabel.Size = new Size(140, 25);
             numberOfChannelsLabel.UseCustomBackColor = true;
+            numberOfChannelsLabel.UseCustomForeColor = true;
             numberOfChannelsLabel.BackColor = grayDark;
+            numberOfChannelsLabel.ForeColor = lightDark;
             numberOfChannelsLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(numberOfChannelsLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(numberOfChannelsLabel, 0);
+            ListMyMeasurmentsNumberOfChannels.Add(numberOfChannelsLabel);
 
             // Label Number of channels value
             MetroFramework.Controls.MetroLabel numberOfChannelsValueLabel = new MetroFramework.Controls.MetroLabel();
@@ -1626,11 +1694,13 @@ namespace DAQNavi_WF_v1_0_0
             numberOfChannelsValueLabel.Text = "0";
             //numberOfChannelsValueLabel.Size = new Size(140, 25);
             numberOfChannelsValueLabel.UseCustomBackColor = true;
+            numberOfChannelsValueLabel.UseCustomForeColor = true;
             numberOfChannelsValueLabel.BackColor = grayDark;
+            numberOfChannelsValueLabel.ForeColor = lightDark;
             numberOfChannelsValueLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(numberOfChannelsValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(numberOfChannelsValueLabel, 0);
-            ListMyMeasurmentsNumberOfChannels.Add(numberOfChannelsValueLabel);
+            ListMyMeasurmentsNumberOfChannelsValue.Add(numberOfChannelsValueLabel);
 
             // Label Samples
             MetroFramework.Controls.MetroLabel samplesLabel = new MetroFramework.Controls.MetroLabel();
@@ -1640,10 +1710,13 @@ namespace DAQNavi_WF_v1_0_0
             samplesLabel.Text = "Samples:";
             //samplesLabel.Size = new Size(140, 25);
             samplesLabel.UseCustomBackColor = true;
+            samplesLabel.UseCustomForeColor = true;
             samplesLabel.BackColor = grayDark;
+            samplesLabel.ForeColor = lightDark;
             samplesLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(samplesLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(samplesLabel, 0);
+            ListMyMeasurmentsSamples.Add(samplesLabel);
 
             // Label Samples value
             MetroFramework.Controls.MetroLabel samplesValueLabel = new MetroFramework.Controls.MetroLabel();
@@ -1653,18 +1726,21 @@ namespace DAQNavi_WF_v1_0_0
             samplesValueLabel.Text = "0";
             //samplesValueLabel.Size = new Size(140, 25);
             samplesValueLabel.UseCustomBackColor = true;
+            samplesValueLabel.UseCustomForeColor = true;
             samplesValueLabel.BackColor = grayDark;
+            samplesValueLabel.ForeColor = lightDark;
             samplesValueLabel.FontSize = MetroLabelSize.Medium;
             TabPage_MyMeasurements.Controls.Add(samplesValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(samplesValueLabel, 0);
-            ListMyMeasurmentsSamples.Add(samplesValueLabel);
+            ListMyMeasurmentsSamplesValue.Add(samplesValueLabel);
 
             numberOfMeasurments++;
             
         }
 
         /// <summary>
-        /// Metoda która wyświetla pomiary wykonane przez danego użytkownika
+        /// Metoda która wyświetla listę pomiarów wykonanych przez danego użytkownika
+        /// w oknie MyMeasurments
         /// </summary>
         /// <param name="userId"></param>
         public void loadMyMeasurments(String iduser)
@@ -1700,9 +1776,9 @@ namespace DAQNavi_WF_v1_0_0
                 ListMyMeasurmentsTitles[numberOfMeasurments - 1].Text += "  -  " + measurment.timestart;
                 ListMyMeasurmentsTitles[numberOfMeasurments - 1].Text += "                                           duration:  " + measurment.duration;
                 ListMyMeasurmentsTitles[numberOfMeasurments - 1].Style = MetroColorStyle.Blue;
-                ListMyMeasurmentsSamples[numberOfMeasurments - 1].Text = measurment.samples;
-                ListMyMeasurmentsNumberOfChannels[numberOfMeasurments - 1].Text = measurment.numberofchannels;
-                ListMyMeasurmentsChannelStart[numberOfMeasurments - 1].Text = measurment.startchannel;
+                ListMyMeasurmentsSamplesValue[numberOfMeasurments - 1].Text = measurment.samples;
+                ListMyMeasurmentsNumberOfChannelsValue[numberOfMeasurments - 1].Text = measurment.numberofchannels;
+                ListMyMeasurmentsChannelStartValue[numberOfMeasurments - 1].Text = measurment.startchannel;
 
                 getMeasurmentData(measurment);
 
