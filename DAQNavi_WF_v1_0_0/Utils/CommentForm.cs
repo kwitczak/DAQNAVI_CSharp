@@ -136,15 +136,15 @@ namespace DAQNavi_WF_v1_0_0
                             file.WriteLine(Rowbind.ToString());
                         }
 
-                        // ZAPIS DO BAZY
-                        //mainWindow.saveResultsToDataBase(timeStart,
-                        //    timeEnd,
-                        //    myResults,
-                        //    timeDurration,
-                        //    samples,
-                        //    numberOfChannels,
-                        //    choosenChannel,
-                        //    this.ProgressBar_CommentForm);
+                         //ZAPIS DO BAZY
+                        mainWindow.saveResultsToDataBase(timeStart,
+                            timeEnd,
+                            myResults,
+                            timeDurration,
+                            samples,
+                            numberOfChannels,
+                            choosenChannel,
+                            this.ProgressBar_CommentForm);
 
                         myResults = null;
                         MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".txt zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);

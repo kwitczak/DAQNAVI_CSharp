@@ -33,15 +33,31 @@ namespace DAQNavi_WF_v1_0_0
             command.CommandText = "INSERT INTO usb4702_logindb.measurments (idusers,timestart,timeend,date,task,week,duration,samples,numberofchannels,startchannel) VALUES ('" + Login.loggedUser.idusers.ToString() + "','" + dateStart + "','" + dateEnd + "','" + date.ToString() + "','" + "task" + "','" + weekNum + "','" + duration + "','" + samples + "','" + numberofchannels + "','" + startchannel +"')";
             command.ExecuteNonQuery();
             long lastId = command.LastInsertedId;
+            int currentChannelNumer = 0;
             for (int i = 0; i < data.Length; i++)
             {
+                currentChannelNumer = (i % int.Parse(numberofchannels));
                 progressBar.Value++;
                 progressBar.Refresh();
-                command.CommandText = "INSERT INTO usb4702_logindb.data (idmeasurments,value,channel) VALUES ('" + lastId.ToString() + "','" + data[i].ToString() + "','" + "0" + "')";
+                command.CommandText = "INSERT INTO usb4702_logindb.data (idmeasurments,value,channel) VALUES ('" + lastId.ToString() + "','" + data[i].ToString() + "','" + currentChannelNumer.ToString() + "')";
                 command.ExecuteNonQuery();
             }
             myConn.Close();
                 
+        }
+
+        public static void clearMeasurments(LoginPanel Login)
+        {
+            string myConnection = "datasource=" + Login.dataSource + ";port=" + Login.port + ";username=" + Login.username + ";password=" + Login.dbPassword;
+            MySqlConnection myConn = new MySqlConnection(myConnection);
+            MySqlCommand command = myConn.CreateCommand();
+            myConn.Open();
+
+            command.CommandText = "TRUNCATE TABLE usb4702_logindb.data";
+            command.ExecuteNonQuery();
+            command.CommandText = "TRUNCATE TABLE usb4702_logindb.measurments";
+            command.ExecuteNonQuery();
+            myConn.Close();
         }
 
     }

@@ -528,6 +528,17 @@ namespace DAQNavi_WF_v1_0_0
             AII_choosenChannel = 0;
             AII_numOfChannels = 1;
         }
+        
+        /// <summary>
+        /// Czyszczenie pomiarow z bazy danych
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Options_ClearResults_Click(object sender, EventArgs e)
+        {
+            MeasurmentDAO.clearMeasurments(myLoginPanel);
+        }
+
 
 
         /*
@@ -1615,6 +1626,7 @@ namespace DAQNavi_WF_v1_0_0
             newButton.BackColor = grayDark;
             newButton.MouseLeave += new EventHandler(metroButton1_MouseLeave);
             newButton.MouseEnter += new EventHandler(metroButton1_MouseEnter);
+            newButton.Click += Button_MyMeasurments_Measure1_Click;
             TabPage_MyMeasurements.Controls.Add(newButton);
             ListMyMeasurmentsButtons.Add(newButton);
 
@@ -1784,5 +1796,22 @@ namespace DAQNavi_WF_v1_0_0
 
             }              
        }
+
+        /// <summary>
+        /// Reakcja na kliknięcie konkretnego przycisku
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_MyMeasurments_Measure1_Click(object sender, EventArgs e)
+        {
+            this.TabControl.SelectedTab = TabPage_ShowMeasure;
+            int index = ListMyMeasurmentsButtons.IndexOf((MetroFramework.Controls.MetroButton) sender);
+            MessageBox.Show(index.ToString());
+            Label_ShowMeasure_StartValue.Text = myLoadedMeasurments[index].timestart;
+            Label_ShowMeasure_EndValue.Text = myLoadedMeasurments[index].timeend;
+            Label_ShowMeasure_DurationValue.Text = myLoadedMeasurments[index].duration;
+        }
+
+
     }
 }
