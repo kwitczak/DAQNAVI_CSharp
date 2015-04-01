@@ -35,8 +35,8 @@ namespace DAQNavi_WF_v1_0_0
         public delegate void UpdateUIDelegate();
         private delegate void AutoScrollPositionDelegate(ScrollableControl sender, Point p);
         public static readonly String ADVANTECH_SITE = "http://www.advantech.com/";
-        public static String choosenLanguage = ConfigurationManager.AppSettings["defaultLanguage"];
         public enum Language { ENG, PL }
+        public static Language choosenLanguage = LanguageUtils.getDefaultLanguage();
         public static MeasurmentType lastMeasurmentType;
         public static Stopwatch stopWatch = new Stopwatch();
         public static LoginManager loginManager;
@@ -101,7 +101,7 @@ namespace DAQNavi_WF_v1_0_0
             TabControl.TabPages.Remove(TabPage_ShowMeasure);
             
             // Ustawienie tekstów
-            setLanguage();
+            LanguageUtils.setLanguage(choosenLanguage, this);
 
             TabPage_Welcome.Text = ConfigurationManager.AppSettings["WelcomeTabName" + choosenLanguage];
             Welcome_label_username.Text = ConfigurationManager.AppSettings["WelcomeLabelUsername" + choosenLanguage];
@@ -161,213 +161,7 @@ namespace DAQNavi_WF_v1_0_0
            Używane z panelu opcji switcherem. */
         private void metroToggle1_CheckedChanged(object sender, EventArgs e)
         {
-            // TODO: REFACTOR
-
-            if (TabControl.Theme == STYLE_DARK)
-            {
-                // This
-                this.Theme = STYLE_LIGHT;
-                TabControl.Theme = STYLE_LIGHT;
-                ProgressSpinner.Theme = STYLE_LIGHT;
-
-                // Options
-                TabPage_Options.Theme = STYLE_LIGHT;
-                Options_toggle_layout.Theme = STYLE_LIGHT;
-                Options_radioButton_polski.Theme = STYLE_LIGHT;
-                Options_radioButton_english.Theme = STYLE_LIGHT;
-                Options_label_baza.Theme = STYLE_LIGHT;
-                Options_label_password.Theme = STYLE_LIGHT;
-                Options_label_user.Theme = STYLE_LIGHT;
-                Options_textBox_baza.Theme = STYLE_LIGHT;
-                Options_textBox_password.Theme = STYLE_LIGHT;
-                Options_textBox_user.Theme = STYLE_LIGHT;
-                Options_textBox_adminComment.Theme = STYLE_LIGHT;
-                Options_textBox_userComment.Theme = STYLE_LIGHT;
-                Options_textBox_cardModule.Theme = STYLE_LIGHT;
-                Options_textBox_cardName.Theme = STYLE_LIGHT;
-                Options_textBox_cardNumber.Theme = STYLE_LIGHT;
-                Options_textBox_port.Theme = STYLE_LIGHT;
-                Options_panel_card.Theme = STYLE_LIGHT;
-                Options_panel_comments.Theme = STYLE_LIGHT;
-                Options_panel_database.Theme = STYLE_LIGHT;
-                Options_panel_language.Theme = STYLE_LIGHT;
-                Options_panel_theme.Theme = STYLE_LIGHT;
-                Options_label_theme.Theme = STYLE_LIGHT;
-                Options_label_language.Theme = STYLE_LIGHT;
-                Options_label_database.Theme = STYLE_LIGHT;
-                Options_label_port.Theme = STYLE_LIGHT;
-                Options_scrollBar.Theme = STYLE_LIGHT;
-                Options_label_card.Theme = STYLE_LIGHT;
-                Options_label_cardModule.Theme = STYLE_LIGHT;
-                Options_label_cardName.Theme = STYLE_LIGHT;
-                Options_label_cardNumber.Theme = STYLE_LIGHT;
-                Options_label_adminComment.Theme = STYLE_LIGHT;
-                Options_label_userComment.Theme = STYLE_LIGHT;
-                Options_label_commentOptions.Theme = STYLE_LIGHT;
-                Options_button_applyChanges.Theme = STYLE_LIGHT;
-                Options_button_backToDefaults.Theme = STYLE_LIGHT;
-
-                // AnalogBufferedInput
-                TabPage_AnalogBufferedInput.Theme = STYLE_LIGHT;
-                ABI_label_samples.Theme = STYLE_LIGHT;
-                ABI_label_channels.Theme = STYLE_LIGHT;
-                ABI_label_channelStart.Theme = STYLE_LIGHT;
-                ABI_label_intervalCount.Theme = STYLE_LIGHT;
-                ABI_label_rate.Theme = STYLE_LIGHT;
-                ABI_label_scanCount.Theme = STYLE_LIGHT;
-                ABI_textBox_channels.Theme = STYLE_LIGHT;
-                ABI_textBox_channelStart.Theme = STYLE_LIGHT;
-                ABI_textBox_intervalCount.Theme = STYLE_LIGHT;
-                ABI_textBox_rate.Theme = STYLE_LIGHT;
-                ABI_textBox_scanCount.Theme = STYLE_LIGHT;
-                ABI_TrackBar_1.Theme = STYLE_LIGHT;
-                ABI_TrackBar_2.Theme = STYLE_LIGHT;
-                ABI_button_back.Theme = STYLE_LIGHT;
-                ABI_button_measure.Theme = STYLE_LIGHT;
-                ABI_textBox_samples.Theme = STYLE_LIGHT;
-
-                // Analog Instant Input
-                TabPage_AnalogInstantInput.Theme = STYLE_LIGHT;
-                AII_trackBar_1.Theme = STYLE_LIGHT;
-                AII_trackBar_2.Theme = STYLE_LIGHT;
-                AII_button_back.Theme = STYLE_LIGHT;
-                AII_button_measure.Theme = STYLE_LIGHT;
-                AII_button_reset.Theme = STYLE_LIGHT;
-
-                // Results
-                TabPage_LastMeasure.Theme = STYLE_LIGHT;
-                LastMeasure_GridTable.Theme = STYLE_LIGHT;
-                Panel_Results.Theme = STYLE_LIGHT;
-                Results_button_exportToTXT.Theme = STYLE_LIGHT;
-
-                // Measure
-                TabPage_Measure.Theme = STYLE_LIGHT;
-                Measure_label_analogInput.Theme = STYLE_LIGHT;
-                Measure_label_analogOutput.Theme = STYLE_LIGHT;
-                Measure_label_buffered.Theme = STYLE_LIGHT;
-                Measure_label_digitalInput.Theme = STYLE_LIGHT;
-                Measure_label_digitalOutput.Theme = STYLE_LIGHT;
-                Measure_label_instant.Theme = STYLE_LIGHT;
-                Measure_tile_analogInput.Theme = STYLE_LIGHT;
-                Measure_tile_analogOutput.Theme = STYLE_LIGHT;
-                Measure_tile_bufferedInput.Theme = STYLE_LIGHT;
-                Measure_tile_digitalInput.Theme = STYLE_LIGHT;
-                Measure_tile_digitalOutput.Theme = STYLE_LIGHT;
-                Measure_tile_instantInput.Theme = STYLE_LIGHT;
-                Measure_button_return.Theme = STYLE_LIGHT;
-
-                // Tabs
-                TabPage_DigitalInput.Theme = STYLE_LIGHT;
-                TabPage_DigitalOutput.Theme = STYLE_LIGHT;
-
-                // Welcome
-
-                // Results
-            }
-            else
-            {
-
-                // This
-                this.Theme = STYLE_DARK;
-                TabControl.Theme = STYLE_DARK;
-                ProgressSpinner.Theme = STYLE_DARK;
-
-                TabPage_Options.Theme = STYLE_DARK;
-                Options_toggle_layout.Theme = STYLE_DARK;
-                Options_radioButton_polski.Theme = STYLE_DARK;
-                Options_radioButton_english.Theme = STYLE_DARK;
-                Options_label_baza.Theme = STYLE_DARK;
-                Options_label_password.Theme = STYLE_DARK;
-                Options_label_user.Theme = STYLE_DARK;
-                Options_textBox_baza.Theme = STYLE_DARK;
-                Options_textBox_password.Theme = STYLE_DARK;
-                Options_textBox_user.Theme = STYLE_DARK;
-                Options_textBox_adminComment.Theme = STYLE_DARK;
-                Options_textBox_userComment.Theme = STYLE_DARK;
-                Options_textBox_cardModule.Theme = STYLE_DARK;
-                Options_textBox_cardName.Theme = STYLE_DARK;
-                Options_textBox_cardNumber.Theme = STYLE_DARK;
-                Options_textBox_port.Theme = STYLE_DARK;
-                Options_panel_card.Theme = STYLE_DARK;
-                Options_panel_comments.Theme = STYLE_DARK;
-                Options_panel_database.Theme = STYLE_DARK;
-                Options_panel_language.Theme = STYLE_DARK;
-                Options_panel_theme.Theme = STYLE_DARK;
-                Options_label_theme.Theme = STYLE_DARK;
-                Options_label_language.Theme = STYLE_DARK;
-                Options_label_database.Theme = STYLE_DARK;
-                Options_label_port.Theme = STYLE_DARK;
-                Options_scrollBar.Theme = STYLE_DARK;
-                Options_label_card.Theme = STYLE_DARK;
-                Options_label_cardModule.Theme = STYLE_DARK;
-                Options_label_cardName.Theme = STYLE_DARK;
-                Options_label_cardNumber.Theme = STYLE_DARK;
-                Options_label_adminComment.Theme = STYLE_DARK;
-                Options_label_userComment.Theme = STYLE_DARK;
-                Options_label_commentOptions.Theme = STYLE_DARK;
-                Options_button_applyChanges.Theme = STYLE_DARK;
-                Options_button_backToDefaults.Theme = STYLE_DARK;
-
-                // AnalogBufferedInput
-                TabPage_AnalogBufferedInput.Theme = STYLE_DARK;
-                ABI_label_samples.Theme = STYLE_DARK;
-                ABI_label_channels.Theme = STYLE_DARK;
-                ABI_label_channelStart.Theme = STYLE_DARK;
-                ABI_label_intervalCount.Theme = STYLE_DARK;
-                ABI_label_rate.Theme = STYLE_DARK;
-                ABI_label_scanCount.Theme = STYLE_DARK;
-                ABI_textBox_channels.Theme = STYLE_DARK;
-                ABI_textBox_channelStart.Theme = STYLE_DARK;
-                ABI_textBox_intervalCount.Theme = STYLE_DARK;
-                ABI_textBox_rate.Theme = STYLE_DARK;
-                ABI_textBox_scanCount.Theme = STYLE_DARK;
-                ABI_TrackBar_1.Theme = STYLE_DARK;
-                ABI_TrackBar_2.Theme = STYLE_DARK;
-                ABI_button_back.Theme = STYLE_DARK;
-                ABI_button_measure.Theme = STYLE_DARK;
-                ABI_textBox_samples.Theme = STYLE_DARK;
-
-                // Analog Instant Input
-                TabPage_AnalogInstantInput.Theme = STYLE_DARK;
-                AII_trackBar_1.Theme = STYLE_DARK;
-                AII_trackBar_2.Theme = STYLE_DARK;
-                AII_button_back.Theme = STYLE_DARK;
-                AII_button_measure.Theme = STYLE_DARK;
-                AII_button_reset.Theme = STYLE_DARK;
-
-                // Results
-                TabPage_LastMeasure.Theme = STYLE_DARK;
-                LastMeasure_GridTable.Theme = STYLE_DARK;
-                Panel_Results.Theme = STYLE_DARK;
-                Results_button_exportToTXT.Theme = STYLE_DARK;
-
-                // Measure
-                TabPage_Measure.Theme = STYLE_DARK;
-                Measure_label_analogInput.Theme = STYLE_DARK;
-                Measure_label_analogOutput.Theme = STYLE_DARK;
-                Measure_label_buffered.Theme = STYLE_DARK;
-                Measure_label_digitalInput.Theme = STYLE_DARK;
-                Measure_label_digitalOutput.Theme = STYLE_DARK;
-                Measure_label_instant.Theme = STYLE_DARK;
-                Measure_tile_analogInput.Theme = STYLE_DARK;
-                Measure_tile_analogOutput.Theme = STYLE_DARK;
-                Measure_tile_bufferedInput.Theme = STYLE_DARK;
-                Measure_tile_digitalInput.Theme = STYLE_DARK;
-                Measure_tile_digitalOutput.Theme = STYLE_DARK;
-                Measure_tile_instantInput.Theme = STYLE_DARK;
-                Measure_button_return.Theme = STYLE_DARK;
-
-                // Tabs
-                TabPage_DigitalInput.Theme = STYLE_DARK;
-                TabPage_DigitalOutput.Theme = STYLE_DARK;
-
-                // Welcome
-
-                // Results
-
-            }
-
-            this.Refresh();
+            StyleUtils.changeStyle(TabControl.Theme, this);
         }
 
         /* Zmiana języka na angielski */
@@ -392,28 +186,6 @@ namespace DAQNavi_WF_v1_0_0
         private void Button_Options_BackToDefaults_Click(object sender, EventArgs e)
         {
             // TODO
-        }
-
-        /* Odświeżenie języka w całej aplikaji (ustawienie tekstu) */
-        private void setLanguage()
-        {
-            // TODO: REFACTOR
-
-            // Welcome Tab
-            TabPage_Welcome.Text = ConfigurationManager.AppSettings["WelcomeTabName" + choosenLanguage];
-            Welcome_label_username.Text = ConfigurationManager.AppSettings["WelcomeLabelUsername" + choosenLanguage];
-            Welcome_label_password.Text = ConfigurationManager.AppSettings["WelcomeLabelPassword" + choosenLanguage];
-            Welcome_button_login.Text = ConfigurationManager.AppSettings["WelcomeButtonLogin" + choosenLanguage];
-            // Analog Buffered Input Tab
-            TabPage_AnalogBufferedInput.Text = ConfigurationManager.AppSettings["ABITab" + choosenLanguage];
-            ABI_label_samples.Text = ConfigurationManager.AppSettings["ABISamples" + choosenLanguage];
-            ABI_label_channels.Text = ConfigurationManager.AppSettings["ABIChannels" + choosenLanguage];
-            ABI_label_channelStart.Text = ConfigurationManager.AppSettings["ABIChannelStart" + choosenLanguage];
-            ABI_label_intervalCount.Text = ConfigurationManager.AppSettings["ABIIntervalCount" + choosenLanguage];
-            ABI_label_scanCount.Text = ConfigurationManager.AppSettings["ABIScanCount" + choosenLanguage];
-            ABI_label_rate.Text = ConfigurationManager.AppSettings["ABIRate" + choosenLanguage];
-            ABI_button_back.Text = ConfigurationManager.AppSettings["ABIButtonBack" + choosenLanguage];
-            ABI_button_measure.Text = ConfigurationManager.AppSettings["ABIButtonMeasure" + choosenLanguage];
         }
 
         /* Zmień status dla dostepnosci opcji */
