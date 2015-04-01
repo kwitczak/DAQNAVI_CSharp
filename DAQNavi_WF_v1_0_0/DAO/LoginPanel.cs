@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace DAQNavi_WF_v1_0_0
 {
 
-    public class LoginPanel
+    public class LoginManager
     {
 
         public string dataSource { get; set; }
@@ -19,7 +19,7 @@ namespace DAQNavi_WF_v1_0_0
 
         public UserDTO loggedUser { get; set; }
 
-        public LoginPanel(string dataSource, string port, string username, string password)
+        public LoginManager(string dataSource, string port, string username, string password)
         {
             this.dataSource = dataSource;
             this.username = username;
@@ -54,10 +54,12 @@ namespace DAQNavi_WF_v1_0_0
                     //loggedUser.dataZalozenia = myReader.GetString("dataZalozenia");
                     loggedUser.login = myReader.GetString("login");
                     loggedUser.password = myReader.GetString("password");
+                    myConn.Close();
                     return true;
                 }
                 else
                 {
+                    myConn.Close();
                     return false;
                 }
             }

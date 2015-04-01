@@ -1,6 +1,6 @@
 ﻿namespace DAQNavi_WF_v1_0_0.Utils
 {
-    partial class CreateNewUser
+    partial class CreateNewUserForm
     {
         /// <summary>
         /// Required designer variable.

@@ -66,30 +66,33 @@
     </Compile>
     <Compile Include="AdvantechAPIs\BufferedAnalogInput.cs" />
     <Compile Include="DTO\MeasurmentDTO.cs" />
-    <Compile Include="Utils\AnalogInstantMeasureOptions.cs">
+    <Compile Include="Forms\AIIMeasureOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\AnalogInstantMeasureOptions.Designer.cs">
-      <DependentUpon>AnalogInstantMeasureOptions.cs</DependentUpon>
+    <Compile Include="Forms\AIIMeasureOptionsForm.Designer.cs">
+      <DependentUpon>AIIMeasureOptionsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\CommentForm.cs">
+    <Compile Include="Utils\ChartUtils.cs" />
+    <Compile Include="Forms\CommentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\CommentForm.Designer.cs">
+    <Compile Include="Forms\CommentForm.Designer.cs">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DTO\MeasurmentDAO.cs" />
-    <Compile Include="Utils\CreateNewUser.cs">
+    <Compile Include="DAO\MeasurmentDAO.cs" />
+    <Compile Include="Forms\CreateNewUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Utils\CreateNewUser.Designer.cs">
-      <DependentUpon>CreateNewUser.cs</DependentUpon>
+    <Compile Include="Forms\CreateNewUserForm.Designer.cs">
+      <DependentUpon>CreateNewUserForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utils\LoginPanel.cs" />
+    <Compile Include="Utils\DefaultStateUtils.cs" />
+    <Compile Include="Utils\LanguageUtils.cs" />
+    <Compile Include="DAO\LoginPanel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DTO\UserDTO.cs" />
-    <Compile Include="Utils\TimeLibrary.cs" />
+    <Compile Include="Utils\TimeUtils.cs" />
     <EmbeddedResource Include="AdvantechMeasure.resx">
       <DependentUpon>AdvantechMeasure.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,14 +105,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Utils\AnalogInstantMeasureOptions.resx">
-      <DependentUpon>AnalogInstantMeasureOptions.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AIIMeasureOptionsForm.resx">
+      <DependentUpon>AIIMeasureOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\CommentForm.resx">
+    <EmbeddedResource Include="Forms\CommentForm.resx">
       <DependentUpon>CommentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Utils\CreateNewUser.resx">
-      <DependentUpon>CreateNewUser.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CreateNewUserForm.resx">
+      <DependentUpon>CreateNewUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Automation.BDaq.BufferedAiCtrl.datasource" />
     <None Include="Properties\Settings.settings">

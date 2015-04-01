@@ -12,7 +12,7 @@ namespace DAQNavi_WF_v1_0_0
     {
         private double[] dataToSave;
 
-        public static void saveDataToDataBase(LoginPanel Login, string dateStart, string dateEnd, double[] data, string duration, string samples, string numberofchannels, string startchannel, MetroFramework.Controls.MetroProgressBar progressBar){
+        public static void saveDataToDataBase(LoginManager Login, string dateStart, string dateEnd, double[] data, string duration, string samples, string numberofchannels, string startchannel, MetroFramework.Controls.MetroProgressBar progressBar){
             // localhost 3306 root root
             string myConnection = "datasource=" + Login.dataSource + ";port=" + Login.port + ";username=" + Login.username + ";password=" + Login.dbPassword;
             progressBar.Visible = true;
@@ -46,7 +46,27 @@ namespace DAQNavi_WF_v1_0_0
                 
         }
 
-        public static void clearMeasurments(LoginPanel Login)
+        public static double[] getDataFromDatabase(LoginManager Login, int idmeasurments)
+        {
+            // localhost 3306 root root
+            string myConnection = "datasource=" + Login.dataSource + ";port=" + Login.port + ";username=" + Login.username + ";password=" + Login.dbPassword;
+            MySqlConnection myConn = new MySqlConnection(myConnection);
+            MySqlCommand command = new MySqlCommand("select * from usb4702_logindb.data WHERE idmeasurments='" + idmeasurments + "' ;", myConn);
+            myConn.Open();
+
+            MySqlDataReader myReader;
+            myReader = command.ExecuteReader();
+            List<double> myData = new List<double>();
+            while (myReader.Read())
+            {
+                myData.Add(double.Parse(myReader.GetString("value")));
+            }
+
+            myConn.Close();
+            return myData.ToArray();
+        }
+
+        public static void clearMeasurments(LoginManager Login)
         {
             string myConnection = "datasource=" + Login.dataSource + ";port=" + Login.port + ";username=" + Login.username + ";password=" + Login.dbPassword;
             MySqlConnection myConn = new MySqlConnection(myConnection);

@@ -41,25 +41,25 @@ namespace DAQNavi_WF_v1_0_0
             String choosenChannel = "";
             String frequency = "";
 
-            if (mainWindow.lastMeasurmentType.Equals(MainWindow.measurmentType.AnalogBufferedInput))
+            if (MainWindow.lastMeasurmentType.Equals(MainWindow.MeasurmentType.ANALOG_BUFFERED_INPUT))
             {
-                timeStart = mainWindow.ABI_timerStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeEnd = mainWindow.ABI_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeDurration = new DateTime(mainWindow.ABI_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                samples = mainWindow.ABI_data.Length.ToString();
+                timeStart = MainWindow.ABI_timerStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeEnd = MainWindow.ABI_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeDurration = new DateTime(MainWindow.ABI_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                samples = MainWindow.ABI_data.Length.ToString();
                 numberOfChannels = mainWindow.getNumberOfChannelsABI.ToString();
                 choosenChannel = mainWindow.getChoosenChannelABI.ToString();
-                frequency = ((mainWindow.ABI_data.Length / mainWindow.ABI_timeDiff.TotalMilliseconds * 1000)/mainWindow.getNumberOfChannelsABI).ToString() + " Hz";
+                frequency = ((MainWindow.ABI_data.Length / MainWindow.ABI_timeDiff.TotalMilliseconds * 1000)/mainWindow.getNumberOfChannelsABI).ToString() + " Hz";
             }
-            else if (mainWindow.lastMeasurmentType.Equals(MainWindow.measurmentType.AnalogInstantInput))
+            else if (MainWindow.lastMeasurmentType.Equals(MainWindow.MeasurmentType.ANALOG_INSTANT_INPUT))
             {
-                timeStart = mainWindow.AII_timeStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeEnd = mainWindow.AII_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeDurration = new DateTime(mainWindow.AII_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                samples = mainWindow.AAI_sampleCount.ToString();
+                timeStart = MainWindow.AII_timeStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeEnd = MainWindow.AII_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeDurration = new DateTime(MainWindow.AII_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                samples = MainWindow.AAI_sampleCount.ToString();
                 numberOfChannels = mainWindow.getNumberOfChannelsAAI.ToString();
                 choosenChannel = mainWindow.getChoosenChannelAII.ToString();
-                frequency = ((mainWindow.AAI_sampleCount / mainWindow.AII_timeDiff.TotalMilliseconds * 1000)/mainWindow.getNumberOfChannelsAAI).ToString() + " Hz a powinno: " + (1 / (mainWindow.getAnalogInstantInputTimer / 1000)).ToString();
+                frequency = ((MainWindow.AAI_sampleCount / MainWindow.AII_timeDiff.TotalMilliseconds * 1000)/mainWindow.getNumberOfChannelsAAI).ToString() + " Hz a powinno: " + (1 / (mainWindow.getAnalogInstantInputTimer / 1000)).ToString();
             }
 
             string time = DateTime.Now.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);

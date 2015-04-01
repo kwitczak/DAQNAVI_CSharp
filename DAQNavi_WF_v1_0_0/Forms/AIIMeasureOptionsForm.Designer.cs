@@ -1,6 +1,6 @@
 ﻿namespace DAQNavi_WF_v1_0_0
 {
-    partial class AnalogInstantMeasureOptions
+    partial class AIIMeasureOptionsForm
     {
         /// <summary>
         /// Required designer variable.

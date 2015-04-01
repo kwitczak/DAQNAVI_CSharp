@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DAQNavi_WF_v1_0_0.DTO
 {
-    class MeasurmentDTO
+    public class MeasurmentDTO
     {
         public string idmeasurments { get; set; }
         public string idusers { get; set; }

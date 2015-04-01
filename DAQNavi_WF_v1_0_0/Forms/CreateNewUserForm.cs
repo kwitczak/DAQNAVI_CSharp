@@ -14,19 +14,19 @@ using MetroFramework;
 
 namespace DAQNavi_WF_v1_0_0.Utils
 {
-    public partial class CreateNewUser : MetroForm
+    public partial class CreateNewUserForm : MetroForm
     {
         private MainWindow mainWindow;
         MetroFramework.Controls.MetroCheckBox[] checkBoxesList = new MetroFramework.Controls.MetroCheckBox[6];
     
 
-        public CreateNewUser()
+        public CreateNewUserForm()
         {
             InitializeComponent();
             timer1.Start();
         }
 
-        public CreateNewUser(MainWindow mainWindow)
+        public CreateNewUserForm(MainWindow mainWindow)
         {
             // TODO: Complete member initialization
             InitializeComponent();

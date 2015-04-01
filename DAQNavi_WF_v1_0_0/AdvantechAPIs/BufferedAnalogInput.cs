@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAQNavi_WF_v1_0_0
 {
-    class BufferedAnalogInput
+    public class BufferedAnalogInput
     {
         private int samples;
         private int channels;

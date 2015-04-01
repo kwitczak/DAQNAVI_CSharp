@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace DAQNavi_WF_v1_0_0
 {
-    public partial class AnalogInstantMeasureOptions : MetroForm
+    public partial class AIIMeasureOptionsForm : MetroForm
     {
         MainWindow mainWindow;
 
-        public AnalogInstantMeasureOptions(MainWindow mainWindow)
+        public AIIMeasureOptionsForm(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
