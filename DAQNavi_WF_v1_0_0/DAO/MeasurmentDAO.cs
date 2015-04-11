@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using DAQNavi_WF_v1_0_0.DTO;
+using MetroFramework;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,10 +13,17 @@ namespace DAQNavi_WF_v1_0_0
     public class MeasurmentDAO
     {
         private double[] dataToSave;
+        private LoginManager login;
 
-        public static void saveDataToDataBase(LoginManager Login, string dateStart, string dateEnd, double[] data, string duration, string samples, string numberofchannels, string startchannel, MetroFramework.Controls.MetroProgressBar progressBar){
+        public MeasurmentDAO(LoginManager login)
+        {
+            this.login = login;
+        }
+
+
+        public void saveDataToDataBase(string dateStart, string dateEnd, double[] data, string duration, string samples, string numberofchannels, string startchannel, MetroFramework.Controls.MetroProgressBar progressBar){
             // localhost 3306 root root
-            string myConnection = "datasource=" + Login.dataSource + ";port=" + Login.port + ";username=" + Login.username + ";password=" + Login.dbPassword;
+            string myConnection = "datasource=" + login.dataSource + ";port=" + login.port + ";username=" + login.username + ";password=" + login.dbPassword;
             progressBar.Visible = true;
             progressBar.Value = 0;
             progressBar.Maximum = data.Length;
@@ -30,7 +39,7 @@ namespace DAQNavi_WF_v1_0_0
                 CalendarWeekRule.FirstDay,
                 DayOfWeek.Monday);
 
-            command.CommandText = "INSERT INTO usb4702_logindb.measurments (idusers,timestart,timeend,date,task,week,duration,samples,numberofchannels,startchannel) VALUES ('" + Login.loggedUser.idusers.ToString() + "','" + dateStart + "','" + dateEnd + "','" + date.ToString() + "','" + "task" + "','" + weekNum + "','" + duration + "','" + samples + "','" + numberofchannels + "','" + startchannel +"')";
+            command.CommandText = "INSERT INTO usb4702_logindb.measurments (idusers,timestart,timeend,date,task,week,duration,samples,numberofchannels,startchannel) VALUES ('" + login.loggedUser.idusers.ToString() + "','" + dateStart + "','" + dateEnd + "','" + date.ToString() + "','" + "task" + "','" + weekNum + "','" + duration + "','" + samples + "','" + numberofchannels + "','" + startchannel +"')";
             command.ExecuteNonQuery();
             long lastId = command.LastInsertedId;
             int currentChannelNumer = 0;
@@ -46,10 +55,10 @@ namespace DAQNavi_WF_v1_0_0
                 
         }
 
-        public static double[] getDataFromDatabase(LoginManager Login, int idmeasurments)
+        public double[] getDataFromDatabase(int idmeasurments)
         {
             // localhost 3306 root root
-            string myConnection = "datasource=" + Login.dataSource + ";port=" + Login.port + ";username=" + Login.username + ";password=" + Login.dbPassword;
+            string myConnection = "datasource=" + login.dataSource + ";port=" + login.port + ";username=" + login.username + ";password=" + login.dbPassword;
             MySqlConnection myConn = new MySqlConnection(myConnection);
             MySqlCommand command = new MySqlCommand("select * from usb4702_logindb.data WHERE idmeasurments='" + idmeasurments + "' ;", myConn);
             myConn.Open();
@@ -66,9 +75,9 @@ namespace DAQNavi_WF_v1_0_0
             return myData.ToArray();
         }
 
-        public static void clearMeasurments(LoginManager Login)
+        public void clearMeasurments()
         {
-            string myConnection = "datasource=" + Login.dataSource + ";port=" + Login.port + ";username=" + Login.username + ";password=" + Login.dbPassword;
+            string myConnection = "datasource=" + login.dataSource + ";port=" + login.port + ";username=" + login.username + ";password=" + login.dbPassword;
             MySqlConnection myConn = new MySqlConnection(myConnection);
             MySqlCommand command = myConn.CreateCommand();
             myConn.Open();
@@ -78,6 +87,66 @@ namespace DAQNavi_WF_v1_0_0
             command.CommandText = "TRUNCATE TABLE usb4702_logindb.measurments";
             command.ExecuteNonQuery();
             myConn.Close();
+        }
+
+        /* Metoda która wyświetla listę pomiarów wykonanych przez danego użytkownika
+        w oknie MyMeasurments */
+        public void loadMyMeasurments(String iduser, MainWindow mainWindow)
+        {
+            string myConnection = "datasource=" + login.dataSource + ";port=" + login.port + ";username=" + login.username + ";password=" + login.dbPassword;
+            MySqlConnection myConn = new MySqlConnection(myConnection);
+            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.measurments where idusers='" + iduser + "' ;", myConn);
+
+            MySqlDataReader myReader;
+            myConn.Open();
+            myReader = SelectCommand.ExecuteReader();
+            int count = 0;
+            while (myReader.Read())
+            {
+                MeasurmentDTO measurment = new MeasurmentDTO();
+                measurment.idmeasurments = myReader.GetString("idmeasurments");
+                measurment.idusers = myReader.GetString("idusers");
+                measurment.task = myReader.GetString("task");
+                measurment.timeend = myReader.GetString("timeend");
+                measurment.timestart = myReader.GetString("timestart");
+                measurment.week = myReader.GetString("week");
+                measurment.samples = myReader.GetString("samples");
+                measurment.duration = myReader.GetString("duration");
+                measurment.numberofchannels = myReader.GetString("numberofchannels");
+                measurment.startchannel = myReader.GetString("startchannel");
+                MainWindow.myLoadedMeasurments.Add(measurment);
+
+                mainWindow.createNewMeasurment();
+                MainWindow.MM_list_titles[MainWindow.MM_numberOfMeasurments - 1].Text = "Measurment #" + MainWindow.MM_numberOfMeasurments;
+                MainWindow.MM_list_titles[MainWindow.MM_numberOfMeasurments - 1].Text += "  -  " + measurment.timestart;
+                MainWindow.MM_list_titles[MainWindow.MM_numberOfMeasurments - 1].Text += "                                           duration:  " + measurment.duration;
+                MainWindow.MM_list_titles[MainWindow.MM_numberOfMeasurments - 1].Style = MetroColorStyle.Blue;
+                MainWindow.MM_list_samplesValue[MainWindow.MM_numberOfMeasurments - 1].Text = measurment.samples;
+                MainWindow.MM_list_numberOfChannelsValue[MainWindow.MM_numberOfMeasurments - 1].Text = measurment.numberofchannels;
+                MainWindow.MM_list_channelStartValue[MainWindow.MM_numberOfMeasurments - 1].Text = measurment.startchannel;
+
+                getMeasurmentData(measurment);
+
+            }
+        }
+
+        /* Download data from DB */
+        private void getMeasurmentData(MeasurmentDTO measurment)
+        {
+            string myConnection = "datasource=" + login.dataSource + ";port=" + login.port + ";username=" + login.username + ";password=" + login.dbPassword;
+            MySqlConnection myConn = new MySqlConnection(myConnection);
+            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.data where idmeasurments='" + measurment.idmeasurments + "' ;", myConn);
+
+            MySqlDataReader myReader;
+            myConn.Open();
+            myReader = SelectCommand.ExecuteReader();
+            int counter = 0;
+            List<String> result = new List<String>();
+            while (myReader.Read())
+            {
+                result.Add(myReader.GetString("value"));
+                counter++;
+            }
         }
 
     }

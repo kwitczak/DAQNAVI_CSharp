@@ -40,6 +40,7 @@ namespace DAQNavi_WF_v1_0_0
         public static MeasurmentType lastMeasurmentType;
         public static Stopwatch stopWatch = new Stopwatch();
         public static LoginManager loginManager;
+        public static MeasurmentDAO measurmentDAO;
         public enum MeasurmentType { ANALOG_INSTANT_INPUT, ANALOG_BUFFERED_INPUT }
 
         /* BUFFERED ANALOG INPUT (ABI) */
@@ -206,7 +207,7 @@ namespace DAQNavi_WF_v1_0_0
         /* Czyszczenie pomiarow z bazy danych */
         private void Button_Options_ClearResults_Click(object sender, EventArgs e)
         {
-            MeasurmentDAO.clearMeasurments(loginManager);
+            measurmentDAO.clearMeasurments();
         }
 
 
@@ -378,28 +379,7 @@ namespace DAQNavi_WF_v1_0_0
         * =========================================== UTILITY ====================================================
         */
 
-        /* Download data from DB */
-        private void getMeasurmentData(MeasurmentDTO measurment)
-        {
-            //TODO: Move to DAO
-            String myConnection = "datasource=" + Options_textBox_baza.Text
-                + ";port=" + Options_textBox_port.Text
-                + ";username=" + Options_textBox_user.Text +
-                ";password=" + Options_textBox_password.Text;
-            MySqlConnection myConn = new MySqlConnection(myConnection);
-            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.data where idmeasurments='" + measurment.idmeasurments + "' ;", myConn);
 
-            MySqlDataReader myReader;
-            myConn.Open();
-            myReader = SelectCommand.ExecuteReader();
-            int counter = 0;
-            List<String> result = new List<String>();
-            while (myReader.Read())
-            {
-                result.Add(myReader.GetString("value"));
-                counter++;
-            }
-        }
 
         private void timer_ProgressBar_Tick(object sender, EventArgs e)
         {
@@ -416,12 +396,12 @@ namespace DAQNavi_WF_v1_0_0
         /* Logowanie się. */
         private void Button_Login_Click(object sender, EventArgs e)
         {
-            // TODO: Move to DAO
             loginManager = new LoginManager(Options_textBox_baza.Text, Options_textBox_port.Text, Options_textBox_user.Text, Options_textBox_password.Text);
             Boolean loginSuccessful = loginManager.checkLogin(this.Welcome_textBox_username.Text, this.Welcome_textBox_password.Text);
             if (loginSuccessful)
             {
                 UserDTO user = loginManager.loggedUser;
+                measurmentDAO = new MeasurmentDAO(loginManager);
                 MetroMessageBox.Show(this, "" + user.imie + ", logowanie powiodło się.", "Witaj", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 if (user.admin == 1)
                 {
@@ -446,7 +426,7 @@ namespace DAQNavi_WF_v1_0_0
                 Welcome_button_login.Text = "Logout";
 
                 // Load measurments
-                loadMyMeasurments(user.idusers);
+                measurmentDAO.loadMyMeasurments(user.idusers, this);
             }
             else
             {
@@ -475,8 +455,7 @@ namespace DAQNavi_WF_v1_0_0
         /* Zapis danych do bazy - czas poczatku pomiaru, konca, dane, id usera */
         public void saveResultsToDataBase(string dateStart, string dateEnd, double[] data, string duration, string samples, string numberofchannels, string startchannel, MetroFramework.Controls.MetroProgressBar progressBar)
         {
-            // TODO: MOVE TO DAO
-            MeasurmentDAO.saveDataToDataBase(loginManager, dateStart, dateEnd, data, duration, samples, numberofchannels, startchannel, progressBar);
+            measurmentDAO.saveDataToDataBase(dateStart, dateEnd, data, duration, samples, numberofchannels, startchannel, progressBar);
         }
 
         /* Edytowalny scrollbar zamiast utomatycznego */
@@ -1216,49 +1195,7 @@ namespace DAQNavi_WF_v1_0_0
 
         }
 
-        /* Metoda która wyświetla listę pomiarów wykonanych przez danego użytkownika
-           w oknie MyMeasurments */
-        public void loadMyMeasurments(String iduser)
-        {
-            string myConnection = "datasource=" + Options_textBox_baza.Text
-                + ";port=" + Options_textBox_port.Text
-                + ";username=" + Options_textBox_user.Text +
-                ";password=" + Options_textBox_password.Text;
-            MySqlConnection myConn = new MySqlConnection(myConnection);
-            MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.measurments where idusers='" + iduser + "' ;", myConn);
 
-            MySqlDataReader myReader;
-            myConn.Open();
-            myReader = SelectCommand.ExecuteReader();
-            int count = 0;
-            while (myReader.Read())
-            {
-                MeasurmentDTO measurment = new MeasurmentDTO();
-                measurment.idmeasurments = myReader.GetString("idmeasurments");
-                measurment.idusers = myReader.GetString("idusers");
-                measurment.task = myReader.GetString("task");
-                measurment.timeend = myReader.GetString("timeend");
-                measurment.timestart = myReader.GetString("timestart");
-                measurment.week = myReader.GetString("week");
-                measurment.samples = myReader.GetString("samples");
-                measurment.duration = myReader.GetString("duration");
-                measurment.numberofchannels = myReader.GetString("numberofchannels");
-                measurment.startchannel = myReader.GetString("startchannel");
-                myLoadedMeasurments.Add(measurment);
-
-                createNewMeasurment();
-                MM_list_titles[MM_numberOfMeasurments - 1].Text = "Measurment #" + MM_numberOfMeasurments;
-                MM_list_titles[MM_numberOfMeasurments - 1].Text += "  -  " + measurment.timestart;
-                MM_list_titles[MM_numberOfMeasurments - 1].Text += "                                           duration:  " + measurment.duration;
-                MM_list_titles[MM_numberOfMeasurments - 1].Style = MetroColorStyle.Blue;
-                MM_list_samplesValue[MM_numberOfMeasurments - 1].Text = measurment.samples;
-                MM_list_numberOfChannelsValue[MM_numberOfMeasurments - 1].Text = measurment.numberofchannels;
-                MM_list_channelStartValue[MM_numberOfMeasurments - 1].Text = measurment.startchannel;
-
-                getMeasurmentData(measurment);
-
-            }
-        }
 
         /* Reakcja na kliknięcie konkretnego przycisku */
         private void Button_MyMeasurments_Measure1_Click(object sender, EventArgs e)
