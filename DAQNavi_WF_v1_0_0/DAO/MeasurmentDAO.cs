@@ -125,13 +125,13 @@ namespace DAQNavi_WF_v1_0_0
                 MainWindow.MM_list_numberOfChannelsValue[MainWindow.MM_numberOfMeasurments - 1].Text = measurment.numberofchannels;
                 MainWindow.MM_list_channelStartValue[MainWindow.MM_numberOfMeasurments - 1].Text = measurment.startchannel;
 
-                getMeasurmentData(measurment);
+                //getMeasurmentData(measurment);
 
             }
         }
 
         /* Download data from DB */
-        private void getMeasurmentData(MeasurmentDTO measurment)
+        public List<double> getMeasurmentData(MeasurmentDTO measurment)
         {
             string myConnection = "datasource=" + login.dataSource + ";port=" + login.port + ";username=" + login.username + ";password=" + login.dbPassword;
             MySqlConnection myConn = new MySqlConnection(myConnection);
@@ -141,12 +141,13 @@ namespace DAQNavi_WF_v1_0_0
             myConn.Open();
             myReader = SelectCommand.ExecuteReader();
             int counter = 0;
-            List<String> result = new List<String>();
+            List<double> result = new List<double>();
             while (myReader.Read())
             {
-                result.Add(myReader.GetString("value"));
+                result.Add(double.Parse(myReader.GetString("value")));
                 counter++;
             }
+            return result;
         }
 
     }

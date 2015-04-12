@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DAQNavi_WF_v1_0_0
@@ -50,6 +51,24 @@ namespace DAQNavi_WF_v1_0_0
                 {
                     chart.Series[i].MarkerSize = 0;
                 }
+            }
+        }
+
+        public static void fillUpChart(int channels, List<double> data, Chart chart)
+        {
+            int mySeries = 0;
+            int xPoint = 0;
+            for (int i = 0; i < data.Count; ++i)
+            {
+                mySeries = (i % channels);
+                if (mySeries == 0)
+                {
+                    xPoint++;
+                }
+
+                //MEMO LEAK
+                chart.Series[mySeries].Points.Add(new DataPoint(xPoint, data[i]));
+                chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
             }
         }
     }

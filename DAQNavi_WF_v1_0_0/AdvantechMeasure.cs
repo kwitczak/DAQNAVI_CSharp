@@ -379,7 +379,32 @@ namespace DAQNavi_WF_v1_0_0
         * =========================================== UTILITY ====================================================
         */
 
+        private int findLabelIndex(MetroFramework.Controls.MetroLabel label)
+        {
+                if (MM_list_channelStart.Contains(label)){
+                    return MM_list_channelStart.IndexOf(label);
+                }
+                else if (MM_list_channelStartValue.Contains(label)) {
+                    return MM_list_channelStartValue.IndexOf(label);
+                }
+                else if (MM_list_numberOfChannels.Contains(label)) {
+                    return MM_list_numberOfChannels.IndexOf(label);
+                }
+                else if (MM_list_numberOfChannelsValue.Contains(label)) {
+                    return MM_list_numberOfChannelsValue.IndexOf(label);
+                }
+                else if (MM_list_samples.Contains(label)) {
+                    return MM_list_samples.IndexOf(label);
+                }
+                else if (MM_list_samplesValue.Contains(label)) {
+                    return MM_list_samplesValue.IndexOf(label);
+                }
+                else if (MM_list_titles.Contains(label)){
+                    return MM_list_titles.IndexOf(label);
+                }
 
+            return 0;
+        }
 
         private void timer_ProgressBar_Tick(object sender, EventArgs e)
         {
@@ -1022,6 +1047,81 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
+        private void MM_label_channelStartText1_MouseEnter(object sender, EventArgs e)
+        {
+            MetroFramework.Controls.MetroLabel label = ((MetroFramework.Controls.MetroLabel)sender);
+            label.BackColor = Color.FromArgb(255, 0, 0);
+            if (MM_list_channelStart.Contains(label) ||
+                MM_list_channelStartValue.Contains(label) ||
+                MM_list_numberOfChannels.Contains(label) ||
+                MM_list_numberOfChannelsValue.Contains(label) ||
+                MM_list_samples.Contains(label) ||
+                MM_list_samplesValue.Contains(label) ||
+                MM_list_titles.Contains(label)){
+
+                int index = findLabelIndex(label);
+                MM_list_buttons[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_titles[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_channelStart[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_samplesValue[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_numberOfChannels[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_numberOfChannelsValue[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_channelStart[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_channelStartValue[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_samples[index].BackColor = COLOR_LIGHT_DARK;
+                MM_list_samplesValue[index].BackColor = COLOR_LIGHT_DARK;
+
+                MM_list_buttons[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_titles[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_channelStart[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_samplesValue[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_numberOfChannels[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_numberOfChannelsValue[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_channelStart[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_channelStartValue[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_samples[index].ForeColor = COLOR_GRAY_DARK;
+                MM_list_samplesValue[index].ForeColor = COLOR_GRAY_DARK;
+            }
+        }
+
+        private void MM_label_channelStartText1_MouseLeave(object sender, EventArgs e)
+        {
+            MetroFramework.Controls.MetroLabel label = ((MetroFramework.Controls.MetroLabel)sender);
+            label.BackColor = COLOR_GRAY_DARK;
+            if (MM_list_channelStart.Contains(label) ||
+                MM_list_channelStartValue.Contains(label) ||
+                MM_list_numberOfChannels.Contains(label) ||
+                MM_list_numberOfChannelsValue.Contains(label) ||
+                MM_list_samples.Contains(label) ||
+                MM_list_samplesValue.Contains(label) ||
+                MM_list_titles.Contains(label))
+            {
+
+                int index = findLabelIndex(label);
+                MM_list_buttons[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_titles[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_channelStart[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_samplesValue[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_numberOfChannels[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_numberOfChannelsValue[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_channelStart[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_channelStartValue[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_samples[index].BackColor = COLOR_GRAY_DARK;
+                MM_list_samplesValue[index].BackColor = COLOR_GRAY_DARK;
+
+                MM_list_buttons[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_titles[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_channelStart[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_samplesValue[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_numberOfChannels[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_numberOfChannelsValue[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_channelStart[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_channelStartValue[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_samples[index].ForeColor = COLOR_LIGHT_DARK;
+                MM_list_samplesValue[index].ForeColor = COLOR_LIGHT_DARK;
+            }
+        }
+
         private void metroButton1_MouseLeave(object sender, EventArgs e)
         {
             ((MetroFramework.Controls.MetroButton)sender).BackColor = COLOR_GRAY_DARK;
@@ -1090,6 +1190,9 @@ namespace DAQNavi_WF_v1_0_0
             titleLabel.Style = MetroColorStyle.Red;
             titleLabel.FontSize = MetroLabelSize.Tall;
             titleLabel.AutoSize = true;
+            titleLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            titleLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            titleLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
             TabPage_MyMeasurements.Controls.Add(titleLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(titleLabel, 0);
             MM_list_titles.Add(titleLabel);
@@ -1106,6 +1209,9 @@ namespace DAQNavi_WF_v1_0_0
             channelStartLabel.ForeColor = COLOR_LIGHT_DARK;
             channelStartLabel.UseCustomForeColor = true;
             channelStartLabel.FontSize = MetroLabelSize.Medium;
+            channelStartLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            channelStartLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            channelStartLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
             TabPage_MyMeasurements.Controls.Add(channelStartLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(channelStartLabel, 0);
             MM_list_channelStart.Add(channelStartLabel);
@@ -1122,6 +1228,9 @@ namespace DAQNavi_WF_v1_0_0
             channelStartValueLabel.BackColor = COLOR_GRAY_DARK;
             channelStartValueLabel.ForeColor = COLOR_LIGHT_DARK;
             channelStartValueLabel.FontSize = MetroLabelSize.Medium;
+            channelStartValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            channelStartValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            channelStartValueLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
             TabPage_MyMeasurements.Controls.Add(channelStartValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(channelStartValueLabel, 0);
             MM_list_channelStartValue.Add(channelStartValueLabel);
@@ -1139,6 +1248,9 @@ namespace DAQNavi_WF_v1_0_0
             numberOfChannelsLabel.BackColor = COLOR_GRAY_DARK;
             numberOfChannelsLabel.ForeColor = COLOR_LIGHT_DARK;
             numberOfChannelsLabel.FontSize = MetroLabelSize.Medium;
+            numberOfChannelsLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            numberOfChannelsLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            numberOfChannelsLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
             TabPage_MyMeasurements.Controls.Add(numberOfChannelsLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(numberOfChannelsLabel, 0);
             MM_list_numberOfChannels.Add(numberOfChannelsLabel);
@@ -1155,6 +1267,9 @@ namespace DAQNavi_WF_v1_0_0
             numberOfChannelsValueLabel.BackColor = COLOR_GRAY_DARK;
             numberOfChannelsValueLabel.ForeColor = COLOR_LIGHT_DARK;
             numberOfChannelsValueLabel.FontSize = MetroLabelSize.Medium;
+            numberOfChannelsValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            numberOfChannelsValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            numberOfChannelsValueLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
             TabPage_MyMeasurements.Controls.Add(numberOfChannelsValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(numberOfChannelsValueLabel, 0);
             MM_list_numberOfChannelsValue.Add(numberOfChannelsValueLabel);
@@ -1171,6 +1286,9 @@ namespace DAQNavi_WF_v1_0_0
             samplesLabel.BackColor = COLOR_GRAY_DARK;
             samplesLabel.ForeColor = COLOR_LIGHT_DARK;
             samplesLabel.FontSize = MetroLabelSize.Medium;
+            samplesLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            samplesLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            samplesLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
             TabPage_MyMeasurements.Controls.Add(samplesLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(samplesLabel, 0);
             MM_list_samples.Add(samplesLabel);
@@ -1187,6 +1305,9 @@ namespace DAQNavi_WF_v1_0_0
             samplesValueLabel.BackColor = COLOR_GRAY_DARK;
             samplesValueLabel.ForeColor = COLOR_LIGHT_DARK;
             samplesValueLabel.FontSize = MetroLabelSize.Medium;
+            samplesValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            samplesValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
+            samplesValueLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
             TabPage_MyMeasurements.Controls.Add(samplesValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(samplesValueLabel, 0);
             MM_list_samplesValue.Add(samplesValueLabel);
@@ -1196,16 +1317,15 @@ namespace DAQNavi_WF_v1_0_0
         }
 
 
-
         /* Reakcja na kliknięcie konkretnego przycisku */
         private void Button_MyMeasurments_Measure1_Click(object sender, EventArgs e)
         {
+            ((MetroFramework.Controls.MetroButton)sender).UseCustomBackColor = false;
+            this.TabControl.TabPages.Add(TabPage_ShowMeasure);
             this.TabControl.SelectedTab = TabPage_ShowMeasure;
             int index = MM_list_buttons.IndexOf((MetroFramework.Controls.MetroButton)sender);
-            MessageBox.Show(index.ToString());
-            ShowMeasure_label_startValue.Text = myLoadedMeasurments[index].timestart;
-            ShowMeasure_label_endValue.Text = myLoadedMeasurments[index].timeend;
-            ShowMeasure_label_durationValue.Text = myLoadedMeasurments[index].duration;
+            MessageBox.Show(index + "");
+            fillUpShowMeasure(index);
         }
 
         /* method stub */
@@ -1213,5 +1333,28 @@ namespace DAQNavi_WF_v1_0_0
         {
             throw new NotImplementedException();
         }
+
+        /*
+        * =============================================  SHOW MEASURE ====================================================
+        */
+
+        private void fillUpShowMeasure(int index)
+        {
+            ShowMeasure_label_startValue.Text = myLoadedMeasurments[index].timestart;
+            ShowMeasure_label_endValue.Text = myLoadedMeasurments[index].timeend;
+            ShowMeasure_label_durationValue.Text = myLoadedMeasurments[index].duration;
+            ShowMeasure_label_samplesValue.Text = myLoadedMeasurments[index].samples;
+            ShowMeasure_label_numberOfChannelsValue.Text = myLoadedMeasurments[index].numberofchannels;
+            ShowMeasure_label_startChannelValue.Text = myLoadedMeasurments[index].startchannel;
+            ShowMeasure_label_taskValue.Text = myLoadedMeasurments[index].task;
+
+
+
+            ChartUtils.fillUpChart(int.Parse(myLoadedMeasurments[index].numberofchannels),
+                measurmentDAO.getMeasurmentData(myLoadedMeasurments[index]),
+                ShowMeasure_chart);
+        }
+
+
     }
 }
