@@ -28,8 +28,10 @@ namespace DAQNavi_WF_v1_0_0
         /* STYLE VARIABLES */
         public static readonly MetroThemeStyle STYLE_LIGHT = MetroFramework.MetroThemeStyle.Light;
         public static readonly MetroThemeStyle STYLE_DARK = MetroFramework.MetroThemeStyle.Dark;
+        public static readonly Color COLOR_GRAY_LIGHT = Color.FromArgb(238, 238, 238);
         public static readonly Color COLOR_LIGHT_DARK = Color.FromArgb(170, 170, 170);
         public static readonly Color COLOR_GRAY_DARK = Color.FromArgb(34, 34, 34);
+        public static MetroThemeStyle choosenStyle = StyleUtils.getDefaultStyle();
 
         /* UTILITY CONSTANTS */
         public delegate void UpdateUIDelegate();
@@ -162,7 +164,7 @@ namespace DAQNavi_WF_v1_0_0
            Używane z panelu opcji switcherem. */
         private void metroToggle1_CheckedChanged(object sender, EventArgs e)
         {
-            StyleUtils.changeStyle(TabControl.Theme, this);
+            StyleUtils.changeStyle(StyleUtils.findOppositeStyle(TabControl.Theme), this);
         }
 
         /* Zmiana języka na angielski */
@@ -1160,6 +1162,15 @@ namespace DAQNavi_WF_v1_0_0
            dla jednego, aktualnego pomiaru */
         public void createNewMeasurment()
         {
+            Color background;
+            Color foreground;
+            if (choosenStyle.Equals(MetroThemeStyle.Dark)){
+                background = COLOR_GRAY_DARK;
+                foreground = COLOR_LIGHT_DARK;
+            } else {
+                foreground = COLOR_GRAY_DARK;
+                background = COLOR_GRAY_LIGHT;
+            }
 
             // Button
             MetroFramework.Controls.MetroButton newButton = new MetroFramework.Controls.MetroButton();
@@ -1168,7 +1179,7 @@ namespace DAQNavi_WF_v1_0_0
             newButton.Size = new Size(700, 80);
             newButton.Name = "Button_MyMeasurments_Measurment" + MM_numberOfMeasurments;
             newButton.UseCustomBackColor = true;
-            newButton.BackColor = COLOR_GRAY_DARK;
+            newButton.BackColor = background;
             newButton.MouseLeave += new EventHandler(metroButton1_MouseLeave);
             newButton.MouseEnter += new EventHandler(metroButton1_MouseEnter);
             newButton.Click += Button_MyMeasurments_Measure1_Click;
@@ -1184,8 +1195,8 @@ namespace DAQNavi_WF_v1_0_0
             titleLabel.Size = new Size(140, 25);
             titleLabel.UseCustomBackColor = true;
             titleLabel.UseCustomForeColor = true;
-            titleLabel.BackColor = COLOR_GRAY_DARK;
-            titleLabel.ForeColor = COLOR_LIGHT_DARK;
+            titleLabel.BackColor = background;
+            titleLabel.ForeColor = foreground;
             titleLabel.UseStyleColors = true;
             titleLabel.Style = MetroColorStyle.Red;
             titleLabel.FontSize = MetroLabelSize.Tall;
@@ -1205,8 +1216,8 @@ namespace DAQNavi_WF_v1_0_0
             channelStartLabel.Text = "Channel start:";
             //channelStartLabel.Size = new Size(140, 25);
             channelStartLabel.UseCustomBackColor = true;
-            channelStartLabel.BackColor = COLOR_GRAY_DARK;
-            channelStartLabel.ForeColor = COLOR_LIGHT_DARK;
+            channelStartLabel.BackColor = background;
+            channelStartLabel.ForeColor = foreground;
             channelStartLabel.UseCustomForeColor = true;
             channelStartLabel.FontSize = MetroLabelSize.Medium;
             channelStartLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
@@ -1225,8 +1236,8 @@ namespace DAQNavi_WF_v1_0_0
             //channelStartValueLabel.Size = new Size(140, 25);
             channelStartValueLabel.UseCustomBackColor = true;
             channelStartValueLabel.UseCustomForeColor = true;
-            channelStartValueLabel.BackColor = COLOR_GRAY_DARK;
-            channelStartValueLabel.ForeColor = COLOR_LIGHT_DARK;
+            channelStartValueLabel.BackColor = background;
+            channelStartValueLabel.ForeColor = foreground;
             channelStartValueLabel.FontSize = MetroLabelSize.Medium;
             channelStartValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             channelStartValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
@@ -1245,8 +1256,8 @@ namespace DAQNavi_WF_v1_0_0
             numberOfChannelsLabel.Size = new Size(140, 25);
             numberOfChannelsLabel.UseCustomBackColor = true;
             numberOfChannelsLabel.UseCustomForeColor = true;
-            numberOfChannelsLabel.BackColor = COLOR_GRAY_DARK;
-            numberOfChannelsLabel.ForeColor = COLOR_LIGHT_DARK;
+            numberOfChannelsLabel.BackColor = background;
+            numberOfChannelsLabel.ForeColor = foreground;
             numberOfChannelsLabel.FontSize = MetroLabelSize.Medium;
             numberOfChannelsLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             numberOfChannelsLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
@@ -1264,8 +1275,8 @@ namespace DAQNavi_WF_v1_0_0
             //numberOfChannelsValueLabel.Size = new Size(140, 25);
             numberOfChannelsValueLabel.UseCustomBackColor = true;
             numberOfChannelsValueLabel.UseCustomForeColor = true;
-            numberOfChannelsValueLabel.BackColor = COLOR_GRAY_DARK;
-            numberOfChannelsValueLabel.ForeColor = COLOR_LIGHT_DARK;
+            numberOfChannelsValueLabel.BackColor = background;
+            numberOfChannelsValueLabel.ForeColor = foreground;
             numberOfChannelsValueLabel.FontSize = MetroLabelSize.Medium;
             numberOfChannelsValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             numberOfChannelsValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
@@ -1283,8 +1294,8 @@ namespace DAQNavi_WF_v1_0_0
             //samplesLabel.Size = new Size(140, 25);
             samplesLabel.UseCustomBackColor = true;
             samplesLabel.UseCustomForeColor = true;
-            samplesLabel.BackColor = COLOR_GRAY_DARK;
-            samplesLabel.ForeColor = COLOR_LIGHT_DARK;
+            samplesLabel.BackColor = background;
+            samplesLabel.ForeColor = foreground;
             samplesLabel.FontSize = MetroLabelSize.Medium;
             samplesLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             samplesLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
@@ -1302,8 +1313,8 @@ namespace DAQNavi_WF_v1_0_0
             //samplesValueLabel.Size = new Size(140, 25);
             samplesValueLabel.UseCustomBackColor = true;
             samplesValueLabel.UseCustomForeColor = true;
-            samplesValueLabel.BackColor = COLOR_GRAY_DARK;
-            samplesValueLabel.ForeColor = COLOR_LIGHT_DARK;
+            samplesValueLabel.BackColor = background;
+            samplesValueLabel.ForeColor = foreground;
             samplesValueLabel.FontSize = MetroLabelSize.Medium;
             samplesValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             samplesValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);

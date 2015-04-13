@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,29 @@ namespace DAQNavi_WF_v1_0_0.Utils
 {
     class StyleUtils
     {
+
+        public static MetroFramework.MetroThemeStyle getDefaultStyle()
+        {
+            String style = ConfigurationManager.AppSettings["defaultTheme"];
+            if (style.Equals("Dark"))
+            {
+                return MetroFramework.MetroThemeStyle.Dark;
+            }
+            else
+            {
+                return MetroFramework.MetroThemeStyle.Light;
+            }
+        }
+
+        public static MetroFramework.MetroThemeStyle findOppositeStyle(MetroFramework.MetroThemeStyle style)
+        {
+            if (style.Equals(MetroFramework.MetroThemeStyle.Dark)){
+                return MetroFramework.MetroThemeStyle.Light;
+            } else {
+                return MetroFramework.MetroThemeStyle.Dark;
+            }
+        }
+
         public static void changeStyle(MetroFramework.MetroThemeStyle style, MainWindow window)
         {
                 // This
@@ -51,6 +75,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 window.Options_label_commentOptions.Theme = style;
                 window.Options_button_applyChanges.Theme = style;
                 window.Options_button_backToDefaults.Theme = style;
+                window.Options_button_clearResults.Theme = style;
 
                 // AnalogBufferedInput
                 window.TabPage_AnalogBufferedInput.Theme = style;
@@ -106,6 +131,21 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 window.TabPage_DigitalOutput.Theme = style;
 
                 // Welcome
+                window.TabPage_Welcome.Theme = style;
+                window.Welcome_button_createNewUser.Theme = style;
+                window.Welcome_button_login.Theme = style;
+                window.Welcome_label_helloText.Theme = style;
+                window.Welcome_label_newUser.Theme = style;
+                window.Welcome_label_password.Theme = style;
+                window.Welcome_label_username.Theme = style;
+                window.Welcome_link.Theme = style;
+                window.Welcome_textBox_password.Theme = style;
+                window.Welcome_textBox_username.Theme = style;
+            //window.Welcome_pictureBox_advantech.Image
+
+                // MyMeasurments
+                window.TabPage_MyMeasurements.Theme = style;
+                window.MM_button_newMeasure.Theme = style;
 
                 // Results
 

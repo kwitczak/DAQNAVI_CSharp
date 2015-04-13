@@ -74,6 +74,16 @@
             this.ABI_textBox_channels = new MetroFramework.Controls.MetroTextBox();
             this.ABI_button_measure = new MetroFramework.Controls.MetroButton();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
+            this.TabPage_MyMeasurements = new MetroFramework.Controls.MetroTabPage();
+            this.MM_label_channelNumberText1 = new MetroFramework.Controls.MetroLabel();
+            this.MM_label_channelNumber1 = new MetroFramework.Controls.MetroLabel();
+            this.MM_label_channelStartText1 = new MetroFramework.Controls.MetroLabel();
+            this.MM_label_channelStart1 = new MetroFramework.Controls.MetroLabel();
+            this.MM_label_samplesTitle1 = new MetroFramework.Controls.MetroLabel();
+            this.MM_label_samples1 = new MetroFramework.Controls.MetroLabel();
+            this.MM_label_resultTitle1 = new MetroFramework.Controls.MetroLabel();
+            this.MM_button_newMeasure = new MetroFramework.Controls.MetroButton();
+            this.MM_button_measure1 = new MetroFramework.Controls.MetroButton();
             this.TabPage_Options = new MetroFramework.Controls.MetroTabPage();
             this.Options_label_commentOptions = new MetroFramework.Controls.MetroLabel();
             this.Options_panel_comments = new MetroFramework.Controls.MetroPanel();
@@ -110,16 +120,6 @@
             this.Options_textBox_password = new MetroFramework.Controls.MetroTextBox();
             this.Options_textBox_user = new MetroFramework.Controls.MetroTextBox();
             this.Options_label_user = new MetroFramework.Controls.MetroLabel();
-            this.TabPage_MyMeasurements = new MetroFramework.Controls.MetroTabPage();
-            this.MM_label_channelNumberText1 = new MetroFramework.Controls.MetroLabel();
-            this.MM_label_channelNumber1 = new MetroFramework.Controls.MetroLabel();
-            this.MM_label_channelStartText1 = new MetroFramework.Controls.MetroLabel();
-            this.MM_label_channelStart1 = new MetroFramework.Controls.MetroLabel();
-            this.MM_label_samplesTitle1 = new MetroFramework.Controls.MetroLabel();
-            this.MM_label_samples1 = new MetroFramework.Controls.MetroLabel();
-            this.MM_label_resultTitle1 = new MetroFramework.Controls.MetroLabel();
-            this.MM_button_newMeasure = new MetroFramework.Controls.MetroButton();
-            this.MM_button_measure1 = new MetroFramework.Controls.MetroButton();
             this.TabPage_ShowMeasure = new MetroFramework.Controls.MetroTabPage();
             this.ShowMeasure_grid = new MetroFramework.Controls.MetroGrid();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -132,6 +132,16 @@
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.ShowMeasure_label_task = new MetroFramework.Controls.MetroPanel();
+            this.ShowMeasure_label_typeValue = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_taskValue = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_startChannelValue = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_numberOfChannelsValue = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_samplesValue = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_type = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_startChannel = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_numberOfChannels = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_samples = new MetroFramework.Controls.MetroLabel();
             this.ShowMeasure_label_durationValue = new MetroFramework.Controls.MetroLabel();
             this.ShowMeasure_label_endValue = new MetroFramework.Controls.MetroLabel();
             this.ShowMeasure_label_startValue = new MetroFramework.Controls.MetroLabel();
@@ -147,7 +157,6 @@
             this.Welcome_label_username = new MetroFramework.Controls.MetroLabel();
             this.Welcome_textBox_password = new MetroFramework.Controls.MetroTextBox();
             this.Welcome_textBox_username = new MetroFramework.Controls.MetroTextBox();
-            this.Welcome_pictureBox_advantech = new System.Windows.Forms.PictureBox();
             this.Welcome_link = new MetroFramework.Controls.MetroLink();
             this.Welcome_label_helloText = new MetroFramework.Controls.MetroLabel();
             this.TabPage_AnalogBufferedInput = new MetroFramework.Controls.MetroTabPage();
@@ -252,31 +261,21 @@
             this.AIIControl = new Automation.BDaq.InstantAiCtrl(this.components);
             this.timer_getData = new System.Windows.Forms.Timer(this.components);
             this.timer_ProgressBar = new System.Windows.Forms.Timer(this.components);
-            this.ShowMeasure_label_samples = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_numberOfChannels = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_startChannel = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_type = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_samplesValue = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_numberOfChannelsValue = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_startChannelValue = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_taskValue = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_typeValue = new MetroFramework.Controls.MetroLabel();
+            this.Welcome_pictureBox_advantech = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.ABI_Chart)).BeginInit();
             this.TabControl.SuspendLayout();
+            this.TabPage_MyMeasurements.SuspendLayout();
             this.TabPage_Options.SuspendLayout();
             this.Options_panel_comments.SuspendLayout();
             this.Options_panel_card.SuspendLayout();
             this.Options_panel_language.SuspendLayout();
             this.Options_panel_theme.SuspendLayout();
             this.Options_panel_database.SuspendLayout();
-            this.TabPage_MyMeasurements.SuspendLayout();
             this.TabPage_ShowMeasure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_grid)).BeginInit();
             this.ShowMeasure_label_task.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_chart)).BeginInit();
             this.TabPage_Welcome.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Welcome_pictureBox_advantech)).BeginInit();
             this.TabPage_AnalogBufferedInput.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.TabPage_AnalogInstantInput.SuspendLayout();
@@ -289,6 +288,7 @@
             this.Panel_Results.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LastMeasure_GridTable)).BeginInit();
             this.TabPage_Measure.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Welcome_pictureBox_advantech)).BeginInit();
             this.SuspendLayout();
             // 
             // ABIControl
@@ -486,9 +486,9 @@
             // 
             // TabControl
             // 
+            this.TabControl.Controls.Add(this.TabPage_ShowMeasure);
             this.TabControl.Controls.Add(this.TabPage_MyMeasurements);
             this.TabControl.Controls.Add(this.TabPage_Options);
-            this.TabControl.Controls.Add(this.TabPage_ShowMeasure);
             this.TabControl.Controls.Add(this.TabPage_Welcome);
             this.TabControl.Controls.Add(this.TabPage_AnalogBufferedInput);
             this.TabControl.Controls.Add(this.TabPage_AnalogInstantInput);
@@ -499,16 +499,179 @@
             this.TabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.TabControl.Location = new System.Drawing.Point(23, 63);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 2;
+            this.TabControl.SelectedIndex = 3;
             this.TabControl.Size = new System.Drawing.Size(925, 622);
             this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 40;
             this.TabControl.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TabControl.UseSelectable = true;
             // 
+            // TabPage_MyMeasurements
+            // 
+            this.TabPage_MyMeasurements.AutoScroll = true;
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_channelNumberText1);
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_channelNumber1);
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_channelStartText1);
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_channelStart1);
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_samplesTitle1);
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_samples1);
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_resultTitle1);
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_button_newMeasure);
+            this.TabPage_MyMeasurements.Controls.Add(this.MM_button_measure1);
+            this.TabPage_MyMeasurements.HorizontalScrollbar = true;
+            this.TabPage_MyMeasurements.HorizontalScrollbarBarColor = true;
+            this.TabPage_MyMeasurements.HorizontalScrollbarHighlightOnWheel = false;
+            this.TabPage_MyMeasurements.HorizontalScrollbarSize = 10;
+            this.TabPage_MyMeasurements.Location = new System.Drawing.Point(4, 38);
+            this.TabPage_MyMeasurements.Name = "TabPage_MyMeasurements";
+            this.TabPage_MyMeasurements.Size = new System.Drawing.Size(917, 580);
+            this.TabPage_MyMeasurements.TabIndex = 8;
+            this.TabPage_MyMeasurements.Text = "My Measurments";
+            this.TabPage_MyMeasurements.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TabPage_MyMeasurements.VerticalScrollbar = true;
+            this.TabPage_MyMeasurements.VerticalScrollbarBarColor = true;
+            this.TabPage_MyMeasurements.VerticalScrollbarHighlightOnWheel = false;
+            this.TabPage_MyMeasurements.VerticalScrollbarSize = 10;
+            // 
+            // MM_label_channelNumberText1
+            // 
+            this.MM_label_channelNumberText1.AutoSize = true;
+            this.MM_label_channelNumberText1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.MM_label_channelNumberText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.MM_label_channelNumberText1.Location = new System.Drawing.Point(290, 120);
+            this.MM_label_channelNumberText1.Name = "MM_label_channelNumberText1";
+            this.MM_label_channelNumberText1.Size = new System.Drawing.Size(130, 19);
+            this.MM_label_channelNumberText1.TabIndex = 11;
+            this.MM_label_channelNumberText1.Text = "Number of channels:";
+            this.MM_label_channelNumberText1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_label_channelNumberText1.UseCustomBackColor = true;
+            this.MM_label_channelNumberText1.UseCustomForeColor = true;
+            this.MM_label_channelNumberText1.Visible = false;
+            // 
+            // MM_label_channelNumber1
+            // 
+            this.MM_label_channelNumber1.AutoSize = true;
+            this.MM_label_channelNumber1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.MM_label_channelNumber1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.MM_label_channelNumber1.Location = new System.Drawing.Point(425, 122);
+            this.MM_label_channelNumber1.Name = "MM_label_channelNumber1";
+            this.MM_label_channelNumber1.Size = new System.Drawing.Size(16, 19);
+            this.MM_label_channelNumber1.TabIndex = 10;
+            this.MM_label_channelNumber1.Text = "0";
+            this.MM_label_channelNumber1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_label_channelNumber1.UseCustomBackColor = true;
+            this.MM_label_channelNumber1.UseCustomForeColor = true;
+            this.MM_label_channelNumber1.Visible = false;
+            // 
+            // MM_label_channelStartText1
+            // 
+            this.MM_label_channelStartText1.AutoSize = true;
+            this.MM_label_channelStartText1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.MM_label_channelStartText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.MM_label_channelStartText1.Location = new System.Drawing.Point(110, 120);
+            this.MM_label_channelStartText1.Name = "MM_label_channelStartText1";
+            this.MM_label_channelStartText1.Size = new System.Drawing.Size(88, 19);
+            this.MM_label_channelStartText1.TabIndex = 9;
+            this.MM_label_channelStartText1.Text = "Channel start:";
+            this.MM_label_channelStartText1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_label_channelStartText1.UseCustomBackColor = true;
+            this.MM_label_channelStartText1.UseCustomForeColor = true;
+            this.MM_label_channelStartText1.Visible = false;
+            this.MM_label_channelStartText1.MouseEnter += new System.EventHandler(this.MM_label_channelStartText1_MouseEnter);
+            this.MM_label_channelStartText1.MouseLeave += new System.EventHandler(this.MM_label_channelStartText1_MouseLeave);
+            // 
+            // MM_label_channelStart1
+            // 
+            this.MM_label_channelStart1.AutoSize = true;
+            this.MM_label_channelStart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.MM_label_channelStart1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.MM_label_channelStart1.Location = new System.Drawing.Point(200, 120);
+            this.MM_label_channelStart1.Name = "MM_label_channelStart1";
+            this.MM_label_channelStart1.Size = new System.Drawing.Size(16, 19);
+            this.MM_label_channelStart1.TabIndex = 8;
+            this.MM_label_channelStart1.Text = "0";
+            this.MM_label_channelStart1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_label_channelStart1.UseCustomBackColor = true;
+            this.MM_label_channelStart1.UseCustomForeColor = true;
+            this.MM_label_channelStart1.Visible = false;
+            // 
+            // MM_label_samplesTitle1
+            // 
+            this.MM_label_samplesTitle1.AutoSize = true;
+            this.MM_label_samplesTitle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.MM_label_samplesTitle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.MM_label_samplesTitle1.Location = new System.Drawing.Point(540, 122);
+            this.MM_label_samplesTitle1.Name = "MM_label_samplesTitle1";
+            this.MM_label_samplesTitle1.Size = new System.Drawing.Size(61, 19);
+            this.MM_label_samplesTitle1.TabIndex = 7;
+            this.MM_label_samplesTitle1.Text = "Samples:";
+            this.MM_label_samplesTitle1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_label_samplesTitle1.UseCustomBackColor = true;
+            this.MM_label_samplesTitle1.UseCustomForeColor = true;
+            this.MM_label_samplesTitle1.Visible = false;
+            // 
+            // MM_label_samples1
+            // 
+            this.MM_label_samples1.AutoSize = true;
+            this.MM_label_samples1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.MM_label_samples1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.MM_label_samples1.Location = new System.Drawing.Point(605, 120);
+            this.MM_label_samples1.Name = "MM_label_samples1";
+            this.MM_label_samples1.Size = new System.Drawing.Size(16, 19);
+            this.MM_label_samples1.TabIndex = 5;
+            this.MM_label_samples1.Text = "0";
+            this.MM_label_samples1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_label_samples1.UseCustomBackColor = true;
+            this.MM_label_samples1.UseCustomForeColor = true;
+            this.MM_label_samples1.Visible = false;
+            // 
+            // MM_label_resultTitle1
+            // 
+            this.MM_label_resultTitle1.AutoSize = true;
+            this.MM_label_resultTitle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.MM_label_resultTitle1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.MM_label_resultTitle1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.MM_label_resultTitle1.Location = new System.Drawing.Point(30, 80);
+            this.MM_label_resultTitle1.Name = "MM_label_resultTitle1";
+            this.MM_label_resultTitle1.Size = new System.Drawing.Size(142, 25);
+            this.MM_label_resultTitle1.TabIndex = 3;
+            this.MM_label_resultTitle1.Text = "Measurment # 1";
+            this.MM_label_resultTitle1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_label_resultTitle1.UseCustomBackColor = true;
+            this.MM_label_resultTitle1.UseStyleColors = true;
+            this.MM_label_resultTitle1.Visible = false;
+            // 
+            // MM_button_newMeasure
+            // 
+            this.MM_button_newMeasure.Location = new System.Drawing.Point(735, 72);
+            this.MM_button_newMeasure.Name = "MM_button_newMeasure";
+            this.MM_button_newMeasure.Size = new System.Drawing.Size(150, 80);
+            this.MM_button_newMeasure.TabIndex = 2;
+            this.MM_button_newMeasure.Text = "New Measure";
+            this.MM_button_newMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_button_newMeasure.UseSelectable = true;
+            this.MM_button_newMeasure.Click += new System.EventHandler(this.Button_MyMeasurements_NewMeasure_Click);
+            // 
+            // MM_button_measure1
+            // 
+            this.MM_button_measure1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.MM_button_measure1.Location = new System.Drawing.Point(25, 72);
+            this.MM_button_measure1.Name = "MM_button_measure1";
+            this.MM_button_measure1.Size = new System.Drawing.Size(700, 80);
+            this.MM_button_measure1.Style = MetroFramework.MetroColorStyle.Brown;
+            this.MM_button_measure1.TabIndex = 6;
+            this.MM_button_measure1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.MM_button_measure1.UseCustomBackColor = true;
+            this.MM_button_measure1.UseSelectable = true;
+            this.MM_button_measure1.UseStyleColors = true;
+            this.MM_button_measure1.Visible = false;
+            this.MM_button_measure1.Click += new System.EventHandler(this.Button_MyMeasurments_Measure1_Click);
+            this.MM_button_measure1.MouseEnter += new System.EventHandler(this.metroButton1_MouseEnter);
+            this.MM_button_measure1.MouseLeave += new System.EventHandler(this.metroButton1_MouseLeave);
+            this.MM_button_measure1.MouseHover += new System.EventHandler(this.Button_MyMeasurments_Measure1_MouseHover);
+            // 
             // TabPage_Options
             // 
-            this.TabPage_Options.AutoScroll = true;
             this.TabPage_Options.AutoScrollMargin = new System.Drawing.Size(0, 950);
             this.TabPage_Options.Controls.Add(this.Options_label_commentOptions);
             this.TabPage_Options.Controls.Add(this.Options_panel_comments);
@@ -523,7 +686,6 @@
             this.TabPage_Options.Controls.Add(this.Options_panel_theme);
             this.TabPage_Options.Controls.Add(this.Options_label_database);
             this.TabPage_Options.Controls.Add(this.Options_panel_database);
-            this.TabPage_Options.HorizontalScrollbar = true;
             this.TabPage_Options.HorizontalScrollbarBarColor = false;
             this.TabPage_Options.HorizontalScrollbarHighlightOnWheel = false;
             this.TabPage_Options.HorizontalScrollbarSize = 10;
@@ -534,7 +696,6 @@
             this.TabPage_Options.TabIndex = 4;
             this.TabPage_Options.Text = "Options";
             this.TabPage_Options.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TabPage_Options.VerticalScrollbar = true;
             this.TabPage_Options.VerticalScrollbarBarColor = false;
             this.TabPage_Options.VerticalScrollbarHighlightOnWheel = false;
             this.TabPage_Options.VerticalScrollbarSize = 10;
@@ -1018,170 +1179,6 @@
             this.Options_label_user.Text = "User";
             this.Options_label_user.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
-            // TabPage_MyMeasurements
-            // 
-            this.TabPage_MyMeasurements.AutoScroll = true;
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_channelNumberText1);
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_channelNumber1);
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_channelStartText1);
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_channelStart1);
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_samplesTitle1);
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_samples1);
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_label_resultTitle1);
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_button_newMeasure);
-            this.TabPage_MyMeasurements.Controls.Add(this.MM_button_measure1);
-            this.TabPage_MyMeasurements.HorizontalScrollbar = true;
-            this.TabPage_MyMeasurements.HorizontalScrollbarBarColor = true;
-            this.TabPage_MyMeasurements.HorizontalScrollbarHighlightOnWheel = false;
-            this.TabPage_MyMeasurements.HorizontalScrollbarSize = 10;
-            this.TabPage_MyMeasurements.Location = new System.Drawing.Point(4, 38);
-            this.TabPage_MyMeasurements.Name = "TabPage_MyMeasurements";
-            this.TabPage_MyMeasurements.Size = new System.Drawing.Size(917, 580);
-            this.TabPage_MyMeasurements.TabIndex = 8;
-            this.TabPage_MyMeasurements.Text = "My Measurments";
-            this.TabPage_MyMeasurements.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TabPage_MyMeasurements.VerticalScrollbar = true;
-            this.TabPage_MyMeasurements.VerticalScrollbarBarColor = true;
-            this.TabPage_MyMeasurements.VerticalScrollbarHighlightOnWheel = false;
-            this.TabPage_MyMeasurements.VerticalScrollbarSize = 10;
-            // 
-            // MM_label_channelNumberText1
-            // 
-            this.MM_label_channelNumberText1.AutoSize = true;
-            this.MM_label_channelNumberText1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.MM_label_channelNumberText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.MM_label_channelNumberText1.Location = new System.Drawing.Point(290, 120);
-            this.MM_label_channelNumberText1.Name = "MM_label_channelNumberText1";
-            this.MM_label_channelNumberText1.Size = new System.Drawing.Size(130, 19);
-            this.MM_label_channelNumberText1.TabIndex = 11;
-            this.MM_label_channelNumberText1.Text = "Number of channels:";
-            this.MM_label_channelNumberText1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_label_channelNumberText1.UseCustomBackColor = true;
-            this.MM_label_channelNumberText1.UseCustomForeColor = true;
-            this.MM_label_channelNumberText1.Visible = false;
-            // 
-            // MM_label_channelNumber1
-            // 
-            this.MM_label_channelNumber1.AutoSize = true;
-            this.MM_label_channelNumber1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.MM_label_channelNumber1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.MM_label_channelNumber1.Location = new System.Drawing.Point(425, 122);
-            this.MM_label_channelNumber1.Name = "MM_label_channelNumber1";
-            this.MM_label_channelNumber1.Size = new System.Drawing.Size(16, 19);
-            this.MM_label_channelNumber1.TabIndex = 10;
-            this.MM_label_channelNumber1.Text = "0";
-            this.MM_label_channelNumber1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_label_channelNumber1.UseCustomBackColor = true;
-            this.MM_label_channelNumber1.UseCustomForeColor = true;
-            this.MM_label_channelNumber1.Visible = false;
-            // 
-            // MM_label_channelStartText1
-            // 
-            this.MM_label_channelStartText1.AutoSize = true;
-            this.MM_label_channelStartText1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.MM_label_channelStartText1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.MM_label_channelStartText1.Location = new System.Drawing.Point(110, 120);
-            this.MM_label_channelStartText1.Name = "MM_label_channelStartText1";
-            this.MM_label_channelStartText1.Size = new System.Drawing.Size(88, 19);
-            this.MM_label_channelStartText1.TabIndex = 9;
-            this.MM_label_channelStartText1.Text = "Channel start:";
-            this.MM_label_channelStartText1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_label_channelStartText1.UseCustomBackColor = true;
-            this.MM_label_channelStartText1.UseCustomForeColor = true;
-            this.MM_label_channelStartText1.Visible = false;
-            this.MM_label_channelStartText1.MouseEnter += new System.EventHandler(this.MM_label_channelStartText1_MouseEnter);
-            this.MM_label_channelStartText1.MouseLeave += new System.EventHandler(this.MM_label_channelStartText1_MouseLeave);
-            // 
-            // MM_label_channelStart1
-            // 
-            this.MM_label_channelStart1.AutoSize = true;
-            this.MM_label_channelStart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.MM_label_channelStart1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.MM_label_channelStart1.Location = new System.Drawing.Point(200, 120);
-            this.MM_label_channelStart1.Name = "MM_label_channelStart1";
-            this.MM_label_channelStart1.Size = new System.Drawing.Size(16, 19);
-            this.MM_label_channelStart1.TabIndex = 8;
-            this.MM_label_channelStart1.Text = "0";
-            this.MM_label_channelStart1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_label_channelStart1.UseCustomBackColor = true;
-            this.MM_label_channelStart1.UseCustomForeColor = true;
-            this.MM_label_channelStart1.Visible = false;
-            // 
-            // MM_label_samplesTitle1
-            // 
-            this.MM_label_samplesTitle1.AutoSize = true;
-            this.MM_label_samplesTitle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.MM_label_samplesTitle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.MM_label_samplesTitle1.Location = new System.Drawing.Point(540, 122);
-            this.MM_label_samplesTitle1.Name = "MM_label_samplesTitle1";
-            this.MM_label_samplesTitle1.Size = new System.Drawing.Size(61, 19);
-            this.MM_label_samplesTitle1.TabIndex = 7;
-            this.MM_label_samplesTitle1.Text = "Samples:";
-            this.MM_label_samplesTitle1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_label_samplesTitle1.UseCustomBackColor = true;
-            this.MM_label_samplesTitle1.UseCustomForeColor = true;
-            this.MM_label_samplesTitle1.Visible = false;
-            // 
-            // MM_label_samples1
-            // 
-            this.MM_label_samples1.AutoSize = true;
-            this.MM_label_samples1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.MM_label_samples1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.MM_label_samples1.Location = new System.Drawing.Point(605, 120);
-            this.MM_label_samples1.Name = "MM_label_samples1";
-            this.MM_label_samples1.Size = new System.Drawing.Size(16, 19);
-            this.MM_label_samples1.TabIndex = 5;
-            this.MM_label_samples1.Text = "0";
-            this.MM_label_samples1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_label_samples1.UseCustomBackColor = true;
-            this.MM_label_samples1.UseCustomForeColor = true;
-            this.MM_label_samples1.Visible = false;
-            // 
-            // MM_label_resultTitle1
-            // 
-            this.MM_label_resultTitle1.AutoSize = true;
-            this.MM_label_resultTitle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.MM_label_resultTitle1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.MM_label_resultTitle1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.MM_label_resultTitle1.Location = new System.Drawing.Point(30, 80);
-            this.MM_label_resultTitle1.Name = "MM_label_resultTitle1";
-            this.MM_label_resultTitle1.Size = new System.Drawing.Size(142, 25);
-            this.MM_label_resultTitle1.TabIndex = 3;
-            this.MM_label_resultTitle1.Text = "Measurment # 1";
-            this.MM_label_resultTitle1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_label_resultTitle1.UseCustomBackColor = true;
-            this.MM_label_resultTitle1.UseStyleColors = true;
-            this.MM_label_resultTitle1.Visible = false;
-            // 
-            // MM_button_newMeasure
-            // 
-            this.MM_button_newMeasure.Location = new System.Drawing.Point(735, 72);
-            this.MM_button_newMeasure.Name = "MM_button_newMeasure";
-            this.MM_button_newMeasure.Size = new System.Drawing.Size(150, 80);
-            this.MM_button_newMeasure.TabIndex = 2;
-            this.MM_button_newMeasure.Text = "New Measure";
-            this.MM_button_newMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_button_newMeasure.UseSelectable = true;
-            this.MM_button_newMeasure.Click += new System.EventHandler(this.Button_MyMeasurements_NewMeasure_Click);
-            // 
-            // MM_button_measure1
-            // 
-            this.MM_button_measure1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.MM_button_measure1.Location = new System.Drawing.Point(25, 72);
-            this.MM_button_measure1.Name = "MM_button_measure1";
-            this.MM_button_measure1.Size = new System.Drawing.Size(700, 80);
-            this.MM_button_measure1.Style = MetroFramework.MetroColorStyle.Brown;
-            this.MM_button_measure1.TabIndex = 6;
-            this.MM_button_measure1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.MM_button_measure1.UseCustomBackColor = true;
-            this.MM_button_measure1.UseSelectable = true;
-            this.MM_button_measure1.UseStyleColors = true;
-            this.MM_button_measure1.Visible = false;
-            this.MM_button_measure1.Click += new System.EventHandler(this.Button_MyMeasurments_Measure1_Click);
-            this.MM_button_measure1.MouseEnter += new System.EventHandler(this.metroButton1_MouseEnter);
-            this.MM_button_measure1.MouseLeave += new System.EventHandler(this.metroButton1_MouseLeave);
-            this.MM_button_measure1.MouseHover += new System.EventHandler(this.Button_MyMeasurments_Measure1_MouseHover);
-            // 
             // TabPage_ShowMeasure
             // 
             this.TabPage_ShowMeasure.AutoScroll = true;
@@ -1354,6 +1351,101 @@
             this.ShowMeasure_label_task.VerticalScrollbarBarColor = true;
             this.ShowMeasure_label_task.VerticalScrollbarHighlightOnWheel = false;
             this.ShowMeasure_label_task.VerticalScrollbarSize = 10;
+            // 
+            // ShowMeasure_label_typeValue
+            // 
+            this.ShowMeasure_label_typeValue.Location = new System.Drawing.Point(151, 278);
+            this.ShowMeasure_label_typeValue.Name = "ShowMeasure_label_typeValue";
+            this.ShowMeasure_label_typeValue.Size = new System.Drawing.Size(117, 19);
+            this.ShowMeasure_label_typeValue.TabIndex = 91;
+            this.ShowMeasure_label_typeValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ShowMeasure_label_typeValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_taskValue
+            // 
+            this.ShowMeasure_label_taskValue.Location = new System.Drawing.Point(151, 204);
+            this.ShowMeasure_label_taskValue.Name = "ShowMeasure_label_taskValue";
+            this.ShowMeasure_label_taskValue.Size = new System.Drawing.Size(117, 74);
+            this.ShowMeasure_label_taskValue.TabIndex = 90;
+            this.ShowMeasure_label_taskValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ShowMeasure_label_taskValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_startChannelValue
+            // 
+            this.ShowMeasure_label_startChannelValue.Location = new System.Drawing.Point(151, 175);
+            this.ShowMeasure_label_startChannelValue.Name = "ShowMeasure_label_startChannelValue";
+            this.ShowMeasure_label_startChannelValue.Size = new System.Drawing.Size(117, 19);
+            this.ShowMeasure_label_startChannelValue.TabIndex = 89;
+            this.ShowMeasure_label_startChannelValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ShowMeasure_label_startChannelValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_numberOfChannelsValue
+            // 
+            this.ShowMeasure_label_numberOfChannelsValue.Location = new System.Drawing.Point(151, 144);
+            this.ShowMeasure_label_numberOfChannelsValue.Name = "ShowMeasure_label_numberOfChannelsValue";
+            this.ShowMeasure_label_numberOfChannelsValue.Size = new System.Drawing.Size(117, 19);
+            this.ShowMeasure_label_numberOfChannelsValue.TabIndex = 88;
+            this.ShowMeasure_label_numberOfChannelsValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ShowMeasure_label_numberOfChannelsValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_samplesValue
+            // 
+            this.ShowMeasure_label_samplesValue.Location = new System.Drawing.Point(151, 114);
+            this.ShowMeasure_label_samplesValue.Name = "ShowMeasure_label_samplesValue";
+            this.ShowMeasure_label_samplesValue.Size = new System.Drawing.Size(117, 19);
+            this.ShowMeasure_label_samplesValue.TabIndex = 87;
+            this.ShowMeasure_label_samplesValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ShowMeasure_label_samplesValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_type
+            // 
+            this.ShowMeasure_label_type.Location = new System.Drawing.Point(17, 278);
+            this.ShowMeasure_label_type.Name = "ShowMeasure_label_type";
+            this.ShowMeasure_label_type.Size = new System.Drawing.Size(128, 19);
+            this.ShowMeasure_label_type.TabIndex = 86;
+            this.ShowMeasure_label_type.Text = "Type:";
+            this.ShowMeasure_label_type.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowMeasure_label_type.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.Location = new System.Drawing.Point(3, 204);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(142, 19);
+            this.metroLabel7.TabIndex = 85;
+            this.metroLabel7.Text = "Task:";
+            this.metroLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_startChannel
+            // 
+            this.ShowMeasure_label_startChannel.Location = new System.Drawing.Point(3, 175);
+            this.ShowMeasure_label_startChannel.Name = "ShowMeasure_label_startChannel";
+            this.ShowMeasure_label_startChannel.Size = new System.Drawing.Size(142, 19);
+            this.ShowMeasure_label_startChannel.TabIndex = 84;
+            this.ShowMeasure_label_startChannel.Text = "Start channel:";
+            this.ShowMeasure_label_startChannel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowMeasure_label_startChannel.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_numberOfChannels
+            // 
+            this.ShowMeasure_label_numberOfChannels.Location = new System.Drawing.Point(3, 144);
+            this.ShowMeasure_label_numberOfChannels.Name = "ShowMeasure_label_numberOfChannels";
+            this.ShowMeasure_label_numberOfChannels.Size = new System.Drawing.Size(142, 19);
+            this.ShowMeasure_label_numberOfChannels.TabIndex = 83;
+            this.ShowMeasure_label_numberOfChannels.Text = "Number of channels:";
+            this.ShowMeasure_label_numberOfChannels.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowMeasure_label_numberOfChannels.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_samples
+            // 
+            this.ShowMeasure_label_samples.Location = new System.Drawing.Point(3, 114);
+            this.ShowMeasure_label_samples.Name = "ShowMeasure_label_samples";
+            this.ShowMeasure_label_samples.Size = new System.Drawing.Size(142, 19);
+            this.ShowMeasure_label_samples.TabIndex = 82;
+            this.ShowMeasure_label_samples.Text = "Samples:";
+            this.ShowMeasure_label_samples.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowMeasure_label_samples.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // ShowMeasure_label_durationValue
             // 
@@ -1657,15 +1749,6 @@
             this.Welcome_textBox_username.TabIndex = 5;
             this.Welcome_textBox_username.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Welcome_textBox_username.UseSelectable = true;
-            // 
-            // Welcome_pictureBox_advantech
-            // 
-            this.Welcome_pictureBox_advantech.Image = ((System.Drawing.Image)(resources.GetObject("Welcome_pictureBox_advantech.Image")));
-            this.Welcome_pictureBox_advantech.Location = new System.Drawing.Point(355, 425);
-            this.Welcome_pictureBox_advantech.Name = "Welcome_pictureBox_advantech";
-            this.Welcome_pictureBox_advantech.Size = new System.Drawing.Size(568, 105);
-            this.Welcome_pictureBox_advantech.TabIndex = 4;
-            this.Welcome_pictureBox_advantech.TabStop = false;
             // 
             // Welcome_link
             // 
@@ -3120,100 +3203,15 @@
             this.timer_ProgressBar.Interval = 10;
             this.timer_ProgressBar.Tick += new System.EventHandler(this.timer_ProgressBar_Tick);
             // 
-            // ShowMeasure_label_samples
+            // Welcome_pictureBox_advantech
             // 
-            this.ShowMeasure_label_samples.Location = new System.Drawing.Point(3, 114);
-            this.ShowMeasure_label_samples.Name = "ShowMeasure_label_samples";
-            this.ShowMeasure_label_samples.Size = new System.Drawing.Size(142, 19);
-            this.ShowMeasure_label_samples.TabIndex = 82;
-            this.ShowMeasure_label_samples.Text = "Samples:";
-            this.ShowMeasure_label_samples.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowMeasure_label_samples.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_numberOfChannels
-            // 
-            this.ShowMeasure_label_numberOfChannels.Location = new System.Drawing.Point(3, 144);
-            this.ShowMeasure_label_numberOfChannels.Name = "ShowMeasure_label_numberOfChannels";
-            this.ShowMeasure_label_numberOfChannels.Size = new System.Drawing.Size(142, 19);
-            this.ShowMeasure_label_numberOfChannels.TabIndex = 83;
-            this.ShowMeasure_label_numberOfChannels.Text = "Number of channels:";
-            this.ShowMeasure_label_numberOfChannels.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowMeasure_label_numberOfChannels.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_startChannel
-            // 
-            this.ShowMeasure_label_startChannel.Location = new System.Drawing.Point(3, 175);
-            this.ShowMeasure_label_startChannel.Name = "ShowMeasure_label_startChannel";
-            this.ShowMeasure_label_startChannel.Size = new System.Drawing.Size(142, 19);
-            this.ShowMeasure_label_startChannel.TabIndex = 84;
-            this.ShowMeasure_label_startChannel.Text = "Start channel:";
-            this.ShowMeasure_label_startChannel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowMeasure_label_startChannel.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.Location = new System.Drawing.Point(3, 204);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(142, 19);
-            this.metroLabel7.TabIndex = 85;
-            this.metroLabel7.Text = "Task:";
-            this.metroLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.metroLabel7.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_type
-            // 
-            this.ShowMeasure_label_type.Location = new System.Drawing.Point(17, 278);
-            this.ShowMeasure_label_type.Name = "ShowMeasure_label_type";
-            this.ShowMeasure_label_type.Size = new System.Drawing.Size(128, 19);
-            this.ShowMeasure_label_type.TabIndex = 86;
-            this.ShowMeasure_label_type.Text = "Type:";
-            this.ShowMeasure_label_type.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowMeasure_label_type.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_samplesValue
-            // 
-            this.ShowMeasure_label_samplesValue.Location = new System.Drawing.Point(151, 114);
-            this.ShowMeasure_label_samplesValue.Name = "ShowMeasure_label_samplesValue";
-            this.ShowMeasure_label_samplesValue.Size = new System.Drawing.Size(117, 19);
-            this.ShowMeasure_label_samplesValue.TabIndex = 87;
-            this.ShowMeasure_label_samplesValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ShowMeasure_label_samplesValue.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_numberOfChannelsValue
-            // 
-            this.ShowMeasure_label_numberOfChannelsValue.Location = new System.Drawing.Point(151, 144);
-            this.ShowMeasure_label_numberOfChannelsValue.Name = "ShowMeasure_label_numberOfChannelsValue";
-            this.ShowMeasure_label_numberOfChannelsValue.Size = new System.Drawing.Size(117, 19);
-            this.ShowMeasure_label_numberOfChannelsValue.TabIndex = 88;
-            this.ShowMeasure_label_numberOfChannelsValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ShowMeasure_label_numberOfChannelsValue.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_startChannelValue
-            // 
-            this.ShowMeasure_label_startChannelValue.Location = new System.Drawing.Point(151, 175);
-            this.ShowMeasure_label_startChannelValue.Name = "ShowMeasure_label_startChannelValue";
-            this.ShowMeasure_label_startChannelValue.Size = new System.Drawing.Size(117, 19);
-            this.ShowMeasure_label_startChannelValue.TabIndex = 89;
-            this.ShowMeasure_label_startChannelValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ShowMeasure_label_startChannelValue.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_taskValue
-            // 
-            this.ShowMeasure_label_taskValue.Location = new System.Drawing.Point(151, 204);
-            this.ShowMeasure_label_taskValue.Name = "ShowMeasure_label_taskValue";
-            this.ShowMeasure_label_taskValue.Size = new System.Drawing.Size(117, 74);
-            this.ShowMeasure_label_taskValue.TabIndex = 90;
-            this.ShowMeasure_label_taskValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ShowMeasure_label_taskValue.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_typeValue
-            // 
-            this.ShowMeasure_label_typeValue.Location = new System.Drawing.Point(151, 278);
-            this.ShowMeasure_label_typeValue.Name = "ShowMeasure_label_typeValue";
-            this.ShowMeasure_label_typeValue.Size = new System.Drawing.Size(117, 19);
-            this.ShowMeasure_label_typeValue.TabIndex = 91;
-            this.ShowMeasure_label_typeValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ShowMeasure_label_typeValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Welcome_pictureBox_advantech.Image = ((System.Drawing.Image)(resources.GetObject("Welcome_pictureBox_advantech.Image")));
+            this.Welcome_pictureBox_advantech.Location = new System.Drawing.Point(355, 425);
+            this.Welcome_pictureBox_advantech.Name = "Welcome_pictureBox_advantech";
+            this.Welcome_pictureBox_advantech.Size = new System.Drawing.Size(568, 105);
+            this.Welcome_pictureBox_advantech.TabIndex = 4;
+            this.Welcome_pictureBox_advantech.TabStop = false;
+            this.Welcome_pictureBox_advantech.Visible = false;
             // 
             // MainWindow
             // 
@@ -3228,6 +3226,8 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.ABI_Chart)).EndInit();
             this.TabControl.ResumeLayout(false);
+            this.TabPage_MyMeasurements.ResumeLayout(false);
+            this.TabPage_MyMeasurements.PerformLayout();
             this.TabPage_Options.ResumeLayout(false);
             this.TabPage_Options.PerformLayout();
             this.Options_panel_comments.ResumeLayout(false);
@@ -3239,8 +3239,6 @@
             this.Options_panel_theme.PerformLayout();
             this.Options_panel_database.ResumeLayout(false);
             this.Options_panel_database.PerformLayout();
-            this.TabPage_MyMeasurements.ResumeLayout(false);
-            this.TabPage_MyMeasurements.PerformLayout();
             this.TabPage_ShowMeasure.ResumeLayout(false);
             this.TabPage_ShowMeasure.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_grid)).EndInit();
@@ -3248,7 +3246,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_chart)).EndInit();
             this.TabPage_Welcome.ResumeLayout(false);
             this.TabPage_Welcome.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Welcome_pictureBox_advantech)).EndInit();
             this.TabPage_AnalogBufferedInput.ResumeLayout(false);
             this.TabPage_AnalogBufferedInput.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
@@ -3267,6 +3264,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.LastMeasure_GridTable)).EndInit();
             this.TabPage_Measure.ResumeLayout(false);
             this.TabPage_Measure.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Welcome_pictureBox_advantech)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3298,7 +3296,6 @@
         public MetroFramework.Controls.MetroTabPage TabPage_Welcome;
         public MetroFramework.Controls.MetroLabel Welcome_label_helloText;
         public MetroFramework.Controls.MetroLink Welcome_link;
-        public System.Windows.Forms.PictureBox Welcome_pictureBox_advantech;
         public MetroFramework.Controls.MetroTabPage TabPage_Measure;
         public MetroFramework.Controls.MetroTile Measure_tile_digitalOutput;
         public MetroFramework.Controls.MetroTile Measure_tile_digitalInput;
@@ -3469,6 +3466,7 @@
         public MetroFramework.Controls.MetroLabel ShowMeasure_label_startChannel;
         public MetroFramework.Controls.MetroLabel ShowMeasure_label_numberOfChannels;
         public MetroFramework.Controls.MetroLabel ShowMeasure_label_samples;
+        public System.Windows.Forms.PictureBox Welcome_pictureBox_advantech;
     }
 }
 
