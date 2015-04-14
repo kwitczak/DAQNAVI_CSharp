@@ -19,6 +19,16 @@ namespace DAQNavi_WF_v1_0_0
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            MetroFramework.MetroThemeStyle parentStyle = MainWindow.choosenStyle;
+            this.Theme = parentStyle;
+            Label_AnalogInstantInput_Interval_1.Theme = parentStyle;
+            Label_AnalogInstantInput_Interval_2.Theme = parentStyle;
+            Label_AnalogInstantInput_NumberOfChannels.Theme = parentStyle;
+            Label_AnalogInstantInput_StartChannel.Theme = parentStyle;
+            Button_AIMOptions_Save.Theme = parentStyle;
+            ComboBox_AnalogInstantInput_NumberOfChannels.Theme = parentStyle;
+            ComboBox_AnalogInstantInput_StartChannel.Theme = parentStyle;
+            TrackBar_AnalogInstantInput_SampleInterval.Theme = parentStyle;
         }
 
         private void AnalogInstantMeasureOptions_Load(object sender, EventArgs e)

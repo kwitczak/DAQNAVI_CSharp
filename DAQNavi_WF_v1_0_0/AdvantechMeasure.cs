@@ -1194,11 +1194,13 @@ namespace DAQNavi_WF_v1_0_0
             titleLabel.Text = "Measurment #" + MM_numberOfMeasurments;
             titleLabel.Size = new Size(140, 25);
             titleLabel.UseCustomBackColor = true;
-            titleLabel.UseCustomForeColor = true;
+            //titleLabel.UseCustomForeColor = true;
+            titleLabel.UseStyleColors = true;
             titleLabel.BackColor = background;
             titleLabel.ForeColor = foreground;
             titleLabel.UseStyleColors = true;
             titleLabel.Style = MetroColorStyle.Red;
+            titleLabel.FontWeight = MetroLabelWeight.Regular;
             titleLabel.FontSize = MetroLabelSize.Tall;
             titleLabel.AutoSize = true;
             titleLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);

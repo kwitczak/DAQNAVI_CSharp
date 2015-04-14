@@ -103,6 +103,47 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 window.AII_button_back.Theme = style;
                 window.AII_button_measure.Theme = style;
                 window.AII_button_reset.Theme = style;
+                window.AII_button_defaults.Theme = style;
+                window.AII_button_editOptions.Theme = style;
+                window.AII_checkBox_defaults.Theme = style;
+                window.AII_checkBox_measurmentOptions.Theme = style;
+                window.AII_label__duration.Theme = style;
+                window.AII_label_ch0.Theme = style;
+                window.AII_label_ch0Value.Theme = style;
+                window.AII_label_ch1.Theme = style;
+                window.AII_label_ch1Value.Theme = style;
+                window.AII_label_ch2.Theme = style;
+                window.AII_label_ch2Value.Theme = style;
+                window.AII_label_ch3.Theme = style;
+                window.AII_label_ch3Value.Theme = style;
+                window.AII_label_ch4.Theme = style;
+                window.AII_label_ch4Value.Theme = style;
+                window.AII_label_ch5.Theme = style;
+                window.AII_label_ch5Value.Theme = style;
+                window.AII_label_ch6.Theme = style;
+                window.AII_label_ch6Value.Theme = style;
+                window.AII_label_ch7.Theme = style;
+                window.AII_label_ch7Value.Theme = style;
+                window.AII_label_channel.Theme = style;
+                window.AII_label_currentPoints.Theme = style;
+                window.AII_label_details.Theme = style;
+                window.AII_label_durationValue.Theme = style;
+                window.AII_label_end.Theme = style;
+                window.AII_label_endValue.Theme = style;
+                window.AII_label_movingWindow.Theme = style;
+                window.AII_label_options.Theme = style;
+                window.AII_label_start.Theme = style;
+                window.AII_label_startValue.Theme = style;
+                window.AII_label_value.Theme = style;
+                window.AII_label_viewOptions.Theme = style;
+                window.AII_textBox_movingWindow.Theme = style;
+                window.AII_toggle_movingWindow.Theme = style;
+                window.AII_panel1.Theme = style;
+                window.AII_panel2.Theme = style;
+                window.AII_panel3.Theme = style;
+                window.AII_panel4.Theme = style;
+            
+
 
                 // Results
                 window.TabPage_LastMeasure.Theme = style;
@@ -146,6 +187,26 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 // MyMeasurments
                 window.TabPage_MyMeasurements.Theme = style;
                 window.MM_button_newMeasure.Theme = style;
+
+                // ShowMeasure
+                window.TabPage_ShowMeasure.Theme = style;
+                window.ShowMeasure_grid.Theme = style;
+                window.ShowMeasure_label_duration.Theme = style;
+                window.ShowMeasure_label_durationValue.Theme = style;
+                window.ShowMeasure_label_end.Theme = style;
+                window.ShowMeasure_label_endValue.Theme = style;
+                window.ShowMeasure_label_numberOfChannels.Theme = style;
+                window.ShowMeasure_label_numberOfChannelsValue.Theme = style;
+                window.ShowMeasure_label_samples.Theme = style;
+                window.ShowMeasure_label_samplesValue.Theme = style;
+                window.ShowMeasure_label_start.Theme = style;
+                window.ShowMeasure_label_startChannel.Theme = style;
+                window.ShowMeasure_label_startChannelValue.Theme = style;
+                window.ShowMeasure_label_startValue.Theme = style;
+                window.ShowMeasure_label_task.Theme = style;
+                window.ShowMeasure_label_taskValue.Theme = style;
+                window.ShowMeasure_label_type.Theme = style;
+                window.ShowMeasure_label_typeValue.Theme = style;
 
                 // Results
 

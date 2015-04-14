@@ -18,19 +18,33 @@ namespace DAQNavi_WF_v1_0_0.Utils
     {
         private MainWindow mainWindow;
         MetroFramework.Controls.MetroCheckBox[] checkBoxesList = new MetroFramework.Controls.MetroCheckBox[6];
-    
-
-        public CreateNewUserForm()
-        {
-            InitializeComponent();
-            timer1.Start();
-        }
 
         public CreateNewUserForm(MainWindow mainWindow)
         {
             // TODO: Complete member initialization
             InitializeComponent();
             this.mainWindow = mainWindow;
+            MetroFramework.MetroThemeStyle parentStyle = MainWindow.choosenStyle;
+            this.Theme = parentStyle;
+            Label_CreateNewUser_Email.Theme = parentStyle;
+            Label_CreateNewUser_Login.Theme = parentStyle;
+            Label_CreateNewUser_Name.Theme = parentStyle;
+            Label_CreateNewUser_Password.Theme = parentStyle;
+            Label_CreateNewUser_Password2.Theme = parentStyle;
+            Label_CreateNewUser_Surname.Theme = parentStyle;
+            Button_CreateNewUser_Save.Theme = parentStyle;
+            TextBox_CreateNewUser_Email.Theme = parentStyle;
+            TextBox_CreateNewUser_Login.Theme = parentStyle;
+            TextBox_CreateNewUser_Name.Theme = parentStyle;
+            TextBox_CreateNewUser_Password.Theme = parentStyle;
+            TextBox_CreateNewUser_Password2.Theme = parentStyle;
+            TextBox_CreateNewUser_Surname.Theme = parentStyle;
+            CheckBox_CreateNewUser_Email.Theme = parentStyle;
+            CheckBox_CreateNewUser_Login.Theme = parentStyle;
+            CheckBox_CreateNewUser_Name.Theme = parentStyle;
+            CheckBox_CreateNewUser_Password.Theme = parentStyle;
+            CheckBox_CreateNewUser_Password2.Theme = parentStyle;
+            CheckBox_CreateNewUser_Surname.Theme = parentStyle;
         }
 
         /// <summary>
