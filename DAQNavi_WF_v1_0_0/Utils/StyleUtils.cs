@@ -210,6 +210,9 @@ namespace DAQNavi_WF_v1_0_0.Utils
 
                 // Results
 
+                // Charts
+                ChartUtils.switchStyle(window.ABI_Chart, style);
+                ChartUtils.switchStyle(window.AII_Chart, style);
                 window.Refresh();
         }
     }

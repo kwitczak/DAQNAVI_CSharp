@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DAQNavi_WF_v1_0_0
@@ -9,6 +10,63 @@ namespace DAQNavi_WF_v1_0_0
         private ChartUtils()
         {
             // Util class - private constructor
+        }
+
+
+        public static void switchStyle(Chart chart, MetroFramework.MetroThemeStyle style)
+        {
+            if (style.Equals(MetroFramework.MetroThemeStyle.Light))
+            {
+                Color liniaGruba = Color.FromArgb(120, 120, 120);
+                Color liniaCienka = Color.FromArgb(190, 190, 190);
+
+                // Background
+                chart.ChartAreas[0].BackColor = Color.FromArgb(255,255,255);
+
+                // linie osi
+                chart.ChartAreas[0].AxisX.LineColor = liniaGruba;
+                chart.ChartAreas[0].AxisY.LineColor = liniaGruba;
+
+                // numeracja osi
+                chart.ChartAreas[0].AxisX.LabelStyle.ForeColor = liniaGruba;
+                chart.ChartAreas[0].AxisY.LabelStyle.ForeColor = liniaGruba;
+
+                // siatka gruba
+                chart.ChartAreas[0].AxisX.MajorGrid.LineColor = liniaGruba;
+                chart.ChartAreas[0].AxisX.MajorTickMark.LineColor = liniaGruba;
+                chart.ChartAreas[0].AxisY.MajorGrid.LineColor = liniaGruba;
+                chart.ChartAreas[0].AxisY.MajorTickMark.LineColor = liniaGruba;
+
+                // siatka cienka
+                chart.ChartAreas[0].AxisX.MinorGrid.LineColor = liniaCienka;
+                chart.ChartAreas[0].AxisY.MinorGrid.LineColor = liniaCienka;
+            }
+            else
+            {
+                Color liniaGruba = Color.FromArgb(170,170,170);
+                Color liniaCienka = Color.FromArgb(120,120,120);
+
+                // Background
+                chart.ChartAreas[0].BackColor = Color.FromArgb(100,100,100);
+
+                // numeracja osi
+                chart.ChartAreas[0].AxisX.LabelStyle.ForeColor = liniaGruba;
+                chart.ChartAreas[0].AxisY.LabelStyle.ForeColor = liniaGruba;
+
+                // linie osi
+                chart.ChartAreas[0].AxisX.LineColor = liniaGruba;
+                chart.ChartAreas[0].AxisY.LineColor = liniaGruba;
+
+                // siatka gruba
+                chart.ChartAreas[0].AxisX.MajorGrid.LineColor = liniaGruba;
+                chart.ChartAreas[0].AxisX.MajorTickMark.LineColor = liniaGruba;
+                chart.ChartAreas[0].AxisY.MajorGrid.LineColor = liniaGruba;
+                chart.ChartAreas[0].AxisY.MajorTickMark.LineColor = liniaGruba;
+
+                // siatka cienka
+                chart.ChartAreas[0].AxisX.MinorGrid.LineColor = liniaCienka;
+                chart.ChartAreas[0].AxisY.MinorGrid.LineColor = liniaCienka;
+            }
         }
 
         /* Ustawienie możliwości zoomowania na danym

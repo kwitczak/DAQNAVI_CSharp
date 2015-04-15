@@ -131,6 +131,7 @@
             // 
             // Button_CommentForm_Export
             // 
+            this.Button_CommentForm_Export.Highlight = true;
             this.Button_CommentForm_Export.Location = new System.Drawing.Point(278, 471);
             this.Button_CommentForm_Export.Name = "Button_CommentForm_Export";
             this.Button_CommentForm_Export.Size = new System.Drawing.Size(142, 47);

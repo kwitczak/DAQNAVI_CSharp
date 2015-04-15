@@ -29,8 +29,24 @@ namespace DAQNavi_WF_v1_0_0
             this.mainWindow = mainWindow;
             this.TextBox_CommentForm_AdminComment.Text = mainWindow.TextBox_Options_AdminComment_Visible.Text.ToString();
             this.TextBox_CommentForm_UserComment.Text = mainWindow.TextBox_Options_UserComment_Visible.Text.ToString();
-        }
 
+            //style
+            MetroFramework.MetroThemeStyle parentStyle = MainWindow.choosenStyle;
+            this.Theme = parentStyle;
+            Label_CommentForm_AdminComment.Theme = parentStyle;
+            Label_CommentForm_FileFormat.Theme = parentStyle;
+            Label_CommentForm_UserComment.Theme = parentStyle;
+            TextBox_CommentForm_AdminComment.Theme = parentStyle;
+            TextBox_CommentForm_UserComment.Theme = parentStyle;
+            RadioButton_CommentForm_DB.Theme = parentStyle;
+            RadioButton_CommentForm_txt.Theme = parentStyle;
+            RadioButton_CommentForm_xlsm.Theme = parentStyle;
+            Button_CommentForm_Cancel.Theme = parentStyle;
+            Button_CommentForm_Export.Theme = parentStyle;
+            ProgressBar_CommentForm.Theme = parentStyle;
+            Panel_CommentForm.Theme = parentStyle;
+
+        }
         private void Button_CommentForm_Export_Click(object sender, EventArgs e)
         {
             String timeStart = "";

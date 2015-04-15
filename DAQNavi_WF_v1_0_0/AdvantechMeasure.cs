@@ -136,7 +136,9 @@ namespace DAQNavi_WF_v1_0_0
 
             // Ustawienie opcji wykresów
 			ChartUtils.setChartZoomProperties (ABI_Chart);
+            ChartUtils.switchStyle(ABI_Chart, choosenStyle);
 			ChartUtils.setChartZoomProperties (AII_Chart);
+            ChartUtils.switchStyle(AII_Chart, choosenStyle);
 
             AII_labels = new Label[]{
                 AII_label_ch0Value, 
