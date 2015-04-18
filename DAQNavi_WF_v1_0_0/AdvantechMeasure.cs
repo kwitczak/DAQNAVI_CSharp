@@ -139,6 +139,8 @@ namespace DAQNavi_WF_v1_0_0
             ChartUtils.switchStyle(ABI_Chart, choosenStyle);
 			ChartUtils.setChartZoomProperties (AII_Chart);
             ChartUtils.switchStyle(AII_Chart, choosenStyle);
+            ChartUtils.setChartZoomProperties(ShowMeasure_chart);
+            ChartUtils.switchStyle(ShowMeasure_chart, choosenStyle);
 
             AII_labels = new Label[]{
                 AII_label_ch0Value, 
@@ -263,10 +265,15 @@ namespace DAQNavi_WF_v1_0_0
            jak po wciśnięciu przycisku. */
         private void metroTextBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
+            Welcome_button_login.Highlight = true;
+            Welcome_button_login.Refresh();
             if (e.KeyChar == (char)13)
             {
                 Welcome_button_login.PerformClick();
             }
+
+
+
         }
 
         private void metroTile6_Click(object sender, EventArgs e)
@@ -453,6 +460,7 @@ namespace DAQNavi_WF_v1_0_0
                 Welcome_textBox_password.Enabled = false;
                 Welcome_textBox_username.Enabled = false;
                 Welcome_button_login.Text = "Logout";
+                Welcome_button_login.Highlight = false;
 
                 // Load measurments
                 measurmentDAO.loadMyMeasurments(user.idusers, this);
@@ -1208,6 +1216,7 @@ namespace DAQNavi_WF_v1_0_0
             titleLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             titleLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
             titleLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
+            titleLabel.Click += Button_MyMeasurments_Measure1_Click;
             TabPage_MyMeasurements.Controls.Add(titleLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(titleLabel, 0);
             MM_list_titles.Add(titleLabel);
@@ -1227,6 +1236,7 @@ namespace DAQNavi_WF_v1_0_0
             channelStartLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             channelStartLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
             channelStartLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
+            channelStartLabel.Click += Button_MyMeasurments_Measure1_Click;
             TabPage_MyMeasurements.Controls.Add(channelStartLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(channelStartLabel, 0);
             MM_list_channelStart.Add(channelStartLabel);
@@ -1246,6 +1256,7 @@ namespace DAQNavi_WF_v1_0_0
             channelStartValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             channelStartValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
             channelStartValueLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
+            channelStartValueLabel.Click += Button_MyMeasurments_Measure1_Click;
             TabPage_MyMeasurements.Controls.Add(channelStartValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(channelStartValueLabel, 0);
             MM_list_channelStartValue.Add(channelStartValueLabel);
@@ -1266,6 +1277,7 @@ namespace DAQNavi_WF_v1_0_0
             numberOfChannelsLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             numberOfChannelsLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
             numberOfChannelsLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
+            numberOfChannelsLabel.Click += Button_MyMeasurments_Measure1_Click;
             TabPage_MyMeasurements.Controls.Add(numberOfChannelsLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(numberOfChannelsLabel, 0);
             MM_list_numberOfChannels.Add(numberOfChannelsLabel);
@@ -1285,6 +1297,7 @@ namespace DAQNavi_WF_v1_0_0
             numberOfChannelsValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             numberOfChannelsValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
             numberOfChannelsValueLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
+            numberOfChannelsValueLabel.Click += Button_MyMeasurments_Measure1_Click;
             TabPage_MyMeasurements.Controls.Add(numberOfChannelsValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(numberOfChannelsValueLabel, 0);
             MM_list_numberOfChannelsValue.Add(numberOfChannelsValueLabel);
@@ -1304,6 +1317,7 @@ namespace DAQNavi_WF_v1_0_0
             samplesLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             samplesLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
             samplesLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
+            samplesLabel.Click += Button_MyMeasurments_Measure1_Click;
             TabPage_MyMeasurements.Controls.Add(samplesLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(samplesLabel, 0);
             MM_list_samples.Add(samplesLabel);
@@ -1323,6 +1337,7 @@ namespace DAQNavi_WF_v1_0_0
             samplesValueLabel.MouseEnter += new EventHandler(MM_label_channelStartText1_MouseEnter);
             samplesValueLabel.MouseHover += new EventHandler(MM_label_channelStartText1_MouseEnter);
             samplesValueLabel.MouseLeave += new EventHandler(MM_label_channelStartText1_MouseLeave);
+            samplesValueLabel.Click += Button_MyMeasurments_Measure1_Click;
             TabPage_MyMeasurements.Controls.Add(samplesValueLabel);
             TabPage_MyMeasurements.Controls.SetChildIndex(samplesValueLabel, 0);
             MM_list_samplesValue.Add(samplesValueLabel);
@@ -1335,11 +1350,18 @@ namespace DAQNavi_WF_v1_0_0
         /* Reakcja na kliknięcie konkretnego przycisku */
         private void Button_MyMeasurments_Measure1_Click(object sender, EventArgs e)
         {
-            ((MetroFramework.Controls.MetroButton)sender).UseCustomBackColor = false;
+            int index;
+            if (sender is MetroFramework.Controls.MetroButton)
+            {
+                index = MM_list_buttons.IndexOf((MetroFramework.Controls.MetroButton)sender);
+            }
+            else
+            {
+                index = findLabelIndex((MetroFramework.Controls.MetroLabel)sender);
+            }
+            MM_list_buttons[index].UseCustomBackColor = false;
             this.TabControl.TabPages.Add(TabPage_ShowMeasure);
             this.TabControl.SelectedTab = TabPage_ShowMeasure;
-            int index = MM_list_buttons.IndexOf((MetroFramework.Controls.MetroButton)sender);
-            MessageBox.Show(index + "");
             fillUpShowMeasure(index);
         }
 
