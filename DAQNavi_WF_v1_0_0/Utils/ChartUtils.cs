@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Threading;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace DAQNavi_WF_v1_0_0
@@ -21,7 +23,7 @@ namespace DAQNavi_WF_v1_0_0
                 Color liniaCienka = Color.FromArgb(190, 190, 190);
 
                 // Background
-                chart.ChartAreas[0].BackColor = Color.FromArgb(255,255,255);
+                chart.ChartAreas[0].BackColor = Color.FromArgb(255, 255, 255);
 
                 // linie osi
                 chart.ChartAreas[0].AxisX.LineColor = liniaGruba;
@@ -43,11 +45,11 @@ namespace DAQNavi_WF_v1_0_0
             }
             else
             {
-                Color liniaGruba = Color.FromArgb(170,170,170);
-                Color liniaCienka = Color.FromArgb(120,120,120);
+                Color liniaGruba = Color.FromArgb(170, 170, 170);
+                Color liniaCienka = Color.FromArgb(120, 120, 120);
 
                 // Background
-                chart.ChartAreas[0].BackColor = Color.FromArgb(100,100,100);
+                chart.ChartAreas[0].BackColor = Color.FromArgb(100, 100, 100);
 
                 // numeracja osi
                 chart.ChartAreas[0].AxisX.LabelStyle.ForeColor = liniaGruba;
@@ -112,10 +114,34 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
-        public static void fillUpChart(int channels, List<double> data, Chart chart)
+        public static void fillUpChart(int channels, List<double> data, Chart chart, MetroFramework.Controls.MetroProgressBar bar)
         {
             int mySeries = 0;
             int xPoint = 0;
+            bar.Maximum = data.Count;
+            bar.Value = 0;
+            chart.ChartAreas[0].AxisX.Maximum = 10;
+            for (int i = 0; i < data.Count; ++i)
+            {
+                mySeries = (i % channels);
+                if (mySeries == 0)
+                {
+                    xPoint++;
+                }
+
+                //MEMO LEAK
+                 chart.Series[mySeries].Points.Add(new DataPoint(xPoint, data[i]));
+                 chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
+            }
+        }
+
+        public static void fillUpChartAndGrid(int channels, List<double> data, Chart chart, MetroFramework.Controls.MetroProgressBar bar, MetroFramework.Controls.MetroGrid grid)
+        {
+            int mySeries = 0;
+            int xPoint = 0;
+            bar.Maximum = data.Count;
+            bar.Value = 0;
+
             for (int i = 0; i < data.Count; ++i)
             {
                 mySeries = (i % channels);
@@ -127,6 +153,17 @@ namespace DAQNavi_WF_v1_0_0
                 //MEMO LEAK
                 chart.Series[mySeries].Points.Add(new DataPoint(xPoint, data[i]));
                 chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
+                grid.Rows.Add();
+                grid.Rows[xPoint - 1].Cells[mySeries].Value = data[i];
+
+
+                bar.Invoke(new MethodInvoker(delegate
+                {
+                   bar.Increment(1);
+                   bar.Refresh();
+                 }));
+
+
             }
         }
     }

@@ -20,6 +20,7 @@ using System.Management;
 using DAQNavi_WF_v1_0_0.Utils;
 using MySql.Data.MySqlClient;
 using DAQNavi_WF_v1_0_0.DTO;
+using DAQNavi_WF_v1_0_0.Forms;
 
 namespace DAQNavi_WF_v1_0_0
 {
@@ -1360,7 +1361,9 @@ namespace DAQNavi_WF_v1_0_0
                 index = findLabelIndex((MetroFramework.Controls.MetroLabel)sender);
             }
             MM_list_buttons[index].UseCustomBackColor = false;
-            this.TabControl.TabPages.Add(TabPage_ShowMeasure);
+            if (!TabControl.Contains(TabPage_ShowMeasure)){
+                this.TabControl.TabPages.Add(TabPage_ShowMeasure);
+            }
             this.TabControl.SelectedTab = TabPage_ShowMeasure;
             fillUpShowMeasure(index);
         }
@@ -1385,13 +1388,33 @@ namespace DAQNavi_WF_v1_0_0
             ShowMeasure_label_startChannelValue.Text = myLoadedMeasurments[index].startchannel;
             ShowMeasure_label_taskValue.Text = myLoadedMeasurments[index].task;
 
+            ChartUtils.clearChart(ShowMeasure_chart);
+            GridUtils.clearGrid(ShowMeasure_grid);
+
+            int channels = int.Parse(myLoadedMeasurments[index].numberofchannels);
+            List<double> data = measurmentDAO.getMeasurmentData(myLoadedMeasurments[index]);
+
+            metroProgressBar1.Visible = true;
+            //ChartUtils.fillUpChartAndGrid(channels, data, ShowMeasure_chart, metroProgressBar1, ShowMeasure_grid);
+            ChartUtils.fillUpChart(channels, data, ShowMeasure_chart, metroProgressBar1);
+            //GridUtils.fillUpGrid(channels, data, ShowMeasure_grid);
+            metroProgressBar1.Visible = false;
 
 
-            ChartUtils.fillUpChart(int.Parse(myLoadedMeasurments[index].numberofchannels),
-                measurmentDAO.getMeasurmentData(myLoadedMeasurments[index]),
-                ShowMeasure_chart);
+
         }
 
 
+        private void metroTrackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            if (metroTrackBar1.Value == 0)
+            {
+                return;
+            }
+            ShowMeasure_chart.ChartAreas[0].AxisX.Maximum = 500 * ((double)(metroTrackBar1.Value) / 100);
+
+            double ratio = (ShowMeasure_chart.ChartAreas[0].AxisX.Maximum - ShowMeasure_chart.ChartAreas[0].AxisX.Minimum);
+            ChartUtils.changeChartMarkerRatio(ShowMeasure_chart, ratio);
+        }
     }
 }

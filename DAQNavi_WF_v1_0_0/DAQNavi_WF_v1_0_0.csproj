@@ -72,6 +72,12 @@
     <Compile Include="Forms\AIIMeasureOptionsForm.Designer.cs">
       <DependentUpon>AIIMeasureOptionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\LoadingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoadingForm.Designer.cs">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\ChartUtils.cs" />
     <Compile Include="Forms\CommentForm.cs">
       <SubType>Form</SubType>
@@ -87,6 +93,7 @@
       <DependentUpon>CreateNewUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\DefaultStateUtils.cs" />
+    <Compile Include="Utils\GridUtils.cs" />
     <Compile Include="Utils\LanguageUtils.cs" />
     <Compile Include="DAO\LoginPanel.cs" />
     <Compile Include="Program.cs" />
@@ -96,6 +103,9 @@
     <Compile Include="Utils\TimeUtils.cs" />
     <EmbeddedResource Include="AdvantechMeasure.resx">
       <DependentUpon>AdvantechMeasure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoadingForm.resx">
+      <DependentUpon>LoadingForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
