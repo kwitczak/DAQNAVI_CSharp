@@ -82,6 +82,9 @@ namespace DAQNavi_WF_v1_0_0
         public static List<MetroFramework.Controls.MetroLabel> MM_list_samplesValue = new List<MetroFramework.Controls.MetroLabel>();
         public static List<MeasurmentDTO> myLoadedMeasurments = new List<MeasurmentDTO>();
 
+        /* MY MEASURMENTS PANEL */
+        public static List<double> ShowMeasure_data = new List<double>();
+
 
 
         /*
@@ -891,9 +894,10 @@ namespace DAQNavi_WF_v1_0_0
             // Do something small that takes significantly less time than Interval
             MethodInvoker inv = delegate
             {
+                LastMeasure_GridTable.Rows.Add();
                 for (int i = 0; i < AII_numOfChannels; i++)
                 {
-                    if (AAI_sampleCount % 10 == 0)
+                    if (AAI_sampleCount % 1 == 0)
                     {
                         AII_drawnPoints++;
                         AII_Chart.Series[i].Points.Add(AII_data[i]);
@@ -903,9 +907,17 @@ namespace DAQNavi_WF_v1_0_0
                         }
                     }
 
-                    LastMeasure_GridTable.Rows.Add();
-                    LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i].Value = AII_data[i];
+                    
+                    if (i % 8 == 0)
+                    {
+                        LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[0].Value = AAI_sampleCount;
+                    }
+
+                    LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i + 1].Value = AII_data[i];
                     //analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
+
+
+
                 }
 
 
@@ -1392,29 +1404,183 @@ namespace DAQNavi_WF_v1_0_0
             GridUtils.clearGrid(ShowMeasure_grid);
 
             int channels = int.Parse(myLoadedMeasurments[index].numberofchannels);
-            List<double> data = measurmentDAO.getMeasurmentData(myLoadedMeasurments[index]);
+            ShowMeasure_data = measurmentDAO.getMeasurmentData(myLoadedMeasurments[index]);
 
-            metroProgressBar1.Visible = true;
+            ShowMeasure_progressBar.Visible = true;
             //ChartUtils.fillUpChartAndGrid(channels, data, ShowMeasure_chart, metroProgressBar1, ShowMeasure_grid);
-            ChartUtils.fillUpChart(channels, data, ShowMeasure_chart, metroProgressBar1);
+            ChartUtils.fillUpChart(channels, ShowMeasure_data, ShowMeasure_chart, ShowMeasure_progressBar);
+            //ShowMeasure_grid.RowCount = 10;
+            //ShowMeasure_grid.Rows.Add();
+            //ShowMeasure_grid.Rows.AddCopies(0, ShowMeasure_data.Count - 1);
             //GridUtils.fillUpGrid(channels, data, ShowMeasure_grid);
-            metroProgressBar1.Visible = false;
 
+            //ShowMeasure_grid.CellValueNeeded += OnCellValueNeeded;
+            ShowMeasure_grid.CellValueNeeded += OnCellValueNeeded;
+            InitData(channels);
+            InitGrid(channels);
+
+
+            ShowMeasure_progressBar.Visible = false;
+            ShowMeasure_trackBar1.Value = 5;
+            ShowMeasure_trackBar2.Value = 1;
+        }
+
+
+        /// <summary>
+        /// //////////////
+        /// </summary>
+
+        private List<GridRowDTO> m_Data = new List<GridRowDTO>();
+        private List<bool> m_Visited = new List<bool>();
+
+
+        private void InitData(int channels)
+        {
+
+            for (int i = 0; i < ShowMeasure_data.Count; i = i + channels)
+            {
+                m_Visited.Add(false);
+                GridRowDTO obj = new GridRowDTO();
+                obj.ch1 = ShowMeasure_data[i];
+                if (channels > 1)
+                {
+                    obj.ch2 = ShowMeasure_data[i + 1];
+                }
+                if (channels > 2)
+                {
+                    obj.ch3 = ShowMeasure_data[i + 2];
+                }
+                if (channels > 3)
+                {
+                    obj.ch4 = ShowMeasure_data[i + 3];
+                }
+                if (channels > 4)
+                {
+                    obj.ch5 = ShowMeasure_data[i + 4];
+                }
+                if (channels > 5)
+                {
+                    obj.ch6 = ShowMeasure_data[i + 5];
+                }
+                if (channels > 6)
+                {
+                    obj.ch7 = ShowMeasure_data[i + 6];
+                }
+                if (channels > 7)
+                {
+                    obj.ch8 = ShowMeasure_data[i + 7];
+                }
+                m_Data.Add(obj);
+
+            }
+        }
+
+        private void InitGrid(int channels)
+        {
+
+            ShowMeasure_grid.VirtualMode = true;
+            ShowMeasure_grid.ReadOnly = true;
+            ShowMeasure_grid.AllowUserToAddRows = false;
+            ShowMeasure_grid.AllowUserToDeleteRows = false;
+            ShowMeasure_grid.ColumnCount = channels + 1;
+            ShowMeasure_grid.Rows.Add();
+            ShowMeasure_grid.Rows.AddCopies(0, (ShowMeasure_data.Count - 1)/channels);
+        }
+
+
+        private void OnCellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            try
+            {
+                m_Visited[e.RowIndex] = true;
+            }
+            catch
+            {
+                MessageBox.Show(e.RowIndex + "<- e row index, samples ->" + ShowMeasure_data.Count.ToString());
+            }
+
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    e.Value = e.RowIndex + 1;
+                    break;
+                case 1:
+                    e.Value = m_Data[e.RowIndex].ch1;
+                    break;
+                case 2:
+                    e.Value = m_Data[e.RowIndex].ch2;
+                    break;
+                case 3:
+                    e.Value = m_Data[e.RowIndex].ch3;
+                    break;
+                case 4:
+                    e.Value = m_Data[e.RowIndex].ch4;
+                    break;
+                case 5:
+                    e.Value = m_Data[e.RowIndex].ch5;
+                    break;
+                case 6:
+                    e.Value = m_Data[e.RowIndex].ch6;
+                    break;
+                case 7:
+                    e.Value = m_Data[e.RowIndex].ch7;
+                    break;
+                case 8:
+                    e.Value = m_Data[e.RowIndex].ch8;
+                    break;
+            }
+        }
+
+        
+
+        /// <summary>
+        /// ///////
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
+        private void ShowMeasure_trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            if (ShowMeasure_trackBar1.Value == 0)
+            {
+                return;
+            }
+            ShowMeasure_chart.ChartAreas[0].AxisX.Maximum = int.Parse(ShowMeasure_label_samplesValue.Text) * ((double)(ShowMeasure_trackBar1.Value) / 100);
+
+            double ratio = (ShowMeasure_chart.ChartAreas[0].AxisX.Maximum - ShowMeasure_chart.ChartAreas[0].AxisX.Minimum);
+            ChartUtils.changeChartMarkerRatio(ShowMeasure_chart, ratio);
+        }
+
+        private void metroTrackBar2_ValueChanged(object sender, EventArgs e)
+        {
+            double MIN = 0;
+            double MAX = int.Parse(ShowMeasure_label_samplesValue.Text);
+            double howMuchToChange = (MAX / 100) * ShowMeasure_trackBar2.Value;
+            double window = ShowMeasure_chart.ChartAreas[0].AxisX.Maximum - ShowMeasure_chart.ChartAreas[0].AxisX.Minimum;
+            ShowMeasure_chart.ChartAreas[0].AxisX.Minimum = howMuchToChange;
+            ShowMeasure_chart.ChartAreas[0].AxisX.Maximum = window + howMuchToChange;
+        }
+
+        private void ShowMeasure_grid_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    e.Value = e.RowIndex;
+                    break;
+                case 1:
+                    e.Value = ShowMeasure_data[e.RowIndex];
+                    break;
+                //etc..
+            }
 
 
         }
 
-
-        private void metroTrackBar1_ValueChanged(object sender, EventArgs e)
+        private void ShowMeasure_scrollBar_Scroll(object sender, ScrollEventArgs e)
         {
-            if (metroTrackBar1.Value == 0)
-            {
-                return;
-            }
-            ShowMeasure_chart.ChartAreas[0].AxisX.Maximum = 500 * ((double)(metroTrackBar1.Value) / 100);
-
-            double ratio = (ShowMeasure_chart.ChartAreas[0].AxisX.Maximum - ShowMeasure_chart.ChartAreas[0].AxisX.Minimum);
-            ChartUtils.changeChartMarkerRatio(ShowMeasure_chart, ratio);
+            TabPage_ShowMeasure.VerticalScroll.Value = e.NewValue * 5;
         }
     }
 }

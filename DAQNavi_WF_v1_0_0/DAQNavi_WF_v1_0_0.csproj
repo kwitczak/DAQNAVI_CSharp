@@ -65,6 +65,7 @@
       <DependentUpon>AdvantechMeasure.cs</DependentUpon>
     </Compile>
     <Compile Include="AdvantechAPIs\BufferedAnalogInput.cs" />
+    <Compile Include="DTO\GridRowDTO.cs" />
     <Compile Include="DTO\MeasurmentDTO.cs" />
     <Compile Include="Forms\AIIMeasureOptionsForm.cs">
       <SubType>Form</SubType>

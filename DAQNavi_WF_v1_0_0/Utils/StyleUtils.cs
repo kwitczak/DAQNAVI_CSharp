@@ -190,7 +190,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
 
                 // ShowMeasure
                 window.TabPage_ShowMeasure.Theme = style;
-                window.ShowMeasure_grid.Theme = style;
+                //window.ShowMeasure_grid.Theme = style;
                 window.ShowMeasure_label_duration.Theme = style;
                 window.ShowMeasure_label_durationValue.Theme = style;
                 window.ShowMeasure_label_end.Theme = style;
