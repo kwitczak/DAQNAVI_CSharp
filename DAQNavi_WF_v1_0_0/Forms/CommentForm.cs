@@ -85,8 +85,8 @@ namespace DAQNavi_WF_v1_0_0
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    try
-                    {
+                    //try
+                    //{
                         // ZAPIS DO PLIKU
                         using (System.IO.StreamWriter file = new System.IO.StreamWriter(dlg.FileName + ".txt"))
                         {
@@ -139,9 +139,15 @@ namespace DAQNavi_WF_v1_0_0
                                         Rowbind.Append("\t");
                                         if (mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value != null)
                                         {
-                                            Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
-                                            myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
-                                            myResultsCounter++;
+                                            if ((k - 1) == 0) {
+                                                //Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
+                                                //myResults[myResultsCounter] = (int)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                                //myResultsCounter++;
+                                            } else {
+                                                Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
+                                                myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                                myResultsCounter++;
+                                            }
                                         }
                                     }
                                 }
@@ -164,11 +170,11 @@ namespace DAQNavi_WF_v1_0_0
 
                         myResults = null;
                         MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".txt zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    }
-                    catch (Exception ex)
-                    {
-                        MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    //}
+                    //catch (Exception ex)
+                    //{
+                    //    MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //}
 
                 }
             }

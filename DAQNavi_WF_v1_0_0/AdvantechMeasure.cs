@@ -54,6 +54,8 @@ namespace DAQNavi_WF_v1_0_0
         public static DateTime ABI_timeEnd;
         public static double[] ABI_data;
         public static int ABI_xPoint = 0;
+        public static long ABI_howManySamplesAlready;
+        public static int ABI_howManySamplesShouldBeAtOnce;
 
         /* ANALOG INSTANT INPUT (AII) */
         public static MicroLibrary.MicroTimer AII_timer = new MicroLibrary.MicroTimer();
@@ -622,6 +624,7 @@ namespace DAQNavi_WF_v1_0_0
             // TODO REFACTOR
 
             lastMeasurmentType = MeasurmentType.ANALOG_BUFFERED_INPUT;
+            ABI_allData.Clear();
             timer_ProgressBar.Start();
             ABI_timerStart = DateTime.Now;
             ABI_label_startValue.Text = ABI_timerStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
@@ -643,15 +646,35 @@ namespace DAQNavi_WF_v1_0_0
             ABI.setScanCount(Convert.ToInt32(ABI_textBox_scanCount.Text));
             ABI.setRate(Convert.ToInt32(ABI_textBox_rate.Text));
 
+            ABI_howManySamplesAlready = 0;
+            ABI_howManySamplesShouldBeAtOnce = 512 * ABIControl.ScanChannel.ChannelCount;
+
             ABI_data = ABI.przygotujPomiar(ABIControl);
         }
 
         /* W momencie uzyskania danych z karty (koniec przygotowania pomiaru),
-         skopiuj dane do globalnego zbioru. */
+         skopiuj dane do globalnego zbioru. Należy tutaj uwazac - dane beda
+         w formie tablicy o rozmiarze 512 punktow, ale czesc z nich moze
+         nie byc wypelniona, jezeli ilosc sampli juz zostala wykorzystana,
+         dlatego w ostatnim data ready nalezy dodac tylko tyle, ile potrzeba
+         z wynikowej tablicy */
         private void bufferedAiCtrl1_DataReady(object sender, Automation.BDaq.BfdAiEventArgs e)
         {
+            // Create new data array with size no smaller then needed to fill buffer with 8 channels,
+            // but no bigger to avoid empty points
+
+            if (ABI_howManySamplesAlready + ABI_howManySamplesShouldBeAtOnce < ABIControl.ScanChannel.Samples * ABIControl.ScanChannel.ChannelCount)
+            {
+                ABI_data = new double[ABI_howManySamplesShouldBeAtOnce];
+            }
+            else
+            {
+                ABI_data = new double[ABIControl.ScanChannel.Samples * ABIControl.ScanChannel.ChannelCount - ABI_howManySamplesAlready];
+            }
+
             ABIControl.GetData(e.Count, ABI_data);
             ABI_allData.AddRange(ABI_data);
+            ABI_howManySamplesAlready += ABI_data.Length;
         }
 
 
@@ -713,7 +736,6 @@ namespace DAQNavi_WF_v1_0_0
             ABI = null;
             ABI_timeEnd = DateTime.Now;
             ABI_timeDiff = ABI_timeEnd.Subtract(ABI_timerStart);
-            MessageBox.Show("Koniec");
             // Update UI z innego wątku
             MethodInvoker inv = delegate
             {
@@ -748,17 +770,19 @@ namespace DAQNavi_WF_v1_0_0
                         {
                             ABI_xPoint++;
                             myABIXDataReadyPoint++;
+                            LastMeasure_GridTable.Rows.Add();
+                            LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[0].Value = (i / channels) + 1;
                         }
 
                         //MEMO LEAK
                         ABI_Chart.Series[mySeries].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
                         ABI_Chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
-                        LastMeasure_GridTable.Rows.Add();
-                        LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries].Value = ABI_allData[i];
+                        LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries + 1].Value = ABI_allData[i];
                     }
                 });
             };
             this.Invoke(inv);
+            //ABIControl.Cleanup();
         }
 
 
@@ -855,22 +879,22 @@ namespace DAQNavi_WF_v1_0_0
             //}
 
             //timer_getData.Interval = (int)timeInterval * 1;
-            ErrorCode err;
+            //ErrorCode err;
 
-            err = AIIControl.Read(AII_choosenChannel, AII_numOfChannels, AII_data);
-            if (err != ErrorCode.Success)
-            {
-                timer_getData.Stop();
-            }
-            //for (int i = 0; i < analogInstantInput_numberOfChannels; i++)
+            //err = AIIControl.Read(AII_choosenChannel, AII_numOfChannels, AII_data);
+            //if (err != ErrorCode.Success)
             //{
-            //    Chart_AnalogInstantInput.Series[i].Points.Add(dataInstantAI[i]);
-            //    metroGridTable.Rows.Add();
-            //    metroGridTable.Rows[sampleCountAAI].Cells[i].Value = dataInstantAI[i];
-            //    analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
+            //    timer_getData.Stop();
             //}
+            ////for (int i = 0; i < analogInstantInput_numberOfChannels; i++)
+            ////{
+            ////    Chart_AnalogInstantInput.Series[i].Points.Add(dataInstantAI[i]);
+            ////    metroGridTable.Rows.Add();
+            ////    metroGridTable.Rows[sampleCountAAI].Cells[i].Value = dataInstantAI[i];
+            ////    analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
+            ////}
 
-            AAI_sampleCount++;
+            //AAI_sampleCount++;
 
 
             //if (analogInstantInputMovingWindow)
@@ -897,27 +921,23 @@ namespace DAQNavi_WF_v1_0_0
                 LastMeasure_GridTable.Rows.Add();
                 for (int i = 0; i < AII_numOfChannels; i++)
                 {
-                    if (AAI_sampleCount % 1 == 0)
-                    {
+                    //if (AAI_sampleCount % 1 == 0)
+                    //{
                         AII_drawnPoints++;
                         AII_Chart.Series[i].Points.Add(AII_data[i]);
-                        if (AII_MovingWindow)
-                        {
-                            AII_Chart.ChartAreas[0].AxisX.Minimum = AII_drawnPoints - int.Parse(AII_textBox_movingWindow.Text);
-                        }
-                    }
+                    //}
 
-                    
                     if (i % 8 == 0)
                     {
-                        LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[0].Value = AAI_sampleCount;
+                        LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[0].Value = AAI_sampleCount + 1;
                     }
-
                     LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i + 1].Value = AII_data[i];
                     //analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
+                }
 
-
-
+                if (AII_MovingWindow)
+                {
+                    AII_Chart.ChartAreas[0].AxisX.Minimum = (AII_drawnPoints/AII_numOfChannels) - int.Parse(AII_textBox_movingWindow.Text);
                 }
 
 
@@ -1581,6 +1601,11 @@ namespace DAQNavi_WF_v1_0_0
         private void ShowMeasure_scrollBar_Scroll(object sender, ScrollEventArgs e)
         {
             TabPage_ShowMeasure.VerticalScroll.Value = e.NewValue * 5;
+        }
+
+        private void ShowMeasure_trackBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
         }
     }
 }
