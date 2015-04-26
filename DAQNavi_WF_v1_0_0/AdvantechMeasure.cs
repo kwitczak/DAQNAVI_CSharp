@@ -387,7 +387,10 @@ namespace DAQNavi_WF_v1_0_0
         /* Przejście do nowego pomiaru */
         private void Button_MyMeasurements_NewMeasure_Click(object sender, EventArgs e)
         {
-            TabControl.TabPages.Add(TabPage_Measure);
+            if (!TabControl.TabPages.Contains(TabPage_Measure)){
+               TabControl.TabPages.Add(TabPage_Measure);
+            }
+
             TabControl.SelectedTab = TabPage_Measure;
         }
 
@@ -646,10 +649,10 @@ namespace DAQNavi_WF_v1_0_0
             ABI.setScanCount(Convert.ToInt32(ABI_textBox_scanCount.Text));
             ABI.setRate(Convert.ToInt32(ABI_textBox_rate.Text));
 
+            ABI_data = ABI.przygotujPomiar(ABIControl);
             ABI_howManySamplesAlready = 0;
             ABI_howManySamplesShouldBeAtOnce = 512 * ABIControl.ScanChannel.ChannelCount;
-
-            ABI_data = ABI.przygotujPomiar(ABIControl);
+            //ABI_howManySamplesShouldBeAtOnce = 512 * ABIControl.ScanChannel.ChannelCount;
         }
 
         /* W momencie uzyskania danych z karty (koniec przygotowania pomiaru),
@@ -662,7 +665,6 @@ namespace DAQNavi_WF_v1_0_0
         {
             // Create new data array with size no smaller then needed to fill buffer with 8 channels,
             // but no bigger to avoid empty points
-
             if (ABI_howManySamplesAlready + ABI_howManySamplesShouldBeAtOnce < ABIControl.ScanChannel.Samples * ABIControl.ScanChannel.ChannelCount)
             {
                 ABI_data = new double[ABI_howManySamplesShouldBeAtOnce];
@@ -1569,6 +1571,7 @@ namespace DAQNavi_WF_v1_0_0
 
             double ratio = (ShowMeasure_chart.ChartAreas[0].AxisX.Maximum - ShowMeasure_chart.ChartAreas[0].AxisX.Minimum);
             ChartUtils.changeChartMarkerRatio(ShowMeasure_chart, ratio);
+            ShowMeasure_label_trackBar1.Text = "Zoom X:" + ShowMeasure_trackBar2.Value + "%";
         }
 
         private void metroTrackBar2_ValueChanged(object sender, EventArgs e)
@@ -1579,6 +1582,8 @@ namespace DAQNavi_WF_v1_0_0
             double window = ShowMeasure_chart.ChartAreas[0].AxisX.Maximum - ShowMeasure_chart.ChartAreas[0].AxisX.Minimum;
             ShowMeasure_chart.ChartAreas[0].AxisX.Minimum = howMuchToChange;
             ShowMeasure_chart.ChartAreas[0].AxisX.Maximum = window + howMuchToChange;
+
+            ShowMeasure_label_trackBar2.Text = "Position X:" + ShowMeasure_trackBar2.Value + "%";
         }
 
         private void ShowMeasure_grid_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
@@ -1604,6 +1609,11 @@ namespace DAQNavi_WF_v1_0_0
         }
 
         private void ShowMeasure_trackBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void ShowMeasure_trackBar2_Scroll(object sender, ScrollEventArgs e)
         {
 
         }
