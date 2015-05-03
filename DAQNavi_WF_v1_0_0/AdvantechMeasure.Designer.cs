@@ -40,6 +40,9 @@
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -50,9 +53,6 @@
             System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -78,13 +78,64 @@
             System.Windows.Forms.DataVisualization.Charting.Series series24 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ABIControl = new Automation.BDaq.BufferedAiCtrl(this.components);
             this.ABI_Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.ABI_label_samples = new MetroFramework.Controls.MetroLabel();
-            this.ABI_label_channels = new MetroFramework.Controls.MetroLabel();
-            this.ABI_textBox_samples = new MetroFramework.Controls.MetroTextBox();
-            this.ABI_textBox_channels = new MetroFramework.Controls.MetroTextBox();
             this.ABI_button_measure = new MetroFramework.Controls.MetroButton();
             this.TabControl = new MetroFramework.Controls.MetroTabControl();
+            this.TabPage_Options = new MetroFramework.Controls.MetroTabPage();
+            this.Options_label_commentOptions = new MetroFramework.Controls.MetroLabel();
+            this.Options_panel_comments = new MetroFramework.Controls.MetroPanel();
+            this.Options_textBox_userComment = new MetroFramework.Controls.MetroTextBox();
+            this.Options_label_adminComment = new MetroFramework.Controls.MetroLabel();
+            this.Options_textBox_adminComment = new MetroFramework.Controls.MetroTextBox();
+            this.Options_label_userComment = new MetroFramework.Controls.MetroLabel();
+            this.Options_scrollBar = new MetroFramework.Controls.MetroScrollBar();
+            this.Options_button_backToDefaults = new MetroFramework.Controls.MetroButton();
+            this.Options_button_applyChanges = new MetroFramework.Controls.MetroButton();
+            this.Options_label_card = new MetroFramework.Controls.MetroLabel();
+            this.Options_label_theme = new MetroFramework.Controls.MetroLabel();
+            this.Options_label_language = new MetroFramework.Controls.MetroLabel();
+            this.Options_panel_card = new MetroFramework.Controls.MetroPanel();
+            this.Options_label_cardModule = new MetroFramework.Controls.MetroLabel();
+            this.Options_label_cardNumber = new MetroFramework.Controls.MetroLabel();
+            this.Options_textBox_cardModule = new MetroFramework.Controls.MetroTextBox();
+            this.Options_textBox_cardNumber = new MetroFramework.Controls.MetroTextBox();
+            this.Options_textBox_cardName = new MetroFramework.Controls.MetroTextBox();
+            this.Options_label_cardName = new MetroFramework.Controls.MetroLabel();
+            this.Options_panel_language = new MetroFramework.Controls.MetroPanel();
+            this.Options_radioButton_english = new MetroFramework.Controls.MetroRadioButton();
+            this.Options_radioButton_polski = new MetroFramework.Controls.MetroRadioButton();
+            this.Options_panel_theme = new MetroFramework.Controls.MetroPanel();
+            this.Options_toggle_layout = new MetroFramework.Controls.MetroToggle();
+            this.Options_label_database = new MetroFramework.Controls.MetroLabel();
+            this.Options_panel_database = new MetroFramework.Controls.MetroPanel();
+            this.Options_button_clearResults = new MetroFramework.Controls.MetroButton();
+            this.Options_textBox_port = new MetroFramework.Controls.MetroTextBox();
+            this.Options_label_port = new MetroFramework.Controls.MetroLabel();
+            this.Options_textBox_baza = new MetroFramework.Controls.MetroTextBox();
+            this.Options_label_password = new MetroFramework.Controls.MetroLabel();
+            this.Options_label_baza = new MetroFramework.Controls.MetroLabel();
+            this.Options_textBox_password = new MetroFramework.Controls.MetroTextBox();
+            this.Options_textBox_user = new MetroFramework.Controls.MetroTextBox();
+            this.Options_label_user = new MetroFramework.Controls.MetroLabel();
+            this.TabPage_LastMeasure = new MetroFramework.Controls.MetroTabPage();
+            this.Panel_Results = new MetroFramework.Controls.MetroPanel();
+            this.Results_button_exportToTXT = new MetroFramework.Controls.MetroButton();
+            this.LastMeasure_GridTable = new MetroFramework.Controls.MetroGrid();
+            this.n = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Channel_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Channel_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Channel_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Channel_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPage_AnalogBufferedInput = new MetroFramework.Controls.MetroTabPage();
+            this.ABI_label_options = new MetroFramework.Controls.MetroLabel();
+            this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.ABI_button_defaults = new MetroFramework.Controls.MetroButton();
+            this.ABI_checkBox_custom = new MetroFramework.Controls.MetroCheckBox();
+            this.ABI_button_measureOptions = new MetroFramework.Controls.MetroButton();
+            this.ABI_checkBox_defaults = new MetroFramework.Controls.MetroCheckBox();
             this.ABI_label_details = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.ABI_label_durationValue = new MetroFramework.Controls.MetroLabel();
@@ -96,14 +147,6 @@
             this.ABI_label_trackBar2 = new MetroFramework.Controls.MetroLabel();
             this.ABI_label_trackBar1 = new MetroFramework.Controls.MetroLabel();
             this.ABI_button_back = new MetroFramework.Controls.MetroButton();
-            this.ABI_label_rate = new MetroFramework.Controls.MetroLabel();
-            this.ABI_textBox_rate = new MetroFramework.Controls.MetroTextBox();
-            this.ABI_label_scanCount = new MetroFramework.Controls.MetroLabel();
-            this.ABI_label_intervalCount = new MetroFramework.Controls.MetroLabel();
-            this.ABI_label_channelStart = new MetroFramework.Controls.MetroLabel();
-            this.ABI_textBox_scanCount = new MetroFramework.Controls.MetroTextBox();
-            this.ABI_textBox_intervalCount = new MetroFramework.Controls.MetroTextBox();
-            this.ABI_textBox_channelStart = new MetroFramework.Controls.MetroTextBox();
             this.ABI_TrackBar_1 = new MetroFramework.Controls.MetroTrackBar();
             this.ABI_TrackBar_2 = new MetroFramework.Controls.MetroTrackBar();
             this.TabPage_AnalogInstantInput = new MetroFramework.Controls.MetroTabPage();
@@ -152,20 +195,9 @@
             this.AII_button_back = new MetroFramework.Controls.MetroButton();
             this.AII_button_measure = new MetroFramework.Controls.MetroButton();
             this.AII_Chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.TabPage_LastMeasure = new MetroFramework.Controls.MetroTabPage();
-            this.Panel_Results = new MetroFramework.Controls.MetroPanel();
-            this.Results_button_exportToTXT = new MetroFramework.Controls.MetroButton();
-            this.LastMeasure_GridTable = new MetroFramework.Controls.MetroGrid();
-            this.n = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Channel_1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Channel_2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Channel_3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Channel_4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TabPage_ShowMeasure = new MetroFramework.Controls.MetroTabPage();
+            this.ShowMeasure_label_trackBar2 = new MetroFramework.Controls.MetroLabel();
+            this.ShowMeasure_label_trackBar1 = new MetroFramework.Controls.MetroLabel();
             this.ShowMeasure_grid = new System.Windows.Forms.DataGridView();
             this.Samplesn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Channel1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -199,42 +231,6 @@
             this.ShowMeasure_label_end = new MetroFramework.Controls.MetroLabel();
             this.ShowMeasure_label_start = new MetroFramework.Controls.MetroLabel();
             this.ShowMeasure_chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.TabPage_Options = new MetroFramework.Controls.MetroTabPage();
-            this.Options_label_commentOptions = new MetroFramework.Controls.MetroLabel();
-            this.Options_panel_comments = new MetroFramework.Controls.MetroPanel();
-            this.Options_textBox_userComment = new MetroFramework.Controls.MetroTextBox();
-            this.Options_label_adminComment = new MetroFramework.Controls.MetroLabel();
-            this.Options_textBox_adminComment = new MetroFramework.Controls.MetroTextBox();
-            this.Options_label_userComment = new MetroFramework.Controls.MetroLabel();
-            this.Options_scrollBar = new MetroFramework.Controls.MetroScrollBar();
-            this.Options_button_backToDefaults = new MetroFramework.Controls.MetroButton();
-            this.Options_button_applyChanges = new MetroFramework.Controls.MetroButton();
-            this.Options_label_card = new MetroFramework.Controls.MetroLabel();
-            this.Options_label_theme = new MetroFramework.Controls.MetroLabel();
-            this.Options_label_language = new MetroFramework.Controls.MetroLabel();
-            this.Options_panel_card = new MetroFramework.Controls.MetroPanel();
-            this.Options_label_cardModule = new MetroFramework.Controls.MetroLabel();
-            this.Options_label_cardNumber = new MetroFramework.Controls.MetroLabel();
-            this.Options_textBox_cardModule = new MetroFramework.Controls.MetroTextBox();
-            this.Options_textBox_cardNumber = new MetroFramework.Controls.MetroTextBox();
-            this.Options_textBox_cardName = new MetroFramework.Controls.MetroTextBox();
-            this.Options_label_cardName = new MetroFramework.Controls.MetroLabel();
-            this.Options_panel_language = new MetroFramework.Controls.MetroPanel();
-            this.Options_radioButton_english = new MetroFramework.Controls.MetroRadioButton();
-            this.Options_radioButton_polski = new MetroFramework.Controls.MetroRadioButton();
-            this.Options_panel_theme = new MetroFramework.Controls.MetroPanel();
-            this.Options_toggle_layout = new MetroFramework.Controls.MetroToggle();
-            this.Options_label_database = new MetroFramework.Controls.MetroLabel();
-            this.Options_panel_database = new MetroFramework.Controls.MetroPanel();
-            this.Options_button_clearResults = new MetroFramework.Controls.MetroButton();
-            this.Options_textBox_port = new MetroFramework.Controls.MetroTextBox();
-            this.Options_label_port = new MetroFramework.Controls.MetroLabel();
-            this.Options_textBox_baza = new MetroFramework.Controls.MetroTextBox();
-            this.Options_label_password = new MetroFramework.Controls.MetroLabel();
-            this.Options_label_baza = new MetroFramework.Controls.MetroLabel();
-            this.Options_textBox_password = new MetroFramework.Controls.MetroTextBox();
-            this.Options_textBox_user = new MetroFramework.Controls.MetroTextBox();
-            this.Options_label_user = new MetroFramework.Controls.MetroLabel();
             this.TabPage_Welcome = new MetroFramework.Controls.MetroTabPage();
             this.Welcome_label_newUser = new MetroFramework.Controls.MetroLabel();
             this.Welcome_button_createNewUser = new MetroFramework.Controls.MetroButton();
@@ -278,11 +274,19 @@
             this.AIIControl = new Automation.BDaq.InstantAiCtrl(this.components);
             this.timer_getData = new System.Windows.Forms.Timer(this.components);
             this.timer_ProgressBar = new System.Windows.Forms.Timer(this.components);
-            this.ShowMeasure_label_trackBar2 = new MetroFramework.Controls.MetroLabel();
-            this.ShowMeasure_label_trackBar1 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ABI_Chart)).BeginInit();
             this.TabControl.SuspendLayout();
+            this.TabPage_Options.SuspendLayout();
+            this.Options_panel_comments.SuspendLayout();
+            this.Options_panel_card.SuspendLayout();
+            this.Options_panel_language.SuspendLayout();
+            this.Options_panel_theme.SuspendLayout();
+            this.Options_panel_database.SuspendLayout();
+            this.TabPage_LastMeasure.SuspendLayout();
+            this.Panel_Results.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.LastMeasure_GridTable)).BeginInit();
             this.TabPage_AnalogBufferedInput.SuspendLayout();
+            this.metroPanel2.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             this.TabPage_AnalogInstantInput.SuspendLayout();
             this.AII_panel4.SuspendLayout();
@@ -290,19 +294,10 @@
             this.AII_panel2.SuspendLayout();
             this.AII_panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AII_Chart)).BeginInit();
-            this.TabPage_LastMeasure.SuspendLayout();
-            this.Panel_Results.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.LastMeasure_GridTable)).BeginInit();
             this.TabPage_ShowMeasure.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_grid)).BeginInit();
             this.ShowMeasure_label_task.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_chart)).BeginInit();
-            this.TabPage_Options.SuspendLayout();
-            this.Options_panel_comments.SuspendLayout();
-            this.Options_panel_card.SuspendLayout();
-            this.Options_panel_language.SuspendLayout();
-            this.Options_panel_theme.SuspendLayout();
-            this.Options_panel_database.SuspendLayout();
             this.TabPage_Welcome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Welcome_pictureBox_advantech)).BeginInit();
             this.TabPage_MyMeasurements.SuspendLayout();
@@ -436,58 +431,6 @@
             this.ABI_Chart.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.Chart_AnalogBufferedInput_AxisViewChanged);
             this.ABI_Chart.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Chart_AnalogBufferedInput_MouseClick);
             // 
-            // ABI_label_samples
-            // 
-            this.ABI_label_samples.Location = new System.Drawing.Point(0, 23);
-            this.ABI_label_samples.Name = "ABI_label_samples";
-            this.ABI_label_samples.Size = new System.Drawing.Size(102, 19);
-            this.ABI_label_samples.TabIndex = 8;
-            this.ABI_label_samples.Text = "Samples";
-            this.ABI_label_samples.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ABI_label_samples.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ABI_label_channels
-            // 
-            this.ABI_label_channels.Location = new System.Drawing.Point(3, 50);
-            this.ABI_label_channels.Name = "ABI_label_channels";
-            this.ABI_label_channels.Size = new System.Drawing.Size(99, 19);
-            this.ABI_label_channels.TabIndex = 9;
-            this.ABI_label_channels.Text = "Channels";
-            this.ABI_label_channels.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ABI_label_channels.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ABI_textBox_samples
-            // 
-            this.ABI_textBox_samples.Lines = new string[] {
-        "10"};
-            this.ABI_textBox_samples.Location = new System.Drawing.Point(126, 22);
-            this.ABI_textBox_samples.MaxLength = 32767;
-            this.ABI_textBox_samples.Name = "ABI_textBox_samples";
-            this.ABI_textBox_samples.PasswordChar = '\0';
-            this.ABI_textBox_samples.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ABI_textBox_samples.SelectedText = "";
-            this.ABI_textBox_samples.Size = new System.Drawing.Size(97, 20);
-            this.ABI_textBox_samples.TabIndex = 10;
-            this.ABI_textBox_samples.Text = "10";
-            this.ABI_textBox_samples.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ABI_textBox_samples.UseSelectable = true;
-            // 
-            // ABI_textBox_channels
-            // 
-            this.ABI_textBox_channels.Lines = new string[] {
-        "1"};
-            this.ABI_textBox_channels.Location = new System.Drawing.Point(126, 49);
-            this.ABI_textBox_channels.MaxLength = 32767;
-            this.ABI_textBox_channels.Name = "ABI_textBox_channels";
-            this.ABI_textBox_channels.PasswordChar = '\0';
-            this.ABI_textBox_channels.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ABI_textBox_channels.SelectedText = "";
-            this.ABI_textBox_channels.Size = new System.Drawing.Size(97, 20);
-            this.ABI_textBox_channels.TabIndex = 11;
-            this.ABI_textBox_channels.Text = "1";
-            this.ABI_textBox_channels.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ABI_textBox_channels.UseSelectable = true;
-            // 
             // ABI_button_measure
             // 
             this.ABI_button_measure.FontSize = MetroFramework.MetroButtonSize.Tall;
@@ -505,10 +448,10 @@
             // 
             // TabControl
             // 
+            this.TabControl.Controls.Add(this.TabPage_LastMeasure);
             this.TabControl.Controls.Add(this.TabPage_Options);
             this.TabControl.Controls.Add(this.TabPage_AnalogBufferedInput);
             this.TabControl.Controls.Add(this.TabPage_AnalogInstantInput);
-            this.TabControl.Controls.Add(this.TabPage_LastMeasure);
             this.TabControl.Controls.Add(this.TabPage_ShowMeasure);
             this.TabControl.Controls.Add(this.TabPage_Welcome);
             this.TabControl.Controls.Add(this.TabPage_MyMeasurements);
@@ -518,36 +461,714 @@
             this.TabControl.FontWeight = MetroFramework.MetroTabControlWeight.Regular;
             this.TabControl.Location = new System.Drawing.Point(23, 63);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 3;
+            this.TabControl.SelectedIndex = 2;
             this.TabControl.Size = new System.Drawing.Size(925, 622);
             this.TabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.TabControl.TabIndex = 40;
             this.TabControl.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.TabControl.UseSelectable = true;
             // 
+            // TabPage_Options
+            // 
+            this.TabPage_Options.AutoScrollMargin = new System.Drawing.Size(0, 950);
+            this.TabPage_Options.Controls.Add(this.Options_label_commentOptions);
+            this.TabPage_Options.Controls.Add(this.Options_panel_comments);
+            this.TabPage_Options.Controls.Add(this.Options_scrollBar);
+            this.TabPage_Options.Controls.Add(this.Options_button_backToDefaults);
+            this.TabPage_Options.Controls.Add(this.Options_button_applyChanges);
+            this.TabPage_Options.Controls.Add(this.Options_label_card);
+            this.TabPage_Options.Controls.Add(this.Options_label_theme);
+            this.TabPage_Options.Controls.Add(this.Options_label_language);
+            this.TabPage_Options.Controls.Add(this.Options_panel_card);
+            this.TabPage_Options.Controls.Add(this.Options_panel_language);
+            this.TabPage_Options.Controls.Add(this.Options_panel_theme);
+            this.TabPage_Options.Controls.Add(this.Options_label_database);
+            this.TabPage_Options.Controls.Add(this.Options_panel_database);
+            this.TabPage_Options.HorizontalScrollbarBarColor = false;
+            this.TabPage_Options.HorizontalScrollbarHighlightOnWheel = false;
+            this.TabPage_Options.HorizontalScrollbarSize = 10;
+            this.TabPage_Options.Location = new System.Drawing.Point(4, 38);
+            this.TabPage_Options.Name = "TabPage_Options";
+            this.TabPage_Options.Size = new System.Drawing.Size(917, 580);
+            this.TabPage_Options.Style = MetroFramework.MetroColorStyle.Black;
+            this.TabPage_Options.TabIndex = 4;
+            this.TabPage_Options.Text = "Options";
+            this.TabPage_Options.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TabPage_Options.VerticalScrollbarBarColor = false;
+            this.TabPage_Options.VerticalScrollbarHighlightOnWheel = false;
+            this.TabPage_Options.VerticalScrollbarSize = 10;
+            // 
+            // Options_label_commentOptions
+            // 
+            this.Options_label_commentOptions.AutoSize = true;
+            this.Options_label_commentOptions.Location = new System.Drawing.Point(77, 741);
+            this.Options_label_commentOptions.Name = "Options_label_commentOptions";
+            this.Options_label_commentOptions.Size = new System.Drawing.Size(118, 19);
+            this.Options_label_commentOptions.TabIndex = 24;
+            this.Options_label_commentOptions.Text = "Comment Options";
+            this.Options_label_commentOptions.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_panel_comments
+            // 
+            this.Options_panel_comments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_panel_comments.Controls.Add(this.Options_textBox_userComment);
+            this.Options_panel_comments.Controls.Add(this.Options_label_adminComment);
+            this.Options_panel_comments.Controls.Add(this.Options_textBox_adminComment);
+            this.Options_panel_comments.Controls.Add(this.Options_label_userComment);
+            this.Options_panel_comments.HorizontalScrollbarBarColor = true;
+            this.Options_panel_comments.HorizontalScrollbarHighlightOnWheel = false;
+            this.Options_panel_comments.HorizontalScrollbarSize = 10;
+            this.Options_panel_comments.Location = new System.Drawing.Point(60, 750);
+            this.Options_panel_comments.Name = "Options_panel_comments";
+            this.Options_panel_comments.Size = new System.Drawing.Size(374, 324);
+            this.Options_panel_comments.TabIndex = 23;
+            this.Options_panel_comments.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_panel_comments.VerticalScrollbarBarColor = true;
+            this.Options_panel_comments.VerticalScrollbarHighlightOnWheel = false;
+            this.Options_panel_comments.VerticalScrollbarSize = 10;
+            // 
+            // Options_textBox_userComment
+            // 
+            this.Options_textBox_userComment.Lines = new string[] {
+        "This is user comment - I got some errors!"};
+            this.Options_textBox_userComment.Location = new System.Drawing.Point(119, 27);
+            this.Options_textBox_userComment.MaxLength = 32767;
+            this.Options_textBox_userComment.Multiline = true;
+            this.Options_textBox_userComment.Name = "Options_textBox_userComment";
+            this.Options_textBox_userComment.PasswordChar = '\0';
+            this.Options_textBox_userComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Options_textBox_userComment.SelectedText = "";
+            this.Options_textBox_userComment.Size = new System.Drawing.Size(222, 77);
+            this.Options_textBox_userComment.TabIndex = 5;
+            this.Options_textBox_userComment.Text = "This is user comment - I got some errors!";
+            this.Options_textBox_userComment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_userComment.UseSelectable = true;
+            // 
+            // Options_label_adminComment
+            // 
+            this.Options_label_adminComment.Location = new System.Drawing.Point(16, 141);
+            this.Options_label_adminComment.Name = "Options_label_adminComment";
+            this.Options_label_adminComment.Size = new System.Drawing.Size(75, 53);
+            this.Options_label_adminComment.TabIndex = 10;
+            this.Options_label_adminComment.Text = "Admin Comment";
+            this.Options_label_adminComment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_label_adminComment.WrapToLine = true;
+            // 
+            // Options_textBox_adminComment
+            // 
+            this.Options_textBox_adminComment.Lines = new string[] {
+        "This is admin comment - some instructions for user, with also will be printed to " +
+            "output measurment file."};
+            this.Options_textBox_adminComment.Location = new System.Drawing.Point(119, 140);
+            this.Options_textBox_adminComment.MaxLength = 32767;
+            this.Options_textBox_adminComment.Multiline = true;
+            this.Options_textBox_adminComment.Name = "Options_textBox_adminComment";
+            this.Options_textBox_adminComment.PasswordChar = '\0';
+            this.Options_textBox_adminComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.Options_textBox_adminComment.SelectedText = "";
+            this.Options_textBox_adminComment.Size = new System.Drawing.Size(222, 166);
+            this.Options_textBox_adminComment.TabIndex = 7;
+            this.Options_textBox_adminComment.Text = "This is admin comment - some instructions for user, with also will be printed to " +
+    "output measurment file.";
+            this.Options_textBox_adminComment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_adminComment.UseSelectable = true;
+            this.Options_textBox_adminComment.Enter += new System.EventHandler(this.metroTextBox4_Enter);
+            // 
+            // Options_label_userComment
+            // 
+            this.Options_label_userComment.Location = new System.Drawing.Point(17, 27);
+            this.Options_label_userComment.Name = "Options_label_userComment";
+            this.Options_label_userComment.Size = new System.Drawing.Size(74, 47);
+            this.Options_label_userComment.TabIndex = 8;
+            this.Options_label_userComment.Text = "User Comment";
+            this.Options_label_userComment.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_label_userComment.WrapToLine = true;
+            // 
+            // Options_scrollBar
+            // 
+            this.Options_scrollBar.LargeChange = 10;
+            this.Options_scrollBar.Location = new System.Drawing.Point(896, 20);
+            this.Options_scrollBar.Maximum = 100;
+            this.Options_scrollBar.Minimum = 0;
+            this.Options_scrollBar.MouseWheelBarPartitions = 10;
+            this.Options_scrollBar.Name = "Options_scrollBar";
+            this.Options_scrollBar.Orientation = MetroFramework.Controls.MetroScrollOrientation.Vertical;
+            this.Options_scrollBar.ScrollbarSize = 25;
+            this.Options_scrollBar.Size = new System.Drawing.Size(25, 950);
+            this.Options_scrollBar.TabIndex = 22;
+            this.Options_scrollBar.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_scrollBar.UseSelectable = true;
+            this.Options_scrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroScrollBar2_Scroll);
+            // 
+            // Options_button_backToDefaults
+            // 
+            this.Options_button_backToDefaults.Location = new System.Drawing.Point(497, 46);
+            this.Options_button_backToDefaults.Name = "Options_button_backToDefaults";
+            this.Options_button_backToDefaults.Size = new System.Drawing.Size(183, 51);
+            this.Options_button_backToDefaults.TabIndex = 20;
+            this.Options_button_backToDefaults.Text = "Back to defaults";
+            this.Options_button_backToDefaults.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_button_backToDefaults.UseSelectable = true;
+            this.Options_button_backToDefaults.Click += new System.EventHandler(this.Button_Options_BackToDefaults_Click);
+            // 
+            // Options_button_applyChanges
+            // 
+            this.Options_button_applyChanges.Location = new System.Drawing.Point(698, 46);
+            this.Options_button_applyChanges.Name = "Options_button_applyChanges";
+            this.Options_button_applyChanges.Size = new System.Drawing.Size(183, 51);
+            this.Options_button_applyChanges.TabIndex = 19;
+            this.Options_button_applyChanges.Text = "Apply changes";
+            this.Options_button_applyChanges.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_button_applyChanges.UseSelectable = true;
+            this.Options_button_applyChanges.Click += new System.EventHandler(this.Button_Options_ApplyChanges_Click);
+            // 
+            // Options_label_card
+            // 
+            this.Options_label_card.AutoSize = true;
+            this.Options_label_card.Location = new System.Drawing.Point(78, 581);
+            this.Options_label_card.Name = "Options_label_card";
+            this.Options_label_card.Size = new System.Drawing.Size(88, 19);
+            this.Options_label_card.TabIndex = 18;
+            this.Options_label_card.Text = "Card Options";
+            this.Options_label_card.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_label_theme
+            // 
+            this.Options_label_theme.AutoSize = true;
+            this.Options_label_theme.Location = new System.Drawing.Point(79, 36);
+            this.Options_label_theme.Name = "Options_label_theme";
+            this.Options_label_theme.Size = new System.Drawing.Size(99, 19);
+            this.Options_label_theme.TabIndex = 17;
+            this.Options_label_theme.Text = "Theme Options";
+            this.Options_label_theme.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_label_language
+            // 
+            this.Options_label_language.AutoSize = true;
+            this.Options_label_language.Location = new System.Drawing.Point(79, 120);
+            this.Options_label_language.Name = "Options_label_language";
+            this.Options_label_language.Size = new System.Drawing.Size(116, 19);
+            this.Options_label_language.TabIndex = 16;
+            this.Options_label_language.Text = "Language Options";
+            this.Options_label_language.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_panel_card
+            // 
+            this.Options_panel_card.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_panel_card.Controls.Add(this.Options_label_cardModule);
+            this.Options_panel_card.Controls.Add(this.Options_label_cardNumber);
+            this.Options_panel_card.Controls.Add(this.Options_textBox_cardModule);
+            this.Options_panel_card.Controls.Add(this.Options_textBox_cardNumber);
+            this.Options_panel_card.Controls.Add(this.Options_textBox_cardName);
+            this.Options_panel_card.Controls.Add(this.Options_label_cardName);
+            this.Options_panel_card.HorizontalScrollbarBarColor = true;
+            this.Options_panel_card.HorizontalScrollbarHighlightOnWheel = false;
+            this.Options_panel_card.HorizontalScrollbarSize = 10;
+            this.Options_panel_card.Location = new System.Drawing.Point(60, 591);
+            this.Options_panel_card.Name = "Options_panel_card";
+            this.Options_panel_card.Size = new System.Drawing.Size(374, 135);
+            this.Options_panel_card.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Options_panel_card.TabIndex = 15;
+            this.Options_panel_card.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_panel_card.VerticalScrollbarBarColor = true;
+            this.Options_panel_card.VerticalScrollbarHighlightOnWheel = false;
+            this.Options_panel_card.VerticalScrollbarSize = 10;
+            // 
+            // Options_label_cardModule
+            // 
+            this.Options_label_cardModule.AutoSize = true;
+            this.Options_label_cardModule.Location = new System.Drawing.Point(16, 94);
+            this.Options_label_cardModule.Name = "Options_label_cardModule";
+            this.Options_label_cardModule.Size = new System.Drawing.Size(87, 19);
+            this.Options_label_cardModule.TabIndex = 12;
+            this.Options_label_cardModule.Text = "Card module";
+            this.Options_label_cardModule.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_label_cardNumber
+            // 
+            this.Options_label_cardNumber.AutoSize = true;
+            this.Options_label_cardNumber.Location = new System.Drawing.Point(16, 57);
+            this.Options_label_cardNumber.Name = "Options_label_cardNumber";
+            this.Options_label_cardNumber.Size = new System.Drawing.Size(88, 19);
+            this.Options_label_cardNumber.TabIndex = 11;
+            this.Options_label_cardNumber.Text = "Card number";
+            this.Options_label_cardNumber.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_textBox_cardModule
+            // 
+            this.Options_textBox_cardModule.Lines = new string[] {
+        "0"};
+            this.Options_textBox_cardModule.Location = new System.Drawing.Point(119, 93);
+            this.Options_textBox_cardModule.MaxLength = 32767;
+            this.Options_textBox_cardModule.Name = "Options_textBox_cardModule";
+            this.Options_textBox_cardModule.PasswordChar = '\0';
+            this.Options_textBox_cardModule.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Options_textBox_cardModule.SelectedText = "";
+            this.Options_textBox_cardModule.Size = new System.Drawing.Size(222, 20);
+            this.Options_textBox_cardModule.TabIndex = 10;
+            this.Options_textBox_cardModule.Text = "0";
+            this.Options_textBox_cardModule.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_cardModule.UseSelectable = true;
+            // 
+            // Options_textBox_cardNumber
+            // 
+            this.Options_textBox_cardNumber.Lines = new string[] {
+        "0"};
+            this.Options_textBox_cardNumber.Location = new System.Drawing.Point(119, 56);
+            this.Options_textBox_cardNumber.MaxLength = 32767;
+            this.Options_textBox_cardNumber.Name = "Options_textBox_cardNumber";
+            this.Options_textBox_cardNumber.PasswordChar = '\0';
+            this.Options_textBox_cardNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Options_textBox_cardNumber.SelectedText = "";
+            this.Options_textBox_cardNumber.Size = new System.Drawing.Size(222, 20);
+            this.Options_textBox_cardNumber.TabIndex = 9;
+            this.Options_textBox_cardNumber.Text = "0";
+            this.Options_textBox_cardNumber.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_cardNumber.UseSelectable = true;
+            // 
+            // Options_textBox_cardName
+            // 
+            this.Options_textBox_cardName.Lines = new string[] {
+        "DemoDevice1"};
+            this.Options_textBox_cardName.Location = new System.Drawing.Point(119, 20);
+            this.Options_textBox_cardName.MaxLength = 32767;
+            this.Options_textBox_cardName.Name = "Options_textBox_cardName";
+            this.Options_textBox_cardName.PasswordChar = '\0';
+            this.Options_textBox_cardName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Options_textBox_cardName.SelectedText = "";
+            this.Options_textBox_cardName.Size = new System.Drawing.Size(222, 20);
+            this.Options_textBox_cardName.TabIndex = 7;
+            this.Options_textBox_cardName.Text = "DemoDevice1";
+            this.Options_textBox_cardName.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_cardName.UseSelectable = true;
+            // 
+            // Options_label_cardName
+            // 
+            this.Options_label_cardName.AutoSize = true;
+            this.Options_label_cardName.Location = new System.Drawing.Point(16, 21);
+            this.Options_label_cardName.Name = "Options_label_cardName";
+            this.Options_label_cardName.Size = new System.Drawing.Size(75, 19);
+            this.Options_label_cardName.TabIndex = 8;
+            this.Options_label_cardName.Text = "Card name";
+            this.Options_label_cardName.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_panel_language
+            // 
+            this.Options_panel_language.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_panel_language.Controls.Add(this.Options_radioButton_english);
+            this.Options_panel_language.Controls.Add(this.Options_radioButton_polski);
+            this.Options_panel_language.HorizontalScrollbarBarColor = true;
+            this.Options_panel_language.HorizontalScrollbarHighlightOnWheel = false;
+            this.Options_panel_language.HorizontalScrollbarSize = 10;
+            this.Options_panel_language.Location = new System.Drawing.Point(60, 129);
+            this.Options_panel_language.Name = "Options_panel_language";
+            this.Options_panel_language.Size = new System.Drawing.Size(373, 81);
+            this.Options_panel_language.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Options_panel_language.TabIndex = 14;
+            this.Options_panel_language.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_panel_language.VerticalScrollbarBarColor = true;
+            this.Options_panel_language.VerticalScrollbarHighlightOnWheel = false;
+            this.Options_panel_language.VerticalScrollbarSize = 10;
+            // 
+            // Options_radioButton_english
+            // 
+            this.Options_radioButton_english.AutoSize = true;
+            this.Options_radioButton_english.Checked = true;
+            this.Options_radioButton_english.Location = new System.Drawing.Point(25, 43);
+            this.Options_radioButton_english.Name = "Options_radioButton_english";
+            this.Options_radioButton_english.Size = new System.Drawing.Size(61, 15);
+            this.Options_radioButton_english.TabIndex = 4;
+            this.Options_radioButton_english.TabStop = true;
+            this.Options_radioButton_english.Text = "English";
+            this.Options_radioButton_english.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_radioButton_english.UseSelectable = true;
+            this.Options_radioButton_english.CheckedChanged += new System.EventHandler(this.RadioButton_Options_English_CheckedChanged);
+            // 
+            // Options_radioButton_polski
+            // 
+            this.Options_radioButton_polski.AutoSize = true;
+            this.Options_radioButton_polski.Location = new System.Drawing.Point(26, 22);
+            this.Options_radioButton_polski.Name = "Options_radioButton_polski";
+            this.Options_radioButton_polski.Size = new System.Drawing.Size(54, 15);
+            this.Options_radioButton_polski.TabIndex = 3;
+            this.Options_radioButton_polski.Text = "Polski";
+            this.Options_radioButton_polski.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_radioButton_polski.UseSelectable = true;
+            this.Options_radioButton_polski.CheckedChanged += new System.EventHandler(this.RadioButton_Options_Polski_CheckedChanged);
+            // 
+            // Options_panel_theme
+            // 
+            this.Options_panel_theme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_panel_theme.Controls.Add(this.Options_toggle_layout);
+            this.Options_panel_theme.HorizontalScrollbarBarColor = true;
+            this.Options_panel_theme.HorizontalScrollbarHighlightOnWheel = false;
+            this.Options_panel_theme.HorizontalScrollbarSize = 10;
+            this.Options_panel_theme.Location = new System.Drawing.Point(60, 46);
+            this.Options_panel_theme.Name = "Options_panel_theme";
+            this.Options_panel_theme.Size = new System.Drawing.Size(373, 63);
+            this.Options_panel_theme.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Options_panel_theme.TabIndex = 13;
+            this.Options_panel_theme.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_panel_theme.VerticalScrollbarBarColor = true;
+            this.Options_panel_theme.VerticalScrollbarHighlightOnWheel = false;
+            this.Options_panel_theme.VerticalScrollbarSize = 10;
+            // 
+            // Options_toggle_layout
+            // 
+            this.Options_toggle_layout.AutoSize = true;
+            this.Options_toggle_layout.FontWeight = MetroFramework.MetroLinkWeight.Bold;
+            this.Options_toggle_layout.Location = new System.Drawing.Point(25, 20);
+            this.Options_toggle_layout.Name = "Options_toggle_layout";
+            this.Options_toggle_layout.Size = new System.Drawing.Size(80, 17);
+            this.Options_toggle_layout.TabIndex = 2;
+            this.Options_toggle_layout.Text = "Off";
+            this.Options_toggle_layout.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_toggle_layout.ThreeState = true;
+            this.Options_toggle_layout.UseSelectable = true;
+            this.Options_toggle_layout.CheckedChanged += new System.EventHandler(this.metroToggle1_CheckedChanged);
+            // 
+            // Options_label_database
+            // 
+            this.Options_label_database.AutoSize = true;
+            this.Options_label_database.Location = new System.Drawing.Point(79, 223);
+            this.Options_label_database.Name = "Options_label_database";
+            this.Options_label_database.Size = new System.Drawing.Size(113, 19);
+            this.Options_label_database.TabIndex = 12;
+            this.Options_label_database.Text = "Database Options";
+            this.Options_label_database.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_panel_database
+            // 
+            this.Options_panel_database.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Options_panel_database.Controls.Add(this.Options_button_clearResults);
+            this.Options_panel_database.Controls.Add(this.Options_textBox_port);
+            this.Options_panel_database.Controls.Add(this.Options_label_port);
+            this.Options_panel_database.Controls.Add(this.Options_textBox_baza);
+            this.Options_panel_database.Controls.Add(this.Options_label_password);
+            this.Options_panel_database.Controls.Add(this.Options_label_baza);
+            this.Options_panel_database.Controls.Add(this.Options_textBox_password);
+            this.Options_panel_database.Controls.Add(this.Options_textBox_user);
+            this.Options_panel_database.Controls.Add(this.Options_label_user);
+            this.Options_panel_database.HorizontalScrollbarBarColor = true;
+            this.Options_panel_database.HorizontalScrollbarHighlightOnWheel = false;
+            this.Options_panel_database.HorizontalScrollbarSize = 10;
+            this.Options_panel_database.Location = new System.Drawing.Point(60, 232);
+            this.Options_panel_database.Name = "Options_panel_database";
+            this.Options_panel_database.Size = new System.Drawing.Size(373, 335);
+            this.Options_panel_database.TabIndex = 11;
+            this.Options_panel_database.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_panel_database.VerticalScrollbarBarColor = true;
+            this.Options_panel_database.VerticalScrollbarHighlightOnWheel = false;
+            this.Options_panel_database.VerticalScrollbarSize = 10;
+            // 
+            // Options_button_clearResults
+            // 
+            this.Options_button_clearResults.Location = new System.Drawing.Point(16, 198);
+            this.Options_button_clearResults.Name = "Options_button_clearResults";
+            this.Options_button_clearResults.Size = new System.Drawing.Size(112, 42);
+            this.Options_button_clearResults.TabIndex = 25;
+            this.Options_button_clearResults.Text = "Clear results";
+            this.Options_button_clearResults.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_button_clearResults.UseSelectable = true;
+            this.Options_button_clearResults.Click += new System.EventHandler(this.Button_Options_ClearResults_Click);
+            // 
+            // Options_textBox_port
+            // 
+            this.Options_textBox_port.Lines = new string[] {
+        "3306"};
+            this.Options_textBox_port.Location = new System.Drawing.Point(135, 59);
+            this.Options_textBox_port.MaxLength = 32767;
+            this.Options_textBox_port.Name = "Options_textBox_port";
+            this.Options_textBox_port.PasswordChar = '\0';
+            this.Options_textBox_port.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Options_textBox_port.SelectedText = "";
+            this.Options_textBox_port.Size = new System.Drawing.Size(222, 20);
+            this.Options_textBox_port.TabIndex = 19;
+            this.Options_textBox_port.Text = "3306";
+            this.Options_textBox_port.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_port.UseSelectable = true;
+            // 
+            // Options_label_port
+            // 
+            this.Options_label_port.AutoSize = true;
+            this.Options_label_port.Location = new System.Drawing.Point(83, 59);
+            this.Options_label_port.Name = "Options_label_port";
+            this.Options_label_port.Size = new System.Drawing.Size(34, 19);
+            this.Options_label_port.TabIndex = 20;
+            this.Options_label_port.Text = "Port";
+            this.Options_label_port.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_textBox_baza
+            // 
+            this.Options_textBox_baza.Lines = new string[] {
+        "localhost"};
+            this.Options_textBox_baza.Location = new System.Drawing.Point(135, 27);
+            this.Options_textBox_baza.MaxLength = 32767;
+            this.Options_textBox_baza.Name = "Options_textBox_baza";
+            this.Options_textBox_baza.PasswordChar = '\0';
+            this.Options_textBox_baza.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Options_textBox_baza.SelectedText = "";
+            this.Options_textBox_baza.Size = new System.Drawing.Size(222, 20);
+            this.Options_textBox_baza.TabIndex = 5;
+            this.Options_textBox_baza.Text = "localhost";
+            this.Options_textBox_baza.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_baza.UseSelectable = true;
+            // 
+            // Options_label_password
+            // 
+            this.Options_label_password.AutoSize = true;
+            this.Options_label_password.Location = new System.Drawing.Point(53, 133);
+            this.Options_label_password.Name = "Options_label_password";
+            this.Options_label_password.Size = new System.Drawing.Size(64, 19);
+            this.Options_label_password.TabIndex = 10;
+            this.Options_label_password.Text = "Password";
+            this.Options_label_password.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_label_baza
+            // 
+            this.Options_label_baza.AutoSize = true;
+            this.Options_label_baza.Location = new System.Drawing.Point(5, 28);
+            this.Options_label_baza.Name = "Options_label_baza";
+            this.Options_label_baza.Size = new System.Drawing.Size(112, 19);
+            this.Options_label_baza.TabIndex = 6;
+            this.Options_label_baza.Text = "Database address";
+            this.Options_label_baza.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // Options_textBox_password
+            // 
+            this.Options_textBox_password.Lines = new string[] {
+        "root"};
+            this.Options_textBox_password.Location = new System.Drawing.Point(135, 133);
+            this.Options_textBox_password.MaxLength = 32767;
+            this.Options_textBox_password.Name = "Options_textBox_password";
+            this.Options_textBox_password.PasswordChar = '●';
+            this.Options_textBox_password.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Options_textBox_password.SelectedText = "";
+            this.Options_textBox_password.Size = new System.Drawing.Size(222, 20);
+            this.Options_textBox_password.TabIndex = 9;
+            this.Options_textBox_password.Text = "root";
+            this.Options_textBox_password.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_password.UseSelectable = true;
+            this.Options_textBox_password.UseSystemPasswordChar = true;
+            // 
+            // Options_textBox_user
+            // 
+            this.Options_textBox_user.Lines = new string[] {
+        "root"};
+            this.Options_textBox_user.Location = new System.Drawing.Point(135, 102);
+            this.Options_textBox_user.MaxLength = 32767;
+            this.Options_textBox_user.Name = "Options_textBox_user";
+            this.Options_textBox_user.PasswordChar = '\0';
+            this.Options_textBox_user.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.Options_textBox_user.SelectedText = "";
+            this.Options_textBox_user.Size = new System.Drawing.Size(222, 20);
+            this.Options_textBox_user.TabIndex = 7;
+            this.Options_textBox_user.Text = "root";
+            this.Options_textBox_user.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Options_textBox_user.UseSelectable = true;
+            // 
+            // Options_label_user
+            // 
+            this.Options_label_user.AutoSize = true;
+            this.Options_label_user.Location = new System.Drawing.Point(82, 103);
+            this.Options_label_user.Name = "Options_label_user";
+            this.Options_label_user.Size = new System.Drawing.Size(35, 19);
+            this.Options_label_user.TabIndex = 8;
+            this.Options_label_user.Text = "User";
+            this.Options_label_user.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // TabPage_LastMeasure
+            // 
+            this.TabPage_LastMeasure.BackColor = System.Drawing.Color.Transparent;
+            this.TabPage_LastMeasure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.TabPage_LastMeasure.Controls.Add(this.Panel_Results);
+            this.TabPage_LastMeasure.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TabPage_LastMeasure.ForeColor = System.Drawing.Color.Lime;
+            this.TabPage_LastMeasure.HorizontalScrollbarBarColor = true;
+            this.TabPage_LastMeasure.HorizontalScrollbarHighlightOnWheel = false;
+            this.TabPage_LastMeasure.HorizontalScrollbarSize = 10;
+            this.TabPage_LastMeasure.Location = new System.Drawing.Point(4, 38);
+            this.TabPage_LastMeasure.Name = "TabPage_LastMeasure";
+            this.TabPage_LastMeasure.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TabPage_LastMeasure.Size = new System.Drawing.Size(917, 580);
+            this.TabPage_LastMeasure.Style = MetroFramework.MetroColorStyle.Orange;
+            this.TabPage_LastMeasure.TabIndex = 5;
+            this.TabPage_LastMeasure.Text = "Results";
+            this.TabPage_LastMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.TabPage_LastMeasure.UseCustomForeColor = true;
+            this.TabPage_LastMeasure.VerticalScrollbarBarColor = true;
+            this.TabPage_LastMeasure.VerticalScrollbarHighlightOnWheel = false;
+            this.TabPage_LastMeasure.VerticalScrollbarSize = 10;
+            // 
+            // Panel_Results
+            // 
+            this.Panel_Results.Controls.Add(this.Results_button_exportToTXT);
+            this.Panel_Results.Controls.Add(this.LastMeasure_GridTable);
+            this.Panel_Results.HorizontalScrollbarBarColor = true;
+            this.Panel_Results.HorizontalScrollbarHighlightOnWheel = false;
+            this.Panel_Results.HorizontalScrollbarSize = 10;
+            this.Panel_Results.Location = new System.Drawing.Point(3, 25);
+            this.Panel_Results.Name = "Panel_Results";
+            this.Panel_Results.Size = new System.Drawing.Size(914, 550);
+            this.Panel_Results.TabIndex = 17;
+            this.Panel_Results.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Panel_Results.VerticalScrollbarBarColor = true;
+            this.Panel_Results.VerticalScrollbarHighlightOnWheel = false;
+            this.Panel_Results.VerticalScrollbarSize = 10;
+            // 
+            // Results_button_exportToTXT
+            // 
+            this.Results_button_exportToTXT.FontSize = MetroFramework.MetroButtonSize.Tall;
+            this.Results_button_exportToTXT.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.Results_button_exportToTXT.Highlight = true;
+            this.Results_button_exportToTXT.Location = new System.Drawing.Point(779, 489);
+            this.Results_button_exportToTXT.Name = "Results_button_exportToTXT";
+            this.Results_button_exportToTXT.Size = new System.Drawing.Size(114, 36);
+            this.Results_button_exportToTXT.Style = MetroFramework.MetroColorStyle.Blue;
+            this.Results_button_exportToTXT.TabIndex = 51;
+            this.Results_button_exportToTXT.Text = "Save";
+            this.Results_button_exportToTXT.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Results_button_exportToTXT.UseSelectable = true;
+            this.Results_button_exportToTXT.UseStyleColors = true;
+            this.Results_button_exportToTXT.Click += new System.EventHandler(this.Button_AnalogBufferedInput_ExportToFile_Click);
+            // 
+            // LastMeasure_GridTable
+            // 
+            this.LastMeasure_GridTable.AllowUserToAddRows = false;
+            this.LastMeasure_GridTable.AllowUserToDeleteRows = false;
+            this.LastMeasure_GridTable.AllowUserToResizeColumns = false;
+            this.LastMeasure_GridTable.AllowUserToResizeRows = false;
+            this.LastMeasure_GridTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.LastMeasure_GridTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.LastMeasure_GridTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.LastMeasure_GridTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LastMeasure_GridTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.LastMeasure_GridTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.LastMeasure_GridTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.n,
+            this.Channel_1,
+            this.Channel_2,
+            this.Channel_3,
+            this.Channel_4,
+            this.Column_5,
+            this.Column_6,
+            this.Column_7,
+            this.Column_8});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.LastMeasure_GridTable.DefaultCellStyle = dataGridViewCellStyle2;
+            this.LastMeasure_GridTable.EnableHeadersVisualStyles = false;
+            this.LastMeasure_GridTable.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.LastMeasure_GridTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.LastMeasure_GridTable.Location = new System.Drawing.Point(0, 0);
+            this.LastMeasure_GridTable.Name = "LastMeasure_GridTable";
+            this.LastMeasure_GridTable.ReadOnly = true;
+            this.LastMeasure_GridTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.LastMeasure_GridTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.LastMeasure_GridTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.LastMeasure_GridTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.LastMeasure_GridTable.ShowEditingIcon = false;
+            this.LastMeasure_GridTable.Size = new System.Drawing.Size(911, 470);
+            this.LastMeasure_GridTable.Style = MetroFramework.MetroColorStyle.Blue;
+            this.LastMeasure_GridTable.TabIndex = 16;
+            this.LastMeasure_GridTable.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // n
+            // 
+            this.n.HeaderText = "n";
+            this.n.Name = "n";
+            this.n.ReadOnly = true;
+            this.n.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.n.Width = 50;
+            // 
+            // Channel_1
+            // 
+            this.Channel_1.HeaderText = "Channel 1";
+            this.Channel_1.Name = "Channel_1";
+            this.Channel_1.ReadOnly = true;
+            this.Channel_1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Channel_2
+            // 
+            this.Channel_2.HeaderText = "Channel 2";
+            this.Channel_2.Name = "Channel_2";
+            this.Channel_2.ReadOnly = true;
+            this.Channel_2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Channel_3
+            // 
+            this.Channel_3.HeaderText = "Channel 3";
+            this.Channel_3.Name = "Channel_3";
+            this.Channel_3.ReadOnly = true;
+            this.Channel_3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Channel_4
+            // 
+            this.Channel_4.HeaderText = "Channel 4";
+            this.Channel_4.Name = "Channel_4";
+            this.Channel_4.ReadOnly = true;
+            this.Channel_4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Column_5
+            // 
+            this.Column_5.HeaderText = "Channel 5";
+            this.Column_5.Name = "Column_5";
+            this.Column_5.ReadOnly = true;
+            this.Column_5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Column_6
+            // 
+            this.Column_6.HeaderText = "Channel 6";
+            this.Column_6.Name = "Column_6";
+            this.Column_6.ReadOnly = true;
+            this.Column_6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Column_7
+            // 
+            this.Column_7.HeaderText = "Channel 7";
+            this.Column_7.Name = "Column_7";
+            this.Column_7.ReadOnly = true;
+            this.Column_7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // Column_8
+            // 
+            this.Column_8.HeaderText = "Channel 8";
+            this.Column_8.Name = "Column_8";
+            this.Column_8.ReadOnly = true;
+            this.Column_8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // TabPage_AnalogBufferedInput
             // 
+            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_options);
+            this.TabPage_AnalogBufferedInput.Controls.Add(this.metroPanel2);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_details);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.metroPanel1);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_trackBar2);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_trackBar1);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_button_back);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_rate);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_textBox_rate);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_scanCount);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_intervalCount);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_channelStart);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_textBox_scanCount);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_textBox_intervalCount);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_textBox_channelStart);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_TrackBar_1);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_TrackBar_2);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_button_measure);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_textBox_channels);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_textBox_samples);
             this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_Chart);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_channels);
-            this.TabPage_AnalogBufferedInput.Controls.Add(this.ABI_label_samples);
             this.TabPage_AnalogBufferedInput.HorizontalScrollbarBarColor = true;
             this.TabPage_AnalogBufferedInput.HorizontalScrollbarHighlightOnWheel = false;
             this.TabPage_AnalogBufferedInput.HorizontalScrollbarSize = 10;
@@ -560,6 +1181,86 @@
             this.TabPage_AnalogBufferedInput.VerticalScrollbarBarColor = true;
             this.TabPage_AnalogBufferedInput.VerticalScrollbarHighlightOnWheel = false;
             this.TabPage_AnalogBufferedInput.VerticalScrollbarSize = 10;
+            // 
+            // ABI_label_options
+            // 
+            this.ABI_label_options.AutoSize = true;
+            this.ABI_label_options.Location = new System.Drawing.Point(21, 28);
+            this.ABI_label_options.Name = "ABI_label_options";
+            this.ABI_label_options.Size = new System.Drawing.Size(132, 19);
+            this.ABI_label_options.TabIndex = 72;
+            this.ABI_label_options.Text = "Measurment Options";
+            this.ABI_label_options.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // metroPanel2
+            // 
+            this.metroPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel2.Controls.Add(this.ABI_button_defaults);
+            this.metroPanel2.Controls.Add(this.ABI_checkBox_custom);
+            this.metroPanel2.Controls.Add(this.ABI_button_measureOptions);
+            this.metroPanel2.Controls.Add(this.ABI_checkBox_defaults);
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(2, 38);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(255, 101);
+            this.metroPanel2.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroPanel2.TabIndex = 71;
+            this.metroPanel2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // ABI_button_defaults
+            // 
+            this.ABI_button_defaults.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.ABI_button_defaults.Location = new System.Drawing.Point(31, 59);
+            this.ABI_button_defaults.Name = "ABI_button_defaults";
+            this.ABI_button_defaults.Size = new System.Drawing.Size(122, 22);
+            this.ABI_button_defaults.TabIndex = 71;
+            this.ABI_button_defaults.Text = "Defaults";
+            this.ABI_button_defaults.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ABI_button_defaults.UseSelectable = true;
+            this.ABI_button_defaults.Click += new System.EventHandler(this.ABI_button_defaults_Click);
+            // 
+            // ABI_checkBox_custom
+            // 
+            this.ABI_checkBox_custom.AutoSize = true;
+            this.ABI_checkBox_custom.Enabled = false;
+            this.ABI_checkBox_custom.Location = new System.Drawing.Point(177, 26);
+            this.ABI_checkBox_custom.Name = "ABI_checkBox_custom";
+            this.ABI_checkBox_custom.Size = new System.Drawing.Size(26, 15);
+            this.ABI_checkBox_custom.TabIndex = 65;
+            this.ABI_checkBox_custom.Text = " ";
+            this.ABI_checkBox_custom.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ABI_checkBox_custom.UseSelectable = true;
+            // 
+            // ABI_button_measureOptions
+            // 
+            this.ABI_button_measureOptions.FontWeight = MetroFramework.MetroButtonWeight.Regular;
+            this.ABI_button_measureOptions.Location = new System.Drawing.Point(31, 22);
+            this.ABI_button_measureOptions.Name = "ABI_button_measureOptions";
+            this.ABI_button_measureOptions.Size = new System.Drawing.Size(122, 22);
+            this.ABI_button_measureOptions.TabIndex = 54;
+            this.ABI_button_measureOptions.Text = "Custom";
+            this.ABI_button_measureOptions.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ABI_button_measureOptions.UseSelectable = true;
+            this.ABI_button_measureOptions.Click += new System.EventHandler(this.ABI_button_measureOptions_Click);
+            // 
+            // ABI_checkBox_defaults
+            // 
+            this.ABI_checkBox_defaults.AutoSize = true;
+            this.ABI_checkBox_defaults.Checked = true;
+            this.ABI_checkBox_defaults.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ABI_checkBox_defaults.Enabled = false;
+            this.ABI_checkBox_defaults.Location = new System.Drawing.Point(177, 63);
+            this.ABI_checkBox_defaults.Name = "ABI_checkBox_defaults";
+            this.ABI_checkBox_defaults.Size = new System.Drawing.Size(26, 15);
+            this.ABI_checkBox_defaults.TabIndex = 67;
+            this.ABI_checkBox_defaults.Text = " ";
+            this.ABI_checkBox_defaults.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.ABI_checkBox_defaults.UseSelectable = true;
             // 
             // ABI_label_details
             // 
@@ -682,110 +1383,6 @@
             this.ABI_button_back.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ABI_button_back.UseSelectable = true;
             this.ABI_button_back.Click += new System.EventHandler(this.Button_AnalogBufferedInput_Back_Click);
-            // 
-            // ABI_label_rate
-            // 
-            this.ABI_label_rate.Location = new System.Drawing.Point(0, 155);
-            this.ABI_label_rate.Name = "ABI_label_rate";
-            this.ABI_label_rate.Size = new System.Drawing.Size(102, 19);
-            this.ABI_label_rate.TabIndex = 48;
-            this.ABI_label_rate.Text = "Rate";
-            this.ABI_label_rate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ABI_label_rate.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ABI_textBox_rate
-            // 
-            this.ABI_textBox_rate.Lines = new string[] {
-        "100"};
-            this.ABI_textBox_rate.Location = new System.Drawing.Point(126, 154);
-            this.ABI_textBox_rate.MaxLength = 32767;
-            this.ABI_textBox_rate.Name = "ABI_textBox_rate";
-            this.ABI_textBox_rate.PasswordChar = '\0';
-            this.ABI_textBox_rate.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ABI_textBox_rate.SelectedText = "";
-            this.ABI_textBox_rate.Size = new System.Drawing.Size(97, 20);
-            this.ABI_textBox_rate.TabIndex = 47;
-            this.ABI_textBox_rate.Text = "100";
-            this.ABI_textBox_rate.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ABI_textBox_rate.UseSelectable = true;
-            // 
-            // ABI_label_scanCount
-            // 
-            this.ABI_label_scanCount.Location = new System.Drawing.Point(-4, 129);
-            this.ABI_label_scanCount.Name = "ABI_label_scanCount";
-            this.ABI_label_scanCount.Size = new System.Drawing.Size(106, 19);
-            this.ABI_label_scanCount.TabIndex = 46;
-            this.ABI_label_scanCount.Text = "Scan Count";
-            this.ABI_label_scanCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ABI_label_scanCount.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ABI_label_intervalCount
-            // 
-            this.ABI_label_intervalCount.Location = new System.Drawing.Point(-4, 103);
-            this.ABI_label_intervalCount.Name = "ABI_label_intervalCount";
-            this.ABI_label_intervalCount.Size = new System.Drawing.Size(106, 19);
-            this.ABI_label_intervalCount.TabIndex = 45;
-            this.ABI_label_intervalCount.Text = "Interval Count";
-            this.ABI_label_intervalCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ABI_label_intervalCount.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ABI_label_channelStart
-            // 
-            this.ABI_label_channelStart.Location = new System.Drawing.Point(-4, 75);
-            this.ABI_label_channelStart.Name = "ABI_label_channelStart";
-            this.ABI_label_channelStart.Size = new System.Drawing.Size(106, 19);
-            this.ABI_label_channelStart.TabIndex = 44;
-            this.ABI_label_channelStart.Text = "Channel Start";
-            this.ABI_label_channelStart.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ABI_label_channelStart.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ABI_textBox_scanCount
-            // 
-            this.ABI_textBox_scanCount.Lines = new string[] {
-        "10"};
-            this.ABI_textBox_scanCount.Location = new System.Drawing.Point(126, 128);
-            this.ABI_textBox_scanCount.MaxLength = 32767;
-            this.ABI_textBox_scanCount.Name = "ABI_textBox_scanCount";
-            this.ABI_textBox_scanCount.PasswordChar = '\0';
-            this.ABI_textBox_scanCount.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ABI_textBox_scanCount.SelectedText = "";
-            this.ABI_textBox_scanCount.Size = new System.Drawing.Size(97, 20);
-            this.ABI_textBox_scanCount.TabIndex = 43;
-            this.ABI_textBox_scanCount.Text = "10";
-            this.ABI_textBox_scanCount.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ABI_textBox_scanCount.UseSelectable = true;
-            // 
-            // ABI_textBox_intervalCount
-            // 
-            this.ABI_textBox_intervalCount.Lines = new string[] {
-        "512"};
-            this.ABI_textBox_intervalCount.Location = new System.Drawing.Point(126, 102);
-            this.ABI_textBox_intervalCount.MaxLength = 32767;
-            this.ABI_textBox_intervalCount.Name = "ABI_textBox_intervalCount";
-            this.ABI_textBox_intervalCount.PasswordChar = '\0';
-            this.ABI_textBox_intervalCount.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ABI_textBox_intervalCount.SelectedText = "";
-            this.ABI_textBox_intervalCount.Size = new System.Drawing.Size(97, 20);
-            this.ABI_textBox_intervalCount.TabIndex = 42;
-            this.ABI_textBox_intervalCount.Text = "512";
-            this.ABI_textBox_intervalCount.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ABI_textBox_intervalCount.UseSelectable = true;
-            // 
-            // ABI_textBox_channelStart
-            // 
-            this.ABI_textBox_channelStart.Lines = new string[] {
-        "0"};
-            this.ABI_textBox_channelStart.Location = new System.Drawing.Point(126, 75);
-            this.ABI_textBox_channelStart.MaxLength = 32767;
-            this.ABI_textBox_channelStart.Name = "ABI_textBox_channelStart";
-            this.ABI_textBox_channelStart.PasswordChar = '\0';
-            this.ABI_textBox_channelStart.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.ABI_textBox_channelStart.SelectedText = "";
-            this.ABI_textBox_channelStart.Size = new System.Drawing.Size(97, 20);
-            this.ABI_textBox_channelStart.TabIndex = 41;
-            this.ABI_textBox_channelStart.Text = "0";
-            this.ABI_textBox_channelStart.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.ABI_textBox_channelStart.UseSelectable = true;
             // 
             // ABI_TrackBar_1
             // 
@@ -1519,185 +2116,6 @@
             this.AII_Chart.AxisViewChanged += new System.EventHandler<System.Windows.Forms.DataVisualization.Charting.ViewEventArgs>(this.Chart_AnalogInstantInput_AxisViewChanged);
             this.AII_Chart.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Chart_AnalogInstantInput_MouseClick);
             // 
-            // TabPage_LastMeasure
-            // 
-            this.TabPage_LastMeasure.BackColor = System.Drawing.Color.Transparent;
-            this.TabPage_LastMeasure.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.TabPage_LastMeasure.Controls.Add(this.Panel_Results);
-            this.TabPage_LastMeasure.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TabPage_LastMeasure.ForeColor = System.Drawing.Color.Lime;
-            this.TabPage_LastMeasure.HorizontalScrollbarBarColor = true;
-            this.TabPage_LastMeasure.HorizontalScrollbarHighlightOnWheel = false;
-            this.TabPage_LastMeasure.HorizontalScrollbarSize = 10;
-            this.TabPage_LastMeasure.Location = new System.Drawing.Point(4, 38);
-            this.TabPage_LastMeasure.Name = "TabPage_LastMeasure";
-            this.TabPage_LastMeasure.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TabPage_LastMeasure.Size = new System.Drawing.Size(917, 580);
-            this.TabPage_LastMeasure.Style = MetroFramework.MetroColorStyle.Orange;
-            this.TabPage_LastMeasure.TabIndex = 5;
-            this.TabPage_LastMeasure.Text = "Results";
-            this.TabPage_LastMeasure.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TabPage_LastMeasure.UseCustomForeColor = true;
-            this.TabPage_LastMeasure.VerticalScrollbarBarColor = true;
-            this.TabPage_LastMeasure.VerticalScrollbarHighlightOnWheel = false;
-            this.TabPage_LastMeasure.VerticalScrollbarSize = 10;
-            // 
-            // Panel_Results
-            // 
-            this.Panel_Results.Controls.Add(this.Results_button_exportToTXT);
-            this.Panel_Results.Controls.Add(this.LastMeasure_GridTable);
-            this.Panel_Results.HorizontalScrollbarBarColor = true;
-            this.Panel_Results.HorizontalScrollbarHighlightOnWheel = false;
-            this.Panel_Results.HorizontalScrollbarSize = 10;
-            this.Panel_Results.Location = new System.Drawing.Point(3, 25);
-            this.Panel_Results.Name = "Panel_Results";
-            this.Panel_Results.Size = new System.Drawing.Size(914, 550);
-            this.Panel_Results.TabIndex = 17;
-            this.Panel_Results.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Panel_Results.VerticalScrollbarBarColor = true;
-            this.Panel_Results.VerticalScrollbarHighlightOnWheel = false;
-            this.Panel_Results.VerticalScrollbarSize = 10;
-            // 
-            // Results_button_exportToTXT
-            // 
-            this.Results_button_exportToTXT.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.Results_button_exportToTXT.FontWeight = MetroFramework.MetroButtonWeight.Regular;
-            this.Results_button_exportToTXT.Highlight = true;
-            this.Results_button_exportToTXT.Location = new System.Drawing.Point(779, 489);
-            this.Results_button_exportToTXT.Name = "Results_button_exportToTXT";
-            this.Results_button_exportToTXT.Size = new System.Drawing.Size(114, 36);
-            this.Results_button_exportToTXT.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Results_button_exportToTXT.TabIndex = 51;
-            this.Results_button_exportToTXT.Text = "Save";
-            this.Results_button_exportToTXT.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Results_button_exportToTXT.UseSelectable = true;
-            this.Results_button_exportToTXT.UseStyleColors = true;
-            this.Results_button_exportToTXT.Click += new System.EventHandler(this.Button_AnalogBufferedInput_ExportToFile_Click);
-            // 
-            // LastMeasure_GridTable
-            // 
-            this.LastMeasure_GridTable.AllowUserToAddRows = false;
-            this.LastMeasure_GridTable.AllowUserToDeleteRows = false;
-            this.LastMeasure_GridTable.AllowUserToResizeColumns = false;
-            this.LastMeasure_GridTable.AllowUserToResizeRows = false;
-            this.LastMeasure_GridTable.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.LastMeasure_GridTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.LastMeasure_GridTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.LastMeasure_GridTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LastMeasure_GridTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.LastMeasure_GridTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.LastMeasure_GridTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.n,
-            this.Channel_1,
-            this.Channel_2,
-            this.Channel_3,
-            this.Channel_4,
-            this.Column_5,
-            this.Column_6,
-            this.Column_7,
-            this.Column_8});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.LastMeasure_GridTable.DefaultCellStyle = dataGridViewCellStyle2;
-            this.LastMeasure_GridTable.EnableHeadersVisualStyles = false;
-            this.LastMeasure_GridTable.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.LastMeasure_GridTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.LastMeasure_GridTable.Location = new System.Drawing.Point(0, 0);
-            this.LastMeasure_GridTable.Name = "LastMeasure_GridTable";
-            this.LastMeasure_GridTable.ReadOnly = true;
-            this.LastMeasure_GridTable.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.LastMeasure_GridTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.LastMeasure_GridTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.LastMeasure_GridTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.LastMeasure_GridTable.ShowEditingIcon = false;
-            this.LastMeasure_GridTable.Size = new System.Drawing.Size(911, 470);
-            this.LastMeasure_GridTable.Style = MetroFramework.MetroColorStyle.Blue;
-            this.LastMeasure_GridTable.TabIndex = 16;
-            this.LastMeasure_GridTable.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // n
-            // 
-            this.n.HeaderText = "n";
-            this.n.Name = "n";
-            this.n.ReadOnly = true;
-            this.n.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.n.Width = 50;
-            // 
-            // Channel_1
-            // 
-            this.Channel_1.HeaderText = "Channel 1";
-            this.Channel_1.Name = "Channel_1";
-            this.Channel_1.ReadOnly = true;
-            this.Channel_1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Channel_2
-            // 
-            this.Channel_2.HeaderText = "Channel 2";
-            this.Channel_2.Name = "Channel_2";
-            this.Channel_2.ReadOnly = true;
-            this.Channel_2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Channel_3
-            // 
-            this.Channel_3.HeaderText = "Channel 3";
-            this.Channel_3.Name = "Channel_3";
-            this.Channel_3.ReadOnly = true;
-            this.Channel_3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Channel_4
-            // 
-            this.Channel_4.HeaderText = "Channel 4";
-            this.Channel_4.Name = "Channel_4";
-            this.Channel_4.ReadOnly = true;
-            this.Channel_4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Column_5
-            // 
-            this.Column_5.HeaderText = "Channel 5";
-            this.Column_5.Name = "Column_5";
-            this.Column_5.ReadOnly = true;
-            this.Column_5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Column_6
-            // 
-            this.Column_6.HeaderText = "Channel 6";
-            this.Column_6.Name = "Column_6";
-            this.Column_6.ReadOnly = true;
-            this.Column_6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Column_7
-            // 
-            this.Column_7.HeaderText = "Channel 7";
-            this.Column_7.Name = "Column_7";
-            this.Column_7.ReadOnly = true;
-            this.Column_7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // Column_8
-            // 
-            this.Column_8.HeaderText = "Channel 8";
-            this.Column_8.Name = "Column_8";
-            this.Column_8.ReadOnly = true;
-            this.Column_8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
             // TabPage_ShowMeasure
             // 
             this.TabPage_ShowMeasure.AutoScrollMargin = new System.Drawing.Size(0, 150);
@@ -1723,6 +2141,26 @@
             this.TabPage_ShowMeasure.VerticalScrollbarBarColor = false;
             this.TabPage_ShowMeasure.VerticalScrollbarHighlightOnWheel = false;
             this.TabPage_ShowMeasure.VerticalScrollbarSize = 10;
+            // 
+            // ShowMeasure_label_trackBar2
+            // 
+            this.ShowMeasure_label_trackBar2.Location = new System.Drawing.Point(301, 327);
+            this.ShowMeasure_label_trackBar2.Name = "ShowMeasure_label_trackBar2";
+            this.ShowMeasure_label_trackBar2.Size = new System.Drawing.Size(120, 19);
+            this.ShowMeasure_label_trackBar2.TabIndex = 83;
+            this.ShowMeasure_label_trackBar2.Text = "Position X: 50 %";
+            this.ShowMeasure_label_trackBar2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowMeasure_label_trackBar2.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ShowMeasure_label_trackBar1
+            // 
+            this.ShowMeasure_label_trackBar1.Location = new System.Drawing.Point(319, 291);
+            this.ShowMeasure_label_trackBar1.Name = "ShowMeasure_label_trackBar1";
+            this.ShowMeasure_label_trackBar1.Size = new System.Drawing.Size(102, 19);
+            this.ShowMeasure_label_trackBar1.TabIndex = 82;
+            this.ShowMeasure_label_trackBar1.Text = "Zoom X: 50 %";
+            this.ShowMeasure_label_trackBar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ShowMeasure_label_trackBar1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // ShowMeasure_grid
             // 
@@ -2257,515 +2695,6 @@
             this.ShowMeasure_chart.TabIndex = 5;
             this.ShowMeasure_chart.Text = "chart2";
             this.ShowMeasure_chart.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
-            // 
-            // TabPage_Options
-            // 
-            this.TabPage_Options.AutoScrollMargin = new System.Drawing.Size(0, 950);
-            this.TabPage_Options.Controls.Add(this.Options_label_commentOptions);
-            this.TabPage_Options.Controls.Add(this.Options_panel_comments);
-            this.TabPage_Options.Controls.Add(this.Options_scrollBar);
-            this.TabPage_Options.Controls.Add(this.Options_button_backToDefaults);
-            this.TabPage_Options.Controls.Add(this.Options_button_applyChanges);
-            this.TabPage_Options.Controls.Add(this.Options_label_card);
-            this.TabPage_Options.Controls.Add(this.Options_label_theme);
-            this.TabPage_Options.Controls.Add(this.Options_label_language);
-            this.TabPage_Options.Controls.Add(this.Options_panel_card);
-            this.TabPage_Options.Controls.Add(this.Options_panel_language);
-            this.TabPage_Options.Controls.Add(this.Options_panel_theme);
-            this.TabPage_Options.Controls.Add(this.Options_label_database);
-            this.TabPage_Options.Controls.Add(this.Options_panel_database);
-            this.TabPage_Options.HorizontalScrollbarBarColor = false;
-            this.TabPage_Options.HorizontalScrollbarHighlightOnWheel = false;
-            this.TabPage_Options.HorizontalScrollbarSize = 10;
-            this.TabPage_Options.Location = new System.Drawing.Point(4, 38);
-            this.TabPage_Options.Name = "TabPage_Options";
-            this.TabPage_Options.Size = new System.Drawing.Size(917, 580);
-            this.TabPage_Options.Style = MetroFramework.MetroColorStyle.Black;
-            this.TabPage_Options.TabIndex = 4;
-            this.TabPage_Options.Text = "Options";
-            this.TabPage_Options.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.TabPage_Options.VerticalScrollbarBarColor = false;
-            this.TabPage_Options.VerticalScrollbarHighlightOnWheel = false;
-            this.TabPage_Options.VerticalScrollbarSize = 10;
-            // 
-            // Options_label_commentOptions
-            // 
-            this.Options_label_commentOptions.AutoSize = true;
-            this.Options_label_commentOptions.Location = new System.Drawing.Point(77, 741);
-            this.Options_label_commentOptions.Name = "Options_label_commentOptions";
-            this.Options_label_commentOptions.Size = new System.Drawing.Size(118, 19);
-            this.Options_label_commentOptions.TabIndex = 24;
-            this.Options_label_commentOptions.Text = "Comment Options";
-            this.Options_label_commentOptions.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_panel_comments
-            // 
-            this.Options_panel_comments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_panel_comments.Controls.Add(this.Options_textBox_userComment);
-            this.Options_panel_comments.Controls.Add(this.Options_label_adminComment);
-            this.Options_panel_comments.Controls.Add(this.Options_textBox_adminComment);
-            this.Options_panel_comments.Controls.Add(this.Options_label_userComment);
-            this.Options_panel_comments.HorizontalScrollbarBarColor = true;
-            this.Options_panel_comments.HorizontalScrollbarHighlightOnWheel = false;
-            this.Options_panel_comments.HorizontalScrollbarSize = 10;
-            this.Options_panel_comments.Location = new System.Drawing.Point(60, 750);
-            this.Options_panel_comments.Name = "Options_panel_comments";
-            this.Options_panel_comments.Size = new System.Drawing.Size(374, 324);
-            this.Options_panel_comments.TabIndex = 23;
-            this.Options_panel_comments.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_panel_comments.VerticalScrollbarBarColor = true;
-            this.Options_panel_comments.VerticalScrollbarHighlightOnWheel = false;
-            this.Options_panel_comments.VerticalScrollbarSize = 10;
-            // 
-            // Options_textBox_userComment
-            // 
-            this.Options_textBox_userComment.Lines = new string[] {
-        "This is user comment - I got some errors!"};
-            this.Options_textBox_userComment.Location = new System.Drawing.Point(119, 27);
-            this.Options_textBox_userComment.MaxLength = 32767;
-            this.Options_textBox_userComment.Multiline = true;
-            this.Options_textBox_userComment.Name = "Options_textBox_userComment";
-            this.Options_textBox_userComment.PasswordChar = '\0';
-            this.Options_textBox_userComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Options_textBox_userComment.SelectedText = "";
-            this.Options_textBox_userComment.Size = new System.Drawing.Size(222, 77);
-            this.Options_textBox_userComment.TabIndex = 5;
-            this.Options_textBox_userComment.Text = "This is user comment - I got some errors!";
-            this.Options_textBox_userComment.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_userComment.UseSelectable = true;
-            // 
-            // Options_label_adminComment
-            // 
-            this.Options_label_adminComment.Location = new System.Drawing.Point(16, 141);
-            this.Options_label_adminComment.Name = "Options_label_adminComment";
-            this.Options_label_adminComment.Size = new System.Drawing.Size(75, 53);
-            this.Options_label_adminComment.TabIndex = 10;
-            this.Options_label_adminComment.Text = "Admin Comment";
-            this.Options_label_adminComment.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_label_adminComment.WrapToLine = true;
-            // 
-            // Options_textBox_adminComment
-            // 
-            this.Options_textBox_adminComment.Lines = new string[] {
-        "This is admin comment - some instructions for user, with also will be printed to " +
-            "output measurment file."};
-            this.Options_textBox_adminComment.Location = new System.Drawing.Point(119, 140);
-            this.Options_textBox_adminComment.MaxLength = 32767;
-            this.Options_textBox_adminComment.Multiline = true;
-            this.Options_textBox_adminComment.Name = "Options_textBox_adminComment";
-            this.Options_textBox_adminComment.PasswordChar = '\0';
-            this.Options_textBox_adminComment.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.Options_textBox_adminComment.SelectedText = "";
-            this.Options_textBox_adminComment.Size = new System.Drawing.Size(222, 166);
-            this.Options_textBox_adminComment.TabIndex = 7;
-            this.Options_textBox_adminComment.Text = "This is admin comment - some instructions for user, with also will be printed to " +
-    "output measurment file.";
-            this.Options_textBox_adminComment.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_adminComment.UseSelectable = true;
-            this.Options_textBox_adminComment.Enter += new System.EventHandler(this.metroTextBox4_Enter);
-            // 
-            // Options_label_userComment
-            // 
-            this.Options_label_userComment.Location = new System.Drawing.Point(17, 27);
-            this.Options_label_userComment.Name = "Options_label_userComment";
-            this.Options_label_userComment.Size = new System.Drawing.Size(74, 47);
-            this.Options_label_userComment.TabIndex = 8;
-            this.Options_label_userComment.Text = "User Comment";
-            this.Options_label_userComment.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_label_userComment.WrapToLine = true;
-            // 
-            // Options_scrollBar
-            // 
-            this.Options_scrollBar.LargeChange = 10;
-            this.Options_scrollBar.Location = new System.Drawing.Point(896, 20);
-            this.Options_scrollBar.Maximum = 100;
-            this.Options_scrollBar.Minimum = 0;
-            this.Options_scrollBar.MouseWheelBarPartitions = 10;
-            this.Options_scrollBar.Name = "Options_scrollBar";
-            this.Options_scrollBar.Orientation = MetroFramework.Controls.MetroScrollOrientation.Vertical;
-            this.Options_scrollBar.ScrollbarSize = 25;
-            this.Options_scrollBar.Size = new System.Drawing.Size(25, 950);
-            this.Options_scrollBar.TabIndex = 22;
-            this.Options_scrollBar.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_scrollBar.UseSelectable = true;
-            this.Options_scrollBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.metroScrollBar2_Scroll);
-            // 
-            // Options_button_backToDefaults
-            // 
-            this.Options_button_backToDefaults.Location = new System.Drawing.Point(497, 46);
-            this.Options_button_backToDefaults.Name = "Options_button_backToDefaults";
-            this.Options_button_backToDefaults.Size = new System.Drawing.Size(183, 51);
-            this.Options_button_backToDefaults.TabIndex = 20;
-            this.Options_button_backToDefaults.Text = "Back to defaults";
-            this.Options_button_backToDefaults.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_button_backToDefaults.UseSelectable = true;
-            this.Options_button_backToDefaults.Click += new System.EventHandler(this.Button_Options_BackToDefaults_Click);
-            // 
-            // Options_button_applyChanges
-            // 
-            this.Options_button_applyChanges.Location = new System.Drawing.Point(698, 46);
-            this.Options_button_applyChanges.Name = "Options_button_applyChanges";
-            this.Options_button_applyChanges.Size = new System.Drawing.Size(183, 51);
-            this.Options_button_applyChanges.TabIndex = 19;
-            this.Options_button_applyChanges.Text = "Apply changes";
-            this.Options_button_applyChanges.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_button_applyChanges.UseSelectable = true;
-            this.Options_button_applyChanges.Click += new System.EventHandler(this.Button_Options_ApplyChanges_Click);
-            // 
-            // Options_label_card
-            // 
-            this.Options_label_card.AutoSize = true;
-            this.Options_label_card.Location = new System.Drawing.Point(78, 581);
-            this.Options_label_card.Name = "Options_label_card";
-            this.Options_label_card.Size = new System.Drawing.Size(88, 19);
-            this.Options_label_card.TabIndex = 18;
-            this.Options_label_card.Text = "Card Options";
-            this.Options_label_card.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_label_theme
-            // 
-            this.Options_label_theme.AutoSize = true;
-            this.Options_label_theme.Location = new System.Drawing.Point(79, 36);
-            this.Options_label_theme.Name = "Options_label_theme";
-            this.Options_label_theme.Size = new System.Drawing.Size(99, 19);
-            this.Options_label_theme.TabIndex = 17;
-            this.Options_label_theme.Text = "Theme Options";
-            this.Options_label_theme.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_label_language
-            // 
-            this.Options_label_language.AutoSize = true;
-            this.Options_label_language.Location = new System.Drawing.Point(79, 120);
-            this.Options_label_language.Name = "Options_label_language";
-            this.Options_label_language.Size = new System.Drawing.Size(116, 19);
-            this.Options_label_language.TabIndex = 16;
-            this.Options_label_language.Text = "Language Options";
-            this.Options_label_language.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_panel_card
-            // 
-            this.Options_panel_card.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_panel_card.Controls.Add(this.Options_label_cardModule);
-            this.Options_panel_card.Controls.Add(this.Options_label_cardNumber);
-            this.Options_panel_card.Controls.Add(this.Options_textBox_cardModule);
-            this.Options_panel_card.Controls.Add(this.Options_textBox_cardNumber);
-            this.Options_panel_card.Controls.Add(this.Options_textBox_cardName);
-            this.Options_panel_card.Controls.Add(this.Options_label_cardName);
-            this.Options_panel_card.HorizontalScrollbarBarColor = true;
-            this.Options_panel_card.HorizontalScrollbarHighlightOnWheel = false;
-            this.Options_panel_card.HorizontalScrollbarSize = 10;
-            this.Options_panel_card.Location = new System.Drawing.Point(60, 591);
-            this.Options_panel_card.Name = "Options_panel_card";
-            this.Options_panel_card.Size = new System.Drawing.Size(374, 135);
-            this.Options_panel_card.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Options_panel_card.TabIndex = 15;
-            this.Options_panel_card.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_panel_card.VerticalScrollbarBarColor = true;
-            this.Options_panel_card.VerticalScrollbarHighlightOnWheel = false;
-            this.Options_panel_card.VerticalScrollbarSize = 10;
-            // 
-            // Options_label_cardModule
-            // 
-            this.Options_label_cardModule.AutoSize = true;
-            this.Options_label_cardModule.Location = new System.Drawing.Point(16, 94);
-            this.Options_label_cardModule.Name = "Options_label_cardModule";
-            this.Options_label_cardModule.Size = new System.Drawing.Size(87, 19);
-            this.Options_label_cardModule.TabIndex = 12;
-            this.Options_label_cardModule.Text = "Card module";
-            this.Options_label_cardModule.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_label_cardNumber
-            // 
-            this.Options_label_cardNumber.AutoSize = true;
-            this.Options_label_cardNumber.Location = new System.Drawing.Point(16, 57);
-            this.Options_label_cardNumber.Name = "Options_label_cardNumber";
-            this.Options_label_cardNumber.Size = new System.Drawing.Size(88, 19);
-            this.Options_label_cardNumber.TabIndex = 11;
-            this.Options_label_cardNumber.Text = "Card number";
-            this.Options_label_cardNumber.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_textBox_cardModule
-            // 
-            this.Options_textBox_cardModule.Lines = new string[] {
-        "0"};
-            this.Options_textBox_cardModule.Location = new System.Drawing.Point(119, 93);
-            this.Options_textBox_cardModule.MaxLength = 32767;
-            this.Options_textBox_cardModule.Name = "Options_textBox_cardModule";
-            this.Options_textBox_cardModule.PasswordChar = '\0';
-            this.Options_textBox_cardModule.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Options_textBox_cardModule.SelectedText = "";
-            this.Options_textBox_cardModule.Size = new System.Drawing.Size(222, 20);
-            this.Options_textBox_cardModule.TabIndex = 10;
-            this.Options_textBox_cardModule.Text = "0";
-            this.Options_textBox_cardModule.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_cardModule.UseSelectable = true;
-            // 
-            // Options_textBox_cardNumber
-            // 
-            this.Options_textBox_cardNumber.Lines = new string[] {
-        "0"};
-            this.Options_textBox_cardNumber.Location = new System.Drawing.Point(119, 56);
-            this.Options_textBox_cardNumber.MaxLength = 32767;
-            this.Options_textBox_cardNumber.Name = "Options_textBox_cardNumber";
-            this.Options_textBox_cardNumber.PasswordChar = '\0';
-            this.Options_textBox_cardNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Options_textBox_cardNumber.SelectedText = "";
-            this.Options_textBox_cardNumber.Size = new System.Drawing.Size(222, 20);
-            this.Options_textBox_cardNumber.TabIndex = 9;
-            this.Options_textBox_cardNumber.Text = "0";
-            this.Options_textBox_cardNumber.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_cardNumber.UseSelectable = true;
-            // 
-            // Options_textBox_cardName
-            // 
-            this.Options_textBox_cardName.Lines = new string[] {
-        "DemoDevice1"};
-            this.Options_textBox_cardName.Location = new System.Drawing.Point(119, 20);
-            this.Options_textBox_cardName.MaxLength = 32767;
-            this.Options_textBox_cardName.Name = "Options_textBox_cardName";
-            this.Options_textBox_cardName.PasswordChar = '\0';
-            this.Options_textBox_cardName.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Options_textBox_cardName.SelectedText = "";
-            this.Options_textBox_cardName.Size = new System.Drawing.Size(222, 20);
-            this.Options_textBox_cardName.TabIndex = 7;
-            this.Options_textBox_cardName.Text = "DemoDevice1";
-            this.Options_textBox_cardName.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_cardName.UseSelectable = true;
-            // 
-            // Options_label_cardName
-            // 
-            this.Options_label_cardName.AutoSize = true;
-            this.Options_label_cardName.Location = new System.Drawing.Point(16, 21);
-            this.Options_label_cardName.Name = "Options_label_cardName";
-            this.Options_label_cardName.Size = new System.Drawing.Size(75, 19);
-            this.Options_label_cardName.TabIndex = 8;
-            this.Options_label_cardName.Text = "Card name";
-            this.Options_label_cardName.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_panel_language
-            // 
-            this.Options_panel_language.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_panel_language.Controls.Add(this.Options_radioButton_english);
-            this.Options_panel_language.Controls.Add(this.Options_radioButton_polski);
-            this.Options_panel_language.HorizontalScrollbarBarColor = true;
-            this.Options_panel_language.HorizontalScrollbarHighlightOnWheel = false;
-            this.Options_panel_language.HorizontalScrollbarSize = 10;
-            this.Options_panel_language.Location = new System.Drawing.Point(60, 129);
-            this.Options_panel_language.Name = "Options_panel_language";
-            this.Options_panel_language.Size = new System.Drawing.Size(373, 81);
-            this.Options_panel_language.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Options_panel_language.TabIndex = 14;
-            this.Options_panel_language.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_panel_language.VerticalScrollbarBarColor = true;
-            this.Options_panel_language.VerticalScrollbarHighlightOnWheel = false;
-            this.Options_panel_language.VerticalScrollbarSize = 10;
-            // 
-            // Options_radioButton_english
-            // 
-            this.Options_radioButton_english.AutoSize = true;
-            this.Options_radioButton_english.Checked = true;
-            this.Options_radioButton_english.Location = new System.Drawing.Point(25, 43);
-            this.Options_radioButton_english.Name = "Options_radioButton_english";
-            this.Options_radioButton_english.Size = new System.Drawing.Size(61, 15);
-            this.Options_radioButton_english.TabIndex = 4;
-            this.Options_radioButton_english.TabStop = true;
-            this.Options_radioButton_english.Text = "English";
-            this.Options_radioButton_english.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_radioButton_english.UseSelectable = true;
-            this.Options_radioButton_english.CheckedChanged += new System.EventHandler(this.RadioButton_Options_English_CheckedChanged);
-            // 
-            // Options_radioButton_polski
-            // 
-            this.Options_radioButton_polski.AutoSize = true;
-            this.Options_radioButton_polski.Location = new System.Drawing.Point(26, 22);
-            this.Options_radioButton_polski.Name = "Options_radioButton_polski";
-            this.Options_radioButton_polski.Size = new System.Drawing.Size(54, 15);
-            this.Options_radioButton_polski.TabIndex = 3;
-            this.Options_radioButton_polski.Text = "Polski";
-            this.Options_radioButton_polski.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_radioButton_polski.UseSelectable = true;
-            this.Options_radioButton_polski.CheckedChanged += new System.EventHandler(this.RadioButton_Options_Polski_CheckedChanged);
-            // 
-            // Options_panel_theme
-            // 
-            this.Options_panel_theme.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_panel_theme.Controls.Add(this.Options_toggle_layout);
-            this.Options_panel_theme.HorizontalScrollbarBarColor = true;
-            this.Options_panel_theme.HorizontalScrollbarHighlightOnWheel = false;
-            this.Options_panel_theme.HorizontalScrollbarSize = 10;
-            this.Options_panel_theme.Location = new System.Drawing.Point(60, 46);
-            this.Options_panel_theme.Name = "Options_panel_theme";
-            this.Options_panel_theme.Size = new System.Drawing.Size(373, 63);
-            this.Options_panel_theme.Style = MetroFramework.MetroColorStyle.Blue;
-            this.Options_panel_theme.TabIndex = 13;
-            this.Options_panel_theme.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_panel_theme.VerticalScrollbarBarColor = true;
-            this.Options_panel_theme.VerticalScrollbarHighlightOnWheel = false;
-            this.Options_panel_theme.VerticalScrollbarSize = 10;
-            // 
-            // Options_toggle_layout
-            // 
-            this.Options_toggle_layout.AutoSize = true;
-            this.Options_toggle_layout.FontWeight = MetroFramework.MetroLinkWeight.Bold;
-            this.Options_toggle_layout.Location = new System.Drawing.Point(25, 20);
-            this.Options_toggle_layout.Name = "Options_toggle_layout";
-            this.Options_toggle_layout.Size = new System.Drawing.Size(80, 17);
-            this.Options_toggle_layout.TabIndex = 2;
-            this.Options_toggle_layout.Text = "Off";
-            this.Options_toggle_layout.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_toggle_layout.ThreeState = true;
-            this.Options_toggle_layout.UseSelectable = true;
-            this.Options_toggle_layout.CheckedChanged += new System.EventHandler(this.metroToggle1_CheckedChanged);
-            // 
-            // Options_label_database
-            // 
-            this.Options_label_database.AutoSize = true;
-            this.Options_label_database.Location = new System.Drawing.Point(79, 223);
-            this.Options_label_database.Name = "Options_label_database";
-            this.Options_label_database.Size = new System.Drawing.Size(113, 19);
-            this.Options_label_database.TabIndex = 12;
-            this.Options_label_database.Text = "Database Options";
-            this.Options_label_database.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_panel_database
-            // 
-            this.Options_panel_database.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Options_panel_database.Controls.Add(this.Options_button_clearResults);
-            this.Options_panel_database.Controls.Add(this.Options_textBox_port);
-            this.Options_panel_database.Controls.Add(this.Options_label_port);
-            this.Options_panel_database.Controls.Add(this.Options_textBox_baza);
-            this.Options_panel_database.Controls.Add(this.Options_label_password);
-            this.Options_panel_database.Controls.Add(this.Options_label_baza);
-            this.Options_panel_database.Controls.Add(this.Options_textBox_password);
-            this.Options_panel_database.Controls.Add(this.Options_textBox_user);
-            this.Options_panel_database.Controls.Add(this.Options_label_user);
-            this.Options_panel_database.HorizontalScrollbarBarColor = true;
-            this.Options_panel_database.HorizontalScrollbarHighlightOnWheel = false;
-            this.Options_panel_database.HorizontalScrollbarSize = 10;
-            this.Options_panel_database.Location = new System.Drawing.Point(60, 232);
-            this.Options_panel_database.Name = "Options_panel_database";
-            this.Options_panel_database.Size = new System.Drawing.Size(373, 335);
-            this.Options_panel_database.TabIndex = 11;
-            this.Options_panel_database.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_panel_database.VerticalScrollbarBarColor = true;
-            this.Options_panel_database.VerticalScrollbarHighlightOnWheel = false;
-            this.Options_panel_database.VerticalScrollbarSize = 10;
-            // 
-            // Options_button_clearResults
-            // 
-            this.Options_button_clearResults.Location = new System.Drawing.Point(16, 198);
-            this.Options_button_clearResults.Name = "Options_button_clearResults";
-            this.Options_button_clearResults.Size = new System.Drawing.Size(112, 42);
-            this.Options_button_clearResults.TabIndex = 25;
-            this.Options_button_clearResults.Text = "Clear results";
-            this.Options_button_clearResults.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_button_clearResults.UseSelectable = true;
-            this.Options_button_clearResults.Click += new System.EventHandler(this.Button_Options_ClearResults_Click);
-            // 
-            // Options_textBox_port
-            // 
-            this.Options_textBox_port.Lines = new string[] {
-        "3306"};
-            this.Options_textBox_port.Location = new System.Drawing.Point(135, 59);
-            this.Options_textBox_port.MaxLength = 32767;
-            this.Options_textBox_port.Name = "Options_textBox_port";
-            this.Options_textBox_port.PasswordChar = '\0';
-            this.Options_textBox_port.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Options_textBox_port.SelectedText = "";
-            this.Options_textBox_port.Size = new System.Drawing.Size(222, 20);
-            this.Options_textBox_port.TabIndex = 19;
-            this.Options_textBox_port.Text = "3306";
-            this.Options_textBox_port.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_port.UseSelectable = true;
-            // 
-            // Options_label_port
-            // 
-            this.Options_label_port.AutoSize = true;
-            this.Options_label_port.Location = new System.Drawing.Point(83, 59);
-            this.Options_label_port.Name = "Options_label_port";
-            this.Options_label_port.Size = new System.Drawing.Size(34, 19);
-            this.Options_label_port.TabIndex = 20;
-            this.Options_label_port.Text = "Port";
-            this.Options_label_port.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_textBox_baza
-            // 
-            this.Options_textBox_baza.Lines = new string[] {
-        "localhost"};
-            this.Options_textBox_baza.Location = new System.Drawing.Point(135, 27);
-            this.Options_textBox_baza.MaxLength = 32767;
-            this.Options_textBox_baza.Name = "Options_textBox_baza";
-            this.Options_textBox_baza.PasswordChar = '\0';
-            this.Options_textBox_baza.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Options_textBox_baza.SelectedText = "";
-            this.Options_textBox_baza.Size = new System.Drawing.Size(222, 20);
-            this.Options_textBox_baza.TabIndex = 5;
-            this.Options_textBox_baza.Text = "localhost";
-            this.Options_textBox_baza.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_baza.UseSelectable = true;
-            // 
-            // Options_label_password
-            // 
-            this.Options_label_password.AutoSize = true;
-            this.Options_label_password.Location = new System.Drawing.Point(53, 133);
-            this.Options_label_password.Name = "Options_label_password";
-            this.Options_label_password.Size = new System.Drawing.Size(64, 19);
-            this.Options_label_password.TabIndex = 10;
-            this.Options_label_password.Text = "Password";
-            this.Options_label_password.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_label_baza
-            // 
-            this.Options_label_baza.AutoSize = true;
-            this.Options_label_baza.Location = new System.Drawing.Point(5, 28);
-            this.Options_label_baza.Name = "Options_label_baza";
-            this.Options_label_baza.Size = new System.Drawing.Size(112, 19);
-            this.Options_label_baza.TabIndex = 6;
-            this.Options_label_baza.Text = "Database address";
-            this.Options_label_baza.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // Options_textBox_password
-            // 
-            this.Options_textBox_password.Lines = new string[] {
-        "root"};
-            this.Options_textBox_password.Location = new System.Drawing.Point(135, 133);
-            this.Options_textBox_password.MaxLength = 32767;
-            this.Options_textBox_password.Name = "Options_textBox_password";
-            this.Options_textBox_password.PasswordChar = '●';
-            this.Options_textBox_password.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Options_textBox_password.SelectedText = "";
-            this.Options_textBox_password.Size = new System.Drawing.Size(222, 20);
-            this.Options_textBox_password.TabIndex = 9;
-            this.Options_textBox_password.Text = "root";
-            this.Options_textBox_password.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_password.UseSelectable = true;
-            this.Options_textBox_password.UseSystemPasswordChar = true;
-            // 
-            // Options_textBox_user
-            // 
-            this.Options_textBox_user.Lines = new string[] {
-        "root"};
-            this.Options_textBox_user.Location = new System.Drawing.Point(135, 102);
-            this.Options_textBox_user.MaxLength = 32767;
-            this.Options_textBox_user.Name = "Options_textBox_user";
-            this.Options_textBox_user.PasswordChar = '\0';
-            this.Options_textBox_user.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.Options_textBox_user.SelectedText = "";
-            this.Options_textBox_user.Size = new System.Drawing.Size(222, 20);
-            this.Options_textBox_user.TabIndex = 7;
-            this.Options_textBox_user.Text = "root";
-            this.Options_textBox_user.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.Options_textBox_user.UseSelectable = true;
-            // 
-            // Options_label_user
-            // 
-            this.Options_label_user.AutoSize = true;
-            this.Options_label_user.Location = new System.Drawing.Point(82, 103);
-            this.Options_label_user.Name = "Options_label_user";
-            this.Options_label_user.Size = new System.Drawing.Size(35, 19);
-            this.Options_label_user.TabIndex = 8;
-            this.Options_label_user.Text = "User";
-            this.Options_label_user.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // TabPage_Welcome
             // 
@@ -3359,26 +3288,6 @@
             this.timer_ProgressBar.Interval = 10;
             this.timer_ProgressBar.Tick += new System.EventHandler(this.timer_ProgressBar_Tick);
             // 
-            // ShowMeasure_label_trackBar2
-            // 
-            this.ShowMeasure_label_trackBar2.Location = new System.Drawing.Point(301, 327);
-            this.ShowMeasure_label_trackBar2.Name = "ShowMeasure_label_trackBar2";
-            this.ShowMeasure_label_trackBar2.Size = new System.Drawing.Size(120, 19);
-            this.ShowMeasure_label_trackBar2.TabIndex = 83;
-            this.ShowMeasure_label_trackBar2.Text = "Position X: 50 %";
-            this.ShowMeasure_label_trackBar2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowMeasure_label_trackBar2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ShowMeasure_label_trackBar1
-            // 
-            this.ShowMeasure_label_trackBar1.Location = new System.Drawing.Point(319, 291);
-            this.ShowMeasure_label_trackBar1.Name = "ShowMeasure_label_trackBar1";
-            this.ShowMeasure_label_trackBar1.Size = new System.Drawing.Size(102, 19);
-            this.ShowMeasure_label_trackBar1.TabIndex = 82;
-            this.ShowMeasure_label_trackBar1.Text = "Zoom X: 50 %";
-            this.ShowMeasure_label_trackBar1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ShowMeasure_label_trackBar1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3392,27 +3301,6 @@
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             ((System.ComponentModel.ISupportInitialize)(this.ABI_Chart)).EndInit();
             this.TabControl.ResumeLayout(false);
-            this.TabPage_AnalogBufferedInput.ResumeLayout(false);
-            this.TabPage_AnalogBufferedInput.PerformLayout();
-            this.metroPanel1.ResumeLayout(false);
-            this.metroPanel1.PerformLayout();
-            this.TabPage_AnalogInstantInput.ResumeLayout(false);
-            this.TabPage_AnalogInstantInput.PerformLayout();
-            this.AII_panel4.ResumeLayout(false);
-            this.AII_panel3.ResumeLayout(false);
-            this.AII_panel2.ResumeLayout(false);
-            this.AII_panel2.PerformLayout();
-            this.AII_panel1.ResumeLayout(false);
-            this.AII_panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AII_Chart)).EndInit();
-            this.TabPage_LastMeasure.ResumeLayout(false);
-            this.Panel_Results.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.LastMeasure_GridTable)).EndInit();
-            this.TabPage_ShowMeasure.ResumeLayout(false);
-            this.TabPage_ShowMeasure.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_grid)).EndInit();
-            this.ShowMeasure_label_task.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_chart)).EndInit();
             this.TabPage_Options.ResumeLayout(false);
             this.TabPage_Options.PerformLayout();
             this.Options_panel_comments.ResumeLayout(false);
@@ -3424,6 +3312,29 @@
             this.Options_panel_theme.PerformLayout();
             this.Options_panel_database.ResumeLayout(false);
             this.Options_panel_database.PerformLayout();
+            this.TabPage_LastMeasure.ResumeLayout(false);
+            this.Panel_Results.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.LastMeasure_GridTable)).EndInit();
+            this.TabPage_AnalogBufferedInput.ResumeLayout(false);
+            this.TabPage_AnalogBufferedInput.PerformLayout();
+            this.metroPanel2.ResumeLayout(false);
+            this.metroPanel2.PerformLayout();
+            this.metroPanel1.ResumeLayout(false);
+            this.metroPanel1.PerformLayout();
+            this.TabPage_AnalogInstantInput.ResumeLayout(false);
+            this.TabPage_AnalogInstantInput.PerformLayout();
+            this.AII_panel4.ResumeLayout(false);
+            this.AII_panel3.ResumeLayout(false);
+            this.AII_panel2.ResumeLayout(false);
+            this.AII_panel2.PerformLayout();
+            this.AII_panel1.ResumeLayout(false);
+            this.AII_panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AII_Chart)).EndInit();
+            this.TabPage_ShowMeasure.ResumeLayout(false);
+            this.TabPage_ShowMeasure.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_grid)).EndInit();
+            this.ShowMeasure_label_task.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ShowMeasure_chart)).EndInit();
             this.TabPage_Welcome.ResumeLayout(false);
             this.TabPage_Welcome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Welcome_pictureBox_advantech)).EndInit();
@@ -3441,10 +3352,6 @@
         public Automation.BDaq.BufferedAiCtrl ABIControl;
         public System.Windows.Forms.Timer timer_getData;
         public System.Windows.Forms.DataVisualization.Charting.Chart ABI_Chart;
-        public MetroFramework.Controls.MetroLabel ABI_label_samples;
-        public MetroFramework.Controls.MetroLabel ABI_label_channels;
-        public MetroFramework.Controls.MetroTextBox ABI_textBox_samples;
-        public MetroFramework.Controls.MetroTextBox ABI_textBox_channels;
         public MetroFramework.Controls.MetroButton ABI_button_measure;
         public MetroFramework.Controls.MetroTabControl TabControl;
         public MetroFramework.Controls.MetroTabPage TabPage_AnalogBufferedInput;
@@ -3484,14 +3391,6 @@
         public MetroFramework.Controls.MetroLabel Measure_label_buffered;
         public MetroFramework.Controls.MetroRadioButton Options_radioButton_english;
         public MetroFramework.Controls.MetroRadioButton Options_radioButton_polski;
-        public MetroFramework.Controls.MetroLabel ABI_label_scanCount;
-        public MetroFramework.Controls.MetroLabel ABI_label_intervalCount;
-        public MetroFramework.Controls.MetroLabel ABI_label_channelStart;
-        public MetroFramework.Controls.MetroTextBox ABI_textBox_scanCount;
-        public MetroFramework.Controls.MetroTextBox ABI_textBox_intervalCount;
-        public MetroFramework.Controls.MetroTextBox ABI_textBox_channelStart;
-        public MetroFramework.Controls.MetroLabel ABI_label_rate;
-        public MetroFramework.Controls.MetroTextBox ABI_textBox_rate;
         public MetroFramework.Components.MetroToolTip ABI_toolTip;
         public MetroFramework.Controls.MetroButton AII_button_measure;
         public System.Windows.Forms.DataVisualization.Charting.Chart AII_Chart;
@@ -3616,31 +3515,37 @@
         public MetroFramework.Controls.MetroLabel ShowMeasure_label_numberOfChannels;
         public MetroFramework.Controls.MetroLabel ShowMeasure_label_samples;
         public System.Windows.Forms.PictureBox Welcome_pictureBox_advantech;
-        private MetroFramework.Controls.MetroProgressBar ShowMeasure_progressBar;
-        private MetroFramework.Controls.MetroTrackBar ShowMeasure_trackBar2;
-        private MetroFramework.Controls.MetroTrackBar ShowMeasure_trackBar1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn n;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel_4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_8;
+        public MetroFramework.Controls.MetroProgressBar ShowMeasure_progressBar;
+        public MetroFramework.Controls.MetroTrackBar ShowMeasure_trackBar2;
+        public MetroFramework.Controls.MetroTrackBar ShowMeasure_trackBar1;
+        public System.Windows.Forms.DataGridViewTextBoxColumn n;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel_1;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel_2;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel_3;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel_4;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column_5;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column_6;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column_7;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Column_8;
         public MetroFramework.Controls.MetroScrollBar ShowMeasure_scrollBar;
-        private System.Windows.Forms.DataGridView ShowMeasure_grid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Samplesn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Channel8;
+        public System.Windows.Forms.DataGridView ShowMeasure_grid;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Samplesn;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel1;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel2;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel3;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel4;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel5;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel6;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel7;
+        public System.Windows.Forms.DataGridViewTextBoxColumn Channel8;
         public MetroFramework.Controls.MetroLabel ShowMeasure_label_trackBar2;
         public MetroFramework.Controls.MetroLabel ShowMeasure_label_trackBar1;
+        public MetroFramework.Controls.MetroButton ABI_button_measureOptions;
+        public MetroFramework.Controls.MetroLabel ABI_label_options;
+        public MetroFramework.Controls.MetroPanel metroPanel2;
+        public MetroFramework.Controls.MetroButton ABI_button_defaults;
+        public MetroFramework.Controls.MetroCheckBox ABI_checkBox_custom;
+        public MetroFramework.Controls.MetroCheckBox ABI_checkBox_defaults;
     }
 }
 

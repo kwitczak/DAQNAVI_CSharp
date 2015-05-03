@@ -67,6 +67,12 @@
     <Compile Include="AdvantechAPIs\BufferedAnalogInput.cs" />
     <Compile Include="DTO\GridRowDTO.cs" />
     <Compile Include="DTO\MeasurmentDTO.cs" />
+    <Compile Include="Forms\ABIMeasureOptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ABIMeasureOptionsForm.Designer.cs">
+      <DependentUpon>ABIMeasureOptionsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AIIMeasureOptionsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="Utils\TimeUtils.cs" />
     <EmbeddedResource Include="AdvantechMeasure.resx">
       <DependentUpon>AdvantechMeasure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ABIMeasureOptionsForm.resx">
+      <DependentUpon>ABIMeasureOptionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoadingForm.resx">
       <DependentUpon>LoadingForm.cs</DependentUpon>

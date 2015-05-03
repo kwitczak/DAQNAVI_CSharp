@@ -45,12 +45,12 @@ namespace DAQNavi_WF_v1_0_0
             window.Welcome_button_login.Text = ConfigurationManager.AppSettings["WelcomeButtonLogin" + lan.ToString()];
             // Analog Buffered Input Tab
             window.TabPage_AnalogBufferedInput.Text = ConfigurationManager.AppSettings["ABITab" + lan.ToString()];
-            window.ABI_label_samples.Text = ConfigurationManager.AppSettings["ABISamples" + lan.ToString()];
-            window.ABI_label_channels.Text = ConfigurationManager.AppSettings["ABIChannels" + lan.ToString()];
-            window.ABI_label_channelStart.Text = ConfigurationManager.AppSettings["ABIChannelStart" + lan.ToString()];
-            window.ABI_label_intervalCount.Text = ConfigurationManager.AppSettings["ABIIntervalCount" + lan.ToString()];
-            window.ABI_label_scanCount.Text = ConfigurationManager.AppSettings["ABIScanCount" + lan.ToString()];
-            window.ABI_label_rate.Text = ConfigurationManager.AppSettings["ABIRate" + lan.ToString()];
+            //window.ABI_label_samples.Text = ConfigurationManager.AppSettings["ABISamples" + lan.ToString()];
+            //window.ABI_label_channels.Text = ConfigurationManager.AppSettings["ABIChannels" + lan.ToString()];
+            //window.ABI_label_channelStart.Text = ConfigurationManager.AppSettings["ABIChannelStart" + lan.ToString()];
+            //window.ABI_label_intervalCount.Text = ConfigurationManager.AppSettings["ABIIntervalCount" + lan.ToString()];
+            //window.ABI_label_scanCount.Text = ConfigurationManager.AppSettings["ABIScanCount" + lan.ToString()];
+            //window.ABI_label_rate.Text = ConfigurationManager.AppSettings["ABIRate" + lan.ToString()];
             window.ABI_button_back.Text = ConfigurationManager.AppSettings["ABIButtonBack" + lan.ToString()];
             window.ABI_button_measure.Text = ConfigurationManager.AppSettings["ABIButtonMeasure" + lan.ToString()];
         }

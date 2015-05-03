@@ -79,22 +79,22 @@ namespace DAQNavi_WF_v1_0_0.Utils
 
                 // AnalogBufferedInput
                 window.TabPage_AnalogBufferedInput.Theme = style;
-                window.ABI_label_samples.Theme = style;
-                window.ABI_label_channels.Theme = style;
-                window.ABI_label_channelStart.Theme = style;
-                window.ABI_label_intervalCount.Theme = style;
-                window.ABI_label_rate.Theme = style;
-                window.ABI_label_scanCount.Theme = style;
-                window.ABI_textBox_channels.Theme = style;
-                window.ABI_textBox_channelStart.Theme = style;
-                window.ABI_textBox_intervalCount.Theme = style;
-                window.ABI_textBox_rate.Theme = style;
-                window.ABI_textBox_scanCount.Theme = style;
+                //window.ABI_label_samples.Theme = style;
+                //window.ABI_label_channels.Theme = style;
+                //window.ABI_label_channelStart.Theme = style;
+                //window.ABI_label_intervalCount.Theme = style;
+                //window.ABI_label_rate.Theme = style;
+                //window.ABI_label_scanCount.Theme = style;
+                //window.ABI_textBox_channels.Theme = style;
+                //window.ABI_textBox_channelStart.Theme = style;
+                //window.ABI_textBox_intervalCount.Theme = style;
+                //window.ABI_textBox_rate.Theme = style;
+                //window.ABI_textBox_scanCount.Theme = style;
                 window.ABI_TrackBar_1.Theme = style;
                 window.ABI_TrackBar_2.Theme = style;
                 window.ABI_button_back.Theme = style;
                 window.ABI_button_measure.Theme = style;
-                window.ABI_textBox_samples.Theme = style;
+                //window.ABI_textBox_samples.Theme = style;
 
                 // Analog Instant Input
                 window.TabPage_AnalogInstantInput.Theme = style;

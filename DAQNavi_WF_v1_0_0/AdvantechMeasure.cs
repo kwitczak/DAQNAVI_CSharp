@@ -56,6 +56,14 @@ namespace DAQNavi_WF_v1_0_0
         public static int ABI_xPoint = 0;
         public static long ABI_howManySamplesAlready;
         public static int ABI_howManySamplesShouldBeAtOnce;
+        public static int ABI_interval;
+        public static int ABI_startChannel;
+        public static int ABI_numOfChannels;
+        public static int ABI_samplesPerChannel;
+        public static int[] ABI_channels;
+        public static int[] ABI_channels_min;
+        public static int[] ABI_channels_max;
+
 
         /* ANALOG INSTANT INPUT (AII) */
         public static MicroLibrary.MicroTimer AII_timer = new MicroLibrary.MicroTimer();
@@ -69,7 +77,7 @@ namespace DAQNavi_WF_v1_0_0
         public static Label[] AII_labels;
         public static int AII_drawnPoints = 0;
         public static double AII_timerValue;
-        public static int AII_choosenChannel;
+        public static int AII_startChannel;
         public static int AII_numOfChannels;
 
         /* MY MEASURMENTS PANEL */
@@ -287,6 +295,8 @@ namespace DAQNavi_WF_v1_0_0
             TabControl.TabPages.Add(TabPage_AnalogBufferedInput);
             TabControl.TabPages.Remove(TabPage_Measure);
             TabControl.SelectedTab = TabPage_AnalogBufferedInput;
+
+            DefaultStateUtils.setDefaultABI();
         }
 
         private void metroTileDigitalInput_MouseHover(object sender, EventArgs e)
@@ -555,16 +565,16 @@ namespace DAQNavi_WF_v1_0_0
         /* Accessor dla innego formularza */
         public int getChoosenChannelAII
         {
-            set { AII_choosenChannel = value; }
-            get { return AII_choosenChannel; }
+            set { AII_startChannel = value; }
+            get { return AII_startChannel; }
         }
 
-        /* Accessor dla innego formularza */
-        public int getChoosenChannelABI
-        {
-            set { this.ABI_textBox_channelStart.Text = value.ToString(); }
-            get { return int.Parse(this.ABI_textBox_channelStart.Text); }
-        }
+        ///* Accessor dla innego formularza */
+        //public int getChoosenChannelABI
+        //{
+        //    set { this.ABI_textBox_channelStart.Text = value.ToString(); }
+        //    get { return int.Parse(this.ABI_textBox_channelStart.Text); }
+        //}
 
         /* Accessor dla innego formularza */
         public int getNumberOfChannelsAAI
@@ -573,12 +583,12 @@ namespace DAQNavi_WF_v1_0_0
             get { return AII_numOfChannels; }
         }
 
-        /* Accessor dla innego formularza */
-        public int getNumberOfChannelsABI
-        {
-            set { this.ABI_textBox_channels.Text = value.ToString(); }
-            get { return int.Parse(this.ABI_textBox_channels.Text); }
-        }
+        ///* Accessor dla innego formularza */
+        //public int getNumberOfChannelsABI
+        //{
+        //    set { this.ABI_textBox_channels.Text = value.ToString(); }
+        //    get { return int.Parse(this.ABI_textBox_channels.Text); }
+        //}
 
         /* Accessor dla innego formularza */
         public MetroFramework.Controls.MetroCheckBox getCheckbox_AnalogInstantInput_MeasurmentOptions
@@ -642,12 +652,13 @@ namespace DAQNavi_WF_v1_0_0
 
             // Obiekty pomagające
             ABI = new BufferedAnalogInput();
-            ABI.setSamples(Convert.ToInt32(ABI_textBox_samples.Text));
-            ABI.setChannels(Convert.ToInt32(ABI_textBox_channels.Text));
-            ABI.setChannelStart(Convert.ToInt32(ABI_textBox_channelStart.Text));
-            ABI.setIntervalCount(Convert.ToInt32(ABI_textBox_intervalCount.Text));
-            ABI.setScanCount(Convert.ToInt32(ABI_textBox_scanCount.Text));
-            ABI.setRate(Convert.ToInt32(ABI_textBox_rate.Text));
+            ABI.setSamples(ABI_samplesPerChannel);
+            ABI.setChannels(ABI_numOfChannels);
+            ABI.setChannelStart(ABI_startChannel);
+            ABI.setRate(ABI_interval);
+            ABI.setChannels_arr(ABI_channels);
+            ABI.setChannels_arr_min(ABI_channels_min);
+            ABI.setChannels_arr_max(ABI_channels_max);
 
             ABI_data = ABI.przygotujPomiar(ABIControl);
             ABI_howManySamplesAlready = 0;
@@ -689,7 +700,7 @@ namespace DAQNavi_WF_v1_0_0
             {
                 return;
             }
-            this.ABI_Chart.ChartAreas[0].AxisX.Maximum = double.Parse(this.ABI_textBox_samples.Text) * ((double)(this.ABI_TrackBar_1.Value) / 100);
+            this.ABI_Chart.ChartAreas[0].AxisX.Maximum = ABI_samplesPerChannel * ((double)(this.ABI_TrackBar_1.Value) / 100);
 
             double ratio = (this.ABI_Chart.ChartAreas[0].AxisX.Maximum - this.ABI_Chart.ChartAreas[0].AxisX.Minimum);
             ChartUtils.changeChartMarkerRatio(this.ABI_Chart, ratio);
@@ -701,7 +712,7 @@ namespace DAQNavi_WF_v1_0_0
         private void TrackBar_AnalogBufferedInput_2_ValueChanged(object sender, EventArgs e)
         {
             double MIN = 0;
-            double MAX = (double.Parse(this.ABI_textBox_samples.Text));
+            double MAX = ABI_samplesPerChannel;
             double howMuchToChange = (MAX / 100) * this.ABI_TrackBar_2.Value;
             double window = ABI_Chart.ChartAreas[0].AxisX.Maximum - ABI_Chart.ChartAreas[0].AxisX.Minimum;
             ABI_Chart.ChartAreas[0].AxisX.Minimum = howMuchToChange;
@@ -764,7 +775,7 @@ namespace DAQNavi_WF_v1_0_0
 
                     int myABIXDataReadyPoint = 0;
                     int mySeries = 0;
-                    int channels = int.Parse(this.ABI_textBox_channels.Text.ToString());
+                    int channels = ABI_numOfChannels;
                     for (int i = 0; i < ABI_allData.Count; ++i)
                     {
                         mySeries = (i % channels);
@@ -785,6 +796,21 @@ namespace DAQNavi_WF_v1_0_0
             };
             this.Invoke(inv);
             //ABIControl.Cleanup();
+        }
+
+        /* Opcje pomiaru ABI */
+        private void ABI_button_measureOptions_Click(object sender, EventArgs e)
+        {
+            ABIMeasureOptionsForm ABIOptions = new ABIMeasureOptionsForm(this);
+            ABIOptions.Show();
+        }
+
+        private void ABI_button_defaults_Click(object sender, EventArgs e)
+        {
+            ABI_checkBox_custom.Checked = false;
+            ABI_checkBox_defaults.Checked = true;
+
+            DefaultStateUtils.setDefaultABI();
         }
 
 
@@ -858,7 +884,7 @@ namespace DAQNavi_WF_v1_0_0
                 AII_button_measure.Text = "Save";
                 MM_list_samplesValue[MM_numberOfMeasurments - 1].Text = AAI_sampleCount.ToString();
                 MM_list_numberOfChannelsValue[MM_numberOfMeasurments - 1].Text = AII_numOfChannels.ToString();
-                MM_list_channelStartValue[MM_numberOfMeasurments - 1].Text = AII_choosenChannel.ToString();
+                MM_list_channelStartValue[MM_numberOfMeasurments - 1].Text = AII_startChannel.ToString();
             }
 
                 // Button save mode
@@ -911,7 +937,7 @@ namespace DAQNavi_WF_v1_0_0
         {
             ErrorCode err;
 
-            err = AIIControl.Read(AII_choosenChannel, AII_numOfChannels, AII_data);
+            err = AIIControl.Read(AII_startChannel, AII_numOfChannels, AII_data);
             if (err != ErrorCode.Success)
             {
                 AII_timer.Stop();
@@ -1617,5 +1643,9 @@ namespace DAQNavi_WF_v1_0_0
         {
 
         }
+
+
+
+
     }
 }

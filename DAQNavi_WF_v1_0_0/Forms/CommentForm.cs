@@ -63,9 +63,9 @@ namespace DAQNavi_WF_v1_0_0
                 timeEnd = MainWindow.ABI_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 timeDurration = new DateTime(MainWindow.ABI_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
                 samples = MainWindow.ABI_data.Length.ToString();
-                numberOfChannels = mainWindow.getNumberOfChannelsABI.ToString();
-                choosenChannel = mainWindow.getChoosenChannelABI.ToString();
-                frequency = ((MainWindow.ABI_data.Length / MainWindow.ABI_timeDiff.TotalMilliseconds * 1000)/mainWindow.getNumberOfChannelsABI).ToString() + " Hz";
+                numberOfChannels = MainWindow.ABI_numOfChannels.ToString();
+                choosenChannel = MainWindow.ABI_startChannel.ToString();
+                frequency = ((MainWindow.ABI_data.Length / MainWindow.ABI_timeDiff.TotalMilliseconds * 1000)/MainWindow.ABI_numOfChannels).ToString() + " Hz";
             }
             else if (MainWindow.lastMeasurmentType.Equals(MainWindow.MeasurmentType.ANALOG_INSTANT_INPUT))
             {

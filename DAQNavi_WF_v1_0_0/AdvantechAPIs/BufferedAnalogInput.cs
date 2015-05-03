@@ -15,6 +15,9 @@ namespace DAQNavi_WF_v1_0_0
         private int intervalCount;
         private int scanCount;
         private int rate;
+        private int[] channels_arr;
+        private int[] channels_arr_min;
+        private int[] channels_arr_max;
 
         double[] dataDownloadedAI;
 
@@ -27,10 +30,25 @@ namespace DAQNavi_WF_v1_0_0
             bufferedAiCtrl1.ScanChannel.ChannelStart = channelStart;
             //bufferedAiCtrl1.ScanChannel.IntervalCount = intervalCount;
             //bufferedAiCtrl1.ScanClock.ScanCount = scanCount;
-            //bufferedAiCtrl1.ScanClock.Rate = rate;
+            bufferedAiCtrl1.ConvertClock.Rate = rate;
             dataDownloadedAI = new double[bufferedAiCtrl1.BufferCapacity];
             bufferedAiCtrl1.Start();
             return dataDownloadedAI;
+        }
+
+        public void setChannels_arr(int[] channels_arr)
+        {
+            this.channels_arr = channels_arr;
+        }
+
+        public void setChannels_arr_min(int[] channels_arr_min)
+        {
+            this.channels_arr_min = channels_arr_min;
+        }
+
+        public void setChannels_arr_max(int[] channels_arr_max)
+        {
+            this.channels_arr_max = channels_arr_max;
         }
 
 

@@ -11,8 +11,16 @@ namespace DAQNavi_WF_v1_0_0
         public static void setDefaultAII()
         {
             MainWindow.AII_timerValue = 50;
-            MainWindow.AII_choosenChannel = 0;
+            MainWindow.AII_startChannel = 0;
             MainWindow.AII_numOfChannels = 1;
+        }
+
+        public static void setDefaultABI()
+        {
+            MainWindow.ABI_interval = 1000;
+            MainWindow.ABI_startChannel = 0;
+            MainWindow.ABI_numOfChannels = 1;
+            MainWindow.ABI_samplesPerChannel = 100;
         }
     }
 }

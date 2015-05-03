@@ -131,6 +131,7 @@
             // 
             // Button_AIMOptions_Save
             // 
+            this.Button_AIMOptions_Save.Highlight = true;
             this.Button_AIMOptions_Save.Location = new System.Drawing.Point(234, 330);
             this.Button_AIMOptions_Save.Name = "Button_AIMOptions_Save";
             this.Button_AIMOptions_Save.Size = new System.Drawing.Size(105, 38);
@@ -140,7 +141,7 @@
             this.Button_AIMOptions_Save.UseSelectable = true;
             this.Button_AIMOptions_Save.Click += new System.EventHandler(this.Button_AIMOptions_Save_Click);
             // 
-            // AnalogInstantMeasureOptions
+            // AIIMeasureOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -153,7 +154,7 @@
             this.Controls.Add(this.Label_AnalogInstantInput_NumberOfChannels);
             this.Controls.Add(this.Label_AnalogInstantInput_StartChannel);
             this.Controls.Add(this.TrackBar_AnalogInstantInput_SampleInterval);
-            this.Name = "AnalogInstantMeasureOptions";
+            this.Name = "AIIMeasureOptionsForm";
             this.Text = "Analog Instant Measure Options";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.Load += new System.EventHandler(this.AnalogInstantMeasureOptions_Load);
