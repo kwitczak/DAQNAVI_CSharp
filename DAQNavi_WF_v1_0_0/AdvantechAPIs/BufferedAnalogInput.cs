@@ -30,11 +30,20 @@ namespace DAQNavi_WF_v1_0_0
             bufferedAiCtrl1.ScanChannel.ChannelStart = channelStart;
             //bufferedAiCtrl1.ScanChannel.IntervalCount = intervalCount;
             //bufferedAiCtrl1.ScanClock.ScanCount = scanCount;
+            //ValueRange
             bufferedAiCtrl1.ConvertClock.Rate = rate;
             dataDownloadedAI = new double[bufferedAiCtrl1.BufferCapacity];
             bufferedAiCtrl1.Start();
             return dataDownloadedAI;
         }
+
+        //private void setChannels(BufferedAiCtrl bufferedAiCtrl1)
+        //{
+        //    for (int i = 0; i < channels_arr.Length; i++)
+        //    {
+        //        bufferedAiCtrl1.Channels[channels_arr[i]].ValueRange = new ValueRange(-10, 10);
+        //    }
+        //}
 
         public void setChannels_arr(int[] channels_arr)
         {
