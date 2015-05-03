@@ -1,4 +1,5 @@
-﻿using DAQNavi_WF_v1_0_0.Utils;
+﻿using Automation.BDaq;
+using DAQNavi_WF_v1_0_0.Utils;
 using MetroFramework.Forms;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
     public partial class ABIMeasureOptionsForm : MetroForm
     {
         MainWindow mainWindow;
+        ValueRange[] ABIOP_channels_array = new ValueRange[8];
 
         public ABIMeasureOptionsForm(MainWindow mainWindow)
         {
@@ -38,6 +40,10 @@ namespace DAQNavi_WF_v1_0_0.Forms
             ABIOP_trackBar_SampleInterval.Value = 50;
             ABIOP_comboBox_StartChannel.SelectedIndex = 0;
             ABIOP_comboBox_NumberOfChannels.SelectedIndex = 0;
+            for (int i = 0; i < ABIOP_channels_array.Length; i++)
+            {
+                ABIOP_channels_array[i] = ValueRange.V_Neg10To10;
+            }
         }
 
         private void ABIOP_comboBox_StartChannel_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,20 +86,16 @@ namespace DAQNavi_WF_v1_0_0.Forms
             mainWindow.ABI_checkBox_custom.Checked = true;
             mainWindow.ABI_checkBox_defaults.Checked = false;
 
-            //int[] ABI_channels = new int[ABIOP_grid.Rows.Count];
-            //int[] ABI_channels_min = new int[ABIOP_grid.Rows.Count];
-            //int[] ABI_channels_max = new int[ABIOP_grid.Rows.Count];
+            int choosenChannel = ABIOP_comboBox_StartChannel.SelectedIndex;
+            int gridRow = 0;
+            for (int i = choosenChannel; i < ABIOP_grid.Rows.Count + choosenChannel; i++)
+            {
+                ABIOP_channels_array[i] = GridUtils.rangeToValueRange(ABIOP_grid.Rows[gridRow].Cells[1].Value.ToString());
+                gridRow++;
+            }
 
-            //for (int i = 0; i < ABIOP_grid.Rows.Count; i++)
-            //{
-            //    ABI_channels[i] = int.Parse(ABIOP_grid.Rows[i].Cells[0].Value.ToString());
-            //    ABI_channels_min[i] = int.Parse(ABIOP_grid.Rows[i].Cells[1].Value.ToString());
-            //    ABI_channels_max[i] = int.Parse(ABIOP_grid.Rows[i].Cells[2].Value.ToString());
-            //}
+            MainWindow.ABI_channels_ranges = ABIOP_channels_array;
 
-            //MainWindow.ABI_channels = ABI_channels;
-            //MainWindow.ABI_channels_min = ABI_channels_min;
-            //MainWindow.ABI_channels_max = ABI_channels_max;
             this.Hide();
         }
 

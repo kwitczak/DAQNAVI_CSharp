@@ -15,9 +15,7 @@ namespace DAQNavi_WF_v1_0_0
         private int intervalCount;
         private int scanCount;
         private int rate;
-        private int[] channels_arr;
-        private int[] channels_arr_min;
-        private int[] channels_arr_max;
+        private ValueRange[] channels_ranges;
 
         double[] dataDownloadedAI;
 
@@ -30,35 +28,24 @@ namespace DAQNavi_WF_v1_0_0
             bufferedAiCtrl1.ScanChannel.ChannelStart = channelStart;
             //bufferedAiCtrl1.ScanChannel.IntervalCount = intervalCount;
             //bufferedAiCtrl1.ScanClock.ScanCount = scanCount;
-            //ValueRange
+
+            for (int i = 0; i < channels_ranges.Length; i++)
+            {
+                bufferedAiCtrl1.Channels[i].ValueRange = channels_ranges[i];
+            }
+
             bufferedAiCtrl1.ConvertClock.Rate = rate;
             dataDownloadedAI = new double[bufferedAiCtrl1.BufferCapacity];
             bufferedAiCtrl1.Start();
             return dataDownloadedAI;
         }
 
-        //private void setChannels(BufferedAiCtrl bufferedAiCtrl1)
-        //{
-        //    for (int i = 0; i < channels_arr.Length; i++)
-        //    {
-        //        bufferedAiCtrl1.Channels[channels_arr[i]].ValueRange = new ValueRange(-10, 10);
-        //    }
-        //}
 
-        public void setChannels_arr(int[] channels_arr)
+        public void setChannels_ranges(ValueRange[] channels_arr)
         {
-            this.channels_arr = channels_arr;
+            this.channels_ranges = channels_arr;
         }
 
-        public void setChannels_arr_min(int[] channels_arr_min)
-        {
-            this.channels_arr_min = channels_arr_min;
-        }
-
-        public void setChannels_arr_max(int[] channels_arr_max)
-        {
-            this.channels_arr_max = channels_arr_max;
-        }
 
 
         public void setSamples(int samples)

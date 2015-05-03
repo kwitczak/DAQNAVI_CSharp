@@ -60,9 +60,7 @@ namespace DAQNavi_WF_v1_0_0
         public static int ABI_startChannel;
         public static int ABI_numOfChannels;
         public static int ABI_samplesPerChannel;
-        public static int[] ABI_channels;
-        public static int[] ABI_channels_min;
-        public static int[] ABI_channels_max;
+        public static ValueRange[] ABI_channels_ranges;
 
 
         /* ANALOG INSTANT INPUT (AII) */
@@ -79,6 +77,7 @@ namespace DAQNavi_WF_v1_0_0
         public static double AII_timerValue;
         public static int AII_startChannel;
         public static int AII_numOfChannels;
+        public static ValueRange[] AII_channels_ranges;
 
         /* MY MEASURMENTS PANEL */
         public static int MM_numberOfMeasurments = 0;
@@ -166,6 +165,13 @@ namespace DAQNavi_WF_v1_0_0
                 AII_label_ch6Value, 
                 AII_label_ch7Value
 			};
+
+
+            AII_channels_ranges = new ValueRange[8];
+            for (int i = 0; i < AII_channels_ranges.Length; i++)
+            {
+                AII_channels_ranges[i] = ValueRange.V_Neg10To10;
+            }
 
 			// Aktywacja pola wpisywania username'a
             this.Select();
@@ -656,9 +662,7 @@ namespace DAQNavi_WF_v1_0_0
             ABI.setChannels(ABI_numOfChannels);
             ABI.setChannelStart(ABI_startChannel);
             ABI.setRate(ABI_interval);
-            ABI.setChannels_arr(ABI_channels);
-            ABI.setChannels_arr_min(ABI_channels_min);
-            ABI.setChannels_arr_max(ABI_channels_max);
+            ABI.setChannels_ranges(ABI_channels_ranges);
 
             ABI_data = ABI.przygotujPomiar(ABIControl);
             ABI_howManySamplesAlready = 0;
@@ -788,8 +792,8 @@ namespace DAQNavi_WF_v1_0_0
                         }
 
                         //MEMO LEAK
-                        ABI_Chart.Series[mySeries].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
-                        ABI_Chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
+                        ABI_Chart.Series[mySeries + ABI_startChannel].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
+                        ABI_Chart.Series[mySeries + ABI_startChannel].ToolTip = "X=#VALX\nY=#VALY";
                         LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries + 1].Value = ABI_allData[i];
                     }
                 });
@@ -856,6 +860,10 @@ namespace DAQNavi_WF_v1_0_0
 
                 // Start!
                 //timer_getData.Start();
+                for (int i = 0; i < AII_channels_ranges.Length; i++)
+                {
+                    AIIControl.Channels[i].ValueRange = AII_channels_ranges[i];
+                }
 
                 AII_timer.MicroTimerElapsed +=
                     new MicroLibrary.MicroTimer.MicroTimerElapsedEventHandler(OnTimedEvent);
@@ -952,7 +960,7 @@ namespace DAQNavi_WF_v1_0_0
                     //if (AAI_sampleCount % 1 == 0)
                     //{
                         AII_drawnPoints++;
-                        AII_Chart.Series[i].Points.Add(AII_data[i]);
+                        AII_Chart.Series[i + AII_startChannel].Points.Add(AII_data[i]);
                     //}
 
                     if (i % 8 == 0)
