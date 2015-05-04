@@ -45,11 +45,11 @@
             this.ABIOP_textBox_samples = new MetroFramework.Controls.MetroTextBox();
             this.ABIOP_label_samples = new MetroFramework.Controls.MetroLabel();
             this.ABIOP_grid = new System.Windows.Forms.DataGridView();
+            this.Samplesn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Channel1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ABIOP_label_channelRange = new MetroFramework.Controls.MetroLabel();
             this.ABIOP_label_int1 = new MetroFramework.Controls.MetroLabel();
             this.ABIOP_label_int2 = new MetroFramework.Controls.MetroLabel();
-            this.Samplesn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Channel1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ABIOP_grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,7 +161,7 @@
             // ABIOP_textBox_samples
             // 
             this.ABIOP_textBox_samples.Lines = new string[] {
-        "10"};
+        "100"};
             this.ABIOP_textBox_samples.Location = new System.Drawing.Point(46, 231);
             this.ABIOP_textBox_samples.MaxLength = 32767;
             this.ABIOP_textBox_samples.Name = "ABIOP_textBox_samples";
@@ -170,9 +170,10 @@
             this.ABIOP_textBox_samples.SelectedText = "";
             this.ABIOP_textBox_samples.Size = new System.Drawing.Size(111, 20);
             this.ABIOP_textBox_samples.TabIndex = 70;
-            this.ABIOP_textBox_samples.Text = "10";
+            this.ABIOP_textBox_samples.Text = "100";
             this.ABIOP_textBox_samples.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ABIOP_textBox_samples.UseSelectable = true;
+            this.ABIOP_textBox_samples.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ABIOP_textBox_samples_KeyPress);
             // 
             // ABIOP_label_samples
             // 
@@ -233,38 +234,6 @@
             this.ABIOP_grid.Size = new System.Drawing.Size(346, 124);
             this.ABIOP_grid.TabIndex = 82;
             // 
-            // ABIOP_label_channelRange
-            // 
-            this.ABIOP_label_channelRange.Location = new System.Drawing.Point(32, 271);
-            this.ABIOP_label_channelRange.Name = "ABIOP_label_channelRange";
-            this.ABIOP_label_channelRange.Size = new System.Drawing.Size(134, 19);
-            this.ABIOP_label_channelRange.TabIndex = 83;
-            this.ABIOP_label_channelRange.Text = "Channel range";
-            this.ABIOP_label_channelRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ABIOP_label_channelRange.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ABIOP_label_int1
-            // 
-            this.ABIOP_label_int1.AutoSize = true;
-            this.ABIOP_label_int1.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.ABIOP_label_int1.Location = new System.Drawing.Point(30, 116);
-            this.ABIOP_label_int1.Name = "ABIOP_label_int1";
-            this.ABIOP_label_int1.Size = new System.Drawing.Size(42, 15);
-            this.ABIOP_label_int1.TabIndex = 84;
-            this.ABIOP_label_int1.Text = "100 Hz";
-            this.ABIOP_label_int1.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
-            // ABIOP_label_int2
-            // 
-            this.ABIOP_label_int2.AutoSize = true;
-            this.ABIOP_label_int2.FontSize = MetroFramework.MetroLabelSize.Small;
-            this.ABIOP_label_int2.Location = new System.Drawing.Point(285, 116);
-            this.ABIOP_label_int2.Name = "ABIOP_label_int2";
-            this.ABIOP_label_int2.Size = new System.Drawing.Size(57, 15);
-            this.ABIOP_label_int2.TabIndex = 85;
-            this.ABIOP_label_int2.Text = "10 000 Hz";
-            this.ABIOP_label_int2.Theme = MetroFramework.MetroThemeStyle.Dark;
-            // 
             // Samplesn
             // 
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gray;
@@ -304,6 +273,38 @@
             this.Channel1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Channel1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Channel1.Width = 220;
+            // 
+            // ABIOP_label_channelRange
+            // 
+            this.ABIOP_label_channelRange.Location = new System.Drawing.Point(32, 271);
+            this.ABIOP_label_channelRange.Name = "ABIOP_label_channelRange";
+            this.ABIOP_label_channelRange.Size = new System.Drawing.Size(134, 19);
+            this.ABIOP_label_channelRange.TabIndex = 83;
+            this.ABIOP_label_channelRange.Text = "Channel range";
+            this.ABIOP_label_channelRange.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ABIOP_label_channelRange.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ABIOP_label_int1
+            // 
+            this.ABIOP_label_int1.AutoSize = true;
+            this.ABIOP_label_int1.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.ABIOP_label_int1.Location = new System.Drawing.Point(30, 116);
+            this.ABIOP_label_int1.Name = "ABIOP_label_int1";
+            this.ABIOP_label_int1.Size = new System.Drawing.Size(42, 15);
+            this.ABIOP_label_int1.TabIndex = 84;
+            this.ABIOP_label_int1.Text = "100 Hz";
+            this.ABIOP_label_int1.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ABIOP_label_int2
+            // 
+            this.ABIOP_label_int2.AutoSize = true;
+            this.ABIOP_label_int2.FontSize = MetroFramework.MetroLabelSize.Small;
+            this.ABIOP_label_int2.Location = new System.Drawing.Point(285, 116);
+            this.ABIOP_label_int2.Name = "ABIOP_label_int2";
+            this.ABIOP_label_int2.Size = new System.Drawing.Size(57, 15);
+            this.ABIOP_label_int2.TabIndex = 85;
+            this.ABIOP_label_int2.Text = "10 000 Hz";
+            this.ABIOP_label_int2.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // ABIMeasureOptionsForm
             // 

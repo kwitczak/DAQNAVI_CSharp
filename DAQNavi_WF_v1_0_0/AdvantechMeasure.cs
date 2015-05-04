@@ -21,6 +21,7 @@ using DAQNavi_WF_v1_0_0.Utils;
 using MySql.Data.MySqlClient;
 using DAQNavi_WF_v1_0_0.DTO;
 using DAQNavi_WF_v1_0_0.Forms;
+using System.Text.RegularExpressions;
 
 namespace DAQNavi_WF_v1_0_0
 {
@@ -168,9 +169,11 @@ namespace DAQNavi_WF_v1_0_0
 
 
             AII_channels_ranges = new ValueRange[8];
+            ABI_channels_ranges = new ValueRange[8];
             for (int i = 0; i < AII_channels_ranges.Length; i++)
             {
                 AII_channels_ranges[i] = ValueRange.V_Neg10To10;
+                ABI_channels_ranges[i] = ValueRange.V_Neg10To10;
             }
 
 			// Aktywacja pola wpisywania username'a
@@ -457,6 +460,14 @@ namespace DAQNavi_WF_v1_0_0
         /* Logowanie się. */
         private void Button_Login_Click(object sender, EventArgs e)
         {
+            if (checkTextValid(Welcome_textBox_password.Text.ToString()) || checkTextValid(Welcome_textBox_username.Text.ToString()))
+            {
+                MetroMessageBox.Show(this, "Twoje dane logowania zawierają niedozwolone znaki. Usuń je, i spróbuj ponownie!", "Witaj", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+           
+
+
             loginManager = new LoginManager(Options_textBox_baza.Text, Options_textBox_port.Text, Options_textBox_user.Text, Options_textBox_password.Text);
             Boolean loginSuccessful = loginManager.checkLogin(this.Welcome_textBox_username.Text, this.Welcome_textBox_password.Text);
             if (loginSuccessful)
@@ -630,6 +641,16 @@ namespace DAQNavi_WF_v1_0_0
         public MetroFramework.Controls.MetroTextBox getDatabasePassword
         {
             get { return this.Options_textBox_password; }
+        }
+
+        /* Walidacja textboxa logowania */
+        private void Welcome_textBox_username_Leave(object sender, EventArgs e)
+        {
+        }
+
+        public static bool checkTextValid(string text)
+        {
+            return Regex.IsMatch(text, @"[\%\/\\\&\?\,\'\;\:\!]+");
         }
 
 
@@ -1601,7 +1622,7 @@ namespace DAQNavi_WF_v1_0_0
             {
                 return;
             }
-            ShowMeasure_chart.ChartAreas[0].AxisX.Maximum = int.Parse(ShowMeasure_label_samplesValue.Text) * ((double)(ShowMeasure_trackBar1.Value) / 100);
+            ShowMeasure_chart.ChartAreas[0].AxisX.Maximum = (int.Parse(ShowMeasure_label_samplesValue.Text) / int.Parse(ShowMeasure_label_numberOfChannelsValue.Text)) * ((double)(ShowMeasure_trackBar1.Value) / 100);
 
             double ratio = (ShowMeasure_chart.ChartAreas[0].AxisX.Maximum - ShowMeasure_chart.ChartAreas[0].AxisX.Minimum);
             ChartUtils.changeChartMarkerRatio(ShowMeasure_chart, ratio);
@@ -1611,7 +1632,7 @@ namespace DAQNavi_WF_v1_0_0
         private void metroTrackBar2_ValueChanged(object sender, EventArgs e)
         {
             double MIN = 0;
-            double MAX = int.Parse(ShowMeasure_label_samplesValue.Text);
+            double MAX = int.Parse(ShowMeasure_label_samplesValue.Text) / int.Parse(ShowMeasure_label_numberOfChannelsValue.Text);
             double howMuchToChange = (MAX / 100) * ShowMeasure_trackBar2.Value;
             double window = ShowMeasure_chart.ChartAreas[0].AxisX.Maximum - ShowMeasure_chart.ChartAreas[0].AxisX.Minimum;
             ShowMeasure_chart.ChartAreas[0].AxisX.Minimum = howMuchToChange;
@@ -1651,6 +1672,8 @@ namespace DAQNavi_WF_v1_0_0
         {
 
         }
+
+
 
 
 

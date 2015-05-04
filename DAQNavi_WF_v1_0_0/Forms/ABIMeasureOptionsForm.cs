@@ -17,6 +17,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
     {
         MainWindow mainWindow;
         ValueRange[] ABIOP_channels_array = new ValueRange[8];
+        int step;
 
         public ABIMeasureOptionsForm(MainWindow mainWindow)
         {
@@ -65,7 +66,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
 
         private void ABIOP_trackBar_SampleInterval_ValueChanged(object sender, EventArgs e)
         {
-            double step = 10000 / 100;
+            step = 10000 / 100;
             if (ABIOP_trackBar_SampleInterval.Value > 0)
             {
                 ABIOP_label_Interval_2.Text = (ABIOP_trackBar_SampleInterval.Value * step).ToString();
@@ -79,7 +80,12 @@ namespace DAQNavi_WF_v1_0_0.Forms
 
         private void ABIOP_button_Save_Click(object sender, EventArgs e)
         {
-            MainWindow.ABI_interval = ABIOP_trackBar_SampleInterval.Value;
+            int trackbar_value = ABIOP_trackBar_SampleInterval.Value;
+            if (trackbar_value == 0)
+            {
+                trackbar_value = 1;
+            }
+            MainWindow.ABI_interval =  trackbar_value * step;
             MainWindow.ABI_startChannel = ABIOP_comboBox_StartChannel.SelectedIndex;
             MainWindow.ABI_numOfChannels = ABIOP_comboBox_NumberOfChannels.SelectedIndex + 1;
             MainWindow.ABI_samplesPerChannel = int.Parse(ABIOP_textBox_samples.Text);
@@ -111,6 +117,11 @@ namespace DAQNavi_WF_v1_0_0.Forms
                 ABIOP_grid.Rows[numOfChan].Cells[1].Value = "V_Neg10To10";
                 numOfChan++;
             }
+        }
+
+        private void ABIOP_textBox_samples_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
     }

@@ -120,7 +120,6 @@ namespace DAQNavi_WF_v1_0_0
             int xPoint = 0;
             bar.Maximum = data.Count;
             bar.Value = 0;
-            chart.ChartAreas[0].AxisX.Maximum = 10;
             for (int i = 0; i < data.Count; ++i)
             {
                 mySeries = (i % channels);
@@ -133,6 +132,7 @@ namespace DAQNavi_WF_v1_0_0
                  chart.Series[mySeries].Points.Add(new DataPoint(xPoint, data[i]));
                  chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
             }
+            chart.ChartAreas[0].AxisX.Maximum = 100;
         }
 
         public static void fillUpChartAndGrid(int channels, List<double> data, Chart chart, MetroFramework.Controls.MetroProgressBar bar, MetroFramework.Controls.MetroGrid grid)

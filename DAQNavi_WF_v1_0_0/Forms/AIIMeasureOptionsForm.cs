@@ -86,7 +86,7 @@ namespace DAQNavi_WF_v1_0_0
 
             int choosenChannel = AIIOP_comboBox_StartChannel.SelectedIndex;
             int gridRow = 0;
-            for (int i = choosenChannel; i < AIIOP_grid.Rows.Count ; i++)
+            for (int i = choosenChannel; i < AIIOP_grid.Rows.Count + choosenChannel; i++)
             {
                 AIIOP_channels_array[i] = GridUtils.rangeToValueRange(AIIOP_grid.Rows[gridRow].Cells[1].Value.ToString());
                 gridRow++;

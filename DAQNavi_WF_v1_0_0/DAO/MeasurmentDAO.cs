@@ -41,16 +41,29 @@ namespace DAQNavi_WF_v1_0_0
 
             command.CommandText = "INSERT INTO usb4702_logindb.measurments (idusers,timestart,timeend,date,task,week,duration,samples,numberofchannels,startchannel) VALUES ('" + login.loggedUser.idusers.ToString() + "','" + dateStart + "','" + dateEnd + "','" + date.ToString() + "','" + "task" + "','" + weekNum + "','" + duration + "','" + samples + "','" + numberofchannels + "','" + startchannel +"')";
             command.ExecuteNonQuery();
+
+
             long lastId = command.LastInsertedId;
             int currentChannelNumer = 0;
+            string[] arr = new string[10000];
+            int counter = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 currentChannelNumer = (i % int.Parse(numberofchannels));
                 progressBar.Value++;
                 progressBar.Refresh();
-                command.CommandText = "INSERT INTO usb4702_logindb.data (idmeasurments,value,channel) VALUES ('" + lastId.ToString() + "','" + data[i].ToString() + "','" + currentChannelNumer.ToString() + "')";
-                command.ExecuteNonQuery();
+                arr[counter] = "INSERT INTO usb4702_logindb.data (idmeasurments,value,channel) VALUES ('" + lastId.ToString() + "','" + data[i].ToString() + "','" + currentChannelNumer.ToString() + "')";
+                counter++;
+                if (i % 10000 == 0 || i == data.Length - 1)
+                {
+                    command.CommandText = string.Join(";", arr);
+                    command.ExecuteNonQuery();
+                    arr = new string[10000];
+                    counter = 0;
+                }
+
             }
+
             myConn.Close();
                 
         }

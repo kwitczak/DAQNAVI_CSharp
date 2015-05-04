@@ -62,10 +62,10 @@ namespace DAQNavi_WF_v1_0_0
                 timeStart = MainWindow.ABI_timerStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 timeEnd = MainWindow.ABI_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 timeDurration = new DateTime(MainWindow.ABI_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
-                samples = MainWindow.ABI_data.Length.ToString();
+                samples = MainWindow.ABI_allData.Count.ToString();
                 numberOfChannels = MainWindow.ABI_numOfChannels.ToString();
                 choosenChannel = MainWindow.ABI_startChannel.ToString();
-                frequency = ((MainWindow.ABI_data.Length / MainWindow.ABI_timeDiff.TotalMilliseconds * 1000)/MainWindow.ABI_numOfChannels).ToString() + " Hz";
+                frequency = ((MainWindow.ABI_allData.Count / MainWindow.ABI_timeDiff.TotalMilliseconds * 1000) / MainWindow.ABI_numOfChannels).ToString() + " Hz";
             }
             else if (MainWindow.lastMeasurmentType.Equals(MainWindow.MeasurmentType.ANALOG_INSTANT_INPUT))
             {
@@ -125,7 +125,7 @@ namespace DAQNavi_WF_v1_0_0
 
 
                             Rowbind.Append("\r\n");
-                            for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count/int.Parse(numberOfChannels); i++)
+                            for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count; i++)
                             {
                                 for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
                                 {

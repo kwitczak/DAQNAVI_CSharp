@@ -67,7 +67,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
                     CheckBox_CreateNewUser_Email.Checked = true;
                     CheckBox_CreateNewUser_Email.Style = MetroFramework.MetroColorStyle.Red;
                     CheckBox_CreateNewUser_Email.Text = "Invalid email!";
-                    TextBox_CreateNewUser_Email.Select();
+                    //TextBox_CreateNewUser_Email.Select();
                 }
                 
             }
@@ -136,7 +136,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 CheckBox_CreateNewUser_Login.Checked = true;
                 CheckBox_CreateNewUser_Login.Style = MetroFramework.MetroColorStyle.Red;
                 CheckBox_CreateNewUser_Login.Text = "Already used";
-                TextBox_CreateNewUser_Login.Select();
+                //TextBox_CreateNewUser_Login.Select();
             }
         }
 
@@ -146,6 +146,8 @@ namespace DAQNavi_WF_v1_0_0.Utils
             {
                 TextBox_CreateNewUser_Surname.Select();
             }
+
+            e.Handled = char.IsDigit(e.KeyChar);
         }
 
         private void TextBox_CreateNewUser_Surname_KeyPress(object sender, KeyPressEventArgs e)
@@ -154,6 +156,8 @@ namespace DAQNavi_WF_v1_0_0.Utils
             {
                 TextBox_CreateNewUser_Email.Select();
             }
+
+            e.Handled = char.IsDigit(e.KeyChar);
         }
 
         private void TextBox_CreateNewUser_Email_KeyPress(object sender, KeyPressEventArgs e)
@@ -184,7 +188,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
         {
             if (((MetroFramework.Controls.MetroTextBox)sender).Text.Equals(""))
             {
-                ((MetroFramework.Controls.MetroTextBox)sender).Select();
+                //((MetroFramework.Controls.MetroTextBox)sender).Select();
                 return false;
 
             }
@@ -345,6 +349,16 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 return;
             }
 
+            if (MainWindow.checkTextValid(TextBox_CreateNewUser_Login.Text) || 
+                MainWindow.checkTextValid(TextBox_CreateNewUser_Name.Text) || 
+                MainWindow.checkTextValid(TextBox_CreateNewUser_Password.Text) ||
+                MainWindow.checkTextValid(TextBox_CreateNewUser_Surname.Text))
+            {
+                MetroMessageBox.Show(this, "Twoje dane zawierają niepoprawne znaki!.", "Rejestracja", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             try
             {
                 string myConnection = "datasource=" + mainWindow.getDatabaseAddress.Text + ";port=" + mainWindow.getDatabasePort.Text + ";username=" + mainWindow.getDatabaseUser.Text + ";password=" + mainWindow.getDatabasePassword.Text;
@@ -357,6 +371,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 myConn.Close();
                 Spinner_CreateNewUser.Visible = false;
                 MetroMessageBox.Show(this, "Tworzenie konta zakończone sukcesem.", "Rejestracja", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                this.Hide();
             }
             catch
             {
