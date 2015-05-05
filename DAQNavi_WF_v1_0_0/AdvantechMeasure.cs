@@ -799,12 +799,12 @@ namespace DAQNavi_WF_v1_0_0
                 {
 
                     int myABIXDataReadyPoint = 0;
-                    int mySeries = 0;
+                    int mySeries = ABI_startChannel;
                     int channels = ABI_numOfChannels;
                     for (int i = 0; i < ABI_allData.Count; ++i)
                     {
-                        mySeries = (i % channels);
-                        if (mySeries == 0)
+                        mySeries = (i % channels) + ABI_startChannel;
+                        if (mySeries == ABI_startChannel)
                         {
                             ABI_xPoint++;
                             myABIXDataReadyPoint++;
@@ -813,8 +813,8 @@ namespace DAQNavi_WF_v1_0_0
                         }
 
                         //MEMO LEAK
-                        ABI_Chart.Series[mySeries + ABI_startChannel].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
-                        ABI_Chart.Series[mySeries + ABI_startChannel].ToolTip = "X=#VALX\nY=#VALY";
+                        ABI_Chart.Series[mySeries].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
+                        ABI_Chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
                         LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries + 1].Value = ABI_allData[i];
                     }
                 });
@@ -988,7 +988,7 @@ namespace DAQNavi_WF_v1_0_0
                     {
                         LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[0].Value = AAI_sampleCount + 1;
                     }
-                    LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i + 1].Value = AII_data[i];
+                    LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i + 1 + AII_startChannel].Value = AII_data[i];
                     //analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
                 }
 
@@ -1481,11 +1481,12 @@ namespace DAQNavi_WF_v1_0_0
             GridUtils.clearGrid(ShowMeasure_grid);
 
             int channels = int.Parse(myLoadedMeasurments[index].numberofchannels);
+            int startChannel = int.Parse(myLoadedMeasurments[index].startchannel);
             ShowMeasure_data = measurmentDAO.getMeasurmentData(myLoadedMeasurments[index]);
 
             ShowMeasure_progressBar.Visible = true;
             //ChartUtils.fillUpChartAndGrid(channels, data, ShowMeasure_chart, metroProgressBar1, ShowMeasure_grid);
-            ChartUtils.fillUpChart(channels, ShowMeasure_data, ShowMeasure_chart, ShowMeasure_progressBar);
+            ChartUtils.fillUpChart(channels, startChannel, ShowMeasure_data, ShowMeasure_chart, ShowMeasure_progressBar);
             //ShowMeasure_grid.RowCount = 10;
             //ShowMeasure_grid.Rows.Add();
             //ShowMeasure_grid.Rows.AddCopies(0, ShowMeasure_data.Count - 1);
@@ -1493,8 +1494,8 @@ namespace DAQNavi_WF_v1_0_0
 
             //ShowMeasure_grid.CellValueNeeded += OnCellValueNeeded;
             ShowMeasure_grid.CellValueNeeded += OnCellValueNeeded;
-            InitData(channels);
-            InitGrid(channels);
+            InitData(channels, startChannel);
+            InitGrid(channels, startChannel);
 
 
             ShowMeasure_progressBar.Visible = false;
@@ -1511,37 +1512,174 @@ namespace DAQNavi_WF_v1_0_0
         private List<bool> m_Visited = new List<bool>();
 
 
-        private void InitData(int channels)
+        private void InitData(int channels, int startChannel)
         {
 
             for (int i = 0; i < ShowMeasure_data.Count; i = i + channels)
             {
                 m_Visited.Add(false);
                 GridRowDTO obj = new GridRowDTO();
-                obj.ch1 = ShowMeasure_data[i];
+                if (startChannel == 0)
+                {
+                    obj.ch1 = ShowMeasure_data[i];
+                }
+                if (startChannel == 1)
+                {
+                    obj.ch2 = ShowMeasure_data[i];
+                }
+                if (startChannel == 2)
+                {
+                    obj.ch3 = ShowMeasure_data[i];
+                }
+                if (startChannel == 3)
+                {
+                    obj.ch4 = ShowMeasure_data[i];
+                }
+                if (startChannel == 4)
+                {
+                    obj.ch5 = ShowMeasure_data[i];
+                }
+                if (startChannel == 5)
+                {
+                    obj.ch6 = ShowMeasure_data[i];
+                }
+                if (startChannel == 6)
+                {
+                    obj.ch7 = ShowMeasure_data[i];
+                }
+                if (startChannel == 7)
+                {
+                    obj.ch8 = ShowMeasure_data[i];
+                }
                 if (channels > 1)
                 {
-                    obj.ch2 = ShowMeasure_data[i + 1];
+                    if (startChannel == 0)
+                    {
+                        obj.ch2 = ShowMeasure_data[i + 1];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch3 = ShowMeasure_data[i + 1];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch4 = ShowMeasure_data[i + 1];
+                    }
+                    if (startChannel == 3)
+                    {
+                        obj.ch5 = ShowMeasure_data[i + 1];
+                    }
+                    if (startChannel == 4)
+                    {
+                        obj.ch6 = ShowMeasure_data[i + 1];
+                    }
+                    if (startChannel == 5)
+                    {
+                        obj.ch7 = ShowMeasure_data[i + 1];
+                    }
+                    if (startChannel == 6)
+                    {
+                        obj.ch8 = ShowMeasure_data[i + 1];
+                    }
+
                 }
                 if (channels > 2)
                 {
-                    obj.ch3 = ShowMeasure_data[i + 2];
+                    if (startChannel == 0)
+                    {
+                        obj.ch3 = ShowMeasure_data[i + 2];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch4 = ShowMeasure_data[i + 2];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch5 = ShowMeasure_data[i + 2];
+                    }
+                    if (startChannel == 3)
+                    {
+                        obj.ch6 = ShowMeasure_data[i + 2];
+                    }
+                    if (startChannel == 4)
+                    {
+                        obj.ch7 = ShowMeasure_data[i + 2];
+                    }
+                    if (startChannel == 5)
+                    {
+                        obj.ch8 = ShowMeasure_data[i + 2];
+                    }
+
                 }
                 if (channels > 3)
                 {
-                    obj.ch4 = ShowMeasure_data[i + 3];
+                    if (startChannel == 0)
+                    {
+                        obj.ch4 = ShowMeasure_data[i + 3];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch5 = ShowMeasure_data[i + 3];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch6 = ShowMeasure_data[i + 3];
+                    }
+                    if (startChannel == 3)
+                    {
+                        obj.ch7 = ShowMeasure_data[i + 3];
+                    }
+                    if (startChannel == 4)
+                    {
+                        obj.ch8 = ShowMeasure_data[i + 3];
+                    }
                 }
                 if (channels > 4)
                 {
-                    obj.ch5 = ShowMeasure_data[i + 4];
+                    if (startChannel == 0)
+                    {
+                        obj.ch5 = ShowMeasure_data[i + 4];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch6 = ShowMeasure_data[i + 4];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch7 = ShowMeasure_data[i + 4];
+                    }
+                    if (startChannel == 3)
+                    {
+                        obj.ch8 = ShowMeasure_data[i + 4];
+                    }
+
                 }
                 if (channels > 5)
                 {
-                    obj.ch6 = ShowMeasure_data[i + 5];
+                    if (startChannel == 0)
+                    {
+                        obj.ch6 = ShowMeasure_data[i + 5];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch7 = ShowMeasure_data[i + 5];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch8 = ShowMeasure_data[i + 5];
+                    }
+
                 }
                 if (channels > 6)
                 {
-                    obj.ch7 = ShowMeasure_data[i + 6];
+                    if (startChannel == 0)
+                    {
+                        obj.ch7 = ShowMeasure_data[i + 6];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch8 = ShowMeasure_data[i + 6];
+                    }
                 }
                 if (channels > 7)
                 {
@@ -1552,14 +1690,14 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
-        private void InitGrid(int channels)
+        private void InitGrid(int channels, int startChannel)
         {
 
             ShowMeasure_grid.VirtualMode = true;
             ShowMeasure_grid.ReadOnly = true;
             ShowMeasure_grid.AllowUserToAddRows = false;
             ShowMeasure_grid.AllowUserToDeleteRows = false;
-            ShowMeasure_grid.ColumnCount = channels + 1;
+            ShowMeasure_grid.ColumnCount = channels + 1 + startChannel;
             ShowMeasure_grid.Rows.Add();
             ShowMeasure_grid.Rows.AddCopies(0, (ShowMeasure_data.Count - 1)/channels);
         }

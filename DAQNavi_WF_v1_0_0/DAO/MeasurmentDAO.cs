@@ -44,12 +44,12 @@ namespace DAQNavi_WF_v1_0_0
 
 
             long lastId = command.LastInsertedId;
-            int currentChannelNumer = 0;
+            int currentChannelNumer = int.Parse(startchannel);
             string[] arr = new string[10000];
             int counter = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                currentChannelNumer = (i % int.Parse(numberofchannels));
+                currentChannelNumer = (i % int.Parse(numberofchannels)) + int.Parse(startchannel);
                 progressBar.Value++;
                 progressBar.Refresh();
                 arr[counter] = "INSERT INTO usb4702_logindb.data (idmeasurments,value,channel) VALUES ('" + lastId.ToString() + "','" + data[i].ToString() + "','" + currentChannelNumer.ToString() + "')";

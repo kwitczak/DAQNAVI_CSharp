@@ -10,6 +10,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+using Microsoft.Office.Interop.Excel;
 
 namespace DAQNavi_WF_v1_0_0
 {
@@ -40,7 +44,7 @@ namespace DAQNavi_WF_v1_0_0
             TextBox_CommentForm_UserComment.Theme = parentStyle;
             RadioButton_CommentForm_DB.Theme = parentStyle;
             RadioButton_CommentForm_txt.Theme = parentStyle;
-            RadioButton_CommentForm_xlsm.Theme = parentStyle;
+            RadioButton_CommentForm_xlsx.Theme = parentStyle;
             Button_CommentForm_Cancel.Theme = parentStyle;
             Button_CommentForm_Export.Theme = parentStyle;
             ProgressBar_CommentForm.Theme = parentStyle;
@@ -59,8 +63,8 @@ namespace DAQNavi_WF_v1_0_0
 
             if (MainWindow.lastMeasurmentType.Equals(MainWindow.MeasurmentType.ANALOG_BUFFERED_INPUT))
             {
-                timeStart = MainWindow.ABI_timerStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeEnd = MainWindow.ABI_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeStart = MainWindow.ABI_timerStart.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                timeEnd = MainWindow.ABI_timeEnd.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
                 timeDurration = new DateTime(MainWindow.ABI_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
                 samples = MainWindow.ABI_allData.Count.ToString();
                 numberOfChannels = MainWindow.ABI_numOfChannels.ToString();
@@ -69,115 +73,250 @@ namespace DAQNavi_WF_v1_0_0
             }
             else if (MainWindow.lastMeasurmentType.Equals(MainWindow.MeasurmentType.ANALOG_INSTANT_INPUT))
             {
-                timeStart = MainWindow.AII_timeStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                timeEnd = MainWindow.AII_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
+                timeStart = MainWindow.AII_timeStart.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                timeEnd = MainWindow.AII_timeEnd.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
                 timeDurration = new DateTime(MainWindow.AII_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
                 samples = MainWindow.AAI_sampleCount.ToString();
                 numberOfChannels = mainWindow.getNumberOfChannelsAAI.ToString();
                 choosenChannel = mainWindow.getChoosenChannelAII.ToString();
-                frequency = ((MainWindow.AAI_sampleCount / MainWindow.AII_timeDiff.TotalMilliseconds * 1000)/mainWindow.getNumberOfChannelsAAI).ToString() + " Hz a powinno: " + (1 / (mainWindow.getAnalogInstantInputTimer / 1000)).ToString();
+                frequency = ((MainWindow.AAI_sampleCount / MainWindow.AII_timeDiff.TotalMilliseconds * 1000) / mainWindow.getNumberOfChannelsAAI).ToString() + " Hz a powinno: " + (1 / (mainWindow.getAnalogInstantInputTimer / 1000)).ToString();
             }
 
             string time = DateTime.Now.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
             double[] myResults = new double[mainWindow.metroGridTableVisible.Rows.Count * int.Parse(numberOfChannels)];
             int myResultsCounter = 0;
-            using (var dlg = new SaveFileDialog())
+
+            // ZAPIS DO PLIKU
+            if (RadioButton_CommentForm_txt.Checked)
             {
-                if (dlg.ShowDialog() == DialogResult.OK)
+                using (var dlg = new SaveFileDialog())
                 {
-                    //try
-                    //{
-                        // ZAPIS DO PLIKU
-                        using (System.IO.StreamWriter file = new System.IO.StreamWriter(dlg.FileName + ".txt"))
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        try
                         {
-
-                            file.WriteLine("=========================================\n");
-                            file.WriteLine("Report from :\t" + time);
-                            file.WriteLine("\n=========================================\n");
-                            file.WriteLine("Report Details:");
-                            file.WriteLine("Measure start :\t\t" + timeStart);
-                            file.WriteLine("Measure end :\t\t" + timeEnd);
-                            file.WriteLine("Measure time :\t\t" + timeDurration);
-                            file.WriteLine("Samples :\t\t" + samples);
-                            file.WriteLine("Channels :\t\t" + numberOfChannels);
-                            file.WriteLine("Channel start :\t\t" + choosenChannel);
-                            file.WriteLine("Sampling frequency :\t" + frequency);
-                            file.WriteLine("\n=========================================\n");
-                            file.WriteLine("Admin comment: " + "\n\t" + TextBox_CommentForm_AdminComment.Text);
-                            file.WriteLine("\n=========================================\n");
-                            file.WriteLine("User comment: " + "\n\t" + TextBox_CommentForm_UserComment.Text);
-                            file.WriteLine("\n=========================================\n");
-                            StringBuilder Rowbind = new StringBuilder();
-                            for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
+                            using (System.IO.StreamWriter file = new System.IO.StreamWriter(dlg.FileName + ".txt"))
                             {
-                                if (k < 1)
+
+                                file.WriteLine("=========================================\n");
+                                file.WriteLine("Report from :\t" + time);
+                                file.WriteLine("\n=========================================\n");
+                                file.WriteLine("Report Details:");
+                                file.WriteLine("Measure start :\t\t" + timeStart);
+                                file.WriteLine("Measure end :\t\t" + timeEnd);
+                                file.WriteLine("Measure time :\t\t" + timeDurration);
+                                file.WriteLine("Samples :\t\t" + samples);
+                                file.WriteLine("Channels :\t\t" + numberOfChannels);
+                                file.WriteLine("Channel start :\t\t" + choosenChannel);
+                                file.WriteLine("Sampling frequency :\t" + frequency);
+                                file.WriteLine("\n=========================================\n");
+                                file.WriteLine("Admin comment: " + "\n\t" + TextBox_CommentForm_AdminComment.Text);
+                                file.WriteLine("\n=========================================\n");
+                                file.WriteLine("User comment: " + "\n\t" + TextBox_CommentForm_UserComment.Text);
+                                file.WriteLine("\n=========================================\n");
+                                StringBuilder Rowbind = new StringBuilder();
+                                for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
                                 {
-                                    Rowbind.Append("\t");
-                                    Rowbind.Append("Sample" + ' ');
-                                }
-                                else
-                                {
-                                    Rowbind.Append("\t");
-                                    Rowbind.Append(mainWindow.metroGridTableVisible.Columns[k - 1].HeaderText + ' ');
+                                    if (k < 1)
+                                    {
+                                        Rowbind.Append("\t");
+                                        Rowbind.Append("Sample" + ' ');
+                                    }
+                                    else
+                                    {
+                                        Rowbind.Append("\t");
+                                        Rowbind.Append(mainWindow.metroGridTableVisible.Columns[k - 1].HeaderText + ' ');
+                                    }
+
                                 }
 
+
+                                Rowbind.Append("\r\n");
+                                for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count; i++)
+                                {
+                                    for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
+                                    {
+                                        if (k < 1)
+                                        {
+                                            Rowbind.Append("\t");
+                                            Rowbind.Append(i + 1);
+                                        }
+                                        else
+                                        {
+                                            Rowbind.Append("\t");
+                                            if (mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value != null)
+                                            {
+                                                if ((k - 1) == 0)
+                                                {
+                                                    //Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
+                                                    //myResults[myResultsCounter] = (int)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                                    //myResultsCounter++;
+                                                }
+                                                else
+                                                {
+                                                    Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
+                                                    myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                                    myResultsCounter++;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    Rowbind.Append("\r\n");
+                                }
+
+                                file.WriteLine(Rowbind.ToString());
                             }
 
+                            MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".txt zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        }
+                        catch (Exception ex)
+                        {
+                            MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
 
-                            Rowbind.Append("\r\n");
+            // ZAPIS DO EXCELA
+            if (RadioButton_CommentForm_xlsx.Checked)
+            {
+                using (var dlg = new SaveFileDialog())
+                {
+
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        //try
+                        //{
+
+                            string workbookPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\DAQNavi_file";
+                            Excel.Application excelApp = new Excel.Application();
+                            excelApp.Visible = false;
+                            Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(workbookPath, 0, false, 5, "", "", false, Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+
+                            Excel.Sheets excelSheets = excelWorkbook.Worksheets;
+                            Excel.Worksheet excelWorksheet = (Excel.Worksheet)excelSheets.get_Item("Results");
+                            excelWorksheet.Cells[14, 6] = MainWindow.loginManager.username.ToString();
+                            excelWorksheet.Cells[18, 6] = time;
+                            excelWorksheet.Cells[19, 6] = timeStart;
+                            excelWorksheet.Cells[20, 6] = timeEnd;
+                            excelWorksheet.Cells[21, 6] = timeDurration;
+                            excelWorksheet.Cells[22, 6] = samples;
+                            excelWorksheet.Cells[23, 6] = numberOfChannels;
+                            excelWorksheet.Cells[24, 6] = choosenChannel;
+                            excelWorksheet.Cells[25, 6] = frequency;
+
+
+                            int excelColumn = 2;
+                            int excelRow = 60;
+
+                            var data_ex = new object[mainWindow.metroGridTableVisible.Rows.Count, mainWindow.metroGridTableVisible.Columns.Count];
                             for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count; i++)
                             {
                                 for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
                                 {
                                     if (k < 1)
                                     {
-                                        Rowbind.Append("\t");
-                                        Rowbind.Append(i + 1);
+
                                     }
                                     else
                                     {
-                                        Rowbind.Append("\t");
+
                                         if (mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value != null)
                                         {
-                                            if ((k - 1) == 0) {
-                                                //Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
-                                                //myResults[myResultsCounter] = (int)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
-                                                //myResultsCounter++;
-                                            } else {
-                                                Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
-                                                myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                            if ((k - 1) == 0)
+                                            {
+                                                data_ex[i, k - 1] = i + 1;
+                                            }
+                                            else
+                                            {
+                                                double value = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                                data_ex[i, k - 1] = value;
+                                                myResults[myResultsCounter] = value;
                                                 myResultsCounter++;
                                             }
                                         }
                                     }
                                 }
-
-                                Rowbind.Append("\r\n");
                             }
 
-                            file.WriteLine(Rowbind.ToString());
+                            var startCell = (Range)excelWorksheet.Cells[excelRow, 1];
+                            var endCell = (Range)excelWorksheet.Cells[mainWindow.metroGridTableVisible.Rows.Count + excelRow - 1, mainWindow.metroGridTableVisible.Columns.Count];
+                            var writeRange = excelWorksheet.Range[startCell, endCell];
+
+                            excelWorksheet.Range[startCell, 
+                                (Range)excelWorksheet.Cells[mainWindow.metroGridTableVisible.Rows.Count + excelRow - 1, mainWindow.metroGridTableVisible.Columns.Count + 2]]
+                                .Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White);
+                            writeRange.Value2 = data_ex;
+                            int num = myResultsCounter/int.Parse(numberOfChannels) + 60;
+                            excelWorksheet.PageSetup.PrintArea = "$A$1:$K$" + num;
+
+
+                            excelWorkbook.SaveAs(dlg.FileName, Excel.XlFileFormat.xlWorkbookDefault, "", "", false, false,
+                                Excel.XlSaveAsAccessMode.xlExclusive, Excel.XlSaveConflictResolution.xlUserResolution, true, "", "", "");
+
+
+
+                            Marshal.ReleaseComObject(excelSheets);
+                            excelSheets = null;
+                            excelWorkbook.Close(false, System.Reflection.Missing.Value, System.Reflection.Missing.Value);
+                            Marshal.ReleaseComObject(excelWorkbook);
+                            Marshal.ReleaseComObject(excelApp);
+                            excelWorkbook = null;
+                            excelApp = null;
+                        
+                        
+                        //} catch(Exception ex){
+
+                        //}
+                    }
+                }
+
+            }
+
+            // ZAPIS TYLKO DO DB
+            if (RadioButton_CommentForm_DB.Checked)
+            {
+                for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count; i++)
+                {
+                    for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
+                    {
+                        if (k < 1)
+                        {
                         }
-
-                         //ZAPIS DO BAZY
-                        mainWindow.saveResultsToDataBase(timeStart,
-                            timeEnd,
-                            myResults,
-                            timeDurration,
-                            samples,
-                            numberOfChannels,
-                            choosenChannel,
-                            this.ProgressBar_CommentForm);
-
-                        myResults = null;
-                        MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".txt zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    //}
-
+                        else
+                        {
+                            if (mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value != null)
+                            {
+                                if ((k - 1) == 0)
+                                {
+                                }
+                                else
+                                {
+                                    myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                    myResultsCounter++;
+                                }
+                            }
+                        }
+                    }
                 }
             }
+
+
+            // Zapis do bazy
+            if (commentForm_checkBox.Checked)
+            {
+                mainWindow.saveResultsToDataBase(timeStart,
+                    timeEnd,
+                    myResults,
+                    timeDurration,
+                    samples,
+                    numberOfChannels,
+                    choosenChannel,
+                    this.ProgressBar_CommentForm);
+            }
+
 
             this.Hide();
         }
@@ -185,6 +324,35 @@ namespace DAQNavi_WF_v1_0_0
         private void Button_CommentForm_Cancel_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private string GetExcelColumnName(int columnNumber)
+        {
+            int dividend = columnNumber;
+            string columnName = String.Empty;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                columnName = Convert.ToChar(65 + modulo).ToString() + columnName;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+
+            return columnName;
+        }
+
+        private void commentForm_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (commentForm_checkBox.Checked)
+            {
+                RadioButton_CommentForm_DB.Enabled = true;
+            }
+            else
+            {
+                RadioButton_CommentForm_DB.Enabled = false;
+            }
+
         }
     }
 }

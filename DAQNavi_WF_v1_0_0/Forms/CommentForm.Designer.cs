@@ -31,7 +31,7 @@
             this.TextBox_CommentForm_AdminComment = new MetroFramework.Controls.MetroTextBox();
             this.TextBox_CommentForm_UserComment = new MetroFramework.Controls.MetroTextBox();
             this.RadioButton_CommentForm_txt = new MetroFramework.Controls.MetroRadioButton();
-            this.RadioButton_CommentForm_xlsm = new MetroFramework.Controls.MetroRadioButton();
+            this.RadioButton_CommentForm_xlsx = new MetroFramework.Controls.MetroRadioButton();
             this.RadioButton_CommentForm_DB = new MetroFramework.Controls.MetroRadioButton();
             this.Panel_CommentForm = new MetroFramework.Controls.MetroPanel();
             this.Button_CommentForm_Export = new MetroFramework.Controls.MetroButton();
@@ -40,6 +40,7 @@
             this.Label_CommentForm_UserComment = new MetroFramework.Controls.MetroLabel();
             this.Label_CommentForm_FileFormat = new MetroFramework.Controls.MetroLabel();
             this.ProgressBar_CommentForm = new MetroFramework.Controls.MetroProgressBar();
+            this.commentForm_checkBox = new MetroFramework.Controls.MetroCheckBox();
             this.Panel_CommentForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,16 +89,16 @@
             this.RadioButton_CommentForm_txt.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.RadioButton_CommentForm_txt.UseSelectable = true;
             // 
-            // RadioButton_CommentForm_xlsm
+            // RadioButton_CommentForm_xlsx
             // 
-            this.RadioButton_CommentForm_xlsm.AutoSize = true;
-            this.RadioButton_CommentForm_xlsm.Location = new System.Drawing.Point(121, 21);
-            this.RadioButton_CommentForm_xlsm.Name = "RadioButton_CommentForm_xlsm";
-            this.RadioButton_CommentForm_xlsm.Size = new System.Drawing.Size(50, 15);
-            this.RadioButton_CommentForm_xlsm.TabIndex = 3;
-            this.RadioButton_CommentForm_xlsm.Text = ".xlsm";
-            this.RadioButton_CommentForm_xlsm.Theme = MetroFramework.MetroThemeStyle.Dark;
-            this.RadioButton_CommentForm_xlsm.UseSelectable = true;
+            this.RadioButton_CommentForm_xlsx.AutoSize = true;
+            this.RadioButton_CommentForm_xlsx.Location = new System.Drawing.Point(121, 21);
+            this.RadioButton_CommentForm_xlsx.Name = "RadioButton_CommentForm_xlsx";
+            this.RadioButton_CommentForm_xlsx.Size = new System.Drawing.Size(44, 15);
+            this.RadioButton_CommentForm_xlsx.TabIndex = 3;
+            this.RadioButton_CommentForm_xlsx.Text = ".xlsx";
+            this.RadioButton_CommentForm_xlsx.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.RadioButton_CommentForm_xlsx.UseSelectable = true;
             // 
             // RadioButton_CommentForm_DB
             // 
@@ -114,7 +115,7 @@
             // 
             this.Panel_CommentForm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Panel_CommentForm.Controls.Add(this.RadioButton_CommentForm_DB);
-            this.Panel_CommentForm.Controls.Add(this.RadioButton_CommentForm_xlsm);
+            this.Panel_CommentForm.Controls.Add(this.RadioButton_CommentForm_xlsx);
             this.Panel_CommentForm.Controls.Add(this.RadioButton_CommentForm_txt);
             this.Panel_CommentForm.HorizontalScrollbarBarColor = true;
             this.Panel_CommentForm.HorizontalScrollbarHighlightOnWheel = false;
@@ -192,11 +193,26 @@
             this.ProgressBar_CommentForm.Value = 10;
             this.ProgressBar_CommentForm.Visible = false;
             // 
+            // commentForm_checkBox
+            // 
+            this.commentForm_checkBox.AutoSize = true;
+            this.commentForm_checkBox.Checked = true;
+            this.commentForm_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.commentForm_checkBox.Location = new System.Drawing.Point(283, 347);
+            this.commentForm_checkBox.Name = "commentForm_checkBox";
+            this.commentForm_checkBox.Size = new System.Drawing.Size(114, 15);
+            this.commentForm_checkBox.TabIndex = 21;
+            this.commentForm_checkBox.Text = "save to Data Base";
+            this.commentForm_checkBox.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.commentForm_checkBox.UseSelectable = true;
+            this.commentForm_checkBox.CheckedChanged += new System.EventHandler(this.commentForm_checkBox_CheckedChanged);
+            // 
             // CommentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(443, 541);
+            this.Controls.Add(this.commentForm_checkBox);
             this.Controls.Add(this.ProgressBar_CommentForm);
             this.Controls.Add(this.Label_CommentForm_FileFormat);
             this.Controls.Add(this.Label_CommentForm_UserComment);
@@ -221,7 +237,7 @@
         private MetroFramework.Controls.MetroTextBox TextBox_CommentForm_AdminComment;
         private MetroFramework.Controls.MetroTextBox TextBox_CommentForm_UserComment;
         private MetroFramework.Controls.MetroRadioButton RadioButton_CommentForm_txt;
-        private MetroFramework.Controls.MetroRadioButton RadioButton_CommentForm_xlsm;
+        private MetroFramework.Controls.MetroRadioButton RadioButton_CommentForm_xlsx;
         private MetroFramework.Controls.MetroRadioButton RadioButton_CommentForm_DB;
         private MetroFramework.Controls.MetroPanel Panel_CommentForm;
         private MetroFramework.Controls.MetroButton Button_CommentForm_Export;
@@ -230,5 +246,6 @@
         private MetroFramework.Controls.MetroLabel Label_CommentForm_UserComment;
         private MetroFramework.Controls.MetroLabel Label_CommentForm_FileFormat;
         private MetroFramework.Controls.MetroProgressBar ProgressBar_CommentForm;
+        private MetroFramework.Controls.MetroCheckBox commentForm_checkBox;
     }
 }

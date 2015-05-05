@@ -114,15 +114,15 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
-        public static void fillUpChart(int channels, List<double> data, Chart chart, MetroFramework.Controls.MetroProgressBar bar)
+        public static void fillUpChart(int channels, int startChannel, List<double> data, Chart chart, MetroFramework.Controls.MetroProgressBar bar)
         {
-            int mySeries = 0;
+            int mySeries = startChannel;
             int xPoint = 0;
             bar.Maximum = data.Count;
             bar.Value = 0;
             for (int i = 0; i < data.Count; ++i)
             {
-                mySeries = (i % channels);
+                mySeries = (i % channels) + startChannel;
                 if (mySeries == 0)
                 {
                     xPoint++;
