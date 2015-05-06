@@ -126,27 +126,60 @@ namespace DAQNavi_WF_v1_0_0
             Welcome_button_login.Text = ConfigurationManager.AppSettings["WelcomeButtonLogin" + choosenLanguage];
             AII_button_measure.Text = "Measure";
 
-            Welcome_label_helloText.Text = "Welcome in Advantech Measure application. \n\nTo start, " +
-                          "choose one of the options on the tab pane.\n" +
-                          "If You want to read more about Advantech, click" +
-                          "\nSome more information, other information and " +
-                          "\nSome more information, other information and " +
-                          "\nSome more information, other information and thats it" +
-                          "\n\n KW";
-            Measure_label_analogInput.Text = "You can measure:" +
-                          "\n  - Instant input" +
-                          "\n  - Buffered input";
-            Measure_label_analogOutput.Text = "You can measure:" +
-                          "\n  - Instant output" +
-                          "\n  - Buffered output";
-            Measure_label_digitalInput.Text = "You can measure:" +
-                          "\n  - Instant input";
-            Measure_label_digitalOutput.Text = "You can measure:" +
-                          "\n  - Instant output";
-            Measure_label_instant.Text = "You can measure:" +
-                          "\n  - Instant output";
-            Measure_label_buffered.Text = "You can measure:" +
-                          "\n  - Instant output";
+            if (choosenLanguage == Language.ENG) {
+                Welcome_link.Location = new Point(650, 146);
+
+                Welcome_label_helloText.Text = "Welcome in Advantech Measure application. \n\nTo start, " +
+              "choose one of the options on the tab pane.\n" +
+              "If You want to read more about Advantech, click" +
+              "\nSome more information, other information and " +
+              "\nSome more information, other information and " +
+              "\nSome more information, other information and thats it" +
+              "\n\n KW";
+                Measure_label_analogInput.Text = "You can measure:" +
+              "\n  - Instant input" +
+              "\n  - Buffered input";
+                Measure_label_analogOutput.Text = "You can measure:" +
+                              "\n  - Instant output" +
+                              "\n  - Buffered output";
+                Measure_label_digitalInput.Text = "You can measure:" +
+                              "\n  - Instant input";
+                Measure_label_digitalOutput.Text = "You can measure:" +
+                              "\n  - Instant output";
+                Measure_label_instant.Text = "You can measure:" +
+                              "\n  - Instant output";
+                Measure_label_buffered.Text = "You can measure:" +
+                              "\n  - Instant output";
+            }
+            else
+            {
+                Welcome_link.Location = new Point(755, 146);
+                Welcome_link.Text = "tutaj.";
+
+                Welcome_label_helloText.Text = "Witaj w programie Advantech Measure. \n\nAby rozpocząć, " +
+              "utwórz konto i zaloguj się.\n" +
+              "Jeżeli chcesz dowiedzieć się więcej o firmie Advantech, kliknij" +
+              "\n" +
+              "\nZalogowanie się pozwoli Ci na dokonywanie" +
+              "\ni przeglądanie pomiarów z każdego stanowiska pomiarowego." +
+              "\n\n Krzysztof Witczak";
+                Measure_label_analogInput.Text = "Możesz mierzyć wejście:" +
+              "\n  - W trybie natychmiastowym" +
+              "\n  - W trybie z użyciem bufora";
+                Measure_label_analogOutput.Text = "Możesz mierzyć wyjście:" +
+                              "\n  - W trybie natychmiastowym" +
+                              "\n  - W trybie z użyciem bufora";
+                Measure_label_digitalInput.Text = "Możesz mierzyć:" +
+                              "\n  - Wejście w trybie natychmiastowym";
+                Measure_label_digitalOutput.Text = "Możesz mierzyć:" +
+                              "\n  - Wejście w trybie z użyciem bufora";
+                Measure_label_instant.Text = "Możesz mierzyć::" +
+                              "\n  - Wyjście w trybie natychmiastowym";
+                Measure_label_buffered.Text = "Możesz mierzyć:" +
+                              "\n  - Wyjście w trybie z użyciem bufora";
+            }
+
+
 
             // Ustawienie opcji wykresów
 			ChartUtils.setChartZoomProperties (ABI_Chart);
@@ -180,6 +213,7 @@ namespace DAQNavi_WF_v1_0_0
             this.Select();
             Welcome_textBox_username.Select();
         }
+
 
 
 
@@ -474,7 +508,7 @@ namespace DAQNavi_WF_v1_0_0
             {
                 UserDTO user = loginManager.loggedUser;
                 measurmentDAO = new MeasurmentDAO(loginManager);
-                MetroMessageBox.Show(this, "" + user.imie + ", logowanie powiodło się.", "Witaj", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MetroMessageBox.Show(this, "\n" + user.imie + ", logowanie powiodło się. Możesz teraz przystąpić do wykonywania pomiarów.", "Witaj!", MessageBoxButtons.OK, MessageBoxIcon.Question);
                 if (user.admin == 1)
                 {
                     //this.TabControl.TabPages.Remove(metroTabPageWelcome);
