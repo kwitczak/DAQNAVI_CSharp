@@ -17,7 +17,8 @@ namespace DAQNavi_WF_v1_0_0
             {
                 return DAQNavi_WF_v1_0_0.MainWindow.Language.ENG;
             }
-            else {
+            else
+            {
                 return DAQNavi_WF_v1_0_0.MainWindow.Language.PL;
             }
         }
@@ -66,19 +67,42 @@ namespace DAQNavi_WF_v1_0_0
             // MM
             window.TabPage_MyMeasurements.Text = ConfigurationManager.AppSettings["TabPage_MyMeasurements" + lan.ToString()];
             window.MM_button_newMeasure.Text = ConfigurationManager.AppSettings["MM_button_newMeasure" + lan.ToString()];
-           
+            // M
+            window.Measure_button_return.Text = ConfigurationManager.AppSettings["Measure_button_return" + lan.ToString()];
+            window.TabPage_Measure.Text = ConfigurationManager.AppSettings["TabPage_Measure" + lan.ToString()];
 
             // Analog Buffered Input Tab
             window.TabPage_AnalogBufferedInput.Text = ConfigurationManager.AppSettings["ABITab" + lan.ToString()];
-            //window.ABI_label_samples.Text = ConfigurationManager.AppSettings["ABISamples" + lan.ToString()];
-            //window.ABI_label_channels.Text = ConfigurationManager.AppSettings["ABIChannels" + lan.ToString()];
-            //window.ABI_label_channelStart.Text = ConfigurationManager.AppSettings["ABIChannelStart" + lan.ToString()];
-            //window.ABI_label_intervalCount.Text = ConfigurationManager.AppSettings["ABIIntervalCount" + lan.ToString()];
-            //window.ABI_label_scanCount.Text = ConfigurationManager.AppSettings["ABIScanCount" + lan.ToString()];
-            //window.ABI_label_rate.Text = ConfigurationManager.AppSettings["ABIRate" + lan.ToString()];
+            window.ABI_label_details.Text = ConfigurationManager.AppSettings["ABI_label_details" + lan.ToString()];
+            window.ABI_label_options.Text = ConfigurationManager.AppSettings["ABI_label_options" + lan.ToString()];
             window.ABI_button_back.Text = ConfigurationManager.AppSettings["ABIButtonBack" + lan.ToString()];
             window.ABI_button_measure.Text = ConfigurationManager.AppSettings["ABIButtonMeasure" + lan.ToString()];
-            
+            window.ABI_button_measureOptions.Text = ConfigurationManager.AppSettings["ABI_button_measureOptions" + lan.ToString()];
+            window.ABI_button_defaults.Text = ConfigurationManager.AppSettings["ABI_button_defaults" + lan.ToString()];
+            window.ABI_label_endTime.Text = ConfigurationManager.AppSettings["ABI_label_endTime" + lan.ToString()];
+            window.ABI_label_duration.Text = ConfigurationManager.AppSettings["ABI_label_duration" + lan.ToString()];
+            window.ABI_button_back.Text = ConfigurationManager.AppSettings["ABI_button_back" + lan.ToString()];
+            window.ABI_label_trackBar2.Text = ConfigurationManager.AppSettings["ABI_label_trackBar2" + lan.ToString()];
+
+            // Analog Instant Input
+            window.AII_label_options.Text = ConfigurationManager.AppSettings["AII_label_options" + lan.ToString()];
+            window.AII_button_editOptions.Text = ConfigurationManager.AppSettings["AII_button_editOptions" + lan.ToString()];
+            window.AII_button_defaults.Text = ConfigurationManager.AppSettings["AII_button_defaults" + lan.ToString()];
+            window.AII_label_viewOptions.Text = ConfigurationManager.AppSettings["AII_label_viewOptions" + lan.ToString()];
+            window.AII_label_movingWindow.Text = ConfigurationManager.AppSettings["AII_label_movingWindow" + lan.ToString()];
+            window.AII_label_details.Text = ConfigurationManager.AppSettings["AII_label_details" + lan.ToString()];
+            window.AII_label_end.Text = ConfigurationManager.AppSettings["AII_label_end" + lan.ToString()];
+            window.AII_label__duration.Text = ConfigurationManager.AppSettings["AII_label__duration" + lan.ToString()];
+            window.AII_label_currentPoints.Text = ConfigurationManager.AppSettings["AII_label_currentPoints" + lan.ToString()];
+            window.AII_label_channel.Text = ConfigurationManager.AppSettings["AII_label_channel" + lan.ToString()];
+            window.AII_label_value.Text = ConfigurationManager.AppSettings["AII_label_value" + lan.ToString()];
+            window.AII_button_back.Text = ConfigurationManager.AppSettings["AII_button_back" + lan.ToString()];
+            window.AII_button_measure.Text = ConfigurationManager.AppSettings["AII_button_measure" + lan.ToString()];
+
+            // Results
+            window.TabPage_LastMeasure.Text = ConfigurationManager.AppSettings["TabPage_LastMeasure" + lan.ToString()];
+            window.Results_button_exportToTXT.Text = ConfigurationManager.AppSettings["Results_button_exportToTXT" + lan.ToString()];
+
         }
     }
 }

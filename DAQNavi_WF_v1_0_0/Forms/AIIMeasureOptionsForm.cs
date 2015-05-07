@@ -22,7 +22,9 @@ namespace DAQNavi_WF_v1_0_0
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            this.MaximizeBox = false;
             MetroFramework.MetroThemeStyle parentStyle = MainWindow.choosenStyle;
+            MainWindow.Language language = MainWindow.choosenLanguage;
             this.Theme = parentStyle;
             AAIOP_label_Interval_1.Theme = parentStyle;
             AAIOP_label_Interval_2.Theme = parentStyle;
@@ -35,6 +37,26 @@ namespace DAQNavi_WF_v1_0_0
             for (int i = 0; i < AIIOP_channels_array.Length; i++)
             {
                 AIIOP_channels_array[i] = ValueRange.V_Neg10To10;
+            }
+
+            if (language == MainWindow.Language.ENG)
+            {
+                AAIOP_label_Interval_1.Text = "Interval";
+                AIIOP_label_StartChannel.Text = "Start Channel";
+                AIIOP_label_NumberOfChannels.Text = "Number of Channels";
+                AIIOP_label_channelRange.Text = "Channels range";
+                Button_AIMOptions_Save.Text = "Save";
+                this.Text = "AII Options";
+
+            }
+            else
+            {
+                AAIOP_label_Interval_1.Text = "Częstotliwość";
+                AIIOP_label_StartChannel.Text = "Kanał startowy";
+                AIIOP_label_NumberOfChannels.Text = "Liczba kanałów";
+                AIIOP_label_channelRange.Text = "Zakresy pomiarowe";
+                Button_AIMOptions_Save.Text = "Zapisz";
+                this.Text = "Opcje pomiaru";
             }
         }
 

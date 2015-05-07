@@ -23,8 +23,10 @@ namespace DAQNavi_WF_v1_0_0.Utils
         {
             // TODO: Complete member initialization
             InitializeComponent();
+            this.MaximizeBox = false;
             this.mainWindow = mainWindow;
             MetroFramework.MetroThemeStyle parentStyle = MainWindow.choosenStyle;
+            MainWindow.Language language = MainWindow.choosenLanguage;
             this.Theme = parentStyle;
             Label_CreateNewUser_Email.Theme = parentStyle;
             Label_CreateNewUser_Login.Theme = parentStyle;
@@ -45,6 +47,31 @@ namespace DAQNavi_WF_v1_0_0.Utils
             CheckBox_CreateNewUser_Password.Theme = parentStyle;
             CheckBox_CreateNewUser_Password2.Theme = parentStyle;
             CheckBox_CreateNewUser_Surname.Theme = parentStyle;
+
+
+            if (language == MainWindow.Language.ENG)
+            {
+                Label_CreateNewUser_Email.Text = "Email";
+                Label_CreateNewUser_Login.Text = "Index";
+                Label_CreateNewUser_Name.Text = "Name";
+                Label_CreateNewUser_Password.Text = "Password";
+                Label_CreateNewUser_Password2.Text = "Repeat password";
+                Label_CreateNewUser_Surname.Text = "Surname";
+                Button_CreateNewUser_Save.Text = "Save";
+                this.Text = "Registrate";
+
+            }
+            else
+            {
+                Label_CreateNewUser_Email.Text = "Email";
+                Label_CreateNewUser_Login.Text = "Indeks";
+                Label_CreateNewUser_Name.Text = "Imię";
+                Label_CreateNewUser_Password.Text = "Hasło";
+                Label_CreateNewUser_Password2.Text = "Powtórz hasło";
+                Label_CreateNewUser_Surname.Text = "Nazwisko";
+                Button_CreateNewUser_Save.Text = "Zapisz";
+                this.Text = "Rejestracja";
+            }
         }
 
         /// <summary>

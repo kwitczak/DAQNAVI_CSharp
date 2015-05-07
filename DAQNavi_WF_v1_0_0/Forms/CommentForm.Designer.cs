@@ -80,7 +80,7 @@
             // 
             this.RadioButton_CommentForm_txt.AutoSize = true;
             this.RadioButton_CommentForm_txt.Checked = true;
-            this.RadioButton_CommentForm_txt.Location = new System.Drawing.Point(36, 21);
+            this.RadioButton_CommentForm_txt.Location = new System.Drawing.Point(25, 21);
             this.RadioButton_CommentForm_txt.Name = "RadioButton_CommentForm_txt";
             this.RadioButton_CommentForm_txt.Size = new System.Drawing.Size(39, 15);
             this.RadioButton_CommentForm_txt.TabIndex = 2;
@@ -92,7 +92,7 @@
             // RadioButton_CommentForm_xlsx
             // 
             this.RadioButton_CommentForm_xlsx.AutoSize = true;
-            this.RadioButton_CommentForm_xlsx.Location = new System.Drawing.Point(121, 21);
+            this.RadioButton_CommentForm_xlsx.Location = new System.Drawing.Point(110, 21);
             this.RadioButton_CommentForm_xlsx.Name = "RadioButton_CommentForm_xlsx";
             this.RadioButton_CommentForm_xlsx.Size = new System.Drawing.Size(44, 15);
             this.RadioButton_CommentForm_xlsx.TabIndex = 3;
@@ -103,7 +103,7 @@
             // RadioButton_CommentForm_DB
             // 
             this.RadioButton_CommentForm_DB.AutoSize = true;
-            this.RadioButton_CommentForm_DB.Location = new System.Drawing.Point(222, 21);
+            this.RadioButton_CommentForm_DB.Location = new System.Drawing.Point(211, 21);
             this.RadioButton_CommentForm_DB.Name = "RadioButton_CommentForm_DB";
             this.RadioButton_CommentForm_DB.Size = new System.Drawing.Size(100, 15);
             this.RadioButton_CommentForm_DB.TabIndex = 4;
@@ -198,7 +198,7 @@
             this.commentForm_checkBox.AutoSize = true;
             this.commentForm_checkBox.Checked = true;
             this.commentForm_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.commentForm_checkBox.Location = new System.Drawing.Point(283, 347);
+            this.commentForm_checkBox.Location = new System.Drawing.Point(261, 347);
             this.commentForm_checkBox.Name = "commentForm_checkBox";
             this.commentForm_checkBox.Size = new System.Drawing.Size(114, 15);
             this.commentForm_checkBox.TabIndex = 21;

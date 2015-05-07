@@ -24,6 +24,9 @@ namespace DAQNavi_WF_v1_0_0.Forms
             InitializeComponent();
             this.mainWindow = mainWindow;
             MetroFramework.MetroThemeStyle parentStyle = MainWindow.choosenStyle;
+            MainWindow.Language language = MainWindow.choosenLanguage;
+
+            this.MaximizeBox = false;
             this.Theme = parentStyle;
             ABIOP_button_Save.Theme = parentStyle;
             ABIOP_comboBox_NumberOfChannels.Theme = parentStyle;
@@ -44,6 +47,32 @@ namespace DAQNavi_WF_v1_0_0.Forms
             for (int i = 0; i < ABIOP_channels_array.Length; i++)
             {
                 ABIOP_channels_array[i] = ValueRange.V_Neg10To10;
+            }
+
+
+
+            //Languages
+
+            if (language == MainWindow.Language.ENG)
+            {
+                ABIOP_label_Interval_1.Text = "Interval";
+                ABIOP_label_StartChannel.Text = "Start Channel";
+                ABIOP_label_NumberOfChannels.Text = "Number of Channels";
+                ABIOP_label_samples.Text = "Samples per Channel";
+                ABIOP_label_channelRange.Text = "Channels range";
+                ABIOP_button_Save.Text = "Save";
+                this.Text = "ABI Options";
+
+            }
+            else
+            {
+                ABIOP_label_Interval_1.Text = "Częstotliwość";
+                ABIOP_label_StartChannel.Text = "Kanał startowy";
+                ABIOP_label_NumberOfChannels.Text = "Liczba kanałów";
+                ABIOP_label_samples.Text = "Próbki na kanał";
+                ABIOP_label_channelRange.Text = "Zakresy pomiarowe";
+                ABIOP_button_Save.Text = "Zapisz";
+                this.Text = "Opcje pomiaru";
             }
         }
 

@@ -106,6 +106,7 @@ namespace DAQNavi_WF_v1_0_0
 
             // Przygotowanie programu do pracy - ukrycie zakładek
             InitializeComponent();
+            this.MaximizeBox = false;
 
             TabControl.TabPages.Remove(TabPage_AnalogInstantInput);
             TabControl.TabPages.Remove(TabPage_AnalogBufferedInput);
@@ -128,6 +129,12 @@ namespace DAQNavi_WF_v1_0_0
 
             if (choosenLanguage == Language.ENG) {
                 Welcome_link.Location = new Point(650, 146);
+                Measure_label_analogInput.Location = new Point(113, 116);
+                Measure_label_analogOutput.Location = new Point(681, 116);
+                Measure_label_digitalInput.Location = new Point(113, 262);
+                Measure_label_digitalOutput.Location = new Point(681, 262);
+                Measure_label_instant.Location = new Point(113, 206);
+                Measure_label_buffered.Location = new Point(681, 206);
 
                 Welcome_label_helloText.Text = "Welcome in Advantech Measure application. \n\nTo start, " +
               "choose one of the options on the tab pane.\n" +
@@ -154,6 +161,12 @@ namespace DAQNavi_WF_v1_0_0
             else
             {
                 Welcome_link.Location = new Point(755, 146);
+                Measure_label_analogInput.Location = new Point(30, 116);
+                Measure_label_analogOutput.Location = new Point(681, 116);
+                Measure_label_digitalInput.Location = new Point(30, 262);
+                Measure_label_digitalOutput.Location = new Point(681, 262);
+                Measure_label_instant.Location = new Point(30, 206);
+                Measure_label_buffered.Location = new Point(681, 206);
                 Welcome_link.Text = "tutaj.";
 
                 Welcome_label_helloText.Text = "Witaj w programie Advantech Measure. \n\nAby rozpocząć, " +
@@ -169,14 +182,14 @@ namespace DAQNavi_WF_v1_0_0
                 Measure_label_analogOutput.Text = "Możesz mierzyć wyjście:" +
                               "\n  - W trybie natychmiastowym" +
                               "\n  - W trybie z użyciem bufora";
-                Measure_label_digitalInput.Text = "Możesz mierzyć:" +
-                              "\n  - Wejście w trybie natychmiastowym";
-                Measure_label_digitalOutput.Text = "Możesz mierzyć:" +
-                              "\n  - Wejście w trybie z użyciem bufora";
-                Measure_label_instant.Text = "Możesz mierzyć::" +
-                              "\n  - Wyjście w trybie natychmiastowym";
-                Measure_label_buffered.Text = "Możesz mierzyć:" +
-                              "\n  - Wyjście w trybie z użyciem bufora";
+                Measure_label_digitalInput.Text = "Możesz mierzyć wejście:" +
+                              "\n  - W trybie natychmiastowym";
+                Measure_label_digitalOutput.Text = "Możesz mierzyć wejście:" +
+                              "\n  - W trybie z użyciem bufora";
+                Measure_label_instant.Text = "Możesz mierzyć wyjście:" +
+                              "\n  - W trybie natychmiastowym";
+                Measure_label_buffered.Text = "Możesz mierzyć wyjście:" +
+                              "\n  - W trybie z użyciem bufora";
             }
 
 
@@ -188,6 +201,8 @@ namespace DAQNavi_WF_v1_0_0
             ChartUtils.switchStyle(AII_Chart, choosenStyle);
             ChartUtils.setChartZoomProperties(ShowMeasure_chart);
             ChartUtils.switchStyle(ShowMeasure_chart, choosenStyle);
+            ABI_Chart.Visible = false;
+            AII_Chart.Visible = false;
 
             AII_labels = new Label[]{
                 AII_label_ch0Value, 
@@ -338,8 +353,8 @@ namespace DAQNavi_WF_v1_0_0
             TabControl.TabPages.Add(TabPage_AnalogBufferedInput);
             TabControl.TabPages.Remove(TabPage_Measure);
             TabControl.SelectedTab = TabPage_AnalogBufferedInput;
-
             DefaultStateUtils.setDefaultABI();
+            ABI_panel_hide.Select();
         }
 
         private void metroTileDigitalInput_MouseHover(object sender, EventArgs e)
@@ -416,6 +431,8 @@ namespace DAQNavi_WF_v1_0_0
         /* Powrot z AnalogBufferedInput do measure */
         private void Button_AnalogBufferedInput_Back_Click(object sender, EventArgs e)
         {
+            ABI_Chart.Visible = false;
+            ABI_panel_hide.Visible = true;
             ABI_data = null;
             ABI_xPoint = 0;
             LastMeasure_GridTable.Rows.Clear();
@@ -423,6 +440,7 @@ namespace DAQNavi_WF_v1_0_0
 
             TabControl.TabPages.Add(TabPage_Measure);
             TabControl.TabPages.Remove(TabPage_AnalogBufferedInput);
+            TabControl.TabPages.Remove(TabPage_LastMeasure);
             TabControl.SelectedTab = TabPage_Measure;
             //TabControl.TabPages.Remove(TabPage_LastMeasure);
 
@@ -696,7 +714,9 @@ namespace DAQNavi_WF_v1_0_0
         private void buttonAnalogBufferedInput_Click(object sender, EventArgs e)
         {
             // TODO REFACTOR
-
+            this.Select();
+            ABI_panel_hide.Visible = false;
+            ABI_Chart.Visible = true;
             lastMeasurmentType = MeasurmentType.ANALOG_BUFFERED_INPUT;
             ABI_allData.Clear();
             timer_ProgressBar.Start();
@@ -852,8 +872,23 @@ namespace DAQNavi_WF_v1_0_0
                         LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries + 1].Value = ABI_allData[i];
                     }
                 });
+
+                if (ABI_allData.Count / ABI_numOfChannels < 1000)
+                {
+                    ABI_TrackBar_1.Value = 100;
+                }
+                else if (ABI_allData.Count / ABI_numOfChannels < 5000)
+                {
+                    ABI_TrackBar_1.Value = 50;
+                }
+                else
+                {
+                    ABI_TrackBar_1.Value = 20;
+                }
+
             };
             this.Invoke(inv);
+                        
             //ABIControl.Cleanup();
         }
 
@@ -884,6 +919,9 @@ namespace DAQNavi_WF_v1_0_0
             // Button start mode
             if (AII_button_measure.Text.Equals("Measure"))
             {
+                AII_panel_hide.Visible = false;
+                AII_Chart.Visible = true;
+                AII_data = new double[8];
                 createNewMeasurment();
                 lastMeasurmentType = MeasurmentType.ANALOG_INSTANT_INPUT;
                 MM_list_titles[MM_numberOfMeasurments - 1].Text = "Measurment #" + MM_numberOfMeasurments;
@@ -943,7 +981,7 @@ namespace DAQNavi_WF_v1_0_0
 
                 //timer_getData.Stop();
                 AII_timer.Enabled = false;
-                AII_data = new double[8];
+                //AII_data = new double[8];
                 AII_button_measure.Text = "Save";
                 MM_list_samplesValue[MM_numberOfMeasurments - 1].Text = AAI_sampleCount.ToString();
                 MM_list_numberOfChannelsValue[MM_numberOfMeasurments - 1].Text = AII_numOfChannels.ToString();
@@ -1043,6 +1081,8 @@ namespace DAQNavi_WF_v1_0_0
         private void Button_AnalogInstantInput_Reset_Click(object sender, EventArgs e)
         {
             timer_getData.Stop();
+            AII_panel_hide.Visible = true;
+            AII_Chart.Visible = false;
             AII_data = new double[8];
             //Button_AnalogInstantInput_Pause.Text.Equals("Pause");
             foreach (var series in AII_Chart.Series)
@@ -1055,6 +1095,7 @@ namespace DAQNavi_WF_v1_0_0
             AII_Chart.ChartAreas[0].AxisX.Minimum = 0;
             AII_Chart.ChartAreas[0].AxisX.Maximum = Double.NaN;
             AAI_sampleCount = 0;
+            AII_drawnPoints = 0;
             AAI_isRunning = false;
             AII_button_measure.Text = "Measure";
 

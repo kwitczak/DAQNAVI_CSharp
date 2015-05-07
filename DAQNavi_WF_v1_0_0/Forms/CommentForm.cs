@@ -30,12 +30,14 @@ namespace DAQNavi_WF_v1_0_0
         {
             // TODO: Complete member initialization
             InitializeComponent();
+            this.MaximizeBox = false;
             this.mainWindow = mainWindow;
             this.TextBox_CommentForm_AdminComment.Text = mainWindow.TextBox_Options_AdminComment_Visible.Text.ToString();
             this.TextBox_CommentForm_UserComment.Text = mainWindow.TextBox_Options_UserComment_Visible.Text.ToString();
 
             //style
             MetroFramework.MetroThemeStyle parentStyle = MainWindow.choosenStyle;
+            MainWindow.Language language = MainWindow.choosenLanguage;
             this.Theme = parentStyle;
             Label_CommentForm_AdminComment.Theme = parentStyle;
             Label_CommentForm_FileFormat.Theme = parentStyle;
@@ -43,12 +45,37 @@ namespace DAQNavi_WF_v1_0_0
             TextBox_CommentForm_AdminComment.Theme = parentStyle;
             TextBox_CommentForm_UserComment.Theme = parentStyle;
             RadioButton_CommentForm_DB.Theme = parentStyle;
+            commentForm_checkBox.Theme = parentStyle;
             RadioButton_CommentForm_txt.Theme = parentStyle;
             RadioButton_CommentForm_xlsx.Theme = parentStyle;
             Button_CommentForm_Cancel.Theme = parentStyle;
             Button_CommentForm_Export.Theme = parentStyle;
             ProgressBar_CommentForm.Theme = parentStyle;
             Panel_CommentForm.Theme = parentStyle;
+
+            if (language == MainWindow.Language.ENG)
+            {
+                Label_CommentForm_AdminComment.Text = "Admin comment";
+                Label_CommentForm_FileFormat.Text = "File format";
+                Label_CommentForm_UserComment.Text = "User comment";
+                Button_CommentForm_Cancel.Text = "Cancel";
+                Button_CommentForm_Export.Text = "Export";
+                RadioButton_CommentForm_DB.Text = "only Data Base";
+                commentForm_checkBox.Text = "save to Data Base";
+                this.Text = "Export to file";
+
+            }
+            else
+            {
+                Label_CommentForm_AdminComment.Text = "Komentarz admina";
+                Label_CommentForm_FileFormat.Text = "Format pliku";
+                Label_CommentForm_UserComment.Text = "Komentarz użytkownika";
+                Button_CommentForm_Cancel.Text = "Anuluj";
+                Button_CommentForm_Export.Text = "Eksport";
+                RadioButton_CommentForm_DB.Text = "tylko baza danych";
+                commentForm_checkBox.Text = "zapis do bazy danych";
+                this.Text = "Eksport do pliku";
+            }
 
         }
         private void Button_CommentForm_Export_Click(object sender, EventArgs e)
