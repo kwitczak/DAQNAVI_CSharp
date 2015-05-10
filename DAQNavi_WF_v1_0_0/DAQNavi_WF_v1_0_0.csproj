@@ -139,6 +139,7 @@
       <DependentUpon>CreateNewUserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Automation.BDaq.BufferedAiCtrl.datasource" />
+    <None Include="Properties\DataSources\DAQNavi_WF_v1_0_0.DTO.GridRowDTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

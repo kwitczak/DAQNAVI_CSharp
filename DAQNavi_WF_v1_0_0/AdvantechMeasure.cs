@@ -57,7 +57,7 @@ namespace DAQNavi_WF_v1_0_0
         public static int ABI_xPoint = 0;
         public static long ABI_howManySamplesAlready;
         public static int ABI_howManySamplesShouldBeAtOnce;
-        public static int ABI_interval;
+        public static int ABI_rate;
         public static int ABI_startChannel;
         public static int ABI_numOfChannels;
         public static int ABI_samplesPerChannel;
@@ -79,6 +79,7 @@ namespace DAQNavi_WF_v1_0_0
         public static int AII_startChannel;
         public static int AII_numOfChannels;
         public static ValueRange[] AII_channels_ranges;
+        double[] AII_point_arr;
 
         /* MY MEASURMENTS PANEL */
         public static int MM_numberOfMeasurments = 0;
@@ -117,7 +118,7 @@ namespace DAQNavi_WF_v1_0_0
             TabControl.TabPages.Remove(TabPage_Measure);
             TabControl.TabPages.Remove(TabPage_MyMeasurements);
             TabControl.TabPages.Remove(TabPage_ShowMeasure);
-            
+
             // Ustawienie tekstów
             LanguageUtils.setLanguage(choosenLanguage, this);
 
@@ -127,7 +128,8 @@ namespace DAQNavi_WF_v1_0_0
             Welcome_button_login.Text = ConfigurationManager.AppSettings["WelcomeButtonLogin" + choosenLanguage];
             AII_button_measure.Text = "Measure";
 
-            if (choosenLanguage == Language.ENG) {
+            if (choosenLanguage == Language.ENG)
+            {
                 Welcome_link.Location = new Point(650, 146);
                 Measure_label_analogInput.Location = new Point(113, 116);
                 Measure_label_analogOutput.Location = new Point(681, 116);
@@ -195,9 +197,9 @@ namespace DAQNavi_WF_v1_0_0
 
 
             // Ustawienie opcji wykresów
-			ChartUtils.setChartZoomProperties (ABI_Chart);
+            ChartUtils.setChartZoomProperties(ABI_Chart);
             ChartUtils.switchStyle(ABI_Chart, choosenStyle);
-			ChartUtils.setChartZoomProperties (AII_Chart);
+            ChartUtils.setChartZoomProperties(AII_Chart);
             ChartUtils.switchStyle(AII_Chart, choosenStyle);
             ChartUtils.setChartZoomProperties(ShowMeasure_chart);
             ChartUtils.switchStyle(ShowMeasure_chart, choosenStyle);
@@ -224,7 +226,7 @@ namespace DAQNavi_WF_v1_0_0
                 ABI_channels_ranges[i] = ValueRange.V_Neg10To10;
             }
 
-			// Aktywacja pola wpisywania username'a
+            // Aktywacja pola wpisywania username'a
             this.Select();
             Welcome_textBox_username.Select();
         }
@@ -258,7 +260,7 @@ namespace DAQNavi_WF_v1_0_0
         /* Metoda która zapisuje zmiany wprowadzone w panelu admina */
         private void Button_Options_ApplyChanges_Click(object sender, EventArgs e)
         {
-            // TODO
+
         }
 
         /* Metoda która przywraca domyślne ustawienia */
@@ -458,8 +460,9 @@ namespace DAQNavi_WF_v1_0_0
         /* Przejście do nowego pomiaru */
         private void Button_MyMeasurements_NewMeasure_Click(object sender, EventArgs e)
         {
-            if (!TabControl.TabPages.Contains(TabPage_Measure)){
-               TabControl.TabPages.Add(TabPage_Measure);
+            if (!TabControl.TabPages.Contains(TabPage_Measure))
+            {
+                TabControl.TabPages.Add(TabPage_Measure);
             }
 
             TabControl.SelectedTab = TabPage_Measure;
@@ -472,27 +475,34 @@ namespace DAQNavi_WF_v1_0_0
 
         private int findLabelIndex(MetroFramework.Controls.MetroLabel label)
         {
-                if (MM_list_channelStart.Contains(label)){
-                    return MM_list_channelStart.IndexOf(label);
-                }
-                else if (MM_list_channelStartValue.Contains(label)) {
-                    return MM_list_channelStartValue.IndexOf(label);
-                }
-                else if (MM_list_numberOfChannels.Contains(label)) {
-                    return MM_list_numberOfChannels.IndexOf(label);
-                }
-                else if (MM_list_numberOfChannelsValue.Contains(label)) {
-                    return MM_list_numberOfChannelsValue.IndexOf(label);
-                }
-                else if (MM_list_samples.Contains(label)) {
-                    return MM_list_samples.IndexOf(label);
-                }
-                else if (MM_list_samplesValue.Contains(label)) {
-                    return MM_list_samplesValue.IndexOf(label);
-                }
-                else if (MM_list_titles.Contains(label)){
-                    return MM_list_titles.IndexOf(label);
-                }
+            if (MM_list_channelStart.Contains(label))
+            {
+                return MM_list_channelStart.IndexOf(label);
+            }
+            else if (MM_list_channelStartValue.Contains(label))
+            {
+                return MM_list_channelStartValue.IndexOf(label);
+            }
+            else if (MM_list_numberOfChannels.Contains(label))
+            {
+                return MM_list_numberOfChannels.IndexOf(label);
+            }
+            else if (MM_list_numberOfChannelsValue.Contains(label))
+            {
+                return MM_list_numberOfChannelsValue.IndexOf(label);
+            }
+            else if (MM_list_samples.Contains(label))
+            {
+                return MM_list_samples.IndexOf(label);
+            }
+            else if (MM_list_samplesValue.Contains(label))
+            {
+                return MM_list_samplesValue.IndexOf(label);
+            }
+            else if (MM_list_titles.Contains(label))
+            {
+                return MM_list_titles.IndexOf(label);
+            }
 
             return 0;
         }
@@ -517,10 +527,10 @@ namespace DAQNavi_WF_v1_0_0
                 MetroMessageBox.Show(this, "Twoje dane logowania zawierają niedozwolone znaki. Usuń je, i spróbuj ponownie!", "Witaj", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-           
 
 
-            loginManager = new LoginManager(Options_textBox_baza.Text, Options_textBox_port.Text, Options_textBox_user.Text, Options_textBox_password.Text);
+
+            loginManager = new LoginManager(Options_textBox_baza.Text, Options_textBox_port.Text, Options_textBox_user.Text, Options_textBox_password.Text, Options_textbox_dbNameValue.Text);
             Boolean loginSuccessful = loginManager.checkLogin(this.Welcome_textBox_username.Text, this.Welcome_textBox_password.Text);
             if (loginSuccessful)
             {
@@ -714,9 +724,12 @@ namespace DAQNavi_WF_v1_0_0
         private void buttonAnalogBufferedInput_Click(object sender, EventArgs e)
         {
             // TODO REFACTOR
+            // TODO REFACTOR
             this.Select();
             ABI_panel_hide.Visible = false;
             ABI_Chart.Visible = true;
+            createNewMeasurment();
+            MM_list_titles[MM_numberOfMeasurments - 1].Text = "Measurment #" + MM_numberOfMeasurments;
             lastMeasurmentType = MeasurmentType.ANALOG_BUFFERED_INPUT;
             ABI_allData.Clear();
             timer_ProgressBar.Start();
@@ -736,12 +749,12 @@ namespace DAQNavi_WF_v1_0_0
             ABI.setSamples(ABI_samplesPerChannel);
             ABI.setChannels(ABI_numOfChannels);
             ABI.setChannelStart(ABI_startChannel);
-            ABI.setRate(ABI_interval);
+            ABI.setRate(ABI_rate);
             ABI.setChannels_ranges(ABI_channels_ranges);
 
             ABI_data = ABI.przygotujPomiar(ABIControl);
             ABI_howManySamplesAlready = 0;
-            ABI_howManySamplesShouldBeAtOnce = 512 * ABIControl.ScanChannel.ChannelCount;
+            //ABI_howManySamplesShouldBeAtOnce = ABI_samplesPerChannel * ABIControl.ScanChannel.ChannelCount;
             //ABI_howManySamplesShouldBeAtOnce = 512 * ABIControl.ScanChannel.ChannelCount;
         }
 
@@ -753,6 +766,8 @@ namespace DAQNavi_WF_v1_0_0
          z wynikowej tablicy */
         private void bufferedAiCtrl1_DataReady(object sender, Automation.BDaq.BfdAiEventArgs e)
         {
+            ABI_howManySamplesShouldBeAtOnce = e.Count;
+
             // Create new data array with size no smaller then needed to fill buffer with 8 channels,
             // but no bigger to avoid empty points
             if (ABI_howManySamplesAlready + ABI_howManySamplesShouldBeAtOnce < ABIControl.ScanChannel.Samples * ABIControl.ScanChannel.ChannelCount)
@@ -828,6 +843,7 @@ namespace DAQNavi_WF_v1_0_0
             ABI = null;
             ABI_timeEnd = DateTime.Now;
             ABI_timeDiff = ABI_timeEnd.Subtract(ABI_timerStart);
+
             // Update UI z innego wątku
             MethodInvoker inv = delegate
             {
@@ -881,14 +897,20 @@ namespace DAQNavi_WF_v1_0_0
                 {
                     ABI_TrackBar_1.Value = 50;
                 }
-                else
+                else if (ABI_allData.Count / ABI_numOfChannels < 10000)
                 {
                     ABI_TrackBar_1.Value = 20;
                 }
+                else
+                {
+                    ABI_TrackBar_1.Value = 5;
+                }
+
+                ABI_TrackBar_2.Value = 98;
 
             };
             this.Invoke(inv);
-                        
+
             //ABIControl.Cleanup();
         }
 
@@ -961,8 +983,23 @@ namespace DAQNavi_WF_v1_0_0
                 AII_timer.MicroTimerElapsed +=
                     new MicroLibrary.MicroTimer.MicroTimerElapsedEventHandler(OnTimedEvent);
 
-                AII_timer.Interval = 1000; // Call micro timer every 1000µs (1ms)
-                AII_timerValue = AII_timer.Interval / 1000;
+                AII_timer.Interval = 1000000/(int)AII_timerValue; // Call micro timer every 1000µs (1ms)
+                ////second = 1 Hz
+                //AII_timer.Interval = 1000000;
+                ////= 10 Hz
+                //AII_timer.Interval = 100000;
+                ////= 100 Hz
+                //AII_timer.Interval = 10000;
+                ////= 500 Hz
+                //AII_timer.Interval = 5000;
+                ////= 1000 Hz
+                //AII_timer.Interval = 1000;
+                //AII_timerValue = AII_timer.Interval;
+
+                // Arr for chart
+                AII_point_arr = new double[((int)AII_timerValue * AII_numOfChannels)];
+
+                //AII_timerValue = AII_timer.Interval / 1000;
 
                 // Can choose to ignore event if late by Xµs (by default will try to catch up)
                 // microTimer.IgnoreEventIfLateBy = 500; // 500µs (0.5ms)
@@ -977,11 +1014,11 @@ namespace DAQNavi_WF_v1_0_0
                 AII_label_endValue.Text = AII_timeEnd.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
                 AII_timeDiff = AII_timeEnd.Subtract(AII_timeStart);
                 AII_label_durationValue.Text = new DateTime(AII_timeDiff.Ticks).ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
-                MM_list_titles[MM_numberOfMeasurments - 1].Text += "                                           duration:  " + new DateTime(AII_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                MM_list_titles[MM_numberOfMeasurments - 1].Text += "duration:  " + new DateTime(AII_timeDiff.Ticks).ToString("HH:mm:ss.fff", CultureInfo.InvariantCulture);
 
                 //timer_getData.Stop();
                 AII_timer.Enabled = false;
-                //AII_data = new double[8];
+                //AII_data = new double[8];f
                 AII_button_measure.Text = "Save";
                 MM_list_samplesValue[MM_numberOfMeasurments - 1].Text = AAI_sampleCount.ToString();
                 MM_list_numberOfChannelsValue[MM_numberOfMeasurments - 1].Text = AII_numOfChannels.ToString();
@@ -992,6 +1029,7 @@ namespace DAQNavi_WF_v1_0_0
             else
             {
                 this.TabControl.TabPages.Add(TabPage_LastMeasure);
+                GridUtils.fillUpGrid(AII_numOfChannels, AII_startChannel, AII_data_for_grid, LastMeasure_GridTable);
                 this.TabControl.SelectedTab = TabPage_LastMeasure;
             }
         }
@@ -1033,6 +1071,10 @@ namespace DAQNavi_WF_v1_0_0
 
         }
 
+
+
+        int AII_point_count = 0;
+        List<double> AII_data_for_grid = new List<double>();
         private void OnTimedEvent(object sender,
                                   MicroLibrary.MicroTimerEventArgs timerEventArgs)
         {
@@ -1050,23 +1092,39 @@ namespace DAQNavi_WF_v1_0_0
                 LastMeasure_GridTable.Rows.Add();
                 for (int i = 0; i < AII_numOfChannels; i++)
                 {
-                    //if (AAI_sampleCount % 1 == 0)
-                    //{
-                        AII_drawnPoints++;
-                        AII_Chart.Series[i + AII_startChannel].Points.Add(AII_data[i]);
-                    //}
+
+                    AII_drawnPoints++;
+                    AII_point_arr[AII_point_count] = AII_data[i];
+                    AII_point_count++;
 
                     if (i % 8 == 0)
                     {
                         LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[0].Value = AAI_sampleCount + 1;
                     }
                     LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i + 1 + AII_startChannel].Value = AII_data[i];
+                    AII_data_for_grid.Add(AII_data[i]);
                     //analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
                 }
 
-                if (AII_MovingWindow)
+
+                if (AII_point_count == (AII_point_arr.Length))
                 {
-                    AII_Chart.ChartAreas[0].AxisX.Minimum = (AII_drawnPoints/AII_numOfChannels) - int.Parse(AII_textBox_movingWindow.Text);
+                    //ChartUtils.clearChart(AII_Chart);
+                    int len = AII_point_arr.Length;
+                    foreach (double num in AII_point_arr)
+                    {
+                        for (int i = 0; i < AII_numOfChannels; i++)
+                        {
+                            AII_Chart.Series[i + AII_startChannel].Points.Add(num);
+                        }
+                    }
+                    AII_point_count = 0;
+                    AII_point_arr = new double[len];
+                    if (AII_MovingWindow)
+                    {
+                        AII_Chart.ChartAreas[0].AxisX.Minimum = (AII_drawnPoints / AII_numOfChannels) - int.Parse(AII_textBox_movingWindow.Text);
+                    }
+
                 }
 
 
@@ -1082,6 +1140,7 @@ namespace DAQNavi_WF_v1_0_0
         {
             timer_getData.Stop();
             AII_panel_hide.Visible = true;
+            AII_point_arr = new double[((int)AII_timerValue * AII_numOfChannels)];
             AII_Chart.Visible = false;
             AII_data = new double[8];
             //Button_AnalogInstantInput_Pause.Text.Equals("Pause");
@@ -1234,7 +1293,8 @@ namespace DAQNavi_WF_v1_0_0
                 MM_list_numberOfChannelsValue.Contains(label) ||
                 MM_list_samples.Contains(label) ||
                 MM_list_samplesValue.Contains(label) ||
-                MM_list_titles.Contains(label)){
+                MM_list_titles.Contains(label))
+            {
 
                 int index = findLabelIndex(label);
                 MM_list_buttons[index].BackColor = COLOR_LIGHT_DARK;
@@ -1339,10 +1399,13 @@ namespace DAQNavi_WF_v1_0_0
         {
             Color background;
             Color foreground;
-            if (choosenStyle.Equals(MetroThemeStyle.Dark)){
+            if (choosenStyle.Equals(MetroThemeStyle.Dark))
+            {
                 background = COLOR_GRAY_DARK;
                 foreground = COLOR_LIGHT_DARK;
-            } else {
+            }
+            else
+            {
                 foreground = COLOR_GRAY_DARK;
                 background = COLOR_GRAY_LIGHT;
             }
@@ -1525,7 +1588,8 @@ namespace DAQNavi_WF_v1_0_0
                 index = findLabelIndex((MetroFramework.Controls.MetroLabel)sender);
             }
             MM_list_buttons[index].UseCustomBackColor = false;
-            if (!TabControl.Contains(TabPage_ShowMeasure)){
+            if (!TabControl.Contains(TabPage_ShowMeasure))
+            {
                 this.TabControl.TabPages.Add(TabPage_ShowMeasure);
             }
             this.TabControl.SelectedTab = TabPage_ShowMeasure;
@@ -1774,7 +1838,7 @@ namespace DAQNavi_WF_v1_0_0
             ShowMeasure_grid.AllowUserToDeleteRows = false;
             ShowMeasure_grid.ColumnCount = channels + 1 + startChannel;
             ShowMeasure_grid.Rows.Add();
-            ShowMeasure_grid.Rows.AddCopies(0, (ShowMeasure_data.Count - 1)/channels);
+            ShowMeasure_grid.Rows.AddCopies(0, (ShowMeasure_data.Count - 1) / channels);
         }
 
 
@@ -1821,7 +1885,7 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
-        
+
 
         /// <summary>
         /// ///////

@@ -114,7 +114,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
             {
                 trackbar_value = 1;
             }
-            MainWindow.ABI_interval =  trackbar_value * step;
+            MainWindow.ABI_rate =  trackbar_value * step;
             MainWindow.ABI_startChannel = ABIOP_comboBox_StartChannel.SelectedIndex;
             MainWindow.ABI_numOfChannels = ABIOP_comboBox_NumberOfChannels.SelectedIndex + 1;
             MainWindow.ABI_samplesPerChannel = int.Parse(ABIOP_textBox_samples.Text);

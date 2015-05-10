@@ -342,6 +342,9 @@ namespace DAQNavi_WF_v1_0_0
                     numberOfChannels,
                     choosenChannel,
                     this.ProgressBar_CommentForm);
+
+                // Load measurments
+                MainWindow.measurmentDAO.loadMyMeasurments(MainWindow.loginManager.loggedUser.idusers, mainWindow);
             }
 
 

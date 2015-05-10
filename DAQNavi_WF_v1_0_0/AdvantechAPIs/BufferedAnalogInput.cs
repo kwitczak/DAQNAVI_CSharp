@@ -21,13 +21,12 @@ namespace DAQNavi_WF_v1_0_0
 
         public double[] przygotujPomiar(BufferedAiCtrl bufferedAiCtrl1)
         {
+
             bufferedAiCtrl1.Streaming = false;
             bufferedAiCtrl1.Prepare();
             bufferedAiCtrl1.ScanChannel.Samples = samples;
             bufferedAiCtrl1.ScanChannel.ChannelCount = channels;
             bufferedAiCtrl1.ScanChannel.ChannelStart = channelStart;
-            //bufferedAiCtrl1.ScanChannel.IntervalCount = intervalCount;
-            //bufferedAiCtrl1.ScanClock.ScanCount = scanCount;
 
             for (int i = 0; i < channels_ranges.Length; i++)
             {

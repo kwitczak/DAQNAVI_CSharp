@@ -173,9 +173,9 @@
             this.AIIOP_label_int1.FontSize = MetroFramework.MetroLabelSize.Small;
             this.AIIOP_label_int1.Location = new System.Drawing.Point(34, 113);
             this.AIIOP_label_int1.Name = "AIIOP_label_int1";
-            this.AIIOP_label_int1.Size = new System.Drawing.Size(39, 15);
+            this.AIIOP_label_int1.Size = new System.Drawing.Size(30, 15);
             this.AIIOP_label_int1.TabIndex = 88;
-            this.AIIOP_label_int1.Text = "0.1 Hz";
+            this.AIIOP_label_int1.Text = "1 Hz";
             this.AIIOP_label_int1.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
             // AIIOP_label_channelRange

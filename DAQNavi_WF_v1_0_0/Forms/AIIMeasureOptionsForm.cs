@@ -100,7 +100,7 @@ namespace DAQNavi_WF_v1_0_0
         /// <param name="e"></param>
         private void Button_AIMOptions_Save_Click(object sender, EventArgs e)
         {
-            mainWindow.getAnalogInstantInputTimer = AIIOP_trackBar_SampleInterval.Value;
+            MainWindow.AII_timerValue = int.Parse(AAIOP_label_Interval_2.Text);
             mainWindow.getChoosenChannelAII = AIIOP_comboBox_StartChannel.SelectedIndex;
             mainWindow.getNumberOfChannelsAAI = AIIOP_comboBox_NumberOfChannels.SelectedIndex + 1;
             mainWindow.getCheckbox_AnalogInstantInput_MeasurmentOptions.Checked = true;
@@ -122,14 +122,14 @@ namespace DAQNavi_WF_v1_0_0
 
         private void AAIOP_trackBar_SampleInterval_ValueChanged(object sender, EventArgs e)
         {
-            double step = 10000 / 100;
+            double step = 1000 / 100;
             if (AIIOP_trackBar_SampleInterval.Value > 0)
             {
                 AAIOP_label_Interval_2.Text = (AIIOP_trackBar_SampleInterval.Value * step).ToString();
             }
             else
             {
-                AAIOP_label_Interval_2.Text = step.ToString();
+                AAIOP_label_Interval_2.Text = 1 + "";
             }
         }
 

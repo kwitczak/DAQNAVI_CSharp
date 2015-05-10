@@ -16,24 +16,27 @@ namespace DAQNavi_WF_v1_0_0
         public string port { get; set; }
         public string username { get; set; }
         public string dbPassword { get; set; }
+        public string dbName { get; set; }
 
         public UserDTO loggedUser { get; set; }
 
-        public LoginManager(string dataSource, string port, string username, string password)
+        public LoginManager(string dataSource, string port, string username, string password, string dbName)
         {
             this.dataSource = dataSource;
             this.username = username;
             this.port = port;
             this.dbPassword = password;
+            this.dbName = dbName;
         }
         public Boolean checkLogin(string login, string password)
         {
             try
             {
+                //string dbName = "sh194684_kwpomiary";
                 // localhost 3306 root root
                 string myConnection = "datasource=" + dataSource + ";port=" + port + ";username=" + username + ";password=" + dbPassword;
                 MySqlConnection myConn = new MySqlConnection(myConnection);
-                MySqlCommand SelectCommand = new MySqlCommand("select * from usb4702_logindb.users where login='" + login + "' and password='" + password + "' ;", myConn);
+                MySqlCommand SelectCommand = new MySqlCommand("select * from " + dbName + ".users where login='" + login + "' and password='" + password + "' ;", myConn);
 
                 MySqlDataReader myReader;
                 myConn.Open();
