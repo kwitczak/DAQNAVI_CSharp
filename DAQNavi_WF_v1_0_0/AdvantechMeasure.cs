@@ -878,14 +878,14 @@ namespace DAQNavi_WF_v1_0_0
                         {
                             ABI_xPoint++;
                             myABIXDataReadyPoint++;
-                            LastMeasure_GridTable.Rows.Add();
-                            LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[0].Value = (i / channels) + 1;
+                            //LastMeasure_GridTable.Rows.Add();
+                            //LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[0].Value = (i / channels) + 1;
                         }
 
                         //MEMO LEAK
                         ABI_Chart.Series[mySeries].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
                         ABI_Chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
-                        LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries + 1].Value = ABI_allData[i];
+                        //LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries + 1].Value = ABI_allData[i];
                     }
                 });
 
@@ -905,6 +905,10 @@ namespace DAQNavi_WF_v1_0_0
                 {
                     ABI_TrackBar_1.Value = 5;
                 }
+
+                LastMeasure_GridTable2.CellValueNeeded += OnCellValueNeeded;
+                InitData2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
+                InitGrid2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
 
                 ABI_TrackBar_2.Value = 98;
 
@@ -1829,6 +1833,184 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
+        private void InitData2(int channels, int startChannel, List<double> data)
+        {
+
+            for (int i = 0; i < data.Count; i = i + channels)
+            {
+                m_Visited.Add(false);
+                GridRowDTO obj = new GridRowDTO();
+                if (startChannel == 0)
+                {
+                    obj.ch1 = data[i];
+                }
+                if (startChannel == 1)
+                {
+                    obj.ch2 = data[i];
+                }
+                if (startChannel == 2)
+                {
+                    obj.ch3 = data[i];
+                }
+                if (startChannel == 3)
+                {
+                    obj.ch4 = data[i];
+                }
+                if (startChannel == 4)
+                {
+                    obj.ch5 = data[i];
+                }
+                if (startChannel == 5)
+                {
+                    obj.ch6 = data[i];
+                }
+                if (startChannel == 6)
+                {
+                    obj.ch7 = data[i];
+                }
+                if (startChannel == 7)
+                {
+                    obj.ch8 = data[i];
+                }
+                if (channels > 1)
+                {
+                    if (startChannel == 0)
+                    {
+                        obj.ch2 = data[i + 1];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch3 = data[i + 1];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch4 = data[i + 1];
+                    }
+                    if (startChannel == 3)
+                    {
+                        obj.ch5 = data[i + 1];
+                    }
+                    if (startChannel == 4)
+                    {
+                        obj.ch6 = data[i + 1];
+                    }
+                    if (startChannel == 5)
+                    {
+                        obj.ch7 = data[i + 1];
+                    }
+                    if (startChannel == 6)
+                    {
+                        obj.ch8 = data[i + 1];
+                    }
+
+                }
+                if (channels > 2)
+                {
+                    if (startChannel == 0)
+                    {
+                        obj.ch3 = data[i + 2];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch4 = data[i + 2];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch5 = data[i + 2];
+                    }
+                    if (startChannel == 3)
+                    {
+                        obj.ch6 = data[i + 2];
+                    }
+                    if (startChannel == 4)
+                    {
+                        obj.ch7 = data[i + 2];
+                    }
+                    if (startChannel == 5)
+                    {
+                        obj.ch8 = data[i + 2];
+                    }
+
+                }
+                if (channels > 3)
+                {
+                    if (startChannel == 0)
+                    {
+                        obj.ch4 = data[i + 3];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch5 = data[i + 3];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch6 = data[i + 3];
+                    }
+                    if (startChannel == 3)
+                    {
+                        obj.ch7 = data[i + 3];
+                    }
+                    if (startChannel == 4)
+                    {
+                        obj.ch8 = data[i + 3];
+                    }
+                }
+                if (channels > 4)
+                {
+                    if (startChannel == 0)
+                    {
+                        obj.ch5 = data[i + 4];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch6 = data[i + 4];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch7 = data[i + 4];
+                    }
+                    if (startChannel == 3)
+                    {
+                        obj.ch8 = data[i + 4];
+                    }
+
+                }
+                if (channels > 5)
+                {
+                    if (startChannel == 0)
+                    {
+                        obj.ch6 = data[i + 5];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch7 = data[i + 5];
+                    }
+                    if (startChannel == 2)
+                    {
+                        obj.ch8 = data[i + 5];
+                    }
+
+                }
+                if (channels > 6)
+                {
+                    if (startChannel == 0)
+                    {
+                        obj.ch7 = data[i + 6];
+                    }
+                    if (startChannel == 1)
+                    {
+                        obj.ch8 = data[i + 6];
+                    }
+                }
+                if (channels > 7)
+                {
+                    obj.ch8 = data[i + 7];
+                }
+                m_Data.Add(obj);
+
+            }
+        }
+
         private void InitGrid(int channels, int startChannel)
         {
 
@@ -1839,6 +2021,18 @@ namespace DAQNavi_WF_v1_0_0
             ShowMeasure_grid.ColumnCount = channels + 1 + startChannel;
             ShowMeasure_grid.Rows.Add();
             ShowMeasure_grid.Rows.AddCopies(0, (ShowMeasure_data.Count - 1) / channels);
+        }
+
+        private void InitGrid2(int channels, int startChannel, List<double> data)
+        {
+
+            LastMeasure_GridTable2.VirtualMode = true;
+            LastMeasure_GridTable2.ReadOnly = true;
+            LastMeasure_GridTable2.AllowUserToAddRows = false;
+            LastMeasure_GridTable2.AllowUserToDeleteRows = false;
+            LastMeasure_GridTable2.ColumnCount = channels + 1 + startChannel;
+            LastMeasure_GridTable2.Rows.Add();
+            LastMeasure_GridTable2.Rows.AddCopies(0, (data.Count - 1) / channels);
         }
 
 
