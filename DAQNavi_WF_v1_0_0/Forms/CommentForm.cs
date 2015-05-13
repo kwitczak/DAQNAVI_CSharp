@@ -110,7 +110,7 @@ namespace DAQNavi_WF_v1_0_0
             }
 
             string time = DateTime.Now.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
-            double[] myResults = new double[mainWindow.metroGridTableVisible.Rows.Count * int.Parse(numberOfChannels)];
+            double[] myResults = new double[mainWindow.LastMeasure_GridTable.Rows.Count * int.Parse(numberOfChannels)];
             int myResultsCounter = 0;
 
             // ZAPIS DO PLIKU
@@ -143,7 +143,7 @@ namespace DAQNavi_WF_v1_0_0
                                 file.WriteLine("User comment: " + "\n\t" + TextBox_CommentForm_UserComment.Text);
                                 file.WriteLine("\n=========================================\n");
                                 StringBuilder Rowbind = new StringBuilder();
-                                for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
+                                for (int k = 0; k < mainWindow.LastMeasure_GridTable.Columns.Count + 1; k++)
                                 {
                                     if (k < 1)
                                     {
@@ -153,16 +153,16 @@ namespace DAQNavi_WF_v1_0_0
                                     else
                                     {
                                         Rowbind.Append("\t");
-                                        Rowbind.Append(mainWindow.metroGridTableVisible.Columns[k - 1].HeaderText + ' ');
+                                        Rowbind.Append(mainWindow.LastMeasure_GridTable.Columns[k - 1].HeaderText + ' ');
                                     }
 
                                 }
 
 
                                 Rowbind.Append("\r\n");
-                                for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count; i++)
+                                for (int i = 0; i < mainWindow.LastMeasure_GridTable.Rows.Count; i++)
                                 {
-                                    for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
+                                    for (int k = 0; k < mainWindow.LastMeasure_GridTable.Columns.Count + 1; k++)
                                     {
                                         if (k < 1)
                                         {
@@ -172,7 +172,7 @@ namespace DAQNavi_WF_v1_0_0
                                         else
                                         {
                                             Rowbind.Append("\t");
-                                            if (mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value != null)
+                                            if (mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value != null)
                                             {
                                                 if ((k - 1) == 0)
                                                 {
@@ -182,8 +182,8 @@ namespace DAQNavi_WF_v1_0_0
                                                 }
                                                 else
                                                 {
-                                                    Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
-                                                    myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                                    Rowbind.Append(String.Format("{0:0.000000000}", Decimal.Parse(mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value.ToString())) + ' ');
+                                                    myResults[myResultsCounter] = (double)mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value;
                                                     myResultsCounter++;
                                                 }
                                             }
@@ -238,10 +238,10 @@ namespace DAQNavi_WF_v1_0_0
                             int excelColumn = 2;
                             int excelRow = 60;
 
-                            var data_ex = new object[mainWindow.metroGridTableVisible.Rows.Count, mainWindow.metroGridTableVisible.Columns.Count];
-                            for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count; i++)
+                            var data_ex = new object[mainWindow.LastMeasure_GridTable.Rows.Count, mainWindow.LastMeasure_GridTable.Columns.Count];
+                            for (int i = 0; i < mainWindow.LastMeasure_GridTable.Rows.Count; i++)
                             {
-                                for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
+                                for (int k = 0; k < mainWindow.LastMeasure_GridTable.Columns.Count + 1; k++)
                                 {
                                     if (k < 1)
                                     {
@@ -250,7 +250,7 @@ namespace DAQNavi_WF_v1_0_0
                                     else
                                     {
 
-                                        if (mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value != null)
+                                        if (mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value != null)
                                         {
                                             if ((k - 1) == 0)
                                             {
@@ -258,7 +258,7 @@ namespace DAQNavi_WF_v1_0_0
                                             }
                                             else
                                             {
-                                                double value = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                                double value = (double)mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value;
                                                 data_ex[i, k - 1] = value;
                                                 myResults[myResultsCounter] = value;
                                                 myResultsCounter++;
@@ -269,11 +269,11 @@ namespace DAQNavi_WF_v1_0_0
                             }
 
                             var startCell = (Range)excelWorksheet.Cells[excelRow, 1];
-                            var endCell = (Range)excelWorksheet.Cells[mainWindow.metroGridTableVisible.Rows.Count + excelRow - 1, mainWindow.metroGridTableVisible.Columns.Count];
+                            var endCell = (Range)excelWorksheet.Cells[mainWindow.LastMeasure_GridTable.Rows.Count + excelRow - 1, mainWindow.LastMeasure_GridTable.Columns.Count];
                             var writeRange = excelWorksheet.Range[startCell, endCell];
 
-                            excelWorksheet.Range[startCell, 
-                                (Range)excelWorksheet.Cells[mainWindow.metroGridTableVisible.Rows.Count + excelRow - 1, mainWindow.metroGridTableVisible.Columns.Count + 2]]
+                            excelWorksheet.Range[startCell,
+                                (Range)excelWorksheet.Cells[mainWindow.LastMeasure_GridTable.Rows.Count + excelRow - 1, mainWindow.LastMeasure_GridTable.Columns.Count + 2]]
                                 .Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White);
                             writeRange.Value2 = data_ex;
                             int num = myResultsCounter/int.Parse(numberOfChannels) + 60;
@@ -305,23 +305,23 @@ namespace DAQNavi_WF_v1_0_0
             // ZAPIS TYLKO DO DB
             if (RadioButton_CommentForm_DB.Checked)
             {
-                for (int i = 0; i < mainWindow.metroGridTableVisible.Rows.Count; i++)
+                for (int i = 0; i < mainWindow.LastMeasure_GridTable.Rows.Count; i++)
                 {
-                    for (int k = 0; k < mainWindow.metroGridTableVisible.Columns.Count + 1; k++)
+                    for (int k = 0; k < mainWindow.LastMeasure_GridTable.Columns.Count + 1; k++)
                     {
                         if (k < 1)
                         {
                         }
                         else
                         {
-                            if (mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value != null)
+                            if (mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value != null)
                             {
                                 if ((k - 1) == 0)
                                 {
                                 }
                                 else
                                 {
-                                    myResults[myResultsCounter] = (double)mainWindow.metroGridTableVisible.Rows[i].Cells[k - 1].Value;
+                                    myResults[myResultsCounter] = (double)mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value;
                                     myResultsCounter++;
                                 }
                             }

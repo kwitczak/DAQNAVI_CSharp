@@ -147,7 +147,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
 
                 // Results
                 window.TabPage_LastMeasure.Theme = style;
-                window.LastMeasure_GridTable.Theme = style;
+                //window.LastMeasure_GridTable.Theme = style;
                 window.Panel_Results.Theme = style;
                 window.Results_button_exportToTXT.Theme = style;
 

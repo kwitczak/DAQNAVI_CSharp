@@ -616,11 +616,11 @@ namespace DAQNavi_WF_v1_0_0
             sender.AutoScrollPosition = p;
         }
 
-        /* Accessor dla innego formularza, aby byl widoczny gridTable */
-        public MetroFramework.Controls.MetroGrid metroGridTableVisible
-        {
-            get { return this.LastMeasure_GridTable; }
-        }
+        ///* Accessor dla innego formularza, aby byl widoczny gridTable */
+        //public Grid metroGridTableVisible
+        //{
+        //    get { return this.LastMeasure_GridTable2; }
+        //}
 
         /* Accessor dla innego formularza */
         public MetroFramework.Controls.MetroTextBox TextBox_Options_UserComment_Visible
@@ -864,6 +864,7 @@ namespace DAQNavi_WF_v1_0_0
                 timer_ProgressBar.Stop();
                 ProgressSpinner.Visible = false;
                 ProgressSpinner.Refresh();
+                double[] xValues = new double[ABI_allData.Count];
 
                 this.Invoke((UpdateUIDelegate)delegate()
                 {
@@ -874,6 +875,7 @@ namespace DAQNavi_WF_v1_0_0
                     for (int i = 0; i < ABI_allData.Count; ++i)
                     {
                         mySeries = (i % channels) + ABI_startChannel;
+                        xValues[i] = i;
                         if (mySeries == ABI_startChannel)
                         {
                             ABI_xPoint++;
@@ -883,8 +885,8 @@ namespace DAQNavi_WF_v1_0_0
                         }
 
                         //MEMO LEAK
-                        ABI_Chart.Series[mySeries].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
-                        ABI_Chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
+                        //ABI_Chart.Series[mySeries].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
+                        //ABI_Chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
                         //LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries + 1].Value = ABI_allData[i];
                     }
                 });
@@ -906,7 +908,12 @@ namespace DAQNavi_WF_v1_0_0
                     ABI_TrackBar_1.Value = 5;
                 }
 
-                LastMeasure_GridTable2.CellValueNeeded += OnCellValueNeeded;
+                //DataView dv = new DataView();
+                //dv.Table = LastMeasure_GridTable.Tables(0);
+                //ABI_Chart.Series[0].Points.DataBindY((DataView)LastMeasure_GridTable, "SignalStength");
+                //ABI_Chart.DataSource
+                ABI_Chart.Series[0].Points.DataBindXY(xValues, ABI_allData);
+                LastMeasure_GridTable.CellValueNeeded += OnCellValueNeeded;
                 InitData2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
                 InitGrid2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
 
@@ -967,7 +974,7 @@ namespace DAQNavi_WF_v1_0_0
                 foreach (var series in AII_Chart.Series)
                 {
                     series.Points.Clear();
-                    LastMeasure_GridTable.Rows.Clear();
+                    //LastMeasure_GridTable.Rows.Clear();
                 }
 
                 // Show markers if zoomed
@@ -1033,7 +1040,10 @@ namespace DAQNavi_WF_v1_0_0
             else
             {
                 this.TabControl.TabPages.Add(TabPage_LastMeasure);
-                GridUtils.fillUpGrid(AII_numOfChannels, AII_startChannel, AII_data_for_grid, LastMeasure_GridTable);
+                //GridUtils.fillUpGrid(AII_numOfChannels, AII_startChannel, AII_data_for_grid, LastMeasure_GridTable);
+                LastMeasure_GridTable.CellValueNeeded += OnCellValueNeeded;
+                InitData2(AII_numOfChannels, ABI_startChannel, AII_data_for_grid);
+                InitGrid2(AII_numOfChannels, ABI_startChannel, AII_data_for_grid);
                 this.TabControl.SelectedTab = TabPage_LastMeasure;
             }
         }
@@ -1093,7 +1103,7 @@ namespace DAQNavi_WF_v1_0_0
             // Do something small that takes significantly less time than Interval
             MethodInvoker inv = delegate
             {
-                LastMeasure_GridTable.Rows.Add();
+                //LastMeasure_GridTable.Rows.Add();
                 for (int i = 0; i < AII_numOfChannels; i++)
                 {
 
@@ -1101,11 +1111,11 @@ namespace DAQNavi_WF_v1_0_0
                     AII_point_arr[AII_point_count] = AII_data[i];
                     AII_point_count++;
 
-                    if (i % 8 == 0)
-                    {
-                        LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[0].Value = AAI_sampleCount + 1;
-                    }
-                    LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i + 1 + AII_startChannel].Value = AII_data[i];
+                    //if (i % 8 == 0)
+                    //{
+                    //    LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[0].Value = AAI_sampleCount + 1;
+                    //}
+                    //LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i + 1 + AII_startChannel].Value = AII_data[i];
                     AII_data_for_grid.Add(AII_data[i]);
                     //analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
                 }
@@ -2026,13 +2036,13 @@ namespace DAQNavi_WF_v1_0_0
         private void InitGrid2(int channels, int startChannel, List<double> data)
         {
 
-            LastMeasure_GridTable2.VirtualMode = true;
-            LastMeasure_GridTable2.ReadOnly = true;
-            LastMeasure_GridTable2.AllowUserToAddRows = false;
-            LastMeasure_GridTable2.AllowUserToDeleteRows = false;
-            LastMeasure_GridTable2.ColumnCount = channels + 1 + startChannel;
-            LastMeasure_GridTable2.Rows.Add();
-            LastMeasure_GridTable2.Rows.AddCopies(0, (data.Count - 1) / channels);
+            LastMeasure_GridTable.VirtualMode = true;
+            LastMeasure_GridTable.ReadOnly = true;
+            LastMeasure_GridTable.AllowUserToAddRows = false;
+            LastMeasure_GridTable.AllowUserToDeleteRows = false;
+            LastMeasure_GridTable.ColumnCount = channels + 1 + startChannel;
+            LastMeasure_GridTable.Rows.Add();
+            LastMeasure_GridTable.Rows.AddCopies(0, (data.Count - 1) / channels);
         }
 
 
