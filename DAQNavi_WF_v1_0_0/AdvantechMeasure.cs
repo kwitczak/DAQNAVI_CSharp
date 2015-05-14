@@ -737,11 +737,29 @@ namespace DAQNavi_WF_v1_0_0
             ABI_label_startValue.Text = ABI_timerStart.ToString("HH : mm : ss.fff", CultureInfo.InvariantCulture);
             ABI_label_endValue.Text = "00 : 00 : 00.000";
             ABI_label_durationValue.Text = "00 : 00 : 00.000";
+            m_Data2 = new List<GridRowDTO>();
+            m_Visited2 = new List<bool>();
+
+            // Time
+            int seconds = ABI_samplesPerChannel / ABI_rate;
+            TimeSpan t = TimeSpan.FromSeconds(seconds);
+
+            string answer = string.Format("{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms",
+                            t.Hours,
+                            t.Minutes,
+                            t.Seconds,
+                            t.Milliseconds);
+            ABI_label_time_left.Text = answer;
+            ABI_progress_time_left.Maximum = seconds;
+            ABI_label_time_left.Visible = true;
+            ABI_progress_time_left.Visible = true;
+            timer_timeLeft.Start();
 
             ProgressSpinner.Visible = true;
             ABI_data = null;
             ABI_xPoint = 0;
             LastMeasure_GridTable.Rows.Clear();
+            //LastMeasure_GridTable.Columns.Clear();
             ChartUtils.clearChart(ABI_Chart);
 
             // Obiekty pomagające
@@ -862,34 +880,51 @@ namespace DAQNavi_WF_v1_0_0
                 ABI_TrackBar_2.Value = 0;
 
                 timer_ProgressBar.Stop();
+                ABI_progress_time_left.Value = 0;
+                ABI_progress_time_left.Visible = false;
+                ABI_label_time_left.Visible = false;
                 ProgressSpinner.Visible = false;
                 ProgressSpinner.Refresh();
-                double[] xValues = new double[ABI_allData.Count];
+                timer_timeLeft.Stop();
+
+                int mySeries = ABI_startChannel;
+                int channels = ABI_numOfChannels;
+                double[] xValues = new double[ABI_allData.Count/channels];
+                double[][] ySeriesValues = new double[8][];
+                ABI_xPoint = -1;
+
+                for (int i = mySeries; i < (channels + mySeries); i++)
+                {
+                    ySeriesValues[i] = new double[ABI_allData.Count / channels];
+                }
+                
 
                 this.Invoke((UpdateUIDelegate)delegate()
                 {
 
-                    int myABIXDataReadyPoint = 0;
-                    int mySeries = ABI_startChannel;
-                    int channels = ABI_numOfChannels;
                     for (int i = 0; i < ABI_allData.Count; ++i)
                     {
                         mySeries = (i % channels) + ABI_startChannel;
-                        xValues[i] = i;
+
                         if (mySeries == ABI_startChannel)
                         {
                             ABI_xPoint++;
-                            myABIXDataReadyPoint++;
-                            //LastMeasure_GridTable.Rows.Add();
-                            //LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[0].Value = (i / channels) + 1;
+                            xValues[ABI_xPoint] = ABI_xPoint;
                         }
 
-                        //MEMO LEAK
-                        //ABI_Chart.Series[mySeries].Points.Add(new DataPoint(ABI_xPoint, ABI_allData[i]));
-                        //ABI_Chart.Series[mySeries].ToolTip = "X=#VALX\nY=#VALY";
-                        //LastMeasure_GridTable.Rows[ABI_xPoint - 1].Cells[mySeries + 1].Value = ABI_allData[i];
+                        ySeriesValues[mySeries][ABI_xPoint] = ABI_allData[i];
                     }
                 });
+
+                for (int i = ABI_startChannel; i < (channels + ABI_startChannel); i++)
+                {
+                    ABI_Chart.Series[i].Points.DataBindXY(xValues, ySeriesValues[i]);
+                }
+
+                LastMeasure_GridTable.CellValueNeeded += OnCellValueNeeded2;
+                InitData2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
+                InitGrid2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
+
 
                 if (ABI_allData.Count / ABI_numOfChannels < 1000)
                 {
@@ -907,22 +942,13 @@ namespace DAQNavi_WF_v1_0_0
                 {
                     ABI_TrackBar_1.Value = 5;
                 }
-
-                //DataView dv = new DataView();
-                //dv.Table = LastMeasure_GridTable.Tables(0);
-                //ABI_Chart.Series[0].Points.DataBindY((DataView)LastMeasure_GridTable, "SignalStength");
-                //ABI_Chart.DataSource
-                ABI_Chart.Series[0].Points.DataBindXY(xValues, ABI_allData);
-                LastMeasure_GridTable.CellValueNeeded += OnCellValueNeeded;
-                InitData2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
-                InitGrid2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
-
                 ABI_TrackBar_2.Value = 98;
 
             };
             this.Invoke(inv);
 
-            //ABIControl.Cleanup();
+            ABI_xPoint = 0;
+
         }
 
         /* Opcje pomiaru ABI */
@@ -938,6 +964,22 @@ namespace DAQNavi_WF_v1_0_0
             ABI_checkBox_defaults.Checked = true;
 
             DefaultStateUtils.setDefaultABI();
+        }
+
+        /* Każdy tick oznacza odświeżenie wykresu dla opcji instant input,
+  im jest częściej, tym większa częstotliwość pomiaru. */
+        private void timer_getData_Tick(object sender, EventArgs e)
+        {
+            ABI_progress_time_left.Value++;
+            TimeSpan t = TimeSpan.FromSeconds(ABI_progress_time_left.Maximum - ABI_progress_time_left.Value);
+
+            string answer = string.Format("{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms",
+                            t.Hours,
+                            t.Minutes,
+                            t.Seconds,
+                            t.Milliseconds);
+            ABI_label_time_left.Text = answer;
+
         }
 
 
@@ -1041,50 +1083,12 @@ namespace DAQNavi_WF_v1_0_0
             {
                 this.TabControl.TabPages.Add(TabPage_LastMeasure);
                 //GridUtils.fillUpGrid(AII_numOfChannels, AII_startChannel, AII_data_for_grid, LastMeasure_GridTable);
-                LastMeasure_GridTable.CellValueNeeded += OnCellValueNeeded;
+                LastMeasure_GridTable.CellValueNeeded += OnCellValueNeeded2;
                 InitData2(AII_numOfChannels, ABI_startChannel, AII_data_for_grid);
                 InitGrid2(AII_numOfChannels, ABI_startChannel, AII_data_for_grid);
                 this.TabControl.SelectedTab = TabPage_LastMeasure;
             }
         }
-
-        /* Każdy tick oznacza odświeżenie wykresu dla opcji instant input,
-          im jest częściej, tym większa częstotliwość pomiaru. */
-        private void timer_getData_Tick(object sender, EventArgs e)
-        {
-            //double timeInterval = analogInstantInputTimer;
-            //if (timeInterval == 0)
-            //{
-            //    timeInterval = 1;
-            //    analogInstantInputTimer = 1;
-            //}
-
-            //timer_getData.Interval = (int)timeInterval * 1;
-            //ErrorCode err;
-
-            //err = AIIControl.Read(AII_choosenChannel, AII_numOfChannels, AII_data);
-            //if (err != ErrorCode.Success)
-            //{
-            //    timer_getData.Stop();
-            //}
-            ////for (int i = 0; i < analogInstantInput_numberOfChannels; i++)
-            ////{
-            ////    Chart_AnalogInstantInput.Series[i].Points.Add(dataInstantAI[i]);
-            ////    metroGridTable.Rows.Add();
-            ////    metroGridTable.Rows[sampleCountAAI].Cells[i].Value = dataInstantAI[i];
-            ////    analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
-            ////}
-
-            //AAI_sampleCount++;
-
-
-            //if (analogInstantInputMovingWindow)
-            //{
-            //    Chart_AnalogInstantInput.ChartAreas[0].AxisX.Minimum = sampleCountAAI - int.Parse(TextBox_AnalogInstantInput_MovingWindow.Text);
-            //}
-
-        }
-
 
 
         int AII_point_count = 0;
@@ -1152,7 +1156,7 @@ namespace DAQNavi_WF_v1_0_0
         /* Zatrzymanie pobierania danych */
         private void Button_AnalogInstantInput_Reset_Click(object sender, EventArgs e)
         {
-            timer_getData.Stop();
+            timer_timeLeft.Stop();
             AII_panel_hide.Visible = true;
             AII_point_arr = new double[((int)AII_timerValue * AII_numOfChannels)];
             AII_Chart.Visible = false;
@@ -1663,6 +1667,8 @@ namespace DAQNavi_WF_v1_0_0
 
         private List<GridRowDTO> m_Data = new List<GridRowDTO>();
         private List<bool> m_Visited = new List<bool>();
+        private List<GridRowDTO> m_Data2 = new List<GridRowDTO>();
+        private List<bool> m_Visited2 = new List<bool>();
 
 
         private void InitData(int channels, int startChannel)
@@ -1848,7 +1854,7 @@ namespace DAQNavi_WF_v1_0_0
 
             for (int i = 0; i < data.Count; i = i + channels)
             {
-                m_Visited.Add(false);
+                m_Visited2.Add(false);
                 GridRowDTO obj = new GridRowDTO();
                 if (startChannel == 0)
                 {
@@ -2016,7 +2022,7 @@ namespace DAQNavi_WF_v1_0_0
                 {
                     obj.ch8 = data[i + 7];
                 }
-                m_Data.Add(obj);
+                m_Data2.Add(obj);
 
             }
         }
@@ -2028,7 +2034,7 @@ namespace DAQNavi_WF_v1_0_0
             ShowMeasure_grid.ReadOnly = true;
             ShowMeasure_grid.AllowUserToAddRows = false;
             ShowMeasure_grid.AllowUserToDeleteRows = false;
-            ShowMeasure_grid.ColumnCount = channels + 1 + startChannel;
+            ShowMeasure_grid.ColumnCount = 9;
             ShowMeasure_grid.Rows.Add();
             ShowMeasure_grid.Rows.AddCopies(0, (ShowMeasure_data.Count - 1) / channels);
         }
@@ -2040,9 +2046,10 @@ namespace DAQNavi_WF_v1_0_0
             LastMeasure_GridTable.ReadOnly = true;
             LastMeasure_GridTable.AllowUserToAddRows = false;
             LastMeasure_GridTable.AllowUserToDeleteRows = false;
-            LastMeasure_GridTable.ColumnCount = channels + 1 + startChannel;
+            LastMeasure_GridTable.ColumnCount = 9;
             LastMeasure_GridTable.Rows.Add();
-            LastMeasure_GridTable.Rows.AddCopies(0, (data.Count - 1) / channels);
+            LastMeasure_GridTable.Rows.AddCopies(0, ((data.Count - 1) / channels));
+
         }
 
 
@@ -2085,6 +2092,49 @@ namespace DAQNavi_WF_v1_0_0
                     break;
                 case 8:
                     e.Value = m_Data[e.RowIndex].ch8;
+                    break;
+            }
+        }
+
+        private void OnCellValueNeeded2(object sender, DataGridViewCellValueEventArgs e)
+        {
+            try
+            {
+                m_Visited2[e.RowIndex] = true;
+            }
+            catch
+            {
+                //MessageBox.Show(e.RowIndex + "<- e row index, samples ->");
+            }
+
+            switch (e.ColumnIndex)
+            {
+                case 0:
+                    e.Value = e.RowIndex + 1;
+                    break;
+                case 1:
+                    e.Value = m_Data2[e.RowIndex].ch1;
+                    break;
+                case 2:
+                    e.Value = m_Data2[e.RowIndex].ch2;
+                    break;
+                case 3:
+                    e.Value = m_Data2[e.RowIndex].ch3;
+                    break;
+                case 4:
+                    e.Value = m_Data2[e.RowIndex].ch4;
+                    break;
+                case 5:
+                    e.Value = m_Data2[e.RowIndex].ch5;
+                    break;
+                case 6:
+                    e.Value = m_Data2[e.RowIndex].ch6;
+                    break;
+                case 7:
+                    e.Value = m_Data2[e.RowIndex].ch7;
+                    break;
+                case 8:
+                    e.Value = m_Data2[e.RowIndex].ch8;
                     break;
             }
         }
