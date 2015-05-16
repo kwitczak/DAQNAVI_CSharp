@@ -823,7 +823,6 @@ namespace DAQNavi_WF_v1_0_0
            od minimalnej do maksymalnej wartości. */
         private void TrackBar_AnalogBufferedInput_2_ValueChanged(object sender, EventArgs e)
         {
-            double MIN = 0;
             double MAX = ABI_samplesPerChannel;
             double howMuchToChange = (MAX / 100) * this.ABI_TrackBar_2.Value;
             double window = ABI_Chart.ChartAreas[0].AxisX.Maximum - ABI_Chart.ChartAreas[0].AxisX.Minimum;
@@ -938,11 +937,15 @@ namespace DAQNavi_WF_v1_0_0
                 {
                     ABI_TrackBar_1.Value = 20;
                 }
-                else
+                else if (ABI_allData.Count / ABI_numOfChannels < 50000)
                 {
                     ABI_TrackBar_1.Value = 5;
                 }
-                ABI_TrackBar_2.Value = 98;
+                else
+                {
+                    ABI_TrackBar_1.Value = 1;
+                }
+                ABI_TrackBar_2.Value = 99;
 
             };
             this.Invoke(inv);
@@ -1081,7 +1084,15 @@ namespace DAQNavi_WF_v1_0_0
                 // Button save mode
             else
             {
-                this.TabControl.TabPages.Add(TabPage_LastMeasure);
+                if (TabControl.TabPages.Contains(TabPage_LastMeasure))
+                {
+                    
+                }
+                else
+                {
+                    this.TabControl.TabPages.Add(TabPage_LastMeasure);
+                }
+                
                 //GridUtils.fillUpGrid(AII_numOfChannels, AII_startChannel, AII_data_for_grid, LastMeasure_GridTable);
                 LastMeasure_GridTable.CellValueNeeded += OnCellValueNeeded2;
                 InitData2(AII_numOfChannels, ABI_startChannel, AII_data_for_grid);
@@ -1113,35 +1124,57 @@ namespace DAQNavi_WF_v1_0_0
 
                     AII_drawnPoints++;
                     AII_point_arr[AII_point_count] = AII_data[i];
-                    AII_point_count++;
 
-                    //if (i % 8 == 0)
-                    //{
-                    //    LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[0].Value = AAI_sampleCount + 1;
-                    //}
-                    //LastMeasure_GridTable.Rows[AAI_sampleCount].Cells[i + 1 + AII_startChannel].Value = AII_data[i];
+                    AII_point_count++;
                     AII_data_for_grid.Add(AII_data[i]);
                     //analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
                 }
 
-
-                if (AII_point_count == (AII_point_arr.Length))
+                if (AII_point_count == (AII_point_arr.Length/AII_numOfChannels))
                 {
-                    //ChartUtils.clearChart(AII_Chart);
+                    ChartUtils.clearChart(AII_Chart);
                     int len = AII_point_arr.Length;
-                    foreach (double num in AII_point_arr)
+
+                    double[] xValues = new double[len / AII_numOfChannels];
+                    double[][] ySeriesValues = new double[8][];
+
+                    for (int k = AII_startChannel; k < (AII_numOfChannels + AII_startChannel); k++)
                     {
-                        for (int i = 0; i < AII_numOfChannels; i++)
-                        {
-                            AII_Chart.Series[i + AII_startChannel].Points.Add(num);
-                        }
+                        ySeriesValues[k] = new double[len / (AII_numOfChannels * AII_numOfChannels)];
                     }
+
+                    int i = 0;
+                    int xPoint = -1;
+                    for (int g = 0; g < AII_point_arr.Length/AII_numOfChannels; g++)
+                    {
+
+                        int mySeries = (i % AII_numOfChannels) + AII_startChannel;
+                        if (mySeries == AII_startChannel)
+                        {
+                            xPoint++;
+                            xValues[xPoint] = xPoint;
+                        }
+
+                        ySeriesValues[mySeries][xPoint] = AII_point_arr[g];
+                        i++;
+                    }
+
+                    for (int h = AII_startChannel; h < (AII_numOfChannels + AII_startChannel); h++)
+                    {
+                        double[] arrCopy = new double[ySeriesValues[h].Length];
+                        Array.Copy(xValues, 0, arrCopy, 0, ySeriesValues[h].Length);
+                        AII_Chart.Series[h].Points.DataBindXY(arrCopy, ySeriesValues[h]);
+                    }
+
+
                     AII_point_count = 0;
                     AII_point_arr = new double[len];
-                    if (AII_MovingWindow)
-                    {
-                        AII_Chart.ChartAreas[0].AxisX.Minimum = (AII_drawnPoints / AII_numOfChannels) - int.Parse(AII_textBox_movingWindow.Text);
-                    }
+                    //if (AII_MovingWindow)
+                    //{
+                    //    AII_Chart.ChartAreas[0].AxisX.Minimum = (AII_drawnPoints / AII_numOfChannels) - int.Parse(AII_textBox_movingWindow.Text);
+                    //}
+
+                    AII_Chart.ChartAreas[0].AxisX.Minimum = (ySeriesValues[AII_startChannel].Length) * 0.8;
 
                 }
 
@@ -1179,6 +1212,12 @@ namespace DAQNavi_WF_v1_0_0
             //unlock buttons
             AII_button_defaults.Enabled = true;
             AII_button_editOptions.Enabled = true;
+            m_Data2 = new List<GridRowDTO>();
+            m_Visited2 = new List<bool>();
+            if (TabControl.TabPages.Contains(TabPage_LastMeasure))
+            {
+                TabControl.TabPages.Remove(TabPage_LastMeasure);
+            }
 
 
         }
@@ -1257,7 +1296,6 @@ namespace DAQNavi_WF_v1_0_0
         od minimalnej do maksymalnej wartości. */
         private void TrackBar_AnalogInstantInput_2_Scroll(object sender, ScrollEventArgs e)
         {
-            double MIN = 0;
             double MAX = AAI_sampleCount;
             double howMuchToChange = (MAX / 100) * this.AII_trackBar_2.Value;
             double window = AII_Chart.ChartAreas[0].AxisX.Maximum - AII_Chart.ChartAreas[0].AxisX.Minimum;

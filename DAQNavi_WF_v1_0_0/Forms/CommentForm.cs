@@ -214,16 +214,23 @@ namespace DAQNavi_WF_v1_0_0
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
-                        //try
-                        //{
+
+                        Excel.Application excelApp = null;
+                        Excel.Workbook excelWorkbook = null;
+                        Excel.Sheets excelSheets = null;
+                        Excel.Worksheet excelWorksheet = null;
+
+
+                        try
+                        {
 
                             string workbookPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\DAQNavi_file";
-                            Excel.Application excelApp = new Excel.Application();
+                            excelApp = new Excel.Application();
                             excelApp.Visible = false;
-                            Excel.Workbook excelWorkbook = excelApp.Workbooks.Open(workbookPath, 0, false, 5, "", "", false, Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+                            excelWorkbook= excelApp.Workbooks.Open(workbookPath, 0, true, 5, "", "", false, Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
 
-                            Excel.Sheets excelSheets = excelWorkbook.Worksheets;
-                            Excel.Worksheet excelWorksheet = (Excel.Worksheet)excelSheets.get_Item("Results");
+                            excelSheets = excelWorkbook.Worksheets;
+                            excelWorksheet = (Excel.Worksheet)excelSheets.get_Item("Results");
                             excelWorksheet.Cells[14, 6] = MainWindow.loginManager.username.ToString();
                             excelWorksheet.Cells[18, 6] = time;
                             excelWorksheet.Cells[19, 6] = timeStart;
@@ -238,10 +245,10 @@ namespace DAQNavi_WF_v1_0_0
                             int excelColumn = 2;
                             int excelRow = 60;
 
-                            var data_ex = new object[mainWindow.LastMeasure_GridTable.Rows.Count, mainWindow.LastMeasure_GridTable.Columns.Count];
+                            var data_ex = new object[mainWindow.LastMeasure_GridTable.Rows.Count, int.Parse(numberOfChannels) + 1];
                             for (int i = 0; i < mainWindow.LastMeasure_GridTable.Rows.Count; i++)
                             {
-                                for (int k = 0; k < mainWindow.LastMeasure_GridTable.Columns.Count + 1; k++)
+                                for (int k = 0; k < int.Parse(numberOfChannels) + 2; k++)
                                 {
                                     if (k < 1)
                                     {
@@ -269,11 +276,11 @@ namespace DAQNavi_WF_v1_0_0
                             }
 
                             var startCell = (Range)excelWorksheet.Cells[excelRow, 1];
-                            var endCell = (Range)excelWorksheet.Cells[mainWindow.LastMeasure_GridTable.Rows.Count + excelRow - 1, mainWindow.LastMeasure_GridTable.Columns.Count];
+                            var endCell = (Range)excelWorksheet.Cells[mainWindow.LastMeasure_GridTable.Rows.Count + excelRow - 1, int.Parse(numberOfChannels) + 1];
                             var writeRange = excelWorksheet.Range[startCell, endCell];
 
                             excelWorksheet.Range[startCell,
-                                (Range)excelWorksheet.Cells[mainWindow.LastMeasure_GridTable.Rows.Count + excelRow - 1, mainWindow.LastMeasure_GridTable.Columns.Count + 2]]
+                                (Range)excelWorksheet.Cells[mainWindow.LastMeasure_GridTable.Rows.Count + excelRow - 1, int.Parse(numberOfChannels) + 3]]
                                 .Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White);
                             writeRange.Value2 = data_ex;
                             int num = myResultsCounter/int.Parse(numberOfChannels) + 60;
@@ -284,7 +291,9 @@ namespace DAQNavi_WF_v1_0_0
                                 Excel.XlSaveAsAccessMode.xlExclusive, Excel.XlSaveConflictResolution.xlUserResolution, true, "", "", "");
 
 
-
+                        }
+                        finally
+                        {
                             Marshal.ReleaseComObject(excelSheets);
                             excelSheets = null;
                             excelWorkbook.Close(false, System.Reflection.Missing.Value, System.Reflection.Missing.Value);
@@ -292,11 +301,7 @@ namespace DAQNavi_WF_v1_0_0
                             Marshal.ReleaseComObject(excelApp);
                             excelWorkbook = null;
                             excelApp = null;
-                        
-                        
-                        //} catch(Exception ex){
-
-                        //}
+                        }
                     }
                 }
 
@@ -307,7 +312,7 @@ namespace DAQNavi_WF_v1_0_0
             {
                 for (int i = 0; i < mainWindow.LastMeasure_GridTable.Rows.Count; i++)
                 {
-                    for (int k = 0; k < mainWindow.LastMeasure_GridTable.Columns.Count + 1; k++)
+                    for (int k = 0; k < int.Parse(numberOfChannels) + 2; k++)
                     {
                         if (k < 1)
                         {
