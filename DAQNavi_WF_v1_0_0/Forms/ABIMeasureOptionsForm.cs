@@ -17,7 +17,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
     {
         MainWindow mainWindow;
         ValueRange[] ABIOP_channels_array = new ValueRange[8];
-        int step;
+        int step = 10000 / 100;
 
         public ABIMeasureOptionsForm(MainWindow mainWindow)
         {
@@ -74,6 +74,8 @@ namespace DAQNavi_WF_v1_0_0.Forms
                 ABIOP_button_Save.Text = "Zapisz";
                 this.Text = "Opcje pomiaru";
             }
+
+            newTimeValue();
         }
 
         private void ABIOP_comboBox_StartChannel_SelectedIndexChanged(object sender, EventArgs e)
@@ -95,7 +97,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
 
         private void ABIOP_trackBar_SampleInterval_ValueChanged(object sender, EventArgs e)
         {
-            step = 10000 / 100;
+            
             if (ABIOP_trackBar_SampleInterval.Value > 0)
             {
                 ABIOP_label_Interval_2.Text = (ABIOP_trackBar_SampleInterval.Value * step).ToString();
@@ -104,6 +106,8 @@ namespace DAQNavi_WF_v1_0_0.Forms
             {
                 ABIOP_label_Interval_2.Text = step.ToString();
             }
+
+            newTimeValue();
 
         }
 
@@ -114,7 +118,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
             {
                 trackbar_value = 1;
             }
-            MainWindow.ABI_rate =  trackbar_value * step;
+            MainWindow.ABI_rate = trackbar_value * step;
             MainWindow.ABI_startChannel = ABIOP_comboBox_StartChannel.SelectedIndex;
             MainWindow.ABI_numOfChannels = ABIOP_comboBox_NumberOfChannels.SelectedIndex + 1;
             MainWindow.ABI_samplesPerChannel = int.Parse(ABIOP_textBox_samples.Text);
@@ -146,11 +150,39 @@ namespace DAQNavi_WF_v1_0_0.Forms
                 ABIOP_grid.Rows[numOfChan].Cells[1].Value = "V_Neg10To10";
                 numOfChan++;
             }
+
+            newTimeValue();
         }
 
         private void ABIOP_textBox_samples_KeyPress(object sender, KeyPressEventArgs e)
         {
-                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void ABIOP_textBox_samples_TextChanged(object sender, EventArgs e)
+        {
+            newTimeValue();
+        }
+
+        private void newTimeValue()
+        {
+            int hz = ABIOP_trackBar_SampleInterval.Value * step;
+            int channels = ABIOP_comboBox_NumberOfChannels.SelectedIndex + 1;
+            if (channels == 0)
+            {
+                return;
+            }
+
+            double seconds = (double.Parse(ABIOP_textBox_samples.Text)) / (hz / channels);
+            TimeSpan t = TimeSpan.FromSeconds(seconds);
+
+            string answer = string.Format("{1:D2}m {2:D2}s {3:D3}ms",
+                            t.Hours,
+                            t.Minutes,
+                            t.Seconds,
+                            t.Milliseconds);
+
+            ABIOP_label_estimatedTimeValue.Text = answer;
         }
 
     }

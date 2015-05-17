@@ -741,10 +741,10 @@ namespace DAQNavi_WF_v1_0_0
             m_Visited2 = new List<bool>();
 
             // Time
-            int seconds = ABI_samplesPerChannel / ABI_rate;
+            int seconds = ABI_samplesPerChannel / (ABI_rate/ABI_numOfChannels);
             TimeSpan t = TimeSpan.FromSeconds(seconds);
 
-            string answer = string.Format("{0:D2}h:{1:D2}m:{2:D2}s:{3:D3}ms",
+            string answer = string.Format("{1:D2}m {2:D2}s {3:D3}ms",
                             t.Hours,
                             t.Minutes,
                             t.Seconds,

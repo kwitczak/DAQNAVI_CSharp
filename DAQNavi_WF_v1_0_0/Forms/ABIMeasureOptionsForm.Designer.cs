@@ -50,6 +50,8 @@
             this.ABIOP_label_channelRange = new MetroFramework.Controls.MetroLabel();
             this.ABIOP_label_int1 = new MetroFramework.Controls.MetroLabel();
             this.ABIOP_label_int2 = new MetroFramework.Controls.MetroLabel();
+            this.ABIOP_label_estimatedTime = new MetroFramework.Controls.MetroLabel();
+            this.ABIOP_label_estimatedTimeValue = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ABIOP_grid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -175,6 +177,7 @@
             this.ABIOP_textBox_samples.Text = "100";
             this.ABIOP_textBox_samples.Theme = MetroFramework.MetroThemeStyle.Dark;
             this.ABIOP_textBox_samples.UseSelectable = true;
+            this.ABIOP_textBox_samples.TextChanged += new System.EventHandler(this.ABIOP_textBox_samples_TextChanged);
             this.ABIOP_textBox_samples.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ABIOP_textBox_samples_KeyPress);
             // 
             // ABIOP_label_samples
@@ -308,11 +311,33 @@
             this.ABIOP_label_int2.Text = "10 000 Hz";
             this.ABIOP_label_int2.Theme = MetroFramework.MetroThemeStyle.Dark;
             // 
+            // ABIOP_label_estimatedTime
+            // 
+            this.ABIOP_label_estimatedTime.Location = new System.Drawing.Point(203, 209);
+            this.ABIOP_label_estimatedTime.Name = "ABIOP_label_estimatedTime";
+            this.ABIOP_label_estimatedTime.Size = new System.Drawing.Size(134, 19);
+            this.ABIOP_label_estimatedTime.TabIndex = 86;
+            this.ABIOP_label_estimatedTime.Text = "Szacowany czas";
+            this.ABIOP_label_estimatedTime.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ABIOP_label_estimatedTime.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
+            // ABIOP_label_estimatedTimeValue
+            // 
+            this.ABIOP_label_estimatedTimeValue.Location = new System.Drawing.Point(203, 232);
+            this.ABIOP_label_estimatedTimeValue.Name = "ABIOP_label_estimatedTimeValue";
+            this.ABIOP_label_estimatedTimeValue.Size = new System.Drawing.Size(134, 19);
+            this.ABIOP_label_estimatedTimeValue.TabIndex = 87;
+            this.ABIOP_label_estimatedTimeValue.Text = "0.0";
+            this.ABIOP_label_estimatedTimeValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ABIOP_label_estimatedTimeValue.Theme = MetroFramework.MetroThemeStyle.Dark;
+            // 
             // ABIMeasureOptionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(396, 541);
+            this.Controls.Add(this.ABIOP_label_estimatedTimeValue);
+            this.Controls.Add(this.ABIOP_label_estimatedTime);
             this.Controls.Add(this.ABIOP_label_int2);
             this.Controls.Add(this.ABIOP_label_int1);
             this.Controls.Add(this.ABIOP_label_channelRange);
@@ -354,6 +379,8 @@
         private MetroFramework.Controls.MetroLabel ABIOP_label_int2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Samplesn;
         private System.Windows.Forms.DataGridViewComboBoxColumn Channel1;
+        public MetroFramework.Controls.MetroLabel ABIOP_label_estimatedTime;
+        public MetroFramework.Controls.MetroLabel ABIOP_label_estimatedTimeValue;
 
     }
 }
