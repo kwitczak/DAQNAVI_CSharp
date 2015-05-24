@@ -42,6 +42,11 @@ namespace DAQNavi_WF_v1_0_0
                 // siatka cienka
                 chart.ChartAreas[0].AxisX.MinorGrid.LineColor = liniaCienka;
                 chart.ChartAreas[0].AxisY.MinorGrid.LineColor = liniaCienka;
+
+                // legenda
+                chart.Legends[0].BackColor = Color.FromArgb(255, 255, 255);
+                chart.Legends[0].BorderWidth = 0;
+                chart.Legends[0].ForeColor = Color.FromArgb(120, 120, 120);
             }
             else
             {
@@ -68,6 +73,11 @@ namespace DAQNavi_WF_v1_0_0
                 // siatka cienka
                 chart.ChartAreas[0].AxisX.MinorGrid.LineColor = liniaCienka;
                 chart.ChartAreas[0].AxisY.MinorGrid.LineColor = liniaCienka;
+
+                // legenda
+                chart.Legends[0].BackColor = Color.Transparent;
+                chart.Legends[0].BorderWidth = 0;
+                chart.Legends[0].ForeColor = Color.FromArgb(170, 170, 170);
             }
         }
 

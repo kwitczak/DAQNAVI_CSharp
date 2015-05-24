@@ -206,6 +206,9 @@ namespace DAQNavi_WF_v1_0_0
             ABI_Chart.Visible = false;
             AII_Chart.Visible = false;
 
+            GridUtils.switchStyle(ShowMeasure_grid, choosenStyle);
+            GridUtils.switchStyle(LastMeasure_GridTable, choosenStyle);
+
             AII_labels = new Label[]{
                 AII_label_ch0Value, 
                 AII_label_ch1Value,
@@ -226,9 +229,30 @@ namespace DAQNavi_WF_v1_0_0
                 ABI_channels_ranges[i] = ValueRange.V_Neg10To10;
             }
 
-            // Aktywacja pola wpisywania username'a
-            this.Select();
-            Welcome_textBox_username.Select();
+
+            // Czy jest to pierwsze uruchomienie?
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            if (config.AppSettings.Settings["dbSET"].Value == "no")
+            {
+                NoDatabase noDatabase = new NoDatabase(this);
+                noDatabase.Show();
+                noDatabase.Select();
+            }
+            else
+            {
+                // Aktywacja pola wpisywania username'a
+                this.Select();
+                Welcome_textBox_username.Select();
+            }
+
+            StyleUtils.changeStyle(choosenStyle, this);
+
+            Options_textBox_baza.Text = config.AppSettings.Settings["defaultDatabaseAddress"].Value;
+            Options_textBox_port.Text = config.AppSettings.Settings["defaultPort"].Value;
+            Options_textBox_user.Text = config.AppSettings.Settings["defaultDatabaseUser"].Value;
+            Options_textBox_password.Text = config.AppSettings.Settings["defaultDatabasePassword"].Value;
+            Options_textbox_dbNameValue.Text = config.AppSettings.Settings["defaultDatabaseName"].Value;
         }
 
 
@@ -741,7 +765,7 @@ namespace DAQNavi_WF_v1_0_0
             m_Visited2 = new List<bool>();
 
             // Time
-            int seconds = ABI_samplesPerChannel / (ABI_rate/ABI_numOfChannels);
+            int seconds = ABI_samplesPerChannel / (ABI_rate / ABI_numOfChannels);
             TimeSpan t = TimeSpan.FromSeconds(seconds);
 
             string answer = string.Format("{1:D2}m {2:D2}s {3:D3}ms",
@@ -888,7 +912,7 @@ namespace DAQNavi_WF_v1_0_0
 
                 int mySeries = ABI_startChannel;
                 int channels = ABI_numOfChannels;
-                double[] xValues = new double[ABI_allData.Count/channels];
+                double[] xValues = new double[ABI_allData.Count / channels];
                 double[][] ySeriesValues = new double[8][];
                 ABI_xPoint = -1;
 
@@ -896,7 +920,7 @@ namespace DAQNavi_WF_v1_0_0
                 {
                     ySeriesValues[i] = new double[ABI_allData.Count / channels];
                 }
-                
+
 
                 this.Invoke((UpdateUIDelegate)delegate()
                 {
@@ -1039,7 +1063,7 @@ namespace DAQNavi_WF_v1_0_0
                 AII_timer.MicroTimerElapsed +=
                     new MicroLibrary.MicroTimer.MicroTimerElapsedEventHandler(OnTimedEvent);
 
-                AII_timer.Interval = 1000000/(int)AII_timerValue; // Call micro timer every 1000µs (1ms)
+                AII_timer.Interval = 1000000 / (int)AII_timerValue; // Call micro timer every 1000µs (1ms)
                 ////second = 1 Hz
                 //AII_timer.Interval = 1000000;
                 ////= 10 Hz
@@ -1086,13 +1110,13 @@ namespace DAQNavi_WF_v1_0_0
             {
                 if (TabControl.TabPages.Contains(TabPage_LastMeasure))
                 {
-                    
+
                 }
                 else
                 {
                     this.TabControl.TabPages.Add(TabPage_LastMeasure);
                 }
-                
+
                 //GridUtils.fillUpGrid(AII_numOfChannels, AII_startChannel, AII_data_for_grid, LastMeasure_GridTable);
                 LastMeasure_GridTable.CellValueNeeded += OnCellValueNeeded2;
                 InitData2(AII_numOfChannels, ABI_startChannel, AII_data_for_grid);
@@ -1130,7 +1154,7 @@ namespace DAQNavi_WF_v1_0_0
                     //analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
                 }
 
-                if (AII_point_count == (AII_point_arr.Length/AII_numOfChannels))
+                if (AII_point_count == (AII_point_arr.Length / AII_numOfChannels))
                 {
                     ChartUtils.clearChart(AII_Chart);
                     int len = AII_point_arr.Length;
@@ -1145,7 +1169,7 @@ namespace DAQNavi_WF_v1_0_0
 
                     int i = 0;
                     int xPoint = -1;
-                    for (int g = 0; g < AII_point_arr.Length/AII_numOfChannels; g++)
+                    for (int g = 0; g < AII_point_arr.Length / AII_numOfChannels; g++)
                     {
 
                         int mySeries = (i % AII_numOfChannels) + AII_startChannel;
@@ -1164,6 +1188,16 @@ namespace DAQNavi_WF_v1_0_0
                         double[] arrCopy = new double[ySeriesValues[h].Length];
                         Array.Copy(xValues, 0, arrCopy, 0, ySeriesValues[h].Length);
                         AII_Chart.Series[h].Points.DataBindXY(arrCopy, ySeriesValues[h]);
+                        DateTime t1 = DateTime.ParseExact(AII_label_startValue.Text, "HH : mm : ss.fff",
+               System.Globalization.CultureInfo.InvariantCulture);
+                        TimeSpan t = TimeSpan.FromSeconds((DateTime.Now - t1).Seconds);
+
+                        string answer = string.Format("{1:D1}m : {2:D2}s",
+                                        t.Hours,
+                                        t.Minutes,
+                                        t.Seconds,
+                                        t.Milliseconds);
+                        AII_label_durationValue.Text = answer;
                     }
 
 
@@ -2238,6 +2272,11 @@ namespace DAQNavi_WF_v1_0_0
         }
 
         private void ShowMeasure_trackBar2_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void ShowMeasure_grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

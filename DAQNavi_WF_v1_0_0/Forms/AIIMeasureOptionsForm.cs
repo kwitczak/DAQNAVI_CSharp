@@ -34,6 +34,10 @@ namespace DAQNavi_WF_v1_0_0
             AIIOP_comboBox_NumberOfChannels.Theme = parentStyle;
             AIIOP_comboBox_StartChannel.Theme = parentStyle;
             AIIOP_trackBar_SampleInterval.Theme = parentStyle;
+            AIIOP_label_int1.Theme = parentStyle;
+            AIIOP_label_int2.Theme = parentStyle;
+            AIIOP_label_channelRange.Theme = parentStyle;
+            GridUtils.switchStyle(AIIOP_grid, parentStyle);
             for (int i = 0; i < AIIOP_channels_array.Length; i++)
             {
                 AIIOP_channels_array[i] = ValueRange.V_Neg10To10;

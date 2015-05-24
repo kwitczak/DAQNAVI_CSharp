@@ -76,6 +76,8 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 window.Options_button_applyChanges.Theme = style;
                 window.Options_button_backToDefaults.Theme = style;
                 window.Options_button_clearResults.Theme = style;
+                window.Options_label_dbName.Theme = style;
+                window.Options_textbox_dbNameValue.Theme = style;
 
                 // AnalogBufferedInput
                 window.TabPage_AnalogBufferedInput.Theme = style;
@@ -207,12 +209,25 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 window.ShowMeasure_label_taskValue.Theme = style;
                 window.ShowMeasure_label_type.Theme = style;
                 window.ShowMeasure_label_typeValue.Theme = style;
+                window.metroLabel7.Theme = style;
+                window.metroLabel1.Theme = style;
+                window.ShowMeasure_trackBar1.Theme = style;
+                window.ShowMeasure_trackBar2.Theme = style;
+                window.ShowMeasure_label_trackBar1.Theme = style;
+                window.ShowMeasure_label_trackBar2.Theme = style;
+                window.ShowMeasure_scrollBar.Theme = style;
+            
 
                 // Results
+
+                //Grid
+                GridUtils.switchStyle(window.ShowMeasure_grid, style);
+                GridUtils.switchStyle(window.LastMeasure_GridTable, style);
 
                 // Charts
                 ChartUtils.switchStyle(window.ABI_Chart, style);
                 ChartUtils.switchStyle(window.AII_Chart, style);
+                ChartUtils.switchStyle(window.ShowMeasure_chart, style);
                 window.Refresh();
         }
     }
