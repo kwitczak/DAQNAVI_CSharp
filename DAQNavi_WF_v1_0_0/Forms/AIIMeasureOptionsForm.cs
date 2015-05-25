@@ -36,6 +36,7 @@ namespace DAQNavi_WF_v1_0_0
             AIIOP_trackBar_SampleInterval.Theme = parentStyle;
             AIIOP_label_int1.Theme = parentStyle;
             AIIOP_label_int2.Theme = parentStyle;
+            AIIOP_label_int2.Text = ((int.Parse(mainWindow.Options_comboBox_aiiMax.SelectedIndex.ToString()) + 2) * 100).ToString();
             AIIOP_label_channelRange.Theme = parentStyle;
             GridUtils.switchStyle(AIIOP_grid, parentStyle);
             for (int i = 0; i < AIIOP_channels_array.Length; i++)
@@ -126,7 +127,7 @@ namespace DAQNavi_WF_v1_0_0
 
         private void AAIOP_trackBar_SampleInterval_ValueChanged(object sender, EventArgs e)
         {
-            double step = 1000 / 100;
+            double step = int.Parse(mainWindow.Options_comboBox_aiiMax.SelectedIndex.ToString()) + 2;
             if (AIIOP_trackBar_SampleInterval.Value > 0)
             {
                 AAIOP_label_Interval_2.Text = (AIIOP_trackBar_SampleInterval.Value * step).ToString();

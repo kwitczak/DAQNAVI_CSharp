@@ -78,6 +78,9 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 window.Options_button_clearResults.Theme = style;
                 window.Options_label_dbName.Theme = style;
                 window.Options_textbox_dbNameValue.Theme = style;
+                window.Options_label_aiiMax.Theme = style;
+                window.Options_comboBox_aiiMax.Theme = style;
+                window.Options_panel_aiiMax.Theme = style;
 
                 // AnalogBufferedInput
                 window.TabPage_AnalogBufferedInput.Theme = style;

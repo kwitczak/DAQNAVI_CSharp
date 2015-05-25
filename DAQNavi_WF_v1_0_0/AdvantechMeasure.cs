@@ -253,6 +253,8 @@ namespace DAQNavi_WF_v1_0_0
             Options_textBox_user.Text = config.AppSettings.Settings["defaultDatabaseUser"].Value;
             Options_textBox_password.Text = config.AppSettings.Settings["defaultDatabasePassword"].Value;
             Options_textbox_dbNameValue.Text = config.AppSettings.Settings["defaultDatabaseName"].Value;
+            // Select 900
+            Options_comboBox_aiiMax.SelectedIndex = 7;
         }
 
 
@@ -1043,8 +1045,21 @@ namespace DAQNavi_WF_v1_0_0
                 foreach (var series in AII_Chart.Series)
                 {
                     series.Points.Clear();
-                    //LastMeasure_GridTable.Rows.Clear();
+
                 }
+                m_Data2.Clear();
+                m_Visited2.Clear();
+                AII_point_count = 0;
+                AII_data_for_grid.Clear();
+                if (LastMeasure_GridTable.DataSource != null)
+                {
+                    LastMeasure_GridTable.DataSource = null;
+                }
+                else
+                {
+                    LastMeasure_GridTable.Rows.Clear();
+                }
+
 
                 // Show markers if zoomed
                 double ratio = AII_Chart.ChartAreas[0].AxisX.Maximum - AII_Chart.ChartAreas[0].AxisX.Minimum;
@@ -1064,25 +1079,9 @@ namespace DAQNavi_WF_v1_0_0
                     new MicroLibrary.MicroTimer.MicroTimerElapsedEventHandler(OnTimedEvent);
 
                 AII_timer.Interval = 1000000 / (int)AII_timerValue; // Call micro timer every 1000µs (1ms)
-                ////second = 1 Hz
-                //AII_timer.Interval = 1000000;
-                ////= 10 Hz
-                //AII_timer.Interval = 100000;
-                ////= 100 Hz
-                //AII_timer.Interval = 10000;
-                ////= 500 Hz
-                //AII_timer.Interval = 5000;
-                ////= 1000 Hz
-                //AII_timer.Interval = 1000;
-                //AII_timerValue = AII_timer.Interval;
 
                 // Arr for chart
-                AII_point_arr = new double[((int)AII_timerValue * AII_numOfChannels)];
-
-                //AII_timerValue = AII_timer.Interval / 1000;
-
-                // Can choose to ignore event if late by Xµs (by default will try to catch up)
-                // microTimer.IgnoreEventIfLateBy = 500; // 500µs (0.5ms)
+                AII_point_arr = new double[((int)AII_timerValue * AII_numOfChannels + 1)];
 
                 AII_timer.Enabled = true; // Start timer
 
@@ -1132,7 +1131,7 @@ namespace DAQNavi_WF_v1_0_0
                                   MicroLibrary.MicroTimerEventArgs timerEventArgs)
         {
             ErrorCode err;
-
+            AII_data = new double[8];
             err = AIIControl.Read(AII_startChannel, AII_numOfChannels, AII_data);
             if (err != ErrorCode.Success)
             {
@@ -1142,7 +1141,7 @@ namespace DAQNavi_WF_v1_0_0
             // Do something small that takes significantly less time than Interval
             MethodInvoker inv = delegate
             {
-                //LastMeasure_GridTable.Rows.Add();
+
                 for (int i = 0; i < AII_numOfChannels; i++)
                 {
 
@@ -1212,7 +1211,6 @@ namespace DAQNavi_WF_v1_0_0
 
                 }
 
-
             };
 
             this.Invoke(inv);
@@ -1232,8 +1230,8 @@ namespace DAQNavi_WF_v1_0_0
             foreach (var series in AII_Chart.Series)
             {
                 series.Points.Clear();
-                LastMeasure_GridTable.Rows.Clear();
             }
+            LastMeasure_GridTable.Rows.Clear();
 
             // Restart Chart to 0 position
             AII_Chart.ChartAreas[0].AxisX.Minimum = 0;
@@ -1246,12 +1244,22 @@ namespace DAQNavi_WF_v1_0_0
             //unlock buttons
             AII_button_defaults.Enabled = true;
             AII_button_editOptions.Enabled = true;
-            m_Data2 = new List<GridRowDTO>();
-            m_Visited2 = new List<bool>();
-            if (TabControl.TabPages.Contains(TabPage_LastMeasure))
+            m_Data2.Clear();
+            m_Visited2.Clear();
+            if (LastMeasure_GridTable.DataSource != null)
             {
-                TabControl.TabPages.Remove(TabPage_LastMeasure);
+                LastMeasure_GridTable.DataSource = null;
             }
+            else
+            {
+                LastMeasure_GridTable.Rows.Clear();
+            }
+            AII_point_count = 0;
+            AII_data_for_grid.Clear();
+            //if (TabControl.TabPages.Contains(TabPage_LastMeasure))
+            //{
+            //    TabControl.TabPages.Remove(TabPage_LastMeasure);
+            //}
 
 
         }
@@ -1923,7 +1931,7 @@ namespace DAQNavi_WF_v1_0_0
 
         private void InitData2(int channels, int startChannel, List<double> data)
         {
-
+            MessageBox.Show(data.Count.ToString());
             for (int i = 0; i < data.Count; i = i + channels)
             {
                 m_Visited2.Add(false);
@@ -2277,6 +2285,11 @@ namespace DAQNavi_WF_v1_0_0
         }
 
         private void ShowMeasure_grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void metroLabel2_Click(object sender, EventArgs e)
         {
 
         }

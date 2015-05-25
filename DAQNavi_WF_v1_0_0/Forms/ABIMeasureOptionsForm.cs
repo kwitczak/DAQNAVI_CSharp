@@ -17,12 +17,14 @@ namespace DAQNavi_WF_v1_0_0.Forms
     {
         MainWindow mainWindow;
         ValueRange[] ABIOP_channels_array = new ValueRange[8];
-        int step = 10000 / 100;
+        int step;
 
         public ABIMeasureOptionsForm(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
+            ABIOP_label_int1.Text = ((int.Parse(mainWindow.Options_comboBox_aiiMax.SelectedIndex.ToString()) + 2) * 100).ToString();
+            step = (10000 - int.Parse(ABIOP_label_int1.Text)) / 100;
             MetroFramework.MetroThemeStyle parentStyle = MainWindow.choosenStyle;
             MainWindow.Language language = MainWindow.choosenLanguage;
 
@@ -41,6 +43,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
             ABIOP_trackBar_SampleInterval.Theme = parentStyle;
             ABIOP_label_int1.Theme = parentStyle;
             ABIOP_label_int2.Theme = parentStyle;
+
             ABIOP_trackBar_SampleInterval.Value = 50;
             ABIOP_comboBox_StartChannel.SelectedIndex = 0;
             ABIOP_comboBox_NumberOfChannels.SelectedIndex = 0;
@@ -100,11 +103,11 @@ namespace DAQNavi_WF_v1_0_0.Forms
             
             if (ABIOP_trackBar_SampleInterval.Value > 0)
             {
-                ABIOP_label_Interval_2.Text = (ABIOP_trackBar_SampleInterval.Value * step).ToString();
+                ABIOP_label_Interval_2.Text = (int.Parse(ABIOP_label_int1.Text) + (ABIOP_trackBar_SampleInterval.Value * step)).ToString();
             }
             else
             {
-                ABIOP_label_Interval_2.Text = step.ToString();
+                ABIOP_label_Interval_2.Text = ABIOP_label_int1.Text;
             }
 
             newTimeValue();
@@ -118,7 +121,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
             {
                 trackbar_value = 1;
             }
-            MainWindow.ABI_rate = trackbar_value * step;
+            MainWindow.ABI_rate = int.Parse(ABIOP_label_int1.Text) + (trackbar_value * step);
             MainWindow.ABI_startChannel = ABIOP_comboBox_StartChannel.SelectedIndex;
             MainWindow.ABI_numOfChannels = ABIOP_comboBox_NumberOfChannels.SelectedIndex + 1;
             MainWindow.ABI_samplesPerChannel = int.Parse(ABIOP_textBox_samples.Text);
@@ -166,7 +169,7 @@ namespace DAQNavi_WF_v1_0_0.Forms
 
         private void newTimeValue()
         {
-            int hz = ABIOP_trackBar_SampleInterval.Value * step;
+            int hz = int.Parse(ABIOP_label_int1.Text) + (ABIOP_trackBar_SampleInterval.Value * step);
             int channels = ABIOP_comboBox_NumberOfChannels.SelectedIndex + 1;
             if (channels == 0)
             {
