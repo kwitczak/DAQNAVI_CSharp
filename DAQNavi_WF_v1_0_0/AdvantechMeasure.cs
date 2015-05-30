@@ -286,7 +286,11 @@ namespace DAQNavi_WF_v1_0_0
         /* Metoda która zapisuje zmiany wprowadzone w panelu admina */
         private void Button_Options_ApplyChanges_Click(object sender, EventArgs e)
         {
+            // Przypisanie kart
+            AIIControl.SelectedDevice = new DeviceInformation(Options_textBox_cardName.Text);
+            ABIControl.SelectedDevice = new DeviceInformation(Options_textBox_cardName.Text);
 
+            MetroMessageBox.Show(this, "Informacje zapisane pomyślnie", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /* Metoda która przywraca domyślne ustawienia */
@@ -1931,7 +1935,6 @@ namespace DAQNavi_WF_v1_0_0
 
         private void InitData2(int channels, int startChannel, List<double> data)
         {
-            MessageBox.Show(data.Count.ToString());
             for (int i = 0; i < data.Count; i = i + channels)
             {
                 m_Visited2.Add(false);
