@@ -227,7 +227,7 @@ namespace DAQNavi_WF_v1_0_0
                             string workbookPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\DAQNavi_file";
                             excelApp = new Excel.Application();
                             excelApp.Visible = false;
-                            excelWorkbook= excelApp.Workbooks.Open(workbookPath, 0, true, 5, "", "", false, Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
+                            excelWorkbook = excelApp.Workbooks.Open(workbookPath, 0, true, 5, "", "", false, Excel.XlPlatform.xlWindows, "", true, false, 0, true, false, false);
 
                             excelSheets = excelWorkbook.Worksheets;
                             excelWorksheet = (Excel.Worksheet)excelSheets.get_Item("Results");
@@ -283,13 +283,19 @@ namespace DAQNavi_WF_v1_0_0
                                 (Range)excelWorksheet.Cells[mainWindow.LastMeasure_GridTable.Rows.Count + excelRow - 1, int.Parse(numberOfChannels) + 3]]
                                 .Interior.Color = System.Drawing.ColorTranslator.ToOle(System.Drawing.Color.White);
                             writeRange.Value2 = data_ex;
-                            int num = myResultsCounter/int.Parse(numberOfChannels) + 60;
+                            int num = myResultsCounter / int.Parse(numberOfChannels) + 60;
                             excelWorksheet.PageSetup.PrintArea = "$A$1:$K$" + num;
 
 
                             excelWorkbook.SaveAs(dlg.FileName, Excel.XlFileFormat.xlWorkbookDefault, "", "", false, false,
                                 Excel.XlSaveAsAccessMode.xlExclusive, Excel.XlSaveConflictResolution.xlUserResolution, true, "", "", "");
 
+
+                            MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".xlsx zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        }
+                        catch (Exception ex)
+                        {
+                            MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         }
                         finally
@@ -310,28 +316,38 @@ namespace DAQNavi_WF_v1_0_0
             // ZAPIS TYLKO DO DB
             if (RadioButton_CommentForm_DB.Checked)
             {
-                for (int i = 0; i < mainWindow.LastMeasure_GridTable.Rows.Count; i++)
+                try
                 {
-                    for (int k = 0; k < int.Parse(numberOfChannels) + 2; k++)
+                    for (int i = 0; i < mainWindow.LastMeasure_GridTable.Rows.Count; i++)
                     {
-                        if (k < 1)
+                        for (int k = 0; k < int.Parse(numberOfChannels) + 2; k++)
                         {
-                        }
-                        else
-                        {
-                            if (mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value != null)
+                            if (k < 1)
                             {
-                                if ((k - 1) == 0)
+                            }
+                            else
+                            {
+                                if (mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value != null)
                                 {
-                                }
-                                else
-                                {
-                                    myResults[myResultsCounter] = (double)mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value;
-                                    myResultsCounter++;
+                                    if ((k - 1) == 0)
+                                    {
+                                    }
+                                    else
+                                    {
+                                        myResults[myResultsCounter] = (double)mainWindow.LastMeasure_GridTable.Rows[i].Cells[k - 1].Value;
+                                        myResultsCounter++;
+                                    }
                                 }
                             }
                         }
                     }
+
+                    MetroMessageBox.Show(this, "Dane wpisane do bazy", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                 }
             }
 
@@ -339,14 +355,23 @@ namespace DAQNavi_WF_v1_0_0
             // Zapis do bazy
             if (commentForm_checkBox.Checked)
             {
-                mainWindow.saveResultsToDataBase(timeStart,
-                    timeEnd,
-                    myResults,
-                    timeDurration,
-                    samples,
-                    numberOfChannels,
-                    choosenChannel,
-                    this.ProgressBar_CommentForm);
+                try
+                {
+                    mainWindow.saveResultsToDataBase(timeStart,
+                        timeEnd,
+                        myResults,
+                        timeDurration,
+                        samples,
+                        numberOfChannels,
+                        choosenChannel,
+                        this.ProgressBar_CommentForm);
+
+                }
+                catch (Exception ex)
+                {
+                    MetroMessageBox.Show(this, "Danych nie udało wpisać się do bazy!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
 
                 // Load measurments
                 MainWindow.measurmentDAO.loadMyMeasurments(MainWindow.loginManager.loggedUser.idusers, mainWindow);

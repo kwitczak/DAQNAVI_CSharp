@@ -141,7 +141,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 window.AII_label_startValue.Theme = style;
                 window.AII_label_value.Theme = style;
                 window.AII_label_viewOptions.Theme = style;
-                window.AII_textBox_movingWindow.Theme = style;
+                //window.AII_textBox_movingWindow.Theme = style;
                 window.AII_toggle_movingWindow.Theme = style;
                 window.AII_panel1.Theme = style;
                 window.AII_panel2.Theme = style;

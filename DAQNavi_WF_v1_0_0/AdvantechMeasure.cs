@@ -78,6 +78,7 @@ namespace DAQNavi_WF_v1_0_0
         public static double AII_timerValue;
         public static int AII_startChannel;
         public static int AII_numOfChannels;
+        public static double AII_movingWindow_Value = 0;
         public static ValueRange[] AII_channels_ranges;
         double[] AII_point_arr;
 
@@ -255,6 +256,8 @@ namespace DAQNavi_WF_v1_0_0
             Options_textbox_dbNameValue.Text = config.AppSettings.Settings["defaultDatabaseName"].Value;
             // Select 900
             Options_comboBox_aiiMax.SelectedIndex = 7;
+            // Select 1.0s
+            AII_comboBox_movingWindow.SelectedIndex = 0;
         }
 
 
@@ -318,6 +321,8 @@ namespace DAQNavi_WF_v1_0_0
         private void Button_Options_ClearResults_Click(object sender, EventArgs e)
         {
             measurmentDAO.clearMeasurments();
+            MetroMessageBox.Show(this, "Pomiary zostały wyczyszczone!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+       
         }
 
 
@@ -905,7 +910,7 @@ namespace DAQNavi_WF_v1_0_0
                     TabControl.TabPages.Add(TabPage_LastMeasure);
                 }
 
-                ABI_TrackBar_1.Value = 100;
+                ABI_TrackBar_1.Value = 99;
                 ABI_TrackBar_2.Value = 0;
 
                 timer_ProgressBar.Stop();
@@ -954,28 +959,21 @@ namespace DAQNavi_WF_v1_0_0
                 InitData2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
                 InitGrid2(ABI_numOfChannels, ABI_startChannel, ABI_allData);
 
+                int showOnly = 500;
+                if (ABI_allData.Count / ABI_numOfChannels < 500)
+                {
+                    showOnly = ABI_allData.Count / ABI_numOfChannels;
+                }
 
-                if (ABI_allData.Count / ABI_numOfChannels < 1000)
-                {
-                    ABI_TrackBar_1.Value = 100;
-                }
-                else if (ABI_allData.Count / ABI_numOfChannels < 5000)
-                {
-                    ABI_TrackBar_1.Value = 50;
-                }
-                else if (ABI_allData.Count / ABI_numOfChannels < 10000)
-                {
-                    ABI_TrackBar_1.Value = 20;
-                }
-                else if (ABI_allData.Count / ABI_numOfChannels < 50000)
-                {
-                    ABI_TrackBar_1.Value = 5;
-                }
-                else
-                {
-                    ABI_TrackBar_1.Value = 1;
-                }
-                ABI_TrackBar_2.Value = 99;
+                // Ile ustawić na T1?
+                double val = ((double)showOnly)/((double)ABI_samplesPerChannel);
+                double t1Value = val*100;
+                ABI_TrackBar_1.Value = (int)t1Value;
+
+                ABI_Chart.ChartAreas[0].AxisX.Minimum = (ABI_allData.Count / ABI_numOfChannels) - showOnly;
+                ABI_Chart.ChartAreas[0].AxisX.Maximum = Double.NaN;
+                double ratio = (this.ABI_Chart.ChartAreas[0].AxisX.Maximum - this.ABI_Chart.ChartAreas[0].AxisX.Minimum);
+                ChartUtils.changeChartMarkerRatio(this.ABI_Chart, ratio);
 
             };
             this.Invoke(inv);
@@ -1136,6 +1134,8 @@ namespace DAQNavi_WF_v1_0_0
         {
             ErrorCode err;
             AII_data = new double[8];
+            double AII_chart_range = 1;
+
             err = AIIControl.Read(AII_startChannel, AII_numOfChannels, AII_data);
             if (err != ErrorCode.Success)
             {
@@ -1145,7 +1145,7 @@ namespace DAQNavi_WF_v1_0_0
             // Do something small that takes significantly less time than Interval
             MethodInvoker inv = delegate
             {
-
+               
                 for (int i = 0; i < AII_numOfChannels; i++)
                 {
 
@@ -1154,7 +1154,6 @@ namespace DAQNavi_WF_v1_0_0
 
                     AII_point_count++;
                     AII_data_for_grid.Add(AII_data[i]);
-                    //analogInstantInputLabels[i].Text = Math.Round(dataInstantAI[i], 2).ToString();
                 }
 
                 if (AII_point_count == (AII_point_arr.Length / AII_numOfChannels))
@@ -1179,17 +1178,19 @@ namespace DAQNavi_WF_v1_0_0
                         if (mySeries == AII_startChannel)
                         {
                             xPoint++;
-                            xValues[xPoint] = xPoint;
+                            xValues[xPoint] = xPoint + AII_data_for_grid.Count / AII_numOfChannels;
                         }
 
                         ySeriesValues[mySeries][xPoint] = AII_point_arr[g];
                         i++;
                     }
 
+                    // Dodanie danych do wykresu
                     for (int h = AII_startChannel; h < (AII_numOfChannels + AII_startChannel); h++)
                     {
                         double[] arrCopy = new double[ySeriesValues[h].Length];
                         Array.Copy(xValues, 0, arrCopy, 0, ySeriesValues[h].Length);
+
                         AII_Chart.Series[h].Points.DataBindXY(arrCopy, ySeriesValues[h]);
                         DateTime t1 = DateTime.ParseExact(AII_label_startValue.Text, "HH : mm : ss.fff",
                System.Globalization.CultureInfo.InvariantCulture);
@@ -1201,6 +1202,8 @@ namespace DAQNavi_WF_v1_0_0
                                         t.Seconds,
                                         t.Milliseconds);
                         AII_label_durationValue.Text = answer;
+
+                        AII_labels[h].Text = Math.Round(ySeriesValues[h][ySeriesValues[h].Length - 1], 2).ToString();
                     }
 
 
@@ -1211,7 +1214,7 @@ namespace DAQNavi_WF_v1_0_0
                     //    AII_Chart.ChartAreas[0].AxisX.Minimum = (AII_drawnPoints / AII_numOfChannels) - int.Parse(AII_textBox_movingWindow.Text);
                     //}
 
-                    AII_Chart.ChartAreas[0].AxisX.Minimum = (ySeriesValues[AII_startChannel].Length) * 0.8;
+                    AII_Chart.ChartAreas[0].AxisX.Minimum = (ySeriesValues[AII_startChannel].Length) * AII_movingWindow_Value;
 
                 }
 
@@ -1292,7 +1295,7 @@ namespace DAQNavi_WF_v1_0_0
             if (AII_toggle_movingWindow.Checked)
             {
                 AII_Chart.ChartAreas[0].AxisX.Maximum = Double.NaN;
-                AII_Chart.ChartAreas[0].AxisX.Minimum = AAI_sampleCount - int.Parse(AII_textBox_movingWindow.Text.ToString());
+                AII_Chart.ChartAreas[0].AxisX.Minimum = AAI_sampleCount * AII_movingWindow_Value;
                 AII_trackBar_1.Enabled = false;
                 AII_trackBar_2.Enabled = false;
                 AII_MovingWindow = true;
@@ -2301,6 +2304,38 @@ namespace DAQNavi_WF_v1_0_0
         {
             String cardName = Options_comboBox_cardNameSuggestion.Text;
             Options_textBox_cardName.Text = cardName;
+        }
+
+        private void AII_comboBox_movingWindow_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (AII_comboBox_movingWindow.SelectedIndex)
+            {
+                case 0:
+                    AII_movingWindow_Value = 1 - 1.0;
+                    break;
+                case 1:
+                    AII_movingWindow_Value = 1 - 0.8;
+                    break;
+                case 2:
+                    AII_movingWindow_Value = 1 - 0.6;
+                    break;
+                case 3:
+                    AII_movingWindow_Value = 1 - 0.4;
+                    break;
+                case 4:
+                    AII_movingWindow_Value = 1 - 0.2;
+                    break;
+                case 5:
+                    AII_movingWindow_Value = 1 - 0.1;
+                    break;
+                case 6:
+                    AII_movingWindow_Value = 1 - 0.05;
+                    break;
+                case 7:
+                    AII_movingWindow_Value = 1 - 0.01;
+                    break;
+
+            }
         }
 
 

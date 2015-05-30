@@ -10,7 +10,7 @@ namespace DAQNavi_WF_v1_0_0
 
         public static void setDefaultAII()
         {
-            MainWindow.AII_timerValue = 1;
+            MainWindow.AII_timerValue = 100;
             MainWindow.AII_startChannel = 0;
             MainWindow.AII_numOfChannels = 1;
         }

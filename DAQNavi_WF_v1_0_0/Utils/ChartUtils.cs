@@ -108,7 +108,7 @@ namespace DAQNavi_WF_v1_0_0
            bazując na rozpiętości jego osi X. */
         public static void changeChartMarkerRatio(Chart chart, double ratio)
         {
-            if (ratio <= 30)
+            if (ratio <= 100)
             {
                 for (int i = 0; i < chart.Series.Count; i++)
                 {
