@@ -1083,7 +1083,7 @@ namespace DAQNavi_WF_v1_0_0
                 AII_timer.Interval = 1000000 / (int)AII_timerValue; // Call micro timer every 1000µs (1ms)
 
                 // Arr for chart
-                AII_point_arr = new double[((int)AII_timerValue * AII_numOfChannels + 1)];
+                AII_point_arr = new double[((int)AII_timerValue* AII_numOfChannels) + 10];
 
                 AII_timer.Enabled = true; // Start timer
 
@@ -1134,6 +1134,7 @@ namespace DAQNavi_WF_v1_0_0
         {
             ErrorCode err;
             AII_data = new double[8];
+            double until = 0;
             double AII_chart_range = 1;
 
             err = AIIControl.Read(AII_startChannel, AII_numOfChannels, AII_data);
@@ -1145,7 +1146,7 @@ namespace DAQNavi_WF_v1_0_0
             // Do something small that takes significantly less time than Interval
             MethodInvoker inv = delegate
             {
-               
+                until = (AII_point_arr.Length - 10) / AII_numOfChannels;
                 for (int i = 0; i < AII_numOfChannels; i++)
                 {
 
@@ -1155,34 +1156,36 @@ namespace DAQNavi_WF_v1_0_0
                     AII_point_count++;
                     AII_data_for_grid.Add(AII_data[i]);
                 }
-
-                if (AII_point_count == (AII_point_arr.Length / AII_numOfChannels))
+                
+                if (AII_point_count >= Convert.ToInt32(until))
                 {
                     ChartUtils.clearChart(AII_Chart);
-                    int len = AII_point_arr.Length;
 
-                    double[] xValues = new double[len / AII_numOfChannels];
+                    double[] xValues = new double[(int)Math.Ceiling(until)];
                     double[][] ySeriesValues = new double[8][];
 
                     for (int k = AII_startChannel; k < (AII_numOfChannels + AII_startChannel); k++)
                     {
-                        ySeriesValues[k] = new double[len / (AII_numOfChannels * AII_numOfChannels)];
+                        int v = (int)(until/AII_numOfChannels);
+                        //int v = (int)Math.Ceiling((until / AII_numOfChannels));
+                        ySeriesValues[k] = new double[v];
                     }
 
-                    int i = 0;
                     int xPoint = -1;
-                    for (int g = 0; g < AII_point_arr.Length / AII_numOfChannels; g++)
+                    for (int g = 0; g < until; g++)
                     {
 
-                        int mySeries = (i % AII_numOfChannels) + AII_startChannel;
-                        if (mySeries == AII_startChannel)
+                        int mySeries = (g % AII_numOfChannels) + AII_startChannel;
+                        if (xPoint < ySeriesValues[mySeries].Length - 1)
                         {
-                            xPoint++;
-                            xValues[xPoint] = xPoint + AII_data_for_grid.Count / AII_numOfChannels;
-                        }
+                            if (mySeries == AII_startChannel)
+                            {
+                                xPoint++;
+                                xValues[xPoint] = xPoint + (AII_data_for_grid.Count / AII_numOfChannels) - (int)(AII_timerValue/AII_numOfChannels);
+                            }
 
-                        ySeriesValues[mySeries][xPoint] = AII_point_arr[g];
-                        i++;
+                            ySeriesValues[mySeries][xPoint] = AII_point_arr[g];
+                        }
                     }
 
                     // Dodanie danych do wykresu
@@ -1194,7 +1197,7 @@ namespace DAQNavi_WF_v1_0_0
                         AII_Chart.Series[h].Points.DataBindXY(arrCopy, ySeriesValues[h]);
                         DateTime t1 = DateTime.ParseExact(AII_label_startValue.Text, "HH : mm : ss.fff",
                System.Globalization.CultureInfo.InvariantCulture);
-                        TimeSpan t = TimeSpan.FromSeconds((DateTime.Now - t1).Seconds);
+                        TimeSpan t = TimeSpan.FromTicks((DateTime.Now - t1).Ticks);
 
                         string answer = string.Format("{1:D1}m : {2:D2}s",
                                         t.Hours,
@@ -1208,7 +1211,7 @@ namespace DAQNavi_WF_v1_0_0
 
 
                     AII_point_count = 0;
-                    AII_point_arr = new double[len];
+                    AII_point_arr = new double[AII_point_arr.Length];
                     //if (AII_MovingWindow)
                     //{
                     //    AII_Chart.ChartAreas[0].AxisX.Minimum = (AII_drawnPoints / AII_numOfChannels) - int.Parse(AII_textBox_movingWindow.Text);
