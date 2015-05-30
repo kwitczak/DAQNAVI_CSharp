@@ -2294,6 +2294,12 @@ namespace DAQNavi_WF_v1_0_0
 
         }
 
+        private void Options_comboBox_cardNameSuggestion_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String cardName = Options_comboBox_cardNameSuggestion.Text;
+            Options_textBox_cardName.Text = cardName;
+        }
+
 
 
 
