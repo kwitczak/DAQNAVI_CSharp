@@ -327,7 +327,7 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // CreateNewUser
+            // CreateNewUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -352,9 +352,10 @@
             this.Controls.Add(this.TextBox_CreateNewUser_Email);
             this.Controls.Add(this.TextBox_CreateNewUser_Surname);
             this.Controls.Add(this.TextBox_CreateNewUser_Name);
-            this.Name = "CreateNewUser";
+            this.Name = "CreateNewUserForm";
             this.Text = "Registrate";
             this.Theme = MetroFramework.MetroThemeStyle.Dark;
+            this.Load += new System.EventHandler(this.CreateNewUserForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

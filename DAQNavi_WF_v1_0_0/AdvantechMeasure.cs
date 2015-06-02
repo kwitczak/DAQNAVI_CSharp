@@ -249,11 +249,11 @@ namespace DAQNavi_WF_v1_0_0
 
             StyleUtils.changeStyle(choosenStyle, this);
 
-            Options_textBox_baza.Text = config.AppSettings.Settings["defaultDatabaseAddress"].Value;
-            Options_textBox_port.Text = config.AppSettings.Settings["defaultPort"].Value;
-            Options_textBox_user.Text = config.AppSettings.Settings["defaultDatabaseUser"].Value;
-            Options_textBox_password.Text = config.AppSettings.Settings["defaultDatabasePassword"].Value;
-            Options_textbox_dbNameValue.Text = config.AppSettings.Settings["defaultDatabaseName"].Value;
+            Options_textBox_baza.Text = config.AppSettings.Settings["DatabaseAddress"].Value;
+            Options_textBox_port.Text = config.AppSettings.Settings["Port"].Value;
+            Options_textBox_user.Text = config.AppSettings.Settings["DatabaseUser"].Value;
+            Options_textBox_password.Text = config.AppSettings.Settings["DatabasePassword"].Value;
+            Options_textbox_dbNameValue.Text = config.AppSettings.Settings["DatabaseName"].Value;
             // Select 900
             Options_comboBox_aiiMax.SelectedIndex = 7;
             // Select 1.0s
@@ -289,9 +289,31 @@ namespace DAQNavi_WF_v1_0_0
         /* Metoda która zapisuje zmiany wprowadzone w panelu admina */
         private void Button_Options_ApplyChanges_Click(object sender, EventArgs e)
         {
-            // Przypisanie kart
+            // Aktualizacja zmian...
+            // 1) Przypisanie kart
             AIIControl.SelectedDevice = new DeviceInformation(Options_textBox_cardName.Text);
             ABIControl.SelectedDevice = new DeviceInformation(Options_textBox_cardName.Text);
+
+
+            // Zapisz zmiany do pliku konfiguracyjnego...
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+
+            config.AppSettings.Settings["CardName"].Value = Options_textBox_cardName.Text;
+            config.AppSettings.Settings["Theme"].Value = StyleUtils.returnStyleType(Options_toggle_layout.Checked);
+            config.AppSettings.Settings["Language"].Value = LanguageUtils.returnLangTypeForPL(Options_radioButton_polski.Checked);
+            config.AppSettings.Settings["DatabaseAddress"].Value = Options_textBox_baza.Text;
+            config.AppSettings.Settings["Port"].Value = Options_textBox_port.Text;
+            config.AppSettings.Settings["DatabaseUser"].Value = Options_textBox_user.Text;
+            config.AppSettings.Settings["DatabasePassword"].Value = Options_textBox_password.Text;
+            config.AppSettings.Settings["DatabaseName"].Value = Options_textbox_dbNameValue.Text;
+            config.AppSettings.Settings["CommentUser"].Value = Options_textBox_userComment.Text;
+            config.AppSettings.Settings["CommentAdmin"].Value = Options_textBox_adminComment.Text;
+
+
+            // Zapisanie zmian w pliku konfiguracyjnym
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+
 
             MetroMessageBox.Show(this, "Informacje zapisane pomyślnie", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -299,7 +321,29 @@ namespace DAQNavi_WF_v1_0_0
         /* Metoda która przywraca domyślne ustawienia */
         private void Button_Options_BackToDefaults_Click(object sender, EventArgs e)
         {
-            // TODO
+            DialogResult dialogResult = MetroMessageBox.Show(this, "Czy jesteś pewien? Wszystkie aktualne ustawienia zostaną utracone!", "Przywrócenie ustawień domyślnych", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                Options_textBox_cardName.Text = config.AppSettings.Settings["defaultCardName"].Value;
+                StyleUtils.returnStyleType_control(config.AppSettings.Settings["defaultTheme"].Value, this);
+                LanguageUtils.returnLangTypeForPL_control(config.AppSettings.Settings["defaultLanguage"].Value, this);
+                Options_textBox_baza.Text = config.AppSettings.Settings["defaultDatabaseAddress"].Value;
+                Options_textBox_port.Text = config.AppSettings.Settings["defaultPort"].Value;
+                Options_textBox_user.Text = config.AppSettings.Settings["defaultDatabaseUser"].Value;
+                Options_textBox_password.Text = config.AppSettings.Settings["defaultDatabasePassword"].Value;
+                Options_textbox_dbNameValue.Text = config.AppSettings.Settings["defaultDatabaseName"].Value;
+                Options_textBox_userComment.Text = config.AppSettings.Settings["defaultCommentUser"].Value;
+                Options_textBox_adminComment.Text = config.AppSettings.Settings["defaultCommentAdmin"].Value;
+
+                AIIControl.SelectedDevice = new DeviceInformation(Options_textBox_cardName.Text);
+                ABIControl.SelectedDevice = new DeviceInformation(Options_textBox_cardName.Text);
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                // Nic nie rób
+            }
         }
 
         /* Zmień status dla dostepnosci opcji */

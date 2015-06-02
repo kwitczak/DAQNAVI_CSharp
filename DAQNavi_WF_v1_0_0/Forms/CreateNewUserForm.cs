@@ -433,5 +433,10 @@ namespace DAQNavi_WF_v1_0_0.Utils
             Spinner_CreateNewUser.Refresh();
             Spinner_CreateNewUser.Value++;
         }
+
+        private void CreateNewUserForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -12,7 +12,7 @@ namespace DAQNavi_WF_v1_0_0.Utils
 
         public static MetroFramework.MetroThemeStyle getDefaultStyle()
         {
-            String style = ConfigurationManager.AppSettings["defaultTheme"];
+            String style = ConfigurationManager.AppSettings["Theme"];
             if (style.Equals("Dark"))
             {
                 return MetroFramework.MetroThemeStyle.Dark;
@@ -29,6 +29,29 @@ namespace DAQNavi_WF_v1_0_0.Utils
                 return MetroFramework.MetroThemeStyle.Light;
             } else {
                 return MetroFramework.MetroThemeStyle.Dark;
+            }
+        }
+
+        public static String returnStyleType(Boolean checkboxStatus)
+        {
+            if (checkboxStatus)
+            {
+                return "Light";
+            }
+            else {
+                return "Dark";
+            }
+        }
+
+        public static void returnStyleType_control(String styleType, MainWindow window)
+        {
+            if (styleType.Equals("Light"))
+            {
+                window.Options_toggle_layout.Checked = true;
+            }
+            else
+            {
+                window.Options_toggle_layout.Checked = false;
             }
         }
 

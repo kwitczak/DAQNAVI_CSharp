@@ -12,7 +12,7 @@ namespace DAQNavi_WF_v1_0_0
 
         public static DAQNavi_WF_v1_0_0.MainWindow.Language getDefaultLanguage()
         {
-            String lan = ConfigurationManager.AppSettings["defaultLanguage"];
+            String lan = ConfigurationManager.AppSettings["Language"];
             if (lan.Equals("ENG"))
             {
                 return DAQNavi_WF_v1_0_0.MainWindow.Language.ENG;
@@ -23,13 +23,37 @@ namespace DAQNavi_WF_v1_0_0
             }
         }
 
+        public static String returnLangTypeForPL(Boolean checkboxStatus)
+        {
+            if (checkboxStatus)
+            {
+                return "PL";
+            }
+            else
+            {
+                return "ENG";
+            }
+        }
+
+        public static void returnLangTypeForPL_control(String langType, MainWindow window)
+        {
+            if (langType.Equals("PL"))
+            {
+                window.Options_radioButton_polski.Checked = true;
+            }
+            else
+            {
+                window.Options_radioButton_english.Checked = true;
+            }
+        }
+
         public static void changeLanguage(DAQNavi_WF_v1_0_0.MainWindow.Language lan, MainWindow window)
         {
 
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
 
             // zapisz zmiany do pliku konfiguracyjnego
-            config.AppSettings.Settings["defaultLanguage"].Value = "ENG";
+            config.AppSettings.Settings["Language"].Value = "ENG";
 
             //save to apply changes
             config.Save(ConfigurationSaveMode.Modified);
