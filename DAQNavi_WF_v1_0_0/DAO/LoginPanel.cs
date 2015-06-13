@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Data;
+using MetroFramework;
 
 namespace DAQNavi_WF_v1_0_0
 {
@@ -71,6 +73,56 @@ namespace DAQNavi_WF_v1_0_0
                 MessageBox.Show(ex.Message);
                 return false;
             }
+        }
+
+        public static Boolean testConnection(Form mainWindow, string dataSource, string port, string username, string dbPassword, string dbName)
+        {
+            string myConnection = "datasource=" + dataSource + ";port=" + port + ";username=" + username + ";password=" + dbPassword;
+            bool isConn = false;
+            bool success = true;
+            MySqlConnection conn = null;
+            try
+            {
+                conn = new MySqlConnection(myConnection);
+                conn.Open();
+                isConn = true;
+            }
+            catch (ArgumentException a_ex)
+            {
+                MetroMessageBox.Show(mainWindow, "Wpisałeś niepoprawne dane, albo serwer nie został odnaleziony!", "Niepowodzenie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                success = false;
+            }
+            catch (MySqlException ex)
+            {
+                MetroMessageBox.Show(mainWindow, "Wpisałeś niepoprawne dane, albo serwer nie został odnaleziony!", "Niepowodzenie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                isConn = false;
+                success = false;
+                switch (ex.Number)
+                {
+                    //http://dev.mysql.com/doc/refman/5.0/en/error-messages-server.html
+                    case 1042: // Unable to connect to any of the specified MySQL hosts (Check Server,Port)
+                        break;
+                    case 0: // Access denied (Check DB name,username,password)
+                        break;
+                    default:
+                        break;
+                }
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+
+            if (!success)
+            {
+                return false;
+            }
+
+            MetroMessageBox.Show(mainWindow, "Udało się nawiązać połączenie z serwerem!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return isConn;
         }
     }
 }

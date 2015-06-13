@@ -364,9 +364,16 @@ namespace DAQNavi_WF_v1_0_0
         /* Czyszczenie pomiarow z bazy danych */
         private void Button_Options_ClearResults_Click(object sender, EventArgs e)
         {
-            measurmentDAO.clearMeasurments();
+            try
+            {
+                measurmentDAO.clearMeasurments();
+            }
+            catch (Exception ex)
+            {
+                MetroMessageBox.Show(this, "Wystąpił błąd bazy danych!", "Niepowodzenie", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
             MetroMessageBox.Show(this, "Pomiary zostały wyczyszczone!", "Sukces", MessageBoxButtons.OK, MessageBoxIcon.Information);
-       
         }
 
 
@@ -675,7 +682,7 @@ namespace DAQNavi_WF_v1_0_0
         /* Edytowalny scrollbar zamiast utomatycznego */
         private void metroScrollBar2_Scroll(object sender, ScrollEventArgs e)
         {
-            TabPage_Options.VerticalScroll.Value = e.NewValue * 5;
+            TabPage_Options.VerticalScroll.Value = e.NewValue * 3;
         }
 
         /* Automatyczne ustawienie focusa na kontrolce */
@@ -2383,6 +2390,15 @@ namespace DAQNavi_WF_v1_0_0
                     break;
 
             }
+        }
+
+        private void Options_button_checkDatabase_Click(object sender, EventArgs e)
+        {
+            LoginManager.testConnection(this, Options_textBox_baza.Text,
+                Options_textBox_port.Text,
+                Options_textBox_user.Text,
+                Options_textBox_password.Text,
+                Options_textbox_dbNameValue.Text);
         }
 
 

@@ -45,6 +45,19 @@ namespace DAQNavi_WF_v1_0_0.Forms
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            // Czy ten adres istnieje?
+            bool connected = LoginManager.testConnection(this,
+                NoDb_textBox_baza.Text,
+                NoDb_textBox_port.Text,
+                NoDb_textBox_login.Text,
+                NoDb_textBox_haslo.Text,
+                NoDb_textBox_nazwa.Text);
+
+            if (!connected)
+            {
+                return;
+            }
+
             // Czy jest to pierwsze uruchomienie?
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings["dbSET"].Value = "yes";
