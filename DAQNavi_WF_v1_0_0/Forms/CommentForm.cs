@@ -110,7 +110,7 @@ namespace DAQNavi_WF_v1_0_0
             }
 
             string time = DateTime.Now.ToString("yyyy-MM-dd     HH:mm:ss.fff", CultureInfo.InvariantCulture);
-            double[] myResults = new double[mainWindow.LastMeasure_GridTable.Rows.Count * int.Parse(numberOfChannels)];
+            double[] myResults = new double[mainWindow.LastMeasure_GridTable.Rows.Count * mainWindow.LastMeasure_GridTable.Columns.Count];
             int myResultsCounter = 0;
 
             // ZAPIS DO PLIKU
@@ -121,8 +121,8 @@ namespace DAQNavi_WF_v1_0_0
 
                     if (dlg.ShowDialog() == DialogResult.OK)
                     {
-                        try
-                        {
+                        //try
+                        //{
                             using (System.IO.StreamWriter file = new System.IO.StreamWriter(dlg.FileName + ".txt"))
                             {
 
@@ -153,7 +153,7 @@ namespace DAQNavi_WF_v1_0_0
                                     else
                                     {
                                         Rowbind.Append("\t");
-                                        Rowbind.Append(mainWindow.LastMeasure_GridTable.Columns[k - 1].HeaderText + ' ');
+                                        Rowbind.Append(mainWindow.LastMeasure_GridTable.Columns[k - 1].HeaderText + "\t");
                                     }
 
                                 }
@@ -197,11 +197,11 @@ namespace DAQNavi_WF_v1_0_0
                             }
 
                             MetroMessageBox.Show(this, "Plik " + dlg.FileName + ".txt zapisano na pulpicie.", "Zapis udany!", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                        }
-                        catch (Exception ex)
-                        {
-                            MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        //}
+                        //catch (Exception ex)
+                        //{
+                        //    MetroMessageBox.Show(this, "Pliku nie udało się zapisać!", "Zapis nie udany!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //}
                     }
                 }
             }
