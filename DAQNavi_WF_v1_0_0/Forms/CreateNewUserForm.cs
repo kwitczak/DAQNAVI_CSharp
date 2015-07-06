@@ -420,7 +420,6 @@ namespace DAQNavi_WF_v1_0_0.Utils
             {
                 if (!item.Text.Equals("Correct"))
                 {
-                    MessageBox.Show("Test");
                     result = false;
                 }
             }
